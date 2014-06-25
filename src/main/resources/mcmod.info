@@ -1,0 +1,15 @@
+[
+{
+  "modid": "EF",
+  "name": "Extra Food",
+  "description": "Adds Extra food",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url":  "",
+  "updateUrl": "",
+  "authors": ["Provessorvennie"],
+  "credits": "The Forge and FML guys, for making this mod possible",
+  "screenshots": [],
+  "requiredMods": ["Forge"],
+}
+]
