@@ -2,6 +2,7 @@ package com.professorvennie.core.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -81,6 +82,10 @@ public class ItemBook extends Item {
 	public static void initNBT(ItemStack stack) {
 		if(!detectNBT(stack))
 			injectNBT(stack, new NBTTagCompound());
+	}
+	
+	public EnumRarity getRarity(ItemStack itemstack){
+		return EnumRarity.uncommon;
 	}
 
 }

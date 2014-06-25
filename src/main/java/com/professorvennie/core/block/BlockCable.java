@@ -44,7 +44,7 @@ public class BlockCable extends BlockContainer {
 			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		
 		}
-		return AxisAlignedBB.getAABBPool().getAABB(x+this.minX, y+this.minY, z+this.minZ, x+this.maxX, y+this.maxY, z+this.maxZ);
+		return AxisAlignedBB.getBoundingBox(x+this.minX, y+this.minY, z+this.minZ, x+this.maxX, y+this.maxY, z+this.maxZ);
 	}
 	
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z){
@@ -62,7 +62,7 @@ public class BlockCable extends BlockContainer {
 			this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 		
 		}
-		return AxisAlignedBB.getAABBPool().getAABB(x+this.minX, y+this.minY, z+this.minZ, x+this.maxX, y+this.maxY, z+this.maxZ);
+		return AxisAlignedBB.getBoundingBox(x+this.minX, y+this.minY, z+this.minZ, x+this.maxX, y+this.maxY, z+this.maxZ);
 	}
 	
 	public int getRenderType(){
