@@ -1,9 +1,9 @@
 package com.professorvennie.core.item.itemrender;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.core.block.tileEntity.render.TileEntityRenderCable;
-import com.professorvennie.core.lib.LibStrings;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class ItemRenderCable implements IItemRenderer{
 	
-	private final ResourceLocation texter = new ResourceLocation(LibStrings.MODID, "textures/model/cable.png");
+	private final ResourceLocation texter = new ResourceLocation(Reference.MOD_ID, "textures/model/cable.png");
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {

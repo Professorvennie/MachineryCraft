@@ -1,17 +1,14 @@
 package com.professorvennie.core.block;
 
 import com.professorvennie.core.block.tileEntity.TileEntitywindmillground;
-import com.professorvennie.core.lib.LibNames;
-import com.professorvennie.core.lib.LibStrings;
+import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MainRegistry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class BlockWindmillGround extends BlockContainer {
@@ -19,9 +16,9 @@ public class BlockWindmillGround extends BlockContainer {
 	protected BlockWindmillGround(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		this.setBlockBounds(0, 0, 0, 1, (1F / 16f) * 14, 1);
-		setBlockName(LibNames.windmillground);
+		setBlockName(BlockNames.windmillground);
 		setCreativeTab(MainRegistry.tabMachineryCraft);
-		setBlockTextureName(LibStrings.MODID + ":windmillground");
+		setBlockTextureName(Reference.MOD_ID + ":windmillground");
 	}
 
 	public boolean renderAsNormalBlock() {

@@ -14,9 +14,7 @@ public class BookEntry implements Comparable<BookEntry> {
 	public List<BookPage> pages = new ArrayList<BookPage>();
 	private boolean priority = false;
 
-	/**
-	 * @param unlocalizedName The unlocalized name of this entry. This will be localized by the client display.
-	 */
+	
 	public BookEntry(String unlocalizedName, BookCategory category) {
 		this.unlocalizedName = unlocalizedName;
 		this.category = category;

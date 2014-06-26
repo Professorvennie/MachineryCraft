@@ -1,5 +1,6 @@
 package com.professorvennie.core.gui;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
@@ -10,12 +11,11 @@ import net.minecraft.util.ResourceLocation;
 
 import com.professorvennie.core.block.tileEntity.TileEntitySaltFurnace;
 import com.professorvennie.core.gui.containers.ContainerSaltFurnace;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.MainRegistry;
 
 public class GuiSaltFurnace extends GuiContainer{
 
-	public static final ResourceLocation texture = new ResourceLocation(LibStrings.MODID, "textures/gui/saltfurnace.png");
+	public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/saltfurnace.png");
 	
 	public TileEntitySaltFurnace saltFurnace;
 	

@@ -1,9 +1,9 @@
 package com.professorvennie.core.block.tileEntity.render;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.core.block.tileEntity.TileEntityCable;
-import com.professorvennie.core.lib.LibStrings;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -13,7 +13,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityRenderCable extends TileEntitySpecialRenderer {
 	
-	private final ResourceLocation texture = new ResourceLocation(LibStrings.MODID, "textures/model/cable.png");
+	private final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/model/cable.png");
 	private float pixel = 1F/16F;
 	private float texturePixel = 1F/32F;
 

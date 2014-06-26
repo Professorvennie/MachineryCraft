@@ -1,10 +1,9 @@
 package com.professorvennie.core.gui.book;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.professorvennie.core.lib.Reference;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.item.ItemStack;
@@ -16,15 +15,13 @@ import org.lwjgl.opengl.GL11;
 import com.professorvennie.api.MachineryCraftAPI;
 import com.professorvennie.api.book.BookCategory;
 import com.professorvennie.core.gui.buttons.GuiButtonInvisible;
-import com.professorvennie.core.lib.LibResources;
-import com.professorvennie.core.lib.LibStrings;
 
 public class GuiBook extends GuiScreen {
 
 	public static GuiBook currentOpenLexicon = new GuiBook();
 	public static ItemStack stackUsed;
 
-	public static final ResourceLocation texture = new ResourceLocation(LibStrings.MODID, "textures/gui/Book.png");
+	public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/Book.png");
 
 	String title;
 	int guiWidth = 146;

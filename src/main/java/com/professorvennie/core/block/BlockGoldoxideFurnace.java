@@ -3,10 +3,9 @@ package com.professorvennie.core.block;
 import java.util.Random;
 
 import com.professorvennie.core.block.tileEntity.TileEntityGoldOxideFurnace;
-import com.professorvennie.core.block.tileEntity.TileEntityironOxideGrinder;
+import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.lib.LibNames;
-import com.professorvennie.core.lib.LibStrings;
+import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
@@ -38,12 +37,12 @@ public class BlockGoldoxideFurnace extends BlockContainer {
 		super(Material.rock);
 		
 		if(!isActive){
-			this.setBlockName(LibNames.goldOxideFurnaceIdle);
+			this.setBlockName(BlockNames.goldOxideFurnaceIdle);
 			this.setCreativeTab(MainRegistry.tabMachineryCraft);
 		}
 		if(isActive){
 			this.setLightLevel(0.9F);
-			this.setBlockName(LibNames.goldOxideFurnaceActive);
+			this.setBlockName(BlockNames.goldOxideFurnaceActive);
 		}
 		this.setHardness(3.5F);
 		this.isActive = isActive;
@@ -58,8 +57,8 @@ public class BlockGoldoxideFurnace extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(IIconRegister iiconRegister) {
-		this.blockIcon = iiconRegister.registerIcon(LibStrings.MODID + ":ores/" + "metal_5");
-		this.iconFront = iiconRegister.registerIcon(LibStrings.MODID+ ":" + (this.isActive ? "goldoxide_furnace_Active" : "goldoxide_furnace_idle"));
+		this.blockIcon = iiconRegister.registerIcon(Reference.MOD_ID + ":ores/" + "metal_5");
+		this.iconFront = iiconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "goldoxide_furnace_Active" : "goldoxide_furnace_idle"));
 	}
 
 	@SideOnly(Side.CLIENT)

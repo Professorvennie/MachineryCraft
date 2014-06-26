@@ -1,7 +1,8 @@
 package com.professorvennie.core.item.tools;
 
+import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.lib.Reference;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 
 import com.professorvennie.api.MachineryCraftAPI;
 import com.professorvennie.core.item.tools.emerald.ItemEmeraldAxe;
@@ -28,12 +29,8 @@ import com.professorvennie.core.item.tools.salt.ItemSaltPickaxe;
 import com.professorvennie.core.item.tools.salt.ItemSaltShears;
 import com.professorvennie.core.item.tools.salt.ItemSaltShovel;
 import com.professorvennie.core.item.tools.salt.ItemSaltSword;
-import com.professorvennie.core.lib.LibNames;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.MainRegistry;
 import com.professorvennie.core.main.utils.RegistryUtils;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ModTools {
 	
@@ -72,33 +69,33 @@ public class ModTools {
 
 	private static void init() {
 		//tools
-				saltpickaxe = new ItemSaltPickaxe(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(LibNames.saltpickaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":salt_pickaxe");
-				saltaxe = new ItemSaltAxe(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(LibNames.saltaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":salt_axe");
-				saltsword = new ItemSaltSword(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(LibNames.saltsword).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":salt_sword");
-				salthoe = new ItemSaltHoe(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(LibNames.salthoe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":salt_hoe");
-				saltspade = new ItemSaltShovel(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(LibNames.saltspade).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":salt_spade");
-				saltshears = new ItemSaltShears().setUnlocalizedName(LibNames.SALT_SHEARS).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID + ":Salt_Shears");
+				saltpickaxe = new ItemSaltPickaxe(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(ItemNames.saltpickaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":salt_pickaxe");
+				saltaxe = new ItemSaltAxe(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(ItemNames.saltaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":salt_axe");
+				saltsword = new ItemSaltSword(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(ItemNames.saltsword).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":salt_sword");
+				salthoe = new ItemSaltHoe(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(ItemNames.salthoe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":salt_hoe");
+				saltspade = new ItemSaltShovel(MachineryCraftAPI.saltToolMaterial).setUnlocalizedName(ItemNames.saltspade).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":salt_spade");
+				saltshears = new ItemSaltShears().setUnlocalizedName(ItemNames.SALT_SHEARS).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":Salt_Shears");
 				
-				emeraldpickaxe = new ItemEmeraldPickaxe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(LibNames.emeraldpickaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":emerald_pickaxe");
-				emeraldaxe = new ItemEmeraldAxe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(LibNames.emeraldaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":emerald_axe");
-				emeraldsword = new ItemEmeraldSword(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(LibNames.emeraldsword).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":emerald_sword");
-				emeraldhoe = new ItemEmeraldHoe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(LibNames.emeraldhoe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":emerald_hoe");
-				emeraldspade = new ItemEmeraldShovel(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(LibNames.emeraldspade).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":emerald_shovel");
-				emeraldshears = new ItemEmeraldShears().setUnlocalizedName(LibNames.EMERALD_SHEARS).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID + ":Emerald_Shears");
+				emeraldpickaxe = new ItemEmeraldPickaxe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(ItemNames.emeraldpickaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":emerald_pickaxe");
+				emeraldaxe = new ItemEmeraldAxe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(ItemNames.emeraldaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":emerald_axe");
+				emeraldsword = new ItemEmeraldSword(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(ItemNames.emeraldsword).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":emerald_sword");
+				emeraldhoe = new ItemEmeraldHoe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(ItemNames.emeraldhoe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":emerald_hoe");
+				emeraldspade = new ItemEmeraldShovel(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(ItemNames.emeraldspade).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":emerald_shovel");
+				emeraldshears = new ItemEmeraldShears().setUnlocalizedName(ItemNames.EMERALD_SHEARS).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":Emerald_Shears");
 				
-				ironoxidepickaxe = new ItemIronoxidePickaxe(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(LibNames.ironoxidepickaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":ironoxide_pickaxe");
-				ironoxideaxe = new ItemIronoxideAxe(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(LibNames.ironoxideaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":ironoxide_axe");
-				ironoxidesword = new ItemIronoxideSword(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(LibNames.ironoxidesword).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":ironoxide_sword");
-				ironoxidehoe = new ItemIronoxideHoe(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(LibNames.ironoxidehoe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":ironoxide_hoe");
-				ironoxidespade = new ItemIronoxideShovel(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(LibNames.ironoxidespade).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":ironoxide_shovel");
-				ironoxideshears = new ItemIronoxideShears().setUnlocalizedName(LibNames.IRONOXIDE_SHEARS).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID + ":Ironoxide_Shears");
+				ironoxidepickaxe = new ItemIronoxidePickaxe(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(ItemNames.ironoxidepickaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":ironoxide_pickaxe");
+				ironoxideaxe = new ItemIronoxideAxe(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(ItemNames.ironoxideaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":ironoxide_axe");
+				ironoxidesword = new ItemIronoxideSword(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(ItemNames.ironoxidesword).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":ironoxide_sword");
+				ironoxidehoe = new ItemIronoxideHoe(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(ItemNames.ironoxidehoe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":ironoxide_hoe");
+				ironoxidespade = new ItemIronoxideShovel(MachineryCraftAPI.ironoxideToolMaterial).setUnlocalizedName(ItemNames.ironoxidespade).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":ironoxide_shovel");
+				ironoxideshears = new ItemIronoxideShears().setUnlocalizedName(ItemNames.IRONOXIDE_SHEARS).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":Ironoxide_Shears");
 				
-				goldoxidepickaxe = new ItemGoldoxidePickaxe(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(LibNames.goldoxidepickaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":goldoxide_pickaxe");
-				goldoxideaxe = new ItemGoldoxideAxe(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(LibNames.goldoxideaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":goldoxide_axe");
-				goldoxidesword = new ItemGoldoxideSword(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(LibNames.goldoxidesword).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":goldoxide_sword");
-				goldoxidehoe = new ItemGoldoxideHoe(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(LibNames.goldoxidehoe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":goldoxide_hoe");
-				goldoxidespade = new ItemGoldoxideShovel(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(LibNames.goldoxidespade).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID +":goldoxide_shovel");
-				goldoxideshears = new ItemGoldoxideShears().setUnlocalizedName(LibNames.GOLDOXIDE_SHEARS).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(LibStrings.MODID + ":Goldoxide_Shears");
+				goldoxidepickaxe = new ItemGoldoxidePickaxe(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(ItemNames.goldoxidepickaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":goldoxide_pickaxe");
+				goldoxideaxe = new ItemGoldoxideAxe(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(ItemNames.goldoxideaxe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":goldoxide_axe");
+				goldoxidesword = new ItemGoldoxideSword(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(ItemNames.goldoxidesword).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":goldoxide_sword");
+				goldoxidehoe = new ItemGoldoxideHoe(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(ItemNames.goldoxidehoe).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":goldoxide_hoe");
+				goldoxidespade = new ItemGoldoxideShovel(MachineryCraftAPI.goldoxideToolMaterial).setUnlocalizedName(ItemNames.goldoxidespade).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID +":goldoxide_shovel");
+				goldoxideshears = new ItemGoldoxideShears().setUnlocalizedName(ItemNames.GOLDOXIDE_SHEARS).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":Goldoxide_Shears");
 	}
 
 	private static void registry() {

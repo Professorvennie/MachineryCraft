@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.professorvennie.core.lib.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -20,7 +21,6 @@ import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IGuiBookEntry;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.helpers.RenderHelper;
 
 import cpw.mods.fml.relauncher.ReflectionHelper;
@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class PageCraftingRecipe extends PageRecipe {
 
-	private static final ResourceLocation craftingOverlay = new ResourceLocation(LibStrings.MODID, "textures/gui/craftingOverlay.png");
+	private static final ResourceLocation craftingOverlay = new ResourceLocation(Reference.MOD_ID, "textures/gui/craftingOverlay.png");
 
 	List<IRecipe> recipes;
 	int ticksElapsed = 0;

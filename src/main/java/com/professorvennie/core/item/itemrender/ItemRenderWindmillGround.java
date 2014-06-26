@@ -1,9 +1,9 @@
 package com.professorvennie.core.item.itemrender;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.core.block.tileEntity.render.TileEnitityRenderwindmillGround;
-import com.professorvennie.core.lib.LibStrings;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class ItemRenderWindmillGround implements IItemRenderer{
 	
-	private final ResourceLocation texterwindmillground = new ResourceLocation(LibStrings.MODID, "textures/model/windmillground.png");
+	private final ResourceLocation texterwindmillground = new ResourceLocation(Reference.MOD_ID, "textures/model/windmillground.png");
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {

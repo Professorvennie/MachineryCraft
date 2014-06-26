@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import com.professorvennie.core.block.tileEntity.TileEntitySaltFurnace;
 import com.professorvennie.core.block.tileEntity.TileEntityWasher;
-import com.professorvennie.core.gui.containers.ContainerSaltFurnace;
 import com.professorvennie.core.gui.containers.ContainerWasher;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.MainRegistry;
 
 import net.minecraft.client.Minecraft;
@@ -27,7 +25,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class GuiWasher extends GuiContainer{
 	
-public static final ResourceLocation texture = new ResourceLocation(LibStrings.MODID, "textures/gui/Washer.png");
+public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/Washer.png");
 	
 	public TileEntityWasher Washer;
 	protected int mouseX = 0, mouseY = 0;

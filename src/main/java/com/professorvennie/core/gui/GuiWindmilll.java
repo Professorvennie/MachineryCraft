@@ -1,5 +1,6 @@
 package com.professorvennie.core.gui;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
@@ -8,16 +9,14 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import com.professorvennie.core.block.tileEntity.TileEntitySaltGrinder;
 import com.professorvennie.core.block.tileEntity.TileEntitywindmill;
 import com.professorvennie.core.gui.containers.ContainerWindmill;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.MainRegistry;
 
 public class GuiWindmilll extends GuiContainer{
 	public TileEntitywindmill windmill;
 
-	public static final ResourceLocation texture = new ResourceLocation(LibStrings.MODID, "textures/gui/windmill.png");
+	public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/WINDMILL.png");
 	
 	public GuiWindmilll(InventoryPlayer inventory, TileEntitywindmill entity) {
 		super(new ContainerWindmill(inventory, entity));

@@ -3,26 +3,24 @@ package com.professorvennie.core.block;
 import java.util.Random;
 
 import com.professorvennie.core.item.ModItems;
-import com.professorvennie.core.lib.LibStrings;
+import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MainRegistry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 
 public class BlockSaltOre extends Block {
 
 	protected BlockSaltOre(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		this.setHarvestLevel("pickaxe", 2);
-		this.setBlockName("Saltore");
+		this.setBlockName("SALTORE");
 		this.setCreativeTab(MainRegistry.tabMachineryCraft);
 		setHardness(2.0f);
 		setResistance(2.0f);
 		setStepSound(Block.soundTypeStone);
-		setBlockTextureName(LibStrings.MODID + ":saltore");
+		setBlockTextureName(Reference.MOD_ID + ":saltore");
 	}
 	
     public int quantityDropped(Random random)

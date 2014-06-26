@@ -1,5 +1,6 @@
 package com.professorvennie.core.item;
 
+import com.professorvennie.core.lib.ItemNames;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -12,14 +13,13 @@ import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.lib.LibNames;
 import com.professorvennie.core.main.MainRegistry;
 
 public class ItemBook extends Item {
 	
 	public ItemBook(){
 		this.setCreativeTab(MainRegistry.tabMachineryCraft);
-		this.setUnlocalizedName(LibNames.BOOK);
+		this.setUnlocalizedName(ItemNames.BOOK);
 	}
 	
 	@Override

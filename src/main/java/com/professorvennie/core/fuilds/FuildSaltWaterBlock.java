@@ -1,6 +1,6 @@
 package com.professorvennie.core.fuilds;
 
-import com.professorvennie.core.lib.LibStrings;
+import com.professorvennie.core.lib.Reference;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -32,8 +32,8 @@ public class FuildSaltWaterBlock extends BlockFluidClassic {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister register){
-    		stillIcon = register.registerIcon(LibStrings.MODID + ":" + "Salt_Fluid_Still");
-            flowingIcon = register.registerIcon(LibStrings.MODID + ":" + "Salt_Fluid_Flowing");
+    		stillIcon = register.registerIcon(Reference.MOD_ID + ":" + "Salt_Fluid_Still");
+            flowingIcon = register.registerIcon(Reference.MOD_ID + ":" + "Salt_Fluid_Flowing");
     }
     
     @Override

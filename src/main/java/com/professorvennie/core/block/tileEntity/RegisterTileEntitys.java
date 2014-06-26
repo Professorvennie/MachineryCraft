@@ -9,7 +9,7 @@ public class RegisterTileEntitys {
 		RegistryUtils.registerTileEntity(TileEntitySaltFurnace.class, "tileEntitysaltfurnace");
 		RegistryUtils.registerTileEntity(TileEntitySaltGrinder.class, "tileEntityGrinder");
 		RegistryUtils.registerTileEntity(TileEntitywindmillground.class, "windmillground");
-		RegistryUtils.registerTileEntity(TileEntitywindmill.class, "windmill");
+		RegistryUtils.registerTileEntity(TileEntitywindmill.class, "WINDMILL");
 		RegistryUtils.registerTileEntity(TileEntityironOxideGrinder.class, "ironxideGrinder");
 		RegistryUtils.registerTileEntity(TileEntityIronOxideFurnace.class, "ironxideFurnace");
 		RegistryUtils.registerTileEntity(TileEntityGoldOxideGrinder.class, "goldOxideGrinder");

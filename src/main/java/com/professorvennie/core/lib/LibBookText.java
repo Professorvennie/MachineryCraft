@@ -3,7 +3,7 @@ package com.professorvennie.core.lib;
 public class LibBookText {
 
 	public static final String BASE_CATEGORY = "mc.book.category.";
-	public static final String BASE = LibStrings.MODID + ".book.";
+	public static final String BASE = Reference.MOD_ID + ".book.";
 	public static final String CATEGORY_BASICS = BASE_CATEGORY + "basics";
 	public static final String CATEGORY_MACHINES = BASE_CATEGORY + "machines";
 	public static final String CATEGORY_TOOLS = BASE_CATEGORY + "tools";

@@ -1,10 +1,10 @@
 package com.professorvennie.core.gui;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.core.block.tileEntity.TileEntityGoldOxideGrinder;
 import com.professorvennie.core.gui.containers.ContainerGoldoxideGrinder;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.MainRegistry;
 
 import net.minecraft.client.Minecraft;
@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiGoldoxideGrinder extends GuiContainer{
 	
-public static final ResourceLocation texture = new ResourceLocation(LibStrings.MODID, "textures/gui/Goldoxide_Grinder.png");
+public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/Goldoxide_Grinder.png");
 	
 	public TileEntityGoldOxideGrinder Grinder;
 

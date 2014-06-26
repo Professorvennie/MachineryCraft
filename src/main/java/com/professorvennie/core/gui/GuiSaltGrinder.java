@@ -1,23 +1,21 @@
 package com.professorvennie.core.gui;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
-import com.professorvennie.core.block.tileEntity.TileEntitySaltFurnace;
 import com.professorvennie.core.block.tileEntity.TileEntitySaltGrinder;
 import com.professorvennie.core.gui.containers.ContainerSaltGrinder;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.MainRegistry;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiSaltGrinder  extends GuiContainer{
 
-public static final ResourceLocation texture = new ResourceLocation(LibStrings.MODID, "textures/gui/Grinder.png");
+public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/Grinder.png");
 	
 	public TileEntitySaltGrinder Grinder;
 	

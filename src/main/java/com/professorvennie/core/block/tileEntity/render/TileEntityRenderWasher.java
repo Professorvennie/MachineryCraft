@@ -1,9 +1,7 @@
 package com.professorvennie.core.block.tileEntity.render;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
-
-import com.professorvennie.core.block.ModBlocks;
-import com.professorvennie.core.lib.LibStrings;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -12,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class TileEntityRenderWasher extends TileEntitySpecialRenderer{
 	
-	private final ResourceLocation texterwasher = new ResourceLocation(LibStrings.MODID, "textures/blocks/ores/metal_6.png");
+	private final ResourceLocation texterwasher = new ResourceLocation(Reference.MOD_ID, "textures/blocks/ores/metal_6.png");
 	private final ResourceLocation glass = new ResourceLocation("textures/blocks/glass.png");
 	private float pixel = 1F/16F;
 	private int textureWidth = 32;

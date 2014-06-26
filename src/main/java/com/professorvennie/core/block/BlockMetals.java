@@ -2,8 +2,8 @@ package com.professorvennie.core.block;
 
 import java.util.List;
 
-import com.professorvennie.core.lib.LibNames;
-import com.professorvennie.core.lib.LibStrings;
+import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.relauncher.Side;
@@ -39,14 +39,14 @@ public class BlockMetals extends Block {
 	 	@Override
 	    @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister register) {
-	        iconArray = new IIcon[LibNames.BlockMetals.length];
+	        iconArray = new IIcon[BlockNames.BlockMetals.length];
 	        for (int i = 0; i < iconArray.length; i++) {
-	            iconArray[i] = register.registerIcon(LibStrings.MODID + ":ores/" + "metal" + "_" + i);
+	            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + "metal" + "_" + i);
 	        }
 	    }
 	
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-    	for(int i = 0; i < LibNames.BlockMetals.length; i++){
+    	for(int i = 0; i < BlockNames.BlockMetals.length; i++){
             list.add(new ItemStack(item, 1, i));
     	}
     }
@@ -91,7 +91,7 @@ public static class ItemBlockMetals extends ItemBlock {
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs tab, List list) {
-        for (int i = 0; i < LibNames.BlockMetals.length; i++) {
+        for (int i = 0; i < BlockNames.BlockMetals.length; i++) {
             list.add(new ItemStack(item, 1, i));
         }
     }

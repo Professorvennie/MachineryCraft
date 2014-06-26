@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.professorvennie.core.block.tileEntity.TileEntityIronOxideFurnace;
-import com.professorvennie.core.block.tileEntity.TileEntitySaltFurnace;
 import com.professorvennie.core.gui.containers.ContainerIronoxideFurnace;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.MainRegistry;
 
 import net.minecraft.client.Minecraft;
@@ -19,13 +18,12 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiIronoxideFurnace extends GuiContainer{
 	
 
-	public static final ResourceLocation texture = new ResourceLocation(LibStrings.MODID, "textures/gui/Ironoxide_Furnace.png");
+	public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/Ironoxide_Furnace.png");
 	
 	public TileEntityIronOxideFurnace Furnace;
 	 protected int mouseX = 0, mouseY = 0;

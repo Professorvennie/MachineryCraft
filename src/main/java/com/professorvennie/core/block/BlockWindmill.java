@@ -2,6 +2,8 @@ package com.professorvennie.core.block;
 
 import java.util.Random;
 
+import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -14,8 +16,6 @@ import net.minecraft.world.World;
 import com.professorvennie.core.block.tileEntity.TileEntitywindmill;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.lib.LibNames;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
@@ -26,8 +26,8 @@ public class BlockWindmill extends BlockContainer{
 		super(p_i45394_1_);
 		this.setHardness(3.0f);
 		this.setHarvestLevel("Pickaxe", 2);
-		setBlockName(LibNames.windmill);
-		setBlockTextureName(LibStrings.MODID + ":windmillground");
+		setBlockName(BlockNames.WINDMILL);
+		setBlockTextureName(Reference.MOD_ID + ":windmillground");
 	}
 	
 	public void setBlockBoundsBasedOnState(IBlockAccess block, int x, int y, int z){

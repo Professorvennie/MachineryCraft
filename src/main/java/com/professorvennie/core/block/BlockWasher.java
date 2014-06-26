@@ -1,4 +1,5 @@
 package com.professorvennie.core.block;
+import com.professorvennie.core.lib.BlockNames;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -9,7 +10,6 @@ import net.minecraft.world.World;
 
 import com.professorvennie.core.block.tileEntity.TileEntityWasher;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.lib.LibNames;
 import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.relauncher.Side;
@@ -21,7 +21,7 @@ public class BlockWasher extends BlockContainer implements ITileEntityProvider {
 
     public BlockWasher() {
         super(Material.iron);
-        setBlockName(LibNames.washer);
+        setBlockName(BlockNames.washer);
         setHardness(2.0F);
         setResistance(10.0F);
         this.setCreativeTab(MainRegistry.tabMachineryCraft);

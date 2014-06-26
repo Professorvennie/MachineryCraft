@@ -1,10 +1,10 @@
 package com.professorvennie.core.block;
 
+import com.professorvennie.core.lib.BlockNames;
 import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.core.block.tileEntity.TileEntityCable;
 import com.professorvennie.core.block.tileEntity.render.TileEntityRenderWasher;
-import com.professorvennie.core.lib.LibNames;
 import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.relauncher.Side;
@@ -25,7 +25,7 @@ public class BlockCable extends BlockContainer {
 		float pixel = 1F/16F;
 		this.setBlockBounds(11*pixel/2, 11*pixel/2, 11*pixel/2, 1 - 11*pixel/2, 1-11*pixel/2, 1-11*pixel/2);
 		this.setCreativeTab(MainRegistry.tabMachineryCraft);
-		this.setBlockName(LibNames.cable);	
+		this.setBlockName(BlockNames.cable);
 		this.useNeighborBrightness = true;	
 	}
 	

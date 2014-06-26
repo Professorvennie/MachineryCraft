@@ -9,7 +9,7 @@ public class BookCategory {
 	public final List<BookEntry> entries = new ArrayList<BookEntry>();
 
 	/**
-	 * @param unlocalizedName The unlocalized name of this category. This will be localized by the client display.
+	 * @param unlocalizedName 
 	 */
 	public BookCategory(String unlocalizedName) {
 		this.unlocalizedName = unlocalizedName;

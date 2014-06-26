@@ -1,5 +1,6 @@
 package com.professorvennie.core.main;
 
+import com.professorvennie.core.lib.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -11,7 +12,6 @@ import com.professorvennie.core.fuilds.ModFuilds;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibResources;
-import com.professorvennie.core.lib.LibStrings;
 import com.professorvennie.core.main.creativetab.CreativeTabsExtraFood;
 import com.professorvennie.core.main.handlers.ConfigHandler;
 import com.professorvennie.core.main.handlers.HudHandler;
@@ -31,18 +31,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 
 
-@Mod(modid = LibStrings.MODID, name = LibStrings.name , version = LibStrings.version)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class MainRegistry {
 	
-	@Instance(LibStrings.MODID)
+	@Instance(Reference.MOD_ID)
 	public static MainRegistry instance;
 	
-	com.professorvennie.core.main.handlers.GuiHandler GuiHandler = new com.professorvennie.core.main.handlers.GuiHandler();
+	GuiHandler GuiHandler = new GuiHandler();
 	
 	static OreGen oremanager = new OreGen();
 	
 	public static CreativeTabs tabMachineryCraft = new CreativeTabsExtraFood("MachineryCraft");
-	@SidedProxy(clientSide = LibResources.CLIENT_PROXEY , serverSide = LibResources.COMMON_PROXEY)
+	@SidedProxy(clientSide = Reference.CLIENT_PROXEY , serverSide = Reference.SERVER_PROXEY)
 	public static ServerProxey proxy;
 
 	@EventHandler
@@ -61,7 +61,7 @@ public class MainRegistry {
 	@EventHandler
 	public static void load(FMLInitializationEvent event){
 		GameRegistry.registerWorldGenerator(oremanager, 2);
-		NetworkRegistry.INSTANCE.registerGuiHandler(LibStrings.MODID, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MOD_ID, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new HudHandler());
 		ModAchievements.registerAchievements();
 		ModEvents.registerEvents();

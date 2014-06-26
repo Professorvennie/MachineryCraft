@@ -39,9 +39,9 @@ public class BlockOres extends Block {
 	 	@Override
 	    @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister register) {
-	        iconArray = new IIcon[LibNames.BlockOres.length];
+	        iconArray = new IIcon[BlockNames.BlockOres.length];
 	        for (int i = 0; i < iconArray.length; i++) {
-	            iconArray[i] = register.registerIcon(LibStrings.MODID + ":ores/" + "ore" + "_" + i);
+	            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + "ore" + "_" + i);
 	        }
 	    }
 	
@@ -91,7 +91,7 @@ public static class ItemBlockOres extends ItemBlock {
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs tab, List list) {
-        for (int i = 0; i < LibNames.BlockOres.length; i++) {
+        for (int i = 0; i < BlockNames.BlockOres.length; i++) {
             list.add(new ItemStack(item, 1, i));
         }
     }

@@ -1,23 +1,10 @@
 package com.professorvennie.core.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFence;
-import net.minecraft.block.BlockSlab;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialLiquid;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 import com.professorvennie.core.item.itemblock.ItemBlockWasher;
-import com.professorvennie.core.lib.LibNames;
-import com.professorvennie.core.lib.LibStrings;
-import com.professorvennie.core.main.MainRegistry;
 import com.professorvennie.core.main.utils.RegistryUtils;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 	
@@ -49,6 +36,9 @@ public class ModBlocks {
 	public static Block goldOxideAlloyActive;
 	public static Block washer;	
 	public static Block cable;
+	public static Block blockLog;
+	public static Block blockLeave;
+	public static Block blockSpaling;	
 
 	
 	public static void InitialiseBlock(){
@@ -78,7 +68,10 @@ public class ModBlocks {
 //		goldOxideAlloyActive = new BlockGoldoxideAlloy(true);
 		
 		washer = new BlockWasher();
-		cable = new BlockCable(Material.rock);
+		cable = new BlockCable(Material.rock);	
+		blockLog = new BlockModLog();
+		blockLeave = new BlockLeave();
+		blockSpaling = new BlockModSapling();
 	}
 	
 	public static void registerBlock(){
@@ -103,6 +96,9 @@ public class ModBlocks {
 		RegistryUtils.registerBlock(goldOxideFurnaceActive);
 		RegistryUtils.registerBlock(cable);
 		RegistryUtils.registerBlock(washer, ItemBlockWasher.class);
+//		RegistryUtils.registerBlock(blockLog);
+//		RegistryUtils.registerBlock(blockLeave);
+//		RegistryUtils.registerBlock(blockSpaling);
 	}
 	
 }

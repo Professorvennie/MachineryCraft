@@ -2,8 +2,8 @@ package com.professorvennie.core.item;
 
 import java.util.List;
 
-import com.professorvennie.core.lib.LibNames;
-import com.professorvennie.core.lib.LibStrings;
+import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.relauncher.Side;
@@ -28,7 +28,7 @@ public class ItemIngots extends Item {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List list) {
-		for (int i = 0; i < LibNames.Ingots.length; i++) {
+		for (int i = 0; i < ItemNames.Ingots.length; i++) {
 			list.add(new ItemStack(this, 1, i));
 		}
 	}
@@ -40,9 +40,9 @@ public class ItemIngots extends Item {
 	
 	@SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register){
-		 iconArray = new IIcon[LibNames.Ingots.length];
+		 iconArray = new IIcon[ItemNames.Ingots.length];
 	        for (int i = 0; i < iconArray.length; i++) {
-	        	  iconArray[i] = register.registerIcon(LibStrings.MODID + ":ingots/" + "ingot" + "_" + i);
+	        	  iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ingots/" + "ingot" + "_" + i);
 	        }
 	}
 	

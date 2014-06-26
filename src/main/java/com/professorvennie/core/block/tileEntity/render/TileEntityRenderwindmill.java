@@ -1,10 +1,10 @@
 package com.professorvennie.core.block.tileEntity.render;
 
+import com.professorvennie.core.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.core.block.ModBlocks;
 import com.professorvennie.core.block.tileEntity.TileEntitywindmill;
-import com.professorvennie.core.lib.LibStrings;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class TileEntityRenderwindmill extends TileEntitySpecialRenderer {
 
-	private final ResourceLocation texterwindmill = new ResourceLocation(LibStrings.MODID, "textures/model/windmill.png");
+	private final ResourceLocation texterwindmill = new ResourceLocation(Reference.MOD_ID, "textures/model/WINDMILL.png");
 	private float pixel = 1F/16F;
 	private int textureWidth = 32;
 	private int textureHeight = 32;
