@@ -32,6 +32,8 @@ public class BookData {
 	public static BookEntry ironoxideTools;
 	public static BookEntry goldoxideTools;
 	public static BookEntry emeraldTools;
+	
+	//armor
 
 	
 	public static void init() {

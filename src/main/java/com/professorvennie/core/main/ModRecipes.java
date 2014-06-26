@@ -4,12 +4,14 @@ import com.professorvennie.api.MachineryCraftAPI;
 import com.professorvennie.core.block.ModBlocks;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.item.tools.ModTools;
+import com.professorvennie.core.lib.LibNames;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -148,5 +150,20 @@ public class ModRecipes {
 
 	private static void addShapelessOreDictRecipe(ItemStack output, Object... recipe) {
 		CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(output, recipe));
+	}
+	
+	public static void oreDict(){
+		for(int i = 0; i < LibNames.Ingots.length-2; i++){
+			OreDictionary.registerOre(LibNames.Ingots[i], new ItemStack(ModItems.Ingots, 1, i));
+		}
+		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.Saltore));
+		
+		for(int i = 0; i < LibNames.BlockOres.length; i++){
+			OreDictionary.registerOre(LibNames.BlockOres[i], new ItemStack(ModBlocks.BlockOres, 1, i));
+		}
+	}
+	
+	public static void addChestLoot(){
+		
 	}
 }

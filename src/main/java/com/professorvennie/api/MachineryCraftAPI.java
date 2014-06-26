@@ -33,7 +33,7 @@ public class MachineryCraftAPI {
 	}
 
 	/**
-	 * Registers a Lexicon Entry and adds it to the category passed in.
+	 * Registers a Book Entry and adds it to the category passed in.
 	 */
 	public static void addEntry(BookEntry entry, BookCategory category) {
 		allEntries.add(entry);
