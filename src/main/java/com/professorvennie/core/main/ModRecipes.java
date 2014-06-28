@@ -1,3 +1,12 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.main;
 
 import com.professorvennie.api.MachineryCraftAPI;
@@ -61,22 +70,22 @@ public class ModRecipes {
 		
 		//tools
 		//salt tools
-		addOreDictRecipe(new ItemStack(ModTools.saltpickaxe), "SSS", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 4), 's', Items.stick);
+		addOreDictRecipe(new ItemStack(ModTools.saltpickaxe), "SSS", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
 		recipeSaltPickaxe  = MachineryCraftAPI.getLatestAddedRecipe();
 		
-		addOreDictRecipe(new ItemStack(ModTools.saltaxe), "SS ", "Ss ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 4), 's', Items.stick);
+		addOreDictRecipe(new ItemStack(ModTools.saltaxe), "SS ", "Ss ", " s ", 'S', "ingotSalt", 's', Items.stick);
 		recipeSaltAxe  = MachineryCraftAPI.getLatestAddedRecipe();
 		
-		addOreDictRecipe(new ItemStack(ModTools.saltsword), " S ", " S ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 4), 's', Items.stick);
+		addOreDictRecipe(new ItemStack(ModTools.saltsword), " S ", " S ", " s ", 'S', "ingotSalt", 's', Items.stick);
 		recipeSaltSword  = MachineryCraftAPI.getLatestAddedRecipe();
 		
-		addOreDictRecipe(new ItemStack(ModTools.saltspade), " S ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 4), 's', Items.stick);
+		addOreDictRecipe(new ItemStack(ModTools.saltspade), " S ", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
 		recipeSaltSpade  = MachineryCraftAPI.getLatestAddedRecipe();
 		
-		addOreDictRecipe(new ItemStack(ModTools.salthoe), "SS ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 4), 's', Items.stick);
+		addOreDictRecipe(new ItemStack(ModTools.salthoe), "SS ", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
 		recipeSaltHoe  = MachineryCraftAPI.getLatestAddedRecipe();
 		
-		addOreDictRecipe(new ItemStack(ModTools.saltshears), "   ", "  S", " S ", 'S', new ItemStack(ModItems.Ingots, 1, 4));
+		addOreDictRecipe(new ItemStack(ModTools.saltshears), "   ", "  S", " S ", 'S', "ingotSalt");
 		recipeSaltShears  = MachineryCraftAPI.getLatestAddedRecipe();
 		
 		//ironoxide tools

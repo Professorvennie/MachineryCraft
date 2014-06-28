@@ -74,6 +74,7 @@ tile.metal.3.name=Block of Lead
 tile.metal.4.name=Block of Salt
 tile.metal.5.name=Block of Goldoxide
 tile.metal.6.name=Block of Ironoxide
+tile.metal.7.name=Block of Bronze
 
 item.dust.0.name=Iron Dust
 item.dust.1.name=Gold Dust
@@ -88,6 +89,7 @@ item.ingot.3.name=Lead Ingot
 item.ingot.4.name=Salt Ingot
 item.ingot.5.name=Goldoxide Ingot
 item.ingot.6.name=Ironoxide Ingot
+item.ingot.6.name=Bronze Ingot
 
 
 item.ItemBook.name=Machinery Craft Manual

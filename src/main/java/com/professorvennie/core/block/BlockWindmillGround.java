@@ -1,5 +1,16 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.block;
 
+import com.professorvennie.api.book.BookEntry;
+import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.block.tileEntity.TileEntitywindmillground;
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
@@ -8,10 +19,12 @@ import com.professorvennie.core.main.MainRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockWindmillGround extends BlockContainer {
+public class BlockWindmillGround extends BlockContainer implements IBookable{
 
 	protected BlockWindmillGround(Material p_i45394_1_) {
 		super(p_i45394_1_);
@@ -90,4 +103,9 @@ public class BlockWindmillGround extends BlockContainer {
 	public TileEntity createNewTileEntity(World var1, int var2) {
 		return new TileEntitywindmillground();
 	}
+
+    @Override
+    public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+        return null;
+    }
 }

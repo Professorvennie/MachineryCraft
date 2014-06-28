@@ -1,3 +1,12 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.lib;
 
 
@@ -14,6 +23,7 @@ public class ItemNames {
     public static final String[] Dusts = new String[]{"Iron_dust", "Gold_dust", "Tin_dust", "Silver_dust", "Lead_dust", "dustBronze"};
     public static final String[] Ingots = new String[]{"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "ingotSalt", "ingotGoldOxide", "ingotIronOxide", "ingotBronze"};
     public static final String BOOK = "ItemBook";
+    public static final String PLASTIC_APPLE = "plasticapple";
 
 
     //Tools

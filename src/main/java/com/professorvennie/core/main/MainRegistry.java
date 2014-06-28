@@ -1,3 +1,12 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.main;
 
 import com.professorvennie.core.lib.Reference;
@@ -11,11 +20,10 @@ import com.professorvennie.core.events.ModEvents;
 import com.professorvennie.core.fuilds.ModFuilds;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.BookData;
-import com.professorvennie.core.lib.LibResources;
 import com.professorvennie.core.main.creativetab.CreativeTabsExtraFood;
 import com.professorvennie.core.main.handlers.ConfigHandler;
 import com.professorvennie.core.main.handlers.HudHandler;
-import com.professorvennie.core.main.handlers.OreGen;
+import com.professorvennie.core.main.world.OreGen;
 import com.professorvennie.core.main.proxeys.ServerProxey;
 import com.professorvennie.core.main.handlers.GuiHandler;
 
@@ -31,7 +39,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY)
 public class MainRegistry {
 	
 	@Instance(Reference.MOD_ID)

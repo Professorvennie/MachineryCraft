@@ -1,3 +1,12 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.main.handlers;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -15,9 +24,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
-import com.professorvennie.api.book.IGuiBookEntry;
 import com.professorvennie.core.item.ModItems;
-import com.professorvennie.core.lib.LibBookText;
 
 public class HudHandler {
 
@@ -33,13 +40,13 @@ public class HudHandler {
 				if(block instanceof IBookable) {
 					BookEntry entry = ((IBookable) block).getEntry(mc.theWorld, pos.blockX, pos.blockY, pos.blockZ, mc.thePlayer, mc.thePlayer.getCurrentEquippedItem());
 					if(entry != null)
-						drawLexiconGUI(entry, event.resolution);
+						drawBookGUI(entry, event.resolution);
 				}
 			}
     	}
     }
 
-			private void drawLexiconGUI(BookEntry entry, ScaledResolution res) {
+			private void drawBookGUI(BookEntry entry, ScaledResolution res) {
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 				Minecraft mc = Minecraft.getMinecraft();

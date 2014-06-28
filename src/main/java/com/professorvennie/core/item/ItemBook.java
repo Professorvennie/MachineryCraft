@@ -1,6 +1,8 @@
 package com.professorvennie.core.item;
 
 import com.professorvennie.core.lib.ItemNames;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -87,5 +89,12 @@ public class ItemBook extends Item {
 	public EnumRarity getRarity(ItemStack itemstack){
 		return EnumRarity.uncommon;
 	}
+
+    @SideOnly(Side.CLIENT)
+    @Deprecated
+    public boolean hasEffect(ItemStack itemStack)
+    {
+        return true;
+    }
 
 }
