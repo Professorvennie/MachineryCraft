@@ -1,15 +1,16 @@
 [
 {
-  "modid": "EF",
-  "name": "Extra Food",
-  "description": "Adds Extra food",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url":  "",
+  "modid": "machinerycraft",
+  "name": "Machinery Craft",
+  "description": "Adds extra machines.",
+  "version": "0.1.0",
+  "mcversion": "1.7.10",
+  "url": "",
   "updateUrl": "",
-  "authors": ["Provessorvennie"],
-  "credits": "The Forge and FML guys, for making this mod possible",
+  "authorList": ["Professorvennie"],
+  "credits": "Vazkii",
+  "logoFile": "",
   "screenshots": [],
-  "requiredMods": ["Forge"],
+  "dependencies": []
 }
 ]

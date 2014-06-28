@@ -1,9 +1,21 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.block;
+import com.professorvennie.api.book.BookEntry;
+import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.lib.BlockNames;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
@@ -15,7 +27,7 @@ import com.professorvennie.core.main.MainRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockWasher extends BlockContainer implements ITileEntityProvider {
+public class BlockWasher extends BlockContainer implements ITileEntityProvider, IBookable {
     @SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 
@@ -63,4 +75,8 @@ public class BlockWasher extends BlockContainer implements ITileEntityProvider {
     }
 
 
+    @Override
+    public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+        return null;
+    }
 }

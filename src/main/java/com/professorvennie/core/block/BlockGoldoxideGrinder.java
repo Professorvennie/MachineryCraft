@@ -1,10 +1,22 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.block;
 
 import java.util.Random;
 
+import com.professorvennie.api.book.BookEntry;
+import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.block.tileEntity.TileEntityGoldOxideGrinder;
 import com.professorvennie.core.block.tileEntity.TileEntityironOxideGrinder;
 import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MainRegistry;
@@ -25,7 +37,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockGoldoxideGrinder extends BlockContainer {
+public class BlockGoldoxideGrinder extends BlockContainer implements IBookable{
 	
 	public boolean isActive;
 	
@@ -168,4 +180,8 @@ public class BlockGoldoxideGrinder extends BlockContainer {
 	}
 
 
+    @Override
+    public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+        return BookData.thridTierMachines;
+    }
 }

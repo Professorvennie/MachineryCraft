@@ -1,11 +1,23 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.block;
 
 import java.util.List;
 
+import com.professorvennie.api.book.BookEntry;
+import com.professorvennie.api.book.IBookable;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -18,7 +30,7 @@ import com.professorvennie.core.main.MainRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockOres extends Block {
+public class BlockOres extends Block implements IBookable{
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
@@ -67,8 +79,13 @@ public class BlockOres extends Block {
         return this.damageDropped(world.getBlockMetadata(x, y, z));
     }
 
+    @Override
+    public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+        return null;
+    }
 
-public static class ItemBlockOres extends ItemBlock {
+
+    public static class ItemBlockOres extends ItemBlock {
 
     public ItemBlockOres(Block p_i45328_1_) {
         super(p_i45328_1_);
