@@ -23,11 +23,13 @@ import com.professorvennie.api.book.BookCategory;
 import com.professorvennie.api.book.BookEntry;
 
 public class MachineryCraftAPI {
+
 	//Armor Materials
 	public static ArmorMaterial saltArmorMaterial = EnumHelper.addArmorMaterial("saltarmormaterial", 16, new int[]{3, 7, 5, 3}, 10);
 	public static ArmorMaterial ironoxideArmorMaterial = EnumHelper.addArmorMaterial("ironoxidearmormaterial", 20, new int[]{3, 6, 3, 3}, 15);
 	public static ArmorMaterial goldoxideArmorMaterial = EnumHelper.addArmorMaterial("goldoxidearmormaterial", 13, new int[]{3, 6, 4, 2}, 30);
 	public static ArmorMaterial emeraldArmorMaterial = EnumHelper.addArmorMaterial("emeraldArmorMaterial", 40, new int[]{4, 10, 8, 4}, 18);
+
 	//Tool Materials
 	public static ToolMaterial saltToolMaterial = EnumHelper.addToolMaterial("saltmaterial", 2, 100, 14.0f, 3.0f, 14);
 	public static ToolMaterial ironoxideToolMaterial = EnumHelper.addToolMaterial("ironoxidematerial", 3, 350, 12.0f, 5.0f, 16);

@@ -25,7 +25,6 @@ public class TileEntityRenderWasher extends TileEntitySpecialRenderer{
 	private int textureWidth = 32;
 	private int textureHeight = 32;
 
-	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y,double z, float var8) {
 		int x1 = tileentity.xCoord;
 		int y1 = tileentity.yCoord;
@@ -35,10 +34,7 @@ public class TileEntityRenderWasher extends TileEntitySpecialRenderer{
 		
 		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_LIGHTING);
-			GL11.glTranslatef((float)x, (float)y, (float)z);	
-		
-			
-			
+			GL11.glTranslatef((float)x, (float)y, (float)z);
 			Tessellator tessellator = Tessellator.instance;
 			this.bindTexture(texterwasher);
 			tessellator.startDrawingQuads();
@@ -54,8 +50,6 @@ public class TileEntityRenderWasher extends TileEntitySpecialRenderer{
 				tessellator.addVertexWithUV(1, 0, 0, 1, 1);
 				tessellator.addVertexWithUV(0, 0, 0, 0, 1);
 				tessellator.addVertexWithUV(0, 1, 0, 0, 0);
-
-
 			}
 			if(metadata == 7){
 				this.bindTexture(glass);
@@ -124,8 +118,6 @@ public class TileEntityRenderWasher extends TileEntitySpecialRenderer{
 				tessellator.addVertexWithUV(1, 0, 0, 1, 1);
 				tessellator.addVertexWithUV(0, 0, 0, 0, 1);
 				tessellator.addVertexWithUV(0, 1, 0, 0, 0);
-				
-				
 			}
 			if(metadata == 2){
 				this.bindTexture(texterwasher);
@@ -138,9 +130,7 @@ public class TileEntityRenderWasher extends TileEntitySpecialRenderer{
 				tessellator.addVertexWithUV(1, 1, 1, 1, 1);
 				tessellator.addVertexWithUV(1, 1, 0, 0, 1);
 				tessellator.addVertexWithUV(0, 1, 0, 0, 0);
-				
 			}
-			
 			if(metadata == 4){
 				this.bindTexture(texterwasher);
 				tessellator.addVertexWithUV(1, 0, 1, 1, 1);
@@ -226,7 +216,6 @@ public class TileEntityRenderWasher extends TileEntitySpecialRenderer{
 				tessellator.addVertexWithUV(1, 1, 1, 1, 1);
 				tessellator.addVertexWithUV(1, 1, 0, 0, 1);
 				tessellator.addVertexWithUV(0, 1, 0, 0, 0);
-
 		}
 		if(metadata == 8){
 			this.bindTexture(texterwasher);
@@ -276,7 +265,5 @@ public class TileEntityRenderWasher extends TileEntitySpecialRenderer{
 		
 		tessellator.draw();
 		GL11.glEnable(GL11.GL_LIGHTING);
-
 	}
-
 }

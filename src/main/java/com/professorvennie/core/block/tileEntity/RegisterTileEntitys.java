@@ -26,7 +26,5 @@ public class RegisterTileEntitys {
 		RegistryUtils.registerTileEntity(TileEntityWasher.class, "washer");
 		RegistryUtils.registerTileEntity(TileEntityCable.class, "cable");
 		RegistryUtils.registerTileEntity(TileEntityIronOxideAlloy.class, "ironxideAlloy");
-
 	}
-
 }

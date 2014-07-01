@@ -14,7 +14,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.professorvennie.api.MachineryCraftAPI;
 import com.professorvennie.core.block.ModBlocks;
 import com.professorvennie.core.item.ModItems;
 
@@ -22,7 +21,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class GrinderRecipes {
 	

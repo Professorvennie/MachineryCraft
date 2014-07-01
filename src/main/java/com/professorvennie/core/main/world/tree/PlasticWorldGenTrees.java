@@ -9,7 +9,6 @@
  * */
 package com.professorvennie.core.main.world.tree;
 
-import com.professorvennie.core.block.BlockPlasticLeave;
 import com.professorvennie.core.block.BlockPlasticSapling;
 import com.professorvennie.core.block.ModBlocks;
 import net.minecraft.block.Block;
@@ -109,7 +108,7 @@ public class PlasticWorldGenTrees extends WorldGenAbstractTree {
             {
                 Block block2 = world.getBlock(x, y - 1, z);
 
-                boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockPlasticSapling) ModBlocks.blockSpaling);
+                boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockPlasticSapling) ModBlocks.plasticSapling);
                 if (isSoil && y < 256 - l - 1)
                 {
                     block2.onPlantGrow(world, x, y - 1, z, x, y, z);
@@ -139,7 +138,7 @@ public class PlasticWorldGenTrees extends WorldGenAbstractTree {
 
                                     if (block1.isAir(world, i2, k1, k2) || block1.isLeaves(world, i2, k1, k2))
                                     {
-                                        this.setBlockAndNotifyAdequately(world, i2, k1, k2, ModBlocks.blockLeave, this.metaLeaves);
+                                        this.setBlockAndNotifyAdequately(world, i2, k1, k2, ModBlocks.plasticLeaf, this.metaLeaves);
                                     }
                                 }
                             }
@@ -152,7 +151,7 @@ public class PlasticWorldGenTrees extends WorldGenAbstractTree {
 
                         if (block.isAir(world, x, y + k1, z) || block.isLeaves(world, x, y + k1, z))
                         {
-                            this.setBlockAndNotifyAdequately(world, x, y + k1, z, ModBlocks.blockLog, this.metaWood);
+                            this.setBlockAndNotifyAdequately(world, x, y + k1, z, ModBlocks.plasticLog, this.metaWood);
 
                             if (this.vinesGrow && k1 > 0)
                             {

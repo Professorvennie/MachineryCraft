@@ -10,6 +10,7 @@
 package com.professorvennie.core.block.tileEntity;
 
 
+import com.professorvennie.core.block.ModBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -241,7 +242,7 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 			
 			if(flag != this.isBurning()){
 				flag1 = true;
-				BlockSaltFurnace.updateSaltFurnaceBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				BlockSaltFurnace.updateBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.SaltFurnaceActive, ModBlocks.SaltFurnaceIdle);
 			}
 			
 		}

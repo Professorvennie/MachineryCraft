@@ -71,61 +71,7 @@ public class TileEntityRenderwindmill extends TileEntitySpecialRenderer {
 					tessellator.addVertexWithUV(1-(8)/2*pixel, 1, 1-(8)/2*pixel, 0*(1F/textureWidth), 0*(1F/textureHeight));
 					tessellator.addVertexWithUV(1-(8)/2*pixel, 0, 1-(8)/2*pixel, 0*(1F/textureWidth), 1*(1F/textureHeight));
 				}
-				if(metadata > 7){
-					/*
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0, (8)/2*pixel, 8*(1F/textureWidth), 1*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, (8)/2*pixel, 8*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, 1-(8)/2*pixel, 0*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0, 1-(8)/2*pixel, 0*(1F/textureWidth), 1*(1F/textureHeight));
-				
-				tessellator.addVertexWithUV((8)/2*pixel, 0, (8)/2*pixel, 8*(1F/textureWidth), 1*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, (8)/2*pixel, 8*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, (8)/2*pixel, 0*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0, (8)/2*pixel, 0*(1F/textureWidth), 1*(1F/textureHeight));
-				
-				tessellator.addVertexWithUV((8)/2*pixel, 0, 1-(8)/2*pixel, 8*(1F/textureWidth), 1*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, 1-(8)/2*pixel, 8*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, (8)/2*pixel, 0*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 0, (8)/2*pixel, 0*(1F/textureWidth), 1*(1F/textureHeight));
-				
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0, 1-(8)/2*pixel, 8*(1F/textureWidth), 1*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, 1-(8)/2*pixel, 8*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, 1-(8)/2*pixel, 0*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 0, 1-(8)/2*pixel, 0*(1F/textureWidth), 1*(1F/textureHeight));
-				
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, 0.739, 8*(1F/textureWidth), 1*(1F/textureWidth));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, 1, 8*(1F/textureWidth), 0*(1F/textureWidth));
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, 1, 0*(1F/textureWidth), 0*(1F/textureWidth));
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, 0.739, 0*(1F/textureWidth), 1*(1F/textureWidth));
-				
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, 1, 8*(1F/textureWidth), 1*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 1, 1, 8*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 1, 1, 0*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, 1, 0*(1F/textureWidth), 1*(1F/textureHeight));
-				
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, 1, 8*(1F/textureWidth), 1*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 1, 1, 8*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 1, (8)/2*pixel, 0*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, (8)/2*pixel, 0*(1F/textureWidth), 1*(1F/textureHeight));
-				
-				tessellator.addVertexWithUV((8)/2*pixel, 0.5, (8)/2*pixel, 8*(1F/textureWidth), 1*(1F/textureHeight));
-				tessellator.addVertexWithUV((8)/2*pixel, 1, (8)/2*pixel, 8*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 1, (8)/2*pixel, 0*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, (8)/2*pixel, 0*(1F/textureWidth), 1*(1F/textureHeight));
-				
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, (8)/2*pixel, 8*(1F/textureWidth), 1*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 1, (8)/2*pixel, 8*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 1, 1, 0*(1F/textureWidth), 0*(1F/textureHeight));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 0.5, 1, 0*(1F/textureWidth), 1*(1F/textureHeight));
-				
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 1, 1, 8*(1F/textureWidth), 1*(1F/textureWidth));
-				tessellator.addVertexWithUV(1-(8)/2*pixel, 1, (8)/2*pixel, 8*(1F/textureWidth), 0*(1F/textureWidth));
-				tessellator.addVertexWithUV((8)/2*pixel, 1, (8)/2*pixel, 0*(1F/textureWidth), 0*(1F/textureWidth));
-				tessellator.addVertexWithUV((8)/2*pixel, 1, 1, 0*(1F/textureWidth), 1*(1F/textureWidth));
-				*/
-
-				}
-				
+				if(metadata > 7){}
 			}
 			tessellator.draw();
 			
@@ -133,6 +79,7 @@ public class TileEntityRenderwindmill extends TileEntitySpecialRenderer {
 			GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();
 	}
+
 	private void drawRoatar(TileEntity tileentity){
 		TileEntitywindmill windmill = (TileEntitywindmill) tileentity.getWorldObj().getTileEntity(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord);
 		GL11.glTranslatef(0, 0.5F, 0.5F);
@@ -143,7 +90,6 @@ public class TileEntityRenderwindmill extends TileEntitySpecialRenderer {
 			this.bindTexture(texterwindmill);
 			tessellator.startDrawingQuads();
 			{
-				
 				tessellator.addVertexWithUV(-2*pixel, 0.5F+1*pixel, 1*pixel+0.5F, 9*(1F/textureWidth) , 1*(1F/textureHeight));
 				tessellator.addVertexWithUV(-2*pixel, 2.5F, 1*pixel+0.5F, 9*(1F/textureWidth), 0*(1F/textureHeight));
 				tessellator.addVertexWithUV(-2*pixel, 2.5F, -1*pixel+0.5F, 8*(1F/textureWidth), 0*(1F/textureHeight));
@@ -183,11 +129,7 @@ public class TileEntityRenderwindmill extends TileEntitySpecialRenderer {
 				tessellator.addVertexWithUV(-2*pixel, 0.5F-1*pixel, 0.5F-1*pixel, 9*(1F/textureWidth) , 1*(1F/textureHeight));
 				tessellator.addVertexWithUV(-2*pixel, 0.5F-1*pixel, -1.5F, 8*(1F/textureWidth), 1*(1F/textureHeight));
 				tessellator.addVertexWithUV(-2*pixel, 0.5F+1*pixel, -1.5F, 8*(1F/textureWidth), 0*(1F/textureHeight));
-
 				}
-				
 			tessellator.draw();
 	}
-
-
 }

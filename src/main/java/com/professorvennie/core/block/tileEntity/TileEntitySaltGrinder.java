@@ -241,7 +241,7 @@ public class TileEntitySaltGrinder extends TileEntity implements ISidedInventory
 			
 			if(flag != this.isBurning()){
 				flag1 = true;
-				BlockSaltGrinder.updateGrinderBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				BlockSaltGrinder.updateBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord,ModBlocks.SaltGrinderActive, ModBlocks.SaltGrinderIdle);
 			}
 			
 		}

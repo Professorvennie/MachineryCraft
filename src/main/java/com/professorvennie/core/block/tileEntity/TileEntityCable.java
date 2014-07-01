@@ -51,7 +51,6 @@ public class TileEntityCable extends TileEntity {
 				else isOppsoite = true;
 			}
 		}
-
 		return isOppsoite;
 	}
 
@@ -65,5 +64,4 @@ public class TileEntityCable extends TileEntity {
 
 		return false;
 	}
-
 }

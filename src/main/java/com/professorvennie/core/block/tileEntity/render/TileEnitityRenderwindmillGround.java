@@ -276,5 +276,4 @@ public class TileEnitityRenderwindmillGround extends TileEntitySpecialRenderer{
 		
 		tessellator.draw();
 	}
-
 }

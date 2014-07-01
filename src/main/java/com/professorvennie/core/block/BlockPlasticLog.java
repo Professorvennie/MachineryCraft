@@ -91,8 +91,8 @@ public class BlockPlasticLog extends BlockRotatedPillar {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconReg)
     {
-        this.textureSide = iconReg.registerIcon(Reference.MOD_ID + ":BlockPlasticLog");
-        this.blockIcon = iconReg.registerIcon(Reference.GUI_FACTORY + ":BlockPlasticLogTop");
+        this.textureSide = iconReg.registerIcon(Reference.MOD_ID + ":Plastic_Log_Side");
+        this.blockIcon = iconReg.registerIcon(Reference.MOD_ID + ":Plastic_Log_Top");
     }
 
     @SideOnly(Side.CLIENT)

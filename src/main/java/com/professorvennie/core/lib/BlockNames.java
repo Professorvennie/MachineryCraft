@@ -15,10 +15,8 @@ public class BlockNames {
     public static final String SALTORE = "Saltore";
     public static final String WINDMILL = "windmill";
     public static final String windmillground = "windmillground";
-    public static final String SaltFurnaceIdle = "SaltFurnaceIdle";
-    public static final String SaltFurnaceActive = "SaltFurnaceActive";
-    public static final String SaltGrinderIdle = "SaltGrinderIdle";
-    public static final String SaltGrinderActive = "SaltGrinderActive";
+    public static final String SaltFurnace = "saltFurnace";
+    public static final String SaltGrinder = "saltGrinder";
     public static final String ironOxideGrinderIdle = "ironOxideGrinderIdle";
     public static final String ironOxideGrinderActive = "ironOxideGrinderActive";
     public static final String ironOxideFurnaceIdle = "ironOxideFurnaceIdle";
@@ -38,4 +36,5 @@ public class BlockNames {
     public static final String BLOCK_LOG = "plasticLog";
     public static final String BLOCK_LEAVES= "plasticLeaves";
     public static final String BLOCK_SAPLING = "plasticSapling";
+    public static final String BLOCK_PLASTIC_FLOWER = "plasticFlower";
 }

@@ -38,7 +38,7 @@ public class ItemRenderCable implements IItemRenderer{
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		GL11.glDisable(GL11.GL_LIGHTING);
 		Minecraft.getMinecraft().renderEngine.bindTexture(texter);
-		new TileEntityRenderCable().drawStriaght(ForgeDirection.UP);
+		new TileEntityRenderCable().drawStriaght(ForgeDirection.NORTH);
 		GL11.glEnable(GL11.GL_LIGHTING);
 
 	}

@@ -20,10 +20,10 @@ public class PlasticBoneMealEvent {
 
     @SubscribeEvent
     public void usedBonemeal(BonemealEvent event) {
-        if (event.block == ModBlocks.blockSpaling) {
+        if (event.block == ModBlocks.plasticSapling) {
             if (!event.world.isRemote) {
                 // Grow tree
-                ((BlockPlasticSapling)ModBlocks.blockSpaling).markOrGrowMarked(event.world, event.x, event.y, event.z, event.world.rand);
+                ((BlockPlasticSapling)ModBlocks.plasticSapling).markOrGrowMarked(event.world, event.x, event.y, event.z, event.world.rand);
                 event.setResult(Event.Result.ALLOW);
             }
         }

@@ -46,8 +46,8 @@ item.saltboots.name=Salt Boots
 
 
 item.goldoxide.name=Gold Oxide
-tile.SaltFurnaceIdle.name=Salt Furnace
-tile.SaltGrinderIdle.name=Salt Grinder
+tile.saltFurnaceIdle.name=Salt Furnace
+tile.saltGrinderIdle.name=Salt Grinder
 tile.saltblock.name=Block of Salt
 tile.ironOxideFurnaceIdle.name=Iron Oxide Furnace
 tile.ironOxideGrinderIdle.name=Iron Oxide Grinder
@@ -89,7 +89,7 @@ item.ingot.3.name=Lead Ingot
 item.ingot.4.name=Salt Ingot
 item.ingot.5.name=Goldoxide Ingot
 item.ingot.6.name=Ironoxide Ingot
-item.ingot.6.name=Bronze Ingot
+item.ingot.7.name=Bronze Ingot
 
 
 item.ItemBook.name=Machinery Craft Manual

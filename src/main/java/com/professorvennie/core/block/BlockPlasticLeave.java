@@ -13,7 +13,6 @@ import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MainRegistry;
-import com.professorvennie.core.main.utils.ColorizerLeaves;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -37,7 +36,7 @@ import java.util.Random;
 
 public class BlockPlasticLeave extends BlockLeavesBase implements IShearable {
 
-    public static final String[][] textureNames = new String[][] {	{ Reference.MOD_ID + ":BlockPlasticLeaf" }, { Reference.MOD_ID + ":BlockPlasticLeafOpaque" } };
+    public static final String[][] textureNames = new String[][] {	{ Reference.MOD_ID + ":PlasticLeaf" }, { Reference.MOD_ID + ":PlasticLeaf_Opaque" } };
     public static final String[] trees = new String[] { "plastic" };
     int[] intarray;
     @SideOnly(Side.CLIENT)
@@ -91,41 +90,6 @@ public class BlockPlasticLeave extends BlockLeavesBase implements IShearable {
         return ret;
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public int getBlockColor() {
-        double d0 = 0.5D;
-        double d1 = 1.0D;
-        return ColorizerLeaves.getFoliageColorCherry(d0, d1);
-    }
-
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public int getRenderColor(int meta) {
-        return ColorizerLeaves.getFoliageColorCherry();
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public int colorMultiplier(IBlockAccess bloque, int x, int y, int z) {
-        int l = 0;
-        int i1 = 0;
-        int j1 = 0;
-
-        for (int k1 = -1; k1 <= 1; ++k1) {
-            for (int l1 = -1; l1 <= 1; ++l1) {
-                //int i2 = bloque.getBiomeGenForCoords(x + l1, z + k1).getBiomeFoliageColor(x + l1, y, z + k1);
-                int i2 = ColorizerLeaves.getFoliageColorCherry();
-                l += (i2 & 16711680) >> 16;
-                i1 += (i2 & 65280) >> 8;
-                j1 += i2 & 255;
-            }
-        }
-
-        return (l / 9 & 255) << 16 | (i1 / 9 & 255) << 8 | j1 / 9 & 255;
-    }
-
     @Override
     public boolean isLeaves(IBlockAccess world, int x, int y, int z) {
         return true;
@@ -155,7 +119,7 @@ public class BlockPlasticLeave extends BlockLeavesBase implements IShearable {
     }
 
     public Item getItemDropped(int x, Random yRandom, int z) {
-        return Item.getItemFromBlock(ModBlocks.blockSpaling);
+        return Item.getItemFromBlock(ModBlocks.plasticSapling);
     }
 
     protected void func_150124_c(World world, int x, int y, int z, int meta, int par1) {
@@ -173,7 +137,6 @@ public class BlockPlasticLeave extends BlockLeavesBase implements IShearable {
 
         return j;
     }
-
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {

@@ -262,11 +262,7 @@ public class TileEntityRenderCable extends TileEntitySpecialRenderer {
 			tessellator.addVertexWithUV(11*pixel/2, 1- 11*pixel/2, 11*pixel/2,  5*texturePixel, 0*texturePixel);
 			tessellator.addVertexWithUV(11*pixel/2, 11*pixel/2, 11*pixel/2, 0*texturePixel, 0*texturePixel);
 			tessellator.addVertexWithUV(11*pixel/2, 11*pixel/2, 1-11*pixel/2, 0*texturePixel, 5*texturePixel);
-			
-			
 		}
 		tessellator.draw();
-		
 	}
-
 }

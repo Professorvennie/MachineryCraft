@@ -34,7 +34,7 @@ import java.util.Random;
 
 public class BlockPlasticSapling extends BlockFlower {
 
-    public static final String[] typesSapling = new String[] { "BlockCherrySapling" };
+    public static final String[] typesSapling = new String[] { "PlasticSapling" };
     private static final IIcon[] textures = new IIcon[typesSapling.length];
 
     public BlockPlasticSapling() {

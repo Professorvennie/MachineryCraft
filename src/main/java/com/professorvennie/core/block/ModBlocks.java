@@ -45,9 +45,10 @@ public class ModBlocks {
 	public static Block goldOxideAlloyActive;
 	public static Block washer;	
 	public static Block cable;
-	public static Block blockLog;
-	public static Block blockLeave;
-	public static Block blockSpaling;	
+	public static Block plasticLog;
+	public static Block plasticLeaf;
+	public static Block plasticSapling;
+    public static Block plasticFlower;
 
 	
 	public static void InitialiseBlock(){
@@ -78,9 +79,10 @@ public class ModBlocks {
 		
 		washer = new BlockWasher();
 		cable = new BlockCable(Material.rock);	
-		blockLog = new BlockPlasticLog();
-		blockLeave = new BlockPlasticLeave();
-		blockSpaling = new BlockPlasticSapling();
+		plasticLog = new BlockPlasticLog();
+		plasticLeaf = new BlockPlasticLeave();
+		plasticSapling = new BlockPlasticSapling();
+        plasticFlower = new BlockPlasticFlower();
 	}
 	
 	public static void registerBlock(){
@@ -105,9 +107,10 @@ public class ModBlocks {
 		RegistryUtils.registerBlock(goldOxideFurnaceActive);
 		RegistryUtils.registerBlock(cable);
 		RegistryUtils.registerBlock(washer, ItemBlockWasher.class);
-		RegistryUtils.registerBlock(blockLog);
-		RegistryUtils.registerBlock(blockLeave);
-		RegistryUtils.registerBlock(blockSpaling);
+		RegistryUtils.registerBlock(plasticLog);
+		RegistryUtils.registerBlock(plasticLeaf);
+		RegistryUtils.registerBlock(plasticSapling);
+        RegistryUtils.registerBlock(plasticFlower);
 	}
 	
 }

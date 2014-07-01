@@ -48,7 +48,7 @@ public class ModItems {
 		Dusts = new ItemDusts();
 		Ingots = new ItemIngots();
 		book = new ItemBook();
-        itemPlasticApple = new ItemFood(5, 0.5F, false).setUnlocalizedName(ItemNames.PLASTIC_APPLE).setCreativeTab(MainRegistry.tabMachineryCraft);
+        itemPlasticApple = new ItemFood(5, 0.5F, false).setUnlocalizedName(ItemNames.PLASTIC_APPLE).setCreativeTab(MainRegistry.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":plasticApple");
 
 		//upgrades
 		speedupgrade = new ItemSpeedUpgrade().setUnlocalizedName(ItemNames.speedupgrade).setCreativeTab(MainRegistry.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":speedupgrade");
