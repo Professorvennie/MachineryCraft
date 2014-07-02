@@ -13,7 +13,7 @@ import java.util.List;
 
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
+import com.professorvennie.core.main.MachineryCraft;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,7 +34,7 @@ public class BlockMetals extends Block {
 
 	protected BlockMetals(Material mat) {
 		super(mat);
-		this.setCreativeTab(MainRegistry.tabMachineryCraft);
+		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		this.setBlockName("metal");
 		this.setHardness(3.5f);
 		this.setHarvestLevel("pickaxe", 2);

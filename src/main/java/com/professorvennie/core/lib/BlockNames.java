@@ -37,4 +37,8 @@ public class BlockNames {
     public static final String BLOCK_LEAVES= "plasticLeaves";
     public static final String BLOCK_SAPLING = "plasticSapling";
     public static final String BLOCK_PLASTIC_FLOWER = "plasticFlower";
+    public static final String BLOCK_PLASTIC_GRASS = "plasticGrass";
+    public static final String BLOCK_PLASTIC_DIRT = "plasticDirt";
+    public  static final String BLOCK_PLASTIC_PLANKS = "plasticplanks";
+
 }

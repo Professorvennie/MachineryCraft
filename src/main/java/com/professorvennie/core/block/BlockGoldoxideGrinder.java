@@ -19,7 +19,7 @@ import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
+import com.professorvennie.core.main.MachineryCraft;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -51,7 +51,7 @@ public class BlockGoldoxideGrinder extends BlockContainer implements IBookable{
 		
 		if(!isActive){
 			this.setBlockName(BlockNames.goldOxideGrinderIdle);
-			this.setCreativeTab(MainRegistry.tabMachineryCraft);
+			this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		}
 		if(isActive){
 			this.setLightLevel(0.9F);
@@ -124,7 +124,7 @@ public class BlockGoldoxideGrinder extends BlockContainer implements IBookable{
 	public boolean onBlockActivated(World world, int x, int y, int z,
 			EntityPlayer player, int side, float hitx, float hity, float hitz) {
 		if (!world.isRemote) {
-			FMLNetworkHandler.openGui(player, MainRegistry.instance, LibGuiIds.GUIID_GOLDOXIDE_GRINDER, world, x, y, z);
+			FMLNetworkHandler.openGui(player, MachineryCraft.instance, LibGuiIds.GUIID_GOLDOXIDE_GRINDER, world, x, y, z);
 		}
 		return true;
 	}

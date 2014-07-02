@@ -10,6 +10,7 @@
 package com.professorvennie.core.item;
 
 import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -24,12 +25,11 @@ import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.main.MainRegistry;
 
 public class ItemBook extends Item {
 	
 	public ItemBook(){
-		this.setCreativeTab(MainRegistry.tabMachineryCraft);
+		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		this.setUnlocalizedName(ItemNames.BOOK);
 	}
 	
@@ -41,8 +41,8 @@ public class ItemBook extends Item {
 			if(block != null && block instanceof IBookable) {
 				BookEntry entry = ((IBookable) block).getEntry(par3World, par4, par5, par6, par2EntityPlayer, par1ItemStack);
 				if(entry != null) {
-					MainRegistry.proxy.setEntryToOpen(entry);
-					par2EntityPlayer.openGui(MainRegistry.instance, LibGuiIds.GUIID_BOOK, par3World, 0, 0, 0);
+					MachineryCraft.proxy.setEntryToOpen(entry);
+					par2EntityPlayer.openGui(MachineryCraft.instance, LibGuiIds.GUIID_BOOK, par3World, 0, 0, 0);
 					return true;
 				}
 			}
@@ -54,9 +54,9 @@ public class ItemBook extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		if(isMessageForced(par1ItemStack)) {
-			MainRegistry.proxy.setEntryToOpen(BookData.basics);
+			MachineryCraft.proxy.setEntryToOpen(BookData.basics);
 		}
-		par3EntityPlayer.openGui(MainRegistry.instance, LibGuiIds.GUIID_BOOK, par2World, 0, 0, 0);
+		par3EntityPlayer.openGui(MachineryCraft.instance, LibGuiIds.GUIID_BOOK, par2World, 0, 0, 0);
 		return par1ItemStack;
 	}
 	private static final String TAG_FORCED_MESSAGE = "forcedMessage";

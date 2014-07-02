@@ -17,7 +17,7 @@ public class LibBookText {
 	public static final String CATEGORY_MACHINES = BASE_CATEGORY + "machines";
 	public static final String CATEGORY_TOOLS = BASE_CATEGORY + "tools";
 	public static final String CATEGORY_ARMOR = BASE_CATEGORY + "armor";
-	public static final String CATEGORY_OREGEN = BASE_CATEGORY + "oregen";
+	public static final String CATEGORY_WORLD_GEN = BASE_CATEGORY + "worldgen";
 	public static final String CATEGORY_MULTIBLOCKS = BASE_CATEGORY + "multiblocks";
 	
 	public static final String ENTRY_BASICS = "basics";
@@ -30,6 +30,11 @@ public class LibBookText {
 	public static final String ENTRY_IRONOXIDE_TOOLS = "ironoxideTools";
 	public static final String ENTRY_GOLDOXIDE_TOOLS = "goldoxideTools";
 	public static final String ENTRY_EMERALD_TOOLS = "emeraldTools";
+
+    public static final String ENTRY_SALT_ARMOR = "saltArmor";
+    public static final String ENTRY_IRONOXIDE_ARMOR = "ironoxideArmor";
+    public static final String ENTRY_GOLDOXIDE_ARMOR = "goldoxideArmor";
+    public static final String ENTRY_EMERALD_ARMOR = "emeraldArmor";
 
 	
 	public static final String INFO = BASE + "";

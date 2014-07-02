@@ -15,6 +15,7 @@ import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
+import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -28,7 +29,6 @@ import net.minecraft.world.World;
 import com.professorvennie.core.block.tileEntity.TileEntitywindmill;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
@@ -70,7 +70,7 @@ public class BlockWindmill extends BlockContainer implements IBookable{
 	
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitx, float hity, float hitz){
 		if(!world.isRemote){
-			FMLNetworkHandler.openGui(player, MainRegistry.instance, LibGuiIds.GUIID_WINDMILL, world, x, y, z);
+			FMLNetworkHandler.openGui(player, MachineryCraft.instance, LibGuiIds.GUIID_WINDMILL, world, x, y, z);
 		}
 		return true;
 	}

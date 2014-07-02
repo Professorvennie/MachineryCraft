@@ -11,6 +11,7 @@ package com.professorvennie.core.block;
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -22,7 +23,6 @@ import net.minecraft.world.World;
 
 import com.professorvennie.core.block.tileEntity.TileEntityWasher;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -36,7 +36,7 @@ public class BlockWasher extends BlockContainer implements ITileEntityProvider, 
         setBlockName(BlockNames.washer);
         setHardness(2.0F);
         setResistance(10.0F);
-        this.setCreativeTab(MainRegistry.tabMachineryCraft);
+        this.setCreativeTab(MachineryCraft.tabMachineryCraft);
     }
     
     public int getRenderType(){
@@ -58,9 +58,9 @@ public class BlockWasher extends BlockContainer implements ITileEntityProvider, 
                 if (tile != null) {
                     if (tile.hasMaster()) {
                         if (tile.isMaster())
-                            player.openGui(MainRegistry.instance, LibGuiIds.GUIID_WASHER, world, x, y, z);
+                            player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_WASHER, world, x, y, z);
                         else
-                            player.openGui(MainRegistry.instance, LibGuiIds.GUIID_WASHER, world, tile.getMasterX(), tile.getMasterY(), tile.getMasterZ());
+                            player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_WASHER, world, tile.getMasterX(), tile.getMasterY(), tile.getMasterZ());
                         return true;
                     }
                 }

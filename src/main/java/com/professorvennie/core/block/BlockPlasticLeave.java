@@ -12,7 +12,7 @@ package com.professorvennie.core.block;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
+import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -51,7 +51,7 @@ public class BlockPlasticLeave extends BlockLeavesBase implements IShearable {
         this.setTickRandomly(true);
         this.setLightOpacity(1);
         this.setStepSound(Block.soundTypeGrass);
-        this.setCreativeTab(MainRegistry.tabMachineryCraft);
+        this.setCreativeTab(MachineryCraft.tabMachineryCraft);
         this.setBlockName(BlockNames.BLOCK_LEAVES);
     }
 

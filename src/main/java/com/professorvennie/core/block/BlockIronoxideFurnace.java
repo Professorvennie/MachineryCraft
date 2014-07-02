@@ -13,6 +13,7 @@ import java.util.Random;
 
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
+import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -28,7 +29,6 @@ import net.minecraft.world.World;
 
 import com.professorvennie.core.block.tileEntity.TileEntityIronOxideFurnace;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -47,7 +47,7 @@ public class BlockIronoxideFurnace extends BlockContainer  {
 		
 		if(!isActive){
 			this.setBlockName(BlockNames.ironOxideFurnaceIdle);
-			this.setCreativeTab(MainRegistry.tabMachineryCraft);
+			this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		}
 		if(isActive){
 			this.setLightLevel(0.9F);
@@ -118,7 +118,7 @@ public class BlockIronoxideFurnace extends BlockContainer  {
 	public boolean onBlockActivated(World world, int x, int y, int z,
 			EntityPlayer player, int side, float hitx, float hity, float hitz) {
 		if (!world.isRemote) {
-			FMLNetworkHandler.openGui(player, MainRegistry.instance, LibGuiIds.GUIID_IRONOXIDE_FURNACE, world, x, y, z);
+			FMLNetworkHandler.openGui(player, MachineryCraft.instance, LibGuiIds.GUIID_IRONOXIDE_FURNACE, world, x, y, z);
 		}
 		return true;
 	}

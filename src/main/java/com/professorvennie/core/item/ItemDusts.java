@@ -12,11 +12,10 @@ package com.professorvennie.core.item;
 import java.util.List;
 
 import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,7 +25,7 @@ public class ItemDusts extends Item {
 	public ItemDusts(){
 		this.setUnlocalizedName("dust");
 		this.setHasSubtypes(true);
-		this.setCreativeTab(MainRegistry.tabMachineryCraft);
+		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 	}
 	
 	@SideOnly(Side.CLIENT)

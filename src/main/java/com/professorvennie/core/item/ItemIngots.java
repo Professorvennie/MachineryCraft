@@ -13,7 +13,7 @@ import java.util.List;
 
 import com.professorvennie.core.lib.ItemNames;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
+import com.professorvennie.core.main.MachineryCraft;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,7 +31,7 @@ public class ItemIngots extends Item {
 	public ItemIngots(){
 		this.setUnlocalizedName("ingot");
 		this.setHasSubtypes(true);
-		this.setCreativeTab(MainRegistry.tabMachineryCraft);
+		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -1,23 +1,26 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.block;
 
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.block.tileEntity.TileEntitySaltFurnace;
-import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
+import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
@@ -43,7 +46,7 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
             setLightLevel(0.9F);
             setBlockName(name + "Active");
         }else if(!isActive){
-            setCreativeTab(MainRegistry.tabMachineryCraft);
+            setCreativeTab(MachineryCraft.tabMachineryCraft);
             setBlockName(name + "Idle");
         }
     }

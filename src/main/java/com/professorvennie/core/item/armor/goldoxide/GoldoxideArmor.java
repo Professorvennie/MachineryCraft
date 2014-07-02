@@ -9,6 +9,7 @@
  * */
 package com.professorvennie.core.item.armor.goldoxide;
 
+import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -17,7 +18,6 @@ import net.minecraft.item.ItemStack;
 import com.professorvennie.api.MachineryCraftAPI;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.*;
-import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -32,7 +32,7 @@ public class GoldoxideArmor extends ItemArmor{
 
 	public GoldoxideArmor(int type, String name, ArmorMaterial mat) {
 		super(mat, 0, type);
-		this.setCreativeTab(MainRegistry.tabMachineryCraft);
+		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		this.setUnlocalizedName(name);
 		this.setTextureName(Reference.MOD_ID + ":" + name);
 	}

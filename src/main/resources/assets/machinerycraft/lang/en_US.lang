@@ -107,7 +107,7 @@ mc.book.category.basics=Mod Basics
 mc.book.category.machines=Machines
 mc.book.category.tools=Tools
 mc.book.category.armor=Armor
-mc.book.category.oregen=Ore Generation
+mc.book.category.worldgen=World Generation
 mc.book.category.multiblocks=MultiBlocks
 mc.entry.firsttiermachines=First Tier Machines
 mc.entry.secondtiermachines=Second Tier Machines
@@ -123,6 +123,7 @@ mc.page.saltTools3=Salt Sword
 mc.page.saltTools4=Salt Spade
 mc.page.saltTools5=Salt Hoe
 mc.page.saltTools6=Salt Shears
+
 mc.entry.ironoxideTools=Ironoxide Tools
 mc.page.ironoxideTools0=When forging Ironoxide you discovered how to mold it into tools.  It has the same mining level as iron with more durability.
 mc.page.ironoxideTools1=Ironoxide Pickaxe
@@ -131,6 +132,7 @@ mc.page.ironoxideTools3=Ironoxide Sword
 mc.page.ironoxideTools4=Ironoxide Spade
 mc.page.ironoxideTools5=Ironoxide Hoe
 mc.page.ironoxideTools6=Ironoxide Shears
+
 mc.entry.goldoxideTools=Goldoxide Tools
 mc.page.goldoxideTools0=When forging Goldoxide you discovered how to mold it into tools.  It has the same mining level as gold and the same enchantability with more durability.
 mc.page.goldoxideTools1=Goldoxide Pickaxe
@@ -139,6 +141,7 @@ mc.page.goldoxideTools3=Goldoxide Sword
 mc.page.goldoxideTools4=Goldoxide Spade
 mc.page.goldoxideTools5=Goldoxide Hoe
 mc.page.goldoxideTools6=Goldoxide Shears
+
 mc.entry.emeraldTools=Emerald Tools
 mc.page.emeraldTools0=When mining emerald ore you discovered how to forge tools out of emeralds.  This substance is the same mining level as diamond with much more durability and attack damage.
 mc.page.emeraldTools1=Emerald Pickaxe
@@ -147,3 +150,31 @@ mc.page.emeraldTools3=Emerald Sword
 mc.page.emeraldTools4=Emerald Spade
 mc.page.emeraldTools5=Emerald Hoe
 mc.page.emeraldTools6=Emerald Shears
+
+mc.entry.saltArmor=Salt Armor
+mc.page.saltArmor0=When forging salt you noticed it's ability to be forged into armor. It is same as leather with more durability.
+mc.page.saltArmor1=Salt Helmet
+mc.page.saltArmor2=Salt ChestPlate
+mc.page.saltArmor3=Salt Leggings
+mc.page.saltArmor4=Salt Boots
+
+mc.entry.ironoxideArmor=Ironoxide Armor
+mc.page.ironoxideArmor0=When forging ironoxide you noticed how it could be forged into a set of armor.  This has is same as iron with more durability.
+mc.page.ironoxideArmor1=Ironoxide Helmet
+mc.page.ironoxideArmor2=Ironoxide ChestPlate
+mc.page.ironoxideArmor3=Ironoxide Leggings
+mc.page.ironoxideArmor4=Ironoxide Boots
+
+mc.entry.goldoxideArmor=Goldoxide Armor
+mc.page.goldoxideArmor0=When forging goldoxide you noticed how it could be forged into a set of armor.  This has is same as gold with more durability and better enchantability.
+mc.page.goldoxideArmor1=Goldoxide Helmet
+mc.page.goldoxideArmor2=Goldoxide ChestPlate
+mc.page.goldoxideArmor3=Goldoxide Leggings
+mc.page.goldoxideArmor4=Goldoxide Boots
+
+mc.entry.emeraldArmor=Emerald Armor
+mc.page.emeraldArmor0=When mining emerald ore you discovered how to forge armor out of emeralds.  This is much better protection then diamond with much more durability.
+mc.page.emeraldArmor1=Emerald Helmet
+mc.page.emeraldArmor2=Emerald ChestPlate
+mc.page.emeraldArmor3=Emerald Leggings
+mc.page.emeraldArmor4=Emerald Boots

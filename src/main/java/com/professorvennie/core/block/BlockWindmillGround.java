@@ -14,7 +14,7 @@ import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.block.tileEntity.TileEntitywindmillground;
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
+import com.professorvennie.core.main.MachineryCraft;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -30,7 +30,7 @@ public class BlockWindmillGround extends BlockContainer implements IBookable{
 		super(p_i45394_1_);
 		this.setBlockBounds(0, 0, 0, 1, (1F / 16f) * 14, 1);
 		setBlockName(BlockNames.windmillground);
-		setCreativeTab(MainRegistry.tabMachineryCraft);
+		setCreativeTab(MachineryCraft.tabMachineryCraft);
 		setBlockTextureName(Reference.MOD_ID + ":windmillground");
 	}
 

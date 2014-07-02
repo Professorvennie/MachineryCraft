@@ -14,9 +14,9 @@ import java.util.Random;
 import com.professorvennie.core.lib.BlockNames;
 
 import com.professorvennie.core.lib.Reference;
+import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -30,7 +30,6 @@ import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.core.block.tileEntity.TileEntitySaltGrinder;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
-import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
@@ -67,7 +66,7 @@ public class BlockSaltGrinder extends BlockBasicMachine{
 
     public boolean onBlockActivated(World world, int x, int y, int z,EntityPlayer player, int side, float hitx, float hity, float hitz) {
         if (!world.isRemote) {
-            FMLNetworkHandler.openGui(player, MainRegistry.instance, LibGuiIds.GUIID_SALTGRINDER, world, x, y, z);
+            FMLNetworkHandler.openGui(player, MachineryCraft.instance, LibGuiIds.GUIID_SALTGRINDER, world, x, y, z);
         }
         return true;
     }

@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
+import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -25,7 +26,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.professorvennie.core.lib.*;
-import com.professorvennie.core.main.MainRegistry;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,7 +37,7 @@ public class BlockOres extends Block implements IBookable{
 
 	protected BlockOres(Material mat) {
 		super(mat);
-		this.setCreativeTab(MainRegistry.tabMachineryCraft);
+		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		this.setBlockName("ore");
 		this.setHardness(3.5f);
 		this.setHarvestLevel("pickaxe", 2);

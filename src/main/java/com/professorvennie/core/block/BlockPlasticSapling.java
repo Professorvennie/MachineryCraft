@@ -11,14 +11,13 @@ package com.professorvennie.core.block;
 
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
+import com.professorvennie.core.main.MachineryCraft;
 
-import com.professorvennie.core.main.world.tree.PlasticWorldGenTrees;
+import com.professorvennie.core.world.tree.PlasticWorldGenTrees;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
-import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -44,9 +43,14 @@ public class BlockPlasticSapling extends BlockFlower {
         this.setHardness(0.0F);
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-        this.setCreativeTab(MainRegistry.tabMachineryCraft);
+        this.setCreativeTab(MachineryCraft.tabMachineryCraft);
         this.setBlockName(BlockNames.BLOCK_SAPLING);
     }
+
+    protected boolean canPlaceBlockOn(Block block){
+        return block == ModBlocks.plasticDirt || block == ModBlocks.plasticGrass || block == Blocks.dirt || block == Blocks.glass;
+    }
+
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
@@ -84,18 +88,18 @@ public class BlockPlasticSapling extends BlockFlower {
         }
     }
 
-    public void growTree(World world, int x, int y, int z, Random par1Random) {
-        if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(world, par1Random, x, y, z)) return;
+    public void growTree(World world, int x, int y, int z, Random random) {
+        if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
         int l = world.getBlockMetadata(x, y, z) & 7;
         Object object = null;
         int i1 = 0;
         int j1 = 0;
 
-        object = new PlasticWorldGenTrees(true, (2 + par1Random.nextInt(4)) * 2, 0, 0, false);
+        object = new PlasticWorldGenTrees(true, (1 + random.nextInt(3)) * 2, 0, 0, false);
 
         world.setBlock(x, y, z, Blocks.air, 0, 4);
 
-        if (!((WorldGenerator) object).generate(world, par1Random, x + i1, y, z	+ j1)) {
+        if (!((WorldGenerator) object).generate(world, random, x + i1, y, z	+ j1)) {
             world.setBlock(x, y, z, this, l, 4);
         }
     }

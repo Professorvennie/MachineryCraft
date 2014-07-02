@@ -11,7 +11,7 @@ package com.professorvennie.core.block;
 
 import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
+import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -42,7 +41,7 @@ public class BlockPlasticLog extends BlockRotatedPillar {
         this.setHardness(1.5F);
         this.setHarvestLevel("axe", 0);
         this.setStepSound(Block.soundTypeWood);
-        this.setCreativeTab(MainRegistry.tabMachineryCraft);
+        this.setCreativeTab(MachineryCraft.tabMachineryCraft);
         this.setBlockName(BlockNames.BLOCK_LOG);
     }
 

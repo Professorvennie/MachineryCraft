@@ -9,11 +9,13 @@
  * */
 package com.professorvennie.core.block;
 
+import com.professorvennie.core.world.biome.BiomePlastic;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 import com.professorvennie.core.item.itemblock.ItemBlockWasher;
 import com.professorvennie.core.main.utils.RegistryUtils;
+import net.minecraft.world.biome.BiomeGenBase;
 
 public class ModBlocks {
 	
@@ -49,7 +51,11 @@ public class ModBlocks {
 	public static Block plasticLeaf;
 	public static Block plasticSapling;
     public static Block plasticFlower;
+    public static Block plasticGrass;
+    public static Block plasticDirt;
+    public static Block plasticPlanks;
 
+    public static BiomeGenBase biomePlastic;
 	
 	public static void InitialiseBlock(){
 		BlockOres = new BlockOres(Material.rock);
@@ -83,6 +89,12 @@ public class ModBlocks {
 		plasticLeaf = new BlockPlasticLeave();
 		plasticSapling = new BlockPlasticSapling();
         plasticFlower = new BlockPlasticFlower();
+        plasticGrass = new BlockPlasticGrass();
+        plasticDirt = new BlockPlasticDirt();
+        plasticPlanks = new BlockPlasticPlanks();
+
+
+        biomePlastic = new BiomePlastic(167);
 	}
 	
 	public static void registerBlock(){
@@ -111,6 +123,9 @@ public class ModBlocks {
 		RegistryUtils.registerBlock(plasticLeaf);
 		RegistryUtils.registerBlock(plasticSapling);
         RegistryUtils.registerBlock(plasticFlower);
+        RegistryUtils.registerBlock(plasticGrass);
+        RegistryUtils.registerBlock(plasticDirt);
+        RegistryUtils.registerBlock(plasticPlanks);
 	}
 	
 }

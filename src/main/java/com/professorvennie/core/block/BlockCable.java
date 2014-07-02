@@ -12,11 +12,11 @@ package com.professorvennie.core.block;
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 import com.professorvennie.core.block.tileEntity.TileEntityCable;
-import com.professorvennie.core.main.MainRegistry;
 
 
 import net.minecraft.block.BlockContainer;
@@ -31,7 +31,7 @@ public class BlockCable extends BlockContainer implements IBookable{
 		super(material);
 		float pixel = 1F/16F;
 		this.setBlockBounds(11*pixel/2, 11*pixel/2, 11*pixel/2, 1 - 11*pixel/2, 1-11*pixel/2, 1-11*pixel/2);
-		this.setCreativeTab(MainRegistry.tabMachineryCraft);
+		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		this.setBlockName(BlockNames.cable);
 		this.useNeighborBrightness = true;	
 	}

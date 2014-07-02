@@ -15,7 +15,7 @@ import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MainRegistry;
+import com.professorvennie.core.main.MachineryCraft;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -30,7 +30,7 @@ public class BlockSaltOre extends Block implements IBookable{
 		super(p_i45394_1_);
 		this.setHarvestLevel("pickaxe", 2);
 		this.setBlockName("SALTORE");
-		this.setCreativeTab(MainRegistry.tabMachineryCraft);
+		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		setHardness(2.0f);
 		setResistance(2.0f);
 		setStepSound(Block.soundTypeStone);
