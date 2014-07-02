@@ -233,7 +233,7 @@ public class TileEntityIronOxideAlloy extends TileEntity implements ISidedInvent
 			
 			if(flag != this.hasPower()){
 				flag1 = true;
-				BlockIronoxideAlloy.updateGrinderBlockState(this.power > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				BlockIronoxideAlloy.updateBlockState(this.power > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.ironOxideAlloyActive, ModBlocks.ironOxideAlloyIdle);
 			}
 			
 		}

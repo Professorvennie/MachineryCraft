@@ -29,7 +29,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class ModRecipes {
 	//machines
 	public static IRecipe recipeSaltFurnace;
-	
+    public static IRecipe recipeSaltGrinder;
 	
 	//tools
 	public static IRecipe recipeSaltPickaxe;
@@ -86,6 +86,9 @@ public class ModRecipes {
 		//machines
 		addOreDictRecipe(new ItemStack(ModBlocks.SaltFurnaceIdle),"SSS", "SFS", "SSS", 'S', new ItemStack(ModItems.Ingots, 1, 4), 'F', Blocks.furnace);
 		recipeSaltFurnace = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModBlocks.SaltGrinderIdle), " s ", "sfs", "sss", 's', "ingotSalt", 'f', ModBlocks.SaltFurnaceIdle);
+        recipeSaltGrinder = MachineryCraftAPI.getLatestAddedRecipe();
 		
 		//tools
 		//salt tools

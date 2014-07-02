@@ -11,6 +11,7 @@ package com.professorvennie.core.block.tileEntity;
 
 
 import com.professorvennie.core.block.BlockIronoxideFurnace;
+import com.professorvennie.core.block.ModBlocks;
 import com.professorvennie.core.item.ModItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -233,7 +234,7 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 			
 			if(flag != this.hasPower()){
 				flag1 = true;
-				BlockIronoxideFurnace.updateGrinderBlockState(this.power > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				BlockIronoxideFurnace.updateBlockState(this.power > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.ironOxideFurnaceActive, ModBlocks.ironOxideFurnaceIdle);
 			}
 			
 		}

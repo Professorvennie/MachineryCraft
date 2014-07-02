@@ -237,7 +237,7 @@ public class TileEntityironOxideGrinder extends TileEntity implements ISidedInve
 			
 			if(flag != this.hasPower()){
 				flag1 = true;
-				BlockIronoxideGrinder.updateGrinderBlockState(this.power > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				BlockIronoxideGrinder.updateBlockState(this.power > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.ironOxideGrinderActive, ModBlocks.ironOxideGrinderIdle);
 			}
 			
 		}

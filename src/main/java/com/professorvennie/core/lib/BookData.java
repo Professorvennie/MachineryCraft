@@ -26,24 +26,24 @@ public class BookData {
 	public static BookCategory categoryMultiBlocks;
 	
 	//basic
-	public static com.professorvennie.api.book.BookEntry basics;
+	public static BookEntry basics;
 	//machines
-	public static com.professorvennie.api.book.BookEntry firstTierMachines;
-	public static com.professorvennie.api.book.BookEntry secondTierMachines;
-	public static com.professorvennie.api.book.BookEntry thridTierMachines;
-	public static com.professorvennie.api.book.BookEntry miscMachines;
+	public static BookEntry firstTierMachines;
+	public static BookEntry secondTierMachines;
+	public static BookEntry thridTierMachines;
+	public static BookEntry miscMachines;
 	
 	//tools
-	public static com.professorvennie.api.book.BookEntry saltTools;
-	public static com.professorvennie.api.book.BookEntry ironoxideTools;
-	public static com.professorvennie.api.book.BookEntry goldoxideTools;
-	public static com.professorvennie.api.book.BookEntry emeraldTools;
+	public static BookEntry saltTools;
+	public static BookEntry ironoxideTools;
+	public static BookEntry goldoxideTools;
+	public static BookEntry emeraldTools;
 	
 	//armor
-    public static com.professorvennie.api.book.BookEntry saltArmor;
-    public static com.professorvennie.api.book.BookEntry ironoxideArmor;
-    public static com.professorvennie.api.book.BookEntry goldoxideArmor;
-    public static com.professorvennie.api.book.BookEntry emeraldArmor;
+    public static BookEntry saltArmor;
+    public static BookEntry ironoxideArmor;
+    public static BookEntry goldoxideArmor;
+    public static BookEntry emeraldArmor;
 	
 	public static void init() {
 		MachineryCraftAPI.addCategory(categoryBasics = new BookCategory(LibBookText.CATEGORY_BASICS));
@@ -56,10 +56,9 @@ public class BookData {
 		//basics
 		basics = new BookEntry(LibBookText.ENTRY_BASICS, categoryBasics);
 		
-		
 		//machines
 		firstTierMachines = new BookEntry(LibBookText.ENTRY_FIRST_TIER_MACHINES, categoryMachines);
-		firstTierMachines.setPriority();
+		firstTierMachines.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeSaltFurnace), new PageText("2"), new PageCraftingRecipe("4", ModRecipes.recipeSaltGrinder));
 		
 		secondTierMachines = new BookEntry(LibBookText.ENTRY_SECOND_TIER_MACHINES, categoryMachines);
 		secondTierMachines.setPriority();
