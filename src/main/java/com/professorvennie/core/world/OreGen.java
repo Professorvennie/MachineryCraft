@@ -13,6 +13,7 @@ import java.util.Random;
 
 import com.professorvennie.core.block.ModBlocks;
 
+import com.professorvennie.core.common.handlers.ConfigHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -38,13 +39,21 @@ public class OreGen implements IWorldGenerator {
 	}
 
 	private void generateEnd(World world, Random random, int x, int z) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	private void generateSurface(World world, Random random, int x, int z) {
-		this.addOreSpawn(ModBlocks.Saltore, world, random, x, z, 16, 16, 4 + random.nextInt(4), 10, 15, 160);
-	}
+        if(ConfigHandler.spawnSalt)
+		    this.addOreSpawn(ModBlocks.Saltore, world, random, x, z, 16, 16, ConfigHandler.saltVienSize, ConfigHandler.saltRate, 15, 160);
+        if(ConfigHandler.spawnCopper)
+            addOreSpawn(Block.getBlockFromItem(copperOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.copperVienSize, ConfigHandler.copperRate, 15, 160);
+        if(ConfigHandler.spawnTin)
+            addOreSpawn(Block.getBlockFromItem(tinOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.tinVienSize, ConfigHandler.tinRate, 15, 160);
+        if(ConfigHandler.spawnSilver)
+            addOreSpawn(Block.getBlockFromItem(silverrOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.silverVienSize, ConfigHandler.silverRate, 15, 160);
+        if(ConfigHandler.spawnLead)
+            addOreSpawn(Block.getBlockFromItem(leadOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.leadVienSize, ConfigHandler.leadRate, 15, 160);
+    }
 
 	private void generateNether(World world, Random random, int x, int z) {
         

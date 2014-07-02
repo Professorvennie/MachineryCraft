@@ -19,10 +19,26 @@ import net.minecraftforge.common.config.Configuration;
 public class ConfigHandler {
 
     public static Configuration configuration;
-    public static boolean testValue = false;
 
-    public static void init(File configFile)
-    {
+    public static boolean spawnCopper = true;
+    public static boolean spawnTin = true;
+    public static boolean spawnSilver = true;
+    public static boolean spawnLead = true;
+    public static boolean spawnSalt = true;
+
+    public static int copperRate = 15;
+    public static int tinRate = 16;
+    public static int silverRate = 5;
+    public static int leadRate = 20;
+    public static int saltRate = 10;
+
+    public static int copperVienSize = 6;
+    public static int tinVienSize = 3;
+    public static int silverVienSize = 5;
+    public static int leadVienSize = 7;
+    public static int saltVienSize = 4;
+
+    public static void init(File configFile){
         // Create the configuration object from the given configuration file
         if (configuration == null)
         {
@@ -31,17 +47,31 @@ public class ConfigHandler {
     }
 
     @SubscribeEvent
-    public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event)
-    {
+    public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event){
         if (event.modID.equalsIgnoreCase(Reference.MOD_ID))
         {
             loadConfiguration();
         }
     }
 
-    public void loadConfiguration()
-    {
-        testValue = configuration.getBoolean("configValue", Configuration.CATEGORY_GENERAL, false, "This is an example configuration value");
+    public void loadConfiguration(){
+        spawnCopper = configuration.getBoolean("copperSpawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of copper veins.");
+        spawnTin = configuration.getBoolean("tinSpawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of tin veins.");
+        spawnSilver = configuration.getBoolean("silverSpawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of silver veins.");
+        spawnLead = configuration.getBoolean("leadSpawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of lead veins.");
+        spawnSalt= configuration.getBoolean("saltSpawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of salt veins.");
+
+        copperRate = configuration.getInt("copperRate", Configuration.CATEGORY_GENERAL, 15, 1, 30, "Sets how much copper spawns in the world");
+        tinRate = configuration.getInt("tinRate", Configuration.CATEGORY_GENERAL, 16, 1, 30, "Sets how much tin spawns in the world");
+        silverRate = configuration.getInt("silverRate", Configuration.CATEGORY_GENERAL, 5, 1, 30, "Sets how much silver spawns in the world");
+        leadRate = configuration.getInt("leadRate", Configuration.CATEGORY_GENERAL, 20, 1, 30, "Sets how much lead spawns in the world");
+        saltRate = configuration.getInt("saltRate", Configuration.CATEGORY_GENERAL, 10, 1, 30, "Sets how much salt spawns in the world");
+
+        copperVienSize = configuration.getInt("copperVienSize", Configuration.CATEGORY_GENERAL, 6, 1, 10, "Sets how much copper spawns in each vien");
+        tinVienSize = configuration.getInt("tinVienSize", Configuration.CATEGORY_GENERAL, 3, 1, 10, "Sets how much tin spawns in each vien");
+        silverVienSize = configuration.getInt("silverVienSize", Configuration.CATEGORY_GENERAL, 5, 1, 10, "Sets how much silver spawns in each vien");
+        leadVienSize = configuration.getInt("leadVienSize", Configuration.CATEGORY_GENERAL, 7, 1, 10, "Sets how much lead spawns in each vien");
+        saltVienSize = configuration.getInt("saltVienSize", Configuration.CATEGORY_GENERAL, 4, 1, 10, "Sets how much salt spawns in each vien");
 
         if (configuration.hasChanged())
         {
