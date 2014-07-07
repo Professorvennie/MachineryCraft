@@ -18,8 +18,7 @@ import net.minecraft.world.World;
 
 public class ItemWindmill extends Item {
 
-	 public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float x2, float y2, float z2)
-	    {
+	 public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float x2, float y2, float z2){
 		 if(!world.isRemote){
 			 if(side == 1 && world.getBlock(x, y, z).equals(ModBlocks.windmillground) && world.getBlockMetadata(x, y, z) == 5){
 				boolean notEnoughspace = false;	
@@ -34,9 +33,6 @@ public class ItemWindmill extends Item {
 				 if(!notEnoughspace){
 					int direction = (-(int)player.rotationYaw+45)/90;
 					if(direction == 0) direction = 4;
-		
-					//sSystem.out.println(direction);
-
 					 for(int y1 = 0; y1 < 7; y1++){
 						 world.setBlock(x, y+y1+1, z, ModBlocks.windmill, (y1+1) == 7?(y1+1+direction):(y1+1), 2);
 							

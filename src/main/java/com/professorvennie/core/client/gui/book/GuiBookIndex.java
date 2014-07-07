@@ -79,19 +79,16 @@ public class GuiBookIndex extends GuiBook {
 		switch(par1GuiButton.id) {
 		case 12 :
 			mc.displayGuiScreen(new GuiBook());
-			//ClientTickHandler.notifyPageChange();
 			break;
 		case 13 :
 			page--;
 			updatePageButtons();
 			populateIndex();
-			//ClientTickHandler.notifyPageChange();
 			break;
 		case 14 :
 			page++;
 			updatePageButtons();
 			populateIndex();
-			//ClientTickHandler.notifyPageChange();
 			break;
 		default :
 			int index = par1GuiButton.id + page * 12;
@@ -100,7 +97,6 @@ public class GuiBookIndex extends GuiBook {
 
 			BookEntry entry = entriesToDisplay.get(index);
 			mc.displayGuiScreen(new GuiBookEntry(entry, this));
-			//ClientTickHandler.notifyPageChange();
 		}
 	}
 
@@ -108,5 +104,4 @@ public class GuiBookIndex extends GuiBook {
 		leftButton.enabled = page != 0;
 		rightButton.enabled = page < (entriesToDisplay.size() - 1) / 12;
 	}
-
 }

@@ -12,15 +12,21 @@ package com.professorvennie.core.item;
 import java.util.List;
 
 import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.util.IIcon;
 
 public class ItemDusts extends Item {
+
+    @SideOnly(Side.CLIENT)
+    private IIcon[] iconArray;
 
 	public ItemDusts(){
 		this.setUnlocalizedName("dust");
@@ -40,4 +46,18 @@ public class ItemDusts extends Item {
 	public String getUnlocalizedName(ItemStack par1ItemStack){
 		return super.getUnlocalizedName() + "." + par1ItemStack.getItemDamage();
 	}
+
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister register){
+        iconArray = new IIcon[ItemNames.Dusts.length];
+        for (int i = 0; i < iconArray.length; i++) {
+            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":" + "dust" + "_" + i);
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int par1) {
+        return par1 < iconArray.length ? iconArray[par1] : iconArray[0];
+    }
 }

@@ -13,8 +13,11 @@ package com.professorvennie.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.professorvennie.api.recipes.RegisterRecipes;
+import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.util.EnumHelper;
@@ -68,5 +71,9 @@ public class MachineryCraftAPI {
 
 		return newList;
 	}
+
+    public static void registerGrinderRecipe(Item input, ItemStack output, float xp){
+        RegisterRecipes.addGrinding(input, output, xp);
+    }
 	
 }

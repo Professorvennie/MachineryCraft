@@ -20,7 +20,7 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class ItemRenderWasher implements IItemRenderer{
 	
-	private final ResourceLocation texterwasher = new ResourceLocation(Reference.MOD_ID, "textures/blocks/ores/metal_6.png");
+	private final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/blocks/ores/metal_6.png");
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -34,7 +34,7 @@ public class ItemRenderWasher implements IItemRenderer{
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-		Minecraft.getMinecraft().renderEngine.bindTexture(texterwasher);
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 		new TileEntityRenderWasher().renderInv();
 	}
 

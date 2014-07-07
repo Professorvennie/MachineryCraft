@@ -55,8 +55,23 @@ tile.ironOxideAlloyIdle.name=Iron Oxide Alloy Smelter
 
 itemGroup.MachineryCraft=Machinery Craft
 
-tile.ironoxidestairs.name=Iron Oxide Stairs
-tile.goldoxidestairs.name=Gold Oxide Stairs
+tile.windmillground.name=Windmill Ground
+tile.cable.name=Cable
+tile.Washer.name=Washer
+tile.plasticLog.name=Plastic Log
+tile.plasticLeaves.name=Plastic Leaves
+tile.plasticSapling.name=Plastic Sapling
+tile.plasticFlower.name=Plastic Flower
+tile.plasticGrass.name=Plastic Grass
+tile.plasticDirt.name=Plastic Dirt
+tile.plasticPlanks.name=Plastic Planks
+item.plasticApple.name=Plastic Apple
+item.Itemwindmill.name=Windmill
+
+item.emeraldhelment.name=Emerald Helmet
+item.emeraldchest.name=Emerald ChestPlate
+item.emeraldpants.name=Emerald Leggings
+item.emeraldboots.name=Emerald Boots
 
 item.speedupgrade.name=Speed Upgrade
 item.powerboost.name=Power Booster
@@ -81,6 +96,7 @@ item.dust.1.name=Gold Dust
 item.dust.2.name=Tin Dust
 item.dust.3.name=Silver Dust
 item.dust.4.name=Lead Dust
+item.dust.5.name=Copper Dust
 
 item.ingot.0.name=Copper Ingot
 item.ingot.1.name=Tin Ingot

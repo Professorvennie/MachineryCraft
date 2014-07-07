@@ -53,10 +53,11 @@ public class HudHandler {
 			int x = res.getScaledWidth() / 2  + 8;
 			int y = res.getScaledHeight() / 2 - 4;
 
-			int color = 0x6600FF00;
+			int color = 0xFF5A28;
 
 			String info = StatCollector.translateToLocal("mc.book.shiftToRead");
-			int itemX = x - (mc.fontRenderer.getStringWidth(new ItemStack(ModItems.book).getDisplayName()) / 2);				mc.fontRenderer.drawStringWithShadow(StatCollector.translateToLocal(entry.getUnlocalizedName()), itemX, y + 6, color);
+			int itemX = x - (mc.fontRenderer.getStringWidth(new ItemStack(ModItems.book).getDisplayName()) / 2);
+            mc.fontRenderer.drawStringWithShadow(StatCollector.translateToLocal(entry.getUnlocalizedName()), itemX, y + 6, color);
 			mc.fontRenderer.drawStringWithShadow(info, x - (mc.fontRenderer.getStringWidth(info) / 2), y + 18, color);
 			itemRender.renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.book), itemX - 20, y + 2);
 			GL11.glDisable(GL11.GL_LIGHTING);

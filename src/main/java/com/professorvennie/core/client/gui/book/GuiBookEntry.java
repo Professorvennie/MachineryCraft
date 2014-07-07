@@ -86,15 +86,12 @@ public class GuiBookEntry extends GuiBook implements IGuiBookEntry {
 		switch(par1GuiButton.id) {
 		case 0 :
 			mc.displayGuiScreen(GuiScreen.isShiftKeyDown() ? new GuiBook() : parent);
-			//ClientTickHandler.notifyPageChange();
 			break;
 		case 1 :
 			page--;
-			//ClientTickHandler.notifyPageChange();
 			break;
 		case 2 :
 			page++;
-			//ClientTickHandler.notifyPageChange();
 			break;
 		}
 		updatePageButtons();

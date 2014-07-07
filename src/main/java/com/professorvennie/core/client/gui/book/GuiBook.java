@@ -63,11 +63,11 @@ public class GuiBook extends GuiScreen {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		mc.renderEngine.bindTexture(texture);
 		drawTexturedModalRect(left, top, 0, 0, guiWidth, guiHeight);
-		drawCenteredString(fontRendererObj, getTitle(), left + guiWidth / 2, top - getTitleHeight(), 0x00FF00);
+		drawCenteredString(fontRendererObj, getTitle(), left + guiWidth / 2, top - getTitleHeight(), 0xFF5A28);
 		String subtitle = getSubtitle();
 		if(subtitle != null) {
 			GL11.glScalef(0.5F, 0.5F, 1F);
-			drawCenteredString(fontRendererObj, subtitle, left * 2 + guiWidth, (top - getTitleHeight() + 10) * 2, 0x00FF00);
+			drawCenteredString(fontRendererObj, subtitle, left * 2 + guiWidth, (top - getTitleHeight() + 10) * 2, 0xFF5A28);
 			GL11.glScalef(2F, 2F, 1F);
 		}
 
@@ -94,7 +94,6 @@ public class GuiBook extends GuiScreen {
 
 		if(category != null) {
 			mc.displayGuiScreen(new GuiBookIndex(category));
-			//ClientTickHandler.notifyPageChange();
 		}
 	}
 

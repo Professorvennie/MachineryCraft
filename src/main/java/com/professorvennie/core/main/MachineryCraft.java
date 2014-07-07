@@ -12,6 +12,7 @@ package com.professorvennie.core.main;
 import com.professorvennie.core.common.proxey.CommonProxey;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.creativetab.CreativeTabsMachineryCraft;
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -59,6 +60,7 @@ public class MachineryCraft {
 		ModFuilds.mainRegistry();
 		proxy.registerRenderThings();
 		ConfigHandler.init(PreEvent.getSuggestedConfigurationFile());
+        FMLCommonHandler.instance().bus().register(new ConfigHandler());
 		ModRecipes.init();
 		BookData.init();
 	}

@@ -21,7 +21,7 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class ItemRenderWindmillGround implements IItemRenderer{
 	
-	private final ResourceLocation texterwindmillground = new ResourceLocation(Reference.MOD_ID, "textures/model/windmillground.png");
+	private final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/model/windmillground.png");
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -36,7 +36,7 @@ public class ItemRenderWindmillGround implements IItemRenderer{
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		GL11.glDisable(GL11.GL_LIGHTING);
-		Minecraft.getMinecraft().renderEngine.bindTexture(texterwindmillground);
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 		new TileEnitityRenderwindmillGround().renderInv();
 		GL11.glEnable(GL11.GL_LIGHTING);
 	}

@@ -32,13 +32,6 @@ public class RenderHelper {
 
 		renderTooltip(x, y, tooltipData, color, color2);
 	}
-
-	public static void renderTooltipGreen(int x, int y, List<String> tooltipData) {
-		int color = 0x5000a000;
-		int color2 = 0xf0001e00;
-
-		renderTooltip(x, y, tooltipData, color, color2);
-	}
 	
 	public static void renderTooltip(int x, int y, List<String> tooltipData, int color, int color2) {
 		boolean lighting = GL11.glGetBoolean(GL11.GL_LIGHTING);

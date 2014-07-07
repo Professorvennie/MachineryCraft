@@ -20,10 +20,10 @@ public class ItemNames {
     public static final String powerboost ="powerboost";
     public static final String efficiency ="efficiency";
     public static final String Itemwindmill ="Itemwindmill";
-    public static final String[] Dusts = new String[]{"Iron_dust", "Gold_dust", "Tin_dust", "Silver_dust", "Lead_dust", "dustBronze"};
+    public static final String[] Dusts = new String[]{"Iron_dust", "Gold_dust", "Tin_dust", "Silver_dust", "Lead_dust", "Copper_dust"};
     public static final String[] Ingots = new String[]{"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "ingotSalt", "ingotGoldOxide", "ingotIronOxide", "ingotBronze"};
     public static final String BOOK = "ItemBook";
-    public static final String PLASTIC_APPLE = "plasticapple";
+    public static final String PLASTIC_APPLE = "plasticApple";
 
 
     //Tools

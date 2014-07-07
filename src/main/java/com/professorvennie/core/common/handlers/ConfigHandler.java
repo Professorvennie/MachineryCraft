@@ -40,21 +40,20 @@ public class ConfigHandler {
 
     public static void init(File configFile){
         // Create the configuration object from the given configuration file
-        if (configuration == null)
-        {
+        if (configuration == null){
             configuration = new Configuration(configFile);
+            loadConfiguration();
         }
     }
 
     @SubscribeEvent
     public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event){
-        if (event.modID.equalsIgnoreCase(Reference.MOD_ID))
-        {
+        if (event.modID.equalsIgnoreCase(Reference.MOD_ID)){
             loadConfiguration();
         }
     }
 
-    public void loadConfiguration(){
+    private static void loadConfiguration(){
         spawnCopper = configuration.getBoolean("copperSpawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of copper veins.");
         spawnTin = configuration.getBoolean("tinSpawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of tin veins.");
         spawnSilver = configuration.getBoolean("silverSpawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of silver veins.");
@@ -73,8 +72,7 @@ public class ConfigHandler {
         leadVienSize = configuration.getInt("leadVienSize", Configuration.CATEGORY_GENERAL, 7, 1, 10, "Sets how much lead spawns in each vien");
         saltVienSize = configuration.getInt("saltVienSize", Configuration.CATEGORY_GENERAL, 4, 1, 10, "Sets how much salt spawns in each vien");
 
-        if (configuration.hasChanged())
-        {
+        if (configuration.hasChanged()){
             configuration.save();
         }
     }

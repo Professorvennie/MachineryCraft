@@ -14,6 +14,7 @@ import java.util.Random;
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
 import com.professorvennie.core.item.ModItems;
+import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 
@@ -29,7 +30,7 @@ public class BlockSaltOre extends Block implements IBookable{
 	protected BlockSaltOre(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		this.setHarvestLevel("pickaxe", 2);
-		this.setBlockName("SALTORE");
+		this.setBlockName(BlockNames.SALTORE);
 		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		setHardness(2.0f);
 		setResistance(2.0f);

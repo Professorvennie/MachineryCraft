@@ -40,7 +40,8 @@ public class GrinderRecipes {
 		this.addRecipe(Item.getItemFromBlock(Blocks.emerald_ore), new ItemStack(Items.emerald, 2), 0.8f);
 		this.addRecipe(Item.getItemFromBlock(Blocks.quartz_ore), new ItemStack(Items.quartz, 6), 0.8f);
 		this.addRecipe(Item.getItemFromBlock(ModBlocks.Saltore), new ItemStack(ModItems.saltcyrstals, 6), 0.8f);
-	}
+        this.addRecipe(Item.getItemFromBlock(Blocks.cobblestone), new ItemStack(Blocks.sand), 0.8f);
+    }
 	
 	public void addRecipe(Item item, ItemStack itemstack, float exp){
 		this.addLists(item, itemstack, exp);

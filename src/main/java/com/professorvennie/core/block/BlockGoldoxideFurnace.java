@@ -39,7 +39,6 @@ public class BlockGoldoxideFurnace extends BlockBasicMachine{
 	public TileEntity createNewTileEntity(World var1, int var2) {
 		return new TileEntityGoldOxideFurnace();
 	}
-	
 
 	@SideOnly(Side.CLIENT)
 	@Override
