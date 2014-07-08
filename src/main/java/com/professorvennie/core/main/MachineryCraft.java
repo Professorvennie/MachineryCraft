@@ -12,8 +12,13 @@ package com.professorvennie.core.main;
 import com.professorvennie.core.common.proxey.CommonProxey;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.creativetab.CreativeTabsMachineryCraft;
+import com.professorvennie.core.world.village.ComponentWorkShop;
+import com.professorvennie.core.world.village.VillageTrades;
+import com.professorvennie.core.world.village.VillageWorkShopHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.professorvennie.core.achievements.ModAchievements;
@@ -63,6 +68,11 @@ public class MachineryCraft {
         FMLCommonHandler.instance().bus().register(new ConfigHandler());
 		ModRecipes.init();
 		BookData.init();
+
+        VillagerRegistry.instance().registerVillagerId(78906);
+        VillagerRegistry.instance().registerVillageTradeHandler(78906, new VillageTrades());
+        VillagerRegistry.instance().registerVillageCreationHandler(new VillageWorkShopHandler());
+        MapGenStructureIO.func_143031_a(ComponentWorkShop.class, "MachineryCraft:WorkshopStructure");
 	}
 
 		

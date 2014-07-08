@@ -27,6 +27,7 @@ public class BookData {
 	
 	//basic
 	public static BookEntry basics;
+
 	//machines
 	public static BookEntry firstTierMachines;
 	public static BookEntry secondTierMachines;
@@ -44,6 +45,11 @@ public class BookData {
     public static BookEntry ironoxideArmor;
     public static BookEntry goldoxideArmor;
     public static BookEntry emeraldArmor;
+
+    //worldgen
+    public static BookEntry ores;
+    public static BookEntry biome;
+    public static BookEntry village;
 	
 	public static void init() {
 		MachineryCraftAPI.addCategory(categoryBasics = new BookCategory(LibBookText.CATEGORY_BASICS));
@@ -94,6 +100,16 @@ public class BookData {
 
         emeraldArmor = new BookEntry(LibBookText.ENTRY_EMERALD_ARMOR, categoryArmor);
         emeraldArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeEmeraldHelm), new PageCraftingRecipe("2", ModRecipes.recipeEmeraldChest), new PageCraftingRecipe("3", ModRecipes.recipeEmeraldPants), new PageCraftingRecipe("4", ModRecipes.recipeEmeraldBoots));
-	}
+
+        //worldgen
+        ores = new BookEntry(LibBookText.ENTRY_ORES, categoryWorldgen);
+        ores.setPriority().setBookPages(new PageText("0"));
+
+        biome = new BookEntry(LibBookText.ENTRY_BIOME, categoryWorldgen);
+        biome.setPriority().setBookPages(new PageText("0"));
+
+        village = new BookEntry(LibBookText.ENTRY_VILLAGE, categoryWorldgen);
+        village.setPriority().setBookPages(new PageText("0"));
+    }
 
 }

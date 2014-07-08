@@ -13,7 +13,7 @@ public class BlockMod extends Block{
         super(mat);
         setBlockName(name);
         setCreativeTab(MachineryCraft.tabMachineryCraft);
-        setBlockTextureName(Reference.MOD_ID + name);
+        setBlockTextureName(Reference.MOD_ID + ":" + name);
         Name = name;
     }
 }

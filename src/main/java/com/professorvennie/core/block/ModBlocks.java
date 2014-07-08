@@ -54,6 +54,9 @@ public class ModBlocks {
     public static Block plasticGrass;
     public static Block plasticDirt;
     public static Block plasticPlanks;
+    public static Block plasticStairs;
+    public static Block plasticSlabHalf;
+    public static Block plasticSlabDouble;
 
     public static BiomeGenBase biomePlastic;
 	
@@ -92,6 +95,7 @@ public class ModBlocks {
         plasticGrass = new BlockPlasticGrass();
         plasticDirt = new BlockPlasticDirt();
         plasticPlanks = new BlockPlasticPlanks();
+        plasticStairs = new BlockPlasticStairs(plasticPlanks);
 
 
         biomePlastic = new BiomePlastic(167);
@@ -126,6 +130,7 @@ public class ModBlocks {
         RegistryUtils.registerBlock(plasticGrass);
         RegistryUtils.registerBlock(plasticDirt);
         RegistryUtils.registerBlock(plasticPlanks);
+        RegistryUtils.registerBlock(plasticStairs);
 	}
 	
 }

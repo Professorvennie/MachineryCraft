@@ -36,6 +36,10 @@ public class LibBookText {
     public static final String ENTRY_GOLDOXIDE_ARMOR = "goldoxideArmor";
     public static final String ENTRY_EMERALD_ARMOR = "emeraldArmor";
 
+    public static final String ENTRY_ORES = "ores";
+    public static final String ENTRY_BIOME = "biome";
+    public static final String ENTRY_VILLAGE = "village";
+
 	
 	public static final String INFO = BASE + "";
 	
