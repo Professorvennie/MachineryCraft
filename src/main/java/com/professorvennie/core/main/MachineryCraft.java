@@ -18,6 +18,7 @@ import com.professorvennie.core.world.village.VillageWorkShopHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -70,6 +71,7 @@ public class MachineryCraft {
 		BookData.init();
 
         VillagerRegistry.instance().registerVillagerId(78906);
+        VillagerRegistry.instance().registerVillagerSkin(78906, new ResourceLocation(Reference.MOD_ID, "/villager/workshopvillager"));
         VillagerRegistry.instance().registerVillageTradeHandler(78906, new VillageTrades());
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageWorkShopHandler());
         MapGenStructureIO.func_143031_a(ComponentWorkShop.class, "MachineryCraft:WorkshopStructure");

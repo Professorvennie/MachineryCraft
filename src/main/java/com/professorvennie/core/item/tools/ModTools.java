@@ -9,6 +9,7 @@
  * */
 package com.professorvennie.core.item.tools;
 
+import com.professorvennie.core.common.handlers.ConfigHandler;
 import com.professorvennie.core.lib.ItemNames;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
@@ -96,29 +97,37 @@ public class ModTools {
 	}
 
 	private static void registry() {
-		RegistryUtils.registerItem(emeraldpickaxe);
-		RegistryUtils.registerItem(emeraldaxe);
-		RegistryUtils.registerItem(emeraldsword);
-		RegistryUtils.registerItem(emeraldhoe);
-		RegistryUtils.registerItem(emeraldspade);
+        if(ConfigHandler.emeraldTools) {
+            RegistryUtils.registerItem(emeraldpickaxe);
+            RegistryUtils.registerItem(emeraldaxe);
+            RegistryUtils.registerItem(emeraldsword);
+            RegistryUtils.registerItem(emeraldhoe);
+            RegistryUtils.registerItem(emeraldspade);
+        }
 
-		RegistryUtils.registerItem(salthoe);
-		RegistryUtils.registerItem(saltpickaxe);
-		RegistryUtils.registerItem(saltaxe);
-		RegistryUtils.registerItem(saltsword);
-		RegistryUtils.registerItem(saltspade);
+        if(ConfigHandler.saltTools) {
+            RegistryUtils.registerItem(salthoe);
+            RegistryUtils.registerItem(saltpickaxe);
+            RegistryUtils.registerItem(saltaxe);
+            RegistryUtils.registerItem(saltsword);
+            RegistryUtils.registerItem(saltspade);
+        }
 
-		RegistryUtils.registerItem(goldoxidepickaxe);
-		RegistryUtils.registerItem(goldoxideaxe);
-		RegistryUtils.registerItem(goldoxidesword);
-		RegistryUtils.registerItem(goldoxidehoe);
-		RegistryUtils.registerItem(goldoxidespade);	
+        if(ConfigHandler.goldoxideTools) {
+            RegistryUtils.registerItem(goldoxidepickaxe);
+            RegistryUtils.registerItem(goldoxideaxe);
+            RegistryUtils.registerItem(goldoxidesword);
+            RegistryUtils.registerItem(goldoxidehoe);
+            RegistryUtils.registerItem(goldoxidespade);
+        }
 
-		RegistryUtils.registerItem(ironoxidepickaxe);
-		RegistryUtils.registerItem(ironoxideaxe);
-		RegistryUtils.registerItem(ironoxidesword);
-		RegistryUtils.registerItem(ironoxidehoe);
-		RegistryUtils.registerItem(ironoxidespade);
+        if(ConfigHandler.ironoxideTools) {
+            RegistryUtils.registerItem(ironoxidepickaxe);
+            RegistryUtils.registerItem(ironoxideaxe);
+            RegistryUtils.registerItem(ironoxidesword);
+            RegistryUtils.registerItem(ironoxidehoe);
+            RegistryUtils.registerItem(ironoxidespade);
+        }
 	}
 
 }

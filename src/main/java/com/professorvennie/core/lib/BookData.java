@@ -14,6 +14,7 @@ import com.professorvennie.api.book.BookCategory;
 import com.professorvennie.core.client.gui.book.BookEntry;
 import com.professorvennie.core.client.gui.pages.PageCraftingRecipe;
 import com.professorvennie.core.client.gui.pages.PageText;
+import com.professorvennie.core.common.handlers.ConfigHandler;
 import com.professorvennie.core.main.ModRecipes;
 
 public class BookData {
@@ -76,30 +77,46 @@ public class BookData {
 		miscMachines.setPriority();
 		
 		//tools
-		saltTools = new BookEntry(LibBookText.ENTRY_SALT_TOOLS, categoryTools);
-		saltTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeSaltPickaxe), new PageCraftingRecipe("2", ModRecipes.recipeSaltAxe), new PageCraftingRecipe("3", ModRecipes.recipeSaltSword), new PageCraftingRecipe("4", ModRecipes.recipeSaltSpade), new PageCraftingRecipe("5", ModRecipes.recipeSaltHoe));
-		
-		ironoxideTools = new BookEntry(LibBookText.ENTRY_IRONOXIDE_TOOLS, categoryTools);
-		ironoxideTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeIronoxidePickaxe), new PageCraftingRecipe("2", ModRecipes.recipeIronoxideAxe), new PageCraftingRecipe("3", ModRecipes.recipeIronoxideSword), new PageCraftingRecipe("4", ModRecipes.recipeIronoxideSpade), new PageCraftingRecipe("5", ModRecipes.recipeIronoxideHoe));
-		
-		goldoxideTools = new BookEntry(LibBookText.ENTRY_GOLDOXIDE_TOOLS, categoryTools);
-		goldoxideTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeGoldoxidePickaxe), new PageCraftingRecipe("2", ModRecipes.recipeGoldoxideAxe), new PageCraftingRecipe("3", ModRecipes.recipeGoldoxideSword), new PageCraftingRecipe("4", ModRecipes.recipeGoldoxideSpade), new PageCraftingRecipe("5", ModRecipes.recipeGoldoxideHoe));
-		
-		emeraldTools = new BookEntry(LibBookText.ENTRY_EMERALD_TOOLS, categoryTools);
-		emeraldTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeEmeraldPickaxe), new PageCraftingRecipe("2", ModRecipes.recipeEmeraldAxe), new PageCraftingRecipe("3", ModRecipes.recipeEmeraldSword), new PageCraftingRecipe("4", ModRecipes.recipeEmeraldSpade), new PageCraftingRecipe("5", ModRecipes.recipeEmeraldHoe));
+        if(ConfigHandler.saltTools) {
+            saltTools = new BookEntry(LibBookText.ENTRY_SALT_TOOLS, categoryTools);
+            saltTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeSaltPickaxe), new PageCraftingRecipe("2", ModRecipes.recipeSaltAxe), new PageCraftingRecipe("3", ModRecipes.recipeSaltSword), new PageCraftingRecipe("4", ModRecipes.recipeSaltSpade), new PageCraftingRecipe("5", ModRecipes.recipeSaltHoe));
+        }
+
+        if(ConfigHandler.ironoxideTools) {
+            ironoxideTools = new BookEntry(LibBookText.ENTRY_IRONOXIDE_TOOLS, categoryTools);
+            ironoxideTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeIronoxidePickaxe), new PageCraftingRecipe("2", ModRecipes.recipeIronoxideAxe), new PageCraftingRecipe("3", ModRecipes.recipeIronoxideSword), new PageCraftingRecipe("4", ModRecipes.recipeIronoxideSpade), new PageCraftingRecipe("5", ModRecipes.recipeIronoxideHoe));
+        }
+
+        if(ConfigHandler.goldoxideTools) {
+             goldoxideTools = new BookEntry(LibBookText.ENTRY_GOLDOXIDE_TOOLS, categoryTools);
+             goldoxideTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeGoldoxidePickaxe), new PageCraftingRecipe("2", ModRecipes.recipeGoldoxideAxe), new PageCraftingRecipe("3", ModRecipes.recipeGoldoxideSword), new PageCraftingRecipe("4", ModRecipes.recipeGoldoxideSpade), new PageCraftingRecipe("5", ModRecipes.recipeGoldoxideHoe));
+        }
+
+        if(ConfigHandler.emeraldTools) {
+            emeraldTools = new BookEntry(LibBookText.ENTRY_EMERALD_TOOLS, categoryTools);
+            emeraldTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeEmeraldPickaxe), new PageCraftingRecipe("2", ModRecipes.recipeEmeraldAxe), new PageCraftingRecipe("3", ModRecipes.recipeEmeraldSword), new PageCraftingRecipe("4", ModRecipes.recipeEmeraldSpade), new PageCraftingRecipe("5", ModRecipes.recipeEmeraldHoe));
+        }
 
         //armor
-        saltArmor = new BookEntry(LibBookText.ENTRY_SALT_ARMOR, categoryArmor);
-        saltArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeSaltHelm), new PageCraftingRecipe("2", ModRecipes.recipeSaltChest), new PageCraftingRecipe("3", ModRecipes.recipeSaltPants), new PageCraftingRecipe("4", ModRecipes.recipeSaltBoots));
+        if(ConfigHandler.saltArmor) {
+            saltArmor = new BookEntry(LibBookText.ENTRY_SALT_ARMOR, categoryArmor);
+            saltArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeSaltHelm), new PageCraftingRecipe("2", ModRecipes.recipeSaltChest), new PageCraftingRecipe("3", ModRecipes.recipeSaltPants), new PageCraftingRecipe("4", ModRecipes.recipeSaltBoots));
+        }
 
-        ironoxideArmor = new BookEntry(LibBookText.ENTRY_IRONOXIDE_ARMOR, categoryArmor);
-        ironoxideArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeIronoxideHelm), new PageCraftingRecipe("2", ModRecipes.recipeIronoxideChest), new PageCraftingRecipe("3", ModRecipes.recipeIronoxidePants), new PageCraftingRecipe("4", ModRecipes.recipeIronoxideBoots));
+        if(ConfigHandler.ironoxideArmor) {
+            ironoxideArmor = new BookEntry(LibBookText.ENTRY_IRONOXIDE_ARMOR, categoryArmor);
+            ironoxideArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeIronoxideHelm), new PageCraftingRecipe("2", ModRecipes.recipeIronoxideChest), new PageCraftingRecipe("3", ModRecipes.recipeIronoxidePants), new PageCraftingRecipe("4", ModRecipes.recipeIronoxideBoots));
+        }
 
-        goldoxideArmor = new BookEntry(LibBookText.ENTRY_GOLDOXIDE_ARMOR, categoryArmor);
-        goldoxideArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeGoldoxideHelm), new PageCraftingRecipe("2", ModRecipes.recipeGoldoxideChest), new PageCraftingRecipe("3", ModRecipes.recipeGoldoxidePants), new PageCraftingRecipe("4", ModRecipes.recipeGoldoxideBoots));
+        if(ConfigHandler.goldoxideArmor) {
+            goldoxideArmor = new BookEntry(LibBookText.ENTRY_GOLDOXIDE_ARMOR, categoryArmor);
+            goldoxideArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeGoldoxideHelm), new PageCraftingRecipe("2", ModRecipes.recipeGoldoxideChest), new PageCraftingRecipe("3", ModRecipes.recipeGoldoxidePants), new PageCraftingRecipe("4", ModRecipes.recipeGoldoxideBoots));
+        }
 
-        emeraldArmor = new BookEntry(LibBookText.ENTRY_EMERALD_ARMOR, categoryArmor);
-        emeraldArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeEmeraldHelm), new PageCraftingRecipe("2", ModRecipes.recipeEmeraldChest), new PageCraftingRecipe("3", ModRecipes.recipeEmeraldPants), new PageCraftingRecipe("4", ModRecipes.recipeEmeraldBoots));
+        if(ConfigHandler.emeraldArmor) {
+            emeraldArmor = new BookEntry(LibBookText.ENTRY_EMERALD_ARMOR, categoryArmor);
+            emeraldArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeEmeraldHelm), new PageCraftingRecipe("2", ModRecipes.recipeEmeraldChest), new PageCraftingRecipe("3", ModRecipes.recipeEmeraldPants), new PageCraftingRecipe("4", ModRecipes.recipeEmeraldBoots));
+        }
 
         //worldgen
         ores = new BookEntry(LibBookText.ENTRY_ORES, categoryWorldgen);

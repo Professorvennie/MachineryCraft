@@ -9,15 +9,24 @@
  * */
 package com.professorvennie.core.world.village;
 
+import com.professorvennie.core.block.ModBlocks;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 
 import java.util.Random;
 
 public class VillageTrades  implements VillagerRegistry.IVillageTradeHandler{
+
     @Override
     public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
-
+       if(villager.getProfession() == 78906){
+           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 0, 4), null, new ItemStack(ModBlocks.SaltFurnaceIdle)));
+           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(ModBlocks.SaltGrinderIdle), null, new ItemStack(Items.emerald, 0, 5)));
+           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 0, 5), null, new ItemStack(ModBlocks.SaltGrinderIdle)));
+       }
     }
 }
