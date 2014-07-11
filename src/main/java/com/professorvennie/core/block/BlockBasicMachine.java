@@ -34,8 +34,8 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
     @SideOnly(Side.CLIENT)
     public IIcon iconFront;
     public boolean isActive;
-    private static boolean keepInventory;
-    private final Random rand = new Random();
+    public static boolean keepInventory;
+    public final Random rand = new Random();
 
 
     public BlockBasicMachine(String name, boolean isActive) {
@@ -168,54 +168,7 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
     }
 
     public void breakBlock(World world, int x, int y, int z, Block block, int side){
-        //todo
-//        if (!keepInventory)
-//        {
-//            TileEntitySaltFurnace TileEntitySaltFurnace = (TileEntitySaltFurnace)world.getTileEntity(x, y, z);
-//
-//            if (TileEntitySaltFurnace != null)
-//            {
-//                for (int i1 = 0; i1 < TileEntitySaltFurnace.getSizeInventory(); ++i1)
-//                {
-//                    ItemStack itemstack = TileEntitySaltFurnace.getStackInSlot(i1);
-//
-//                    if (itemstack != null)
-//                    {
-//                        float f = this.rand.nextFloat() * 0.8F + 0.1F;
-//                        float f1 = this.rand.nextFloat() * 0.8F + 0.1F;
-//                        float f2 = this.rand.nextFloat() * 0.8F + 0.1F;
-//
-//                        while (itemstack.stackSize > 0)
-//                        {
-//                            int j1 = this.rand.nextInt(21) + 10;
-//
-//                            if (j1 > itemstack.stackSize)
-//                            {
-//                                j1 = itemstack.stackSize;
-//                            }
-//
-//                            itemstack.stackSize -= j1;
-//                            EntityItem entityitem = new EntityItem(world, (double)((float)x + f), (double)((float)y + f1), (double)((float)z + f2), new ItemStack(itemstack.getItem(), j1, itemstack.getItemDamage()));
-//
-//                            if (itemstack.hasTagCompound())
-//                            {
-//                                entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
-//                            }
-//
-//                            float f3 = 0.05F;
-//                            entityitem.motionX = (double)((float)this.rand.nextGaussian() * f3);
-//                            entityitem.motionY = (double)((float)this.rand.nextGaussian() * f3 + 0.2F);
-//                            entityitem.motionZ = (double)((float)this.rand.nextGaussian() * f3);
-//                            world.spawnEntityInWorld(entityitem);
-//                        }
-//                    }
-//                }
-//
-//                world.func_147453_f(x, y, z, block);
-//            }
-//        }
-//
-//        super.breakBlock(world, x, y, z, block, side);
+        super.breakBlock(world, x, y, z, block, side);
     }
 
     @Override

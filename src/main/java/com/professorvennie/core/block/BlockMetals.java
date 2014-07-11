@@ -32,8 +32,8 @@ public class BlockMetals extends Block {
 	@SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 
-	protected BlockMetals(Material mat) {
-		super(mat);
+	protected BlockMetals() {
+		super(Material.iron);
 		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		this.setBlockName("metal");
 		this.setHardness(3.5f);

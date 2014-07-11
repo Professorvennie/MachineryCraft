@@ -38,7 +38,6 @@ public class BlockPlasticSapling extends BlockFlower {
 
     public BlockPlasticSapling() {
         super(0);
-
         this.stepSound = soundTypeGrass;
         this.setHardness(0.0F);
         float f = 0.4F;

@@ -12,6 +12,7 @@ package com.professorvennie.core.common.containers;
 import com.professorvennie.core.block.tileEntity.TileEntityIronOxideAlloy;
 import com.professorvennie.core.block.tileEntity.TileEntityIronOxideFurnace;
 
+import com.professorvennie.core.main.utils.PowerAmounts;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
@@ -112,7 +113,7 @@ public class ContainerIronoxideAlloy extends Container{
 					if(!this.mergeItemStack(itemstack1, 0, 1, false)){
 						return null;
 					}
-				}else if(TileEntityIronOxideFurnace.isItemPower(itemstack1)){
+				}else if(PowerAmounts.isItemPower(itemstack1)){
 					if(!this.mergeItemStack(itemstack1, 1, 2, false)){
 						return null;
 					}

@@ -71,7 +71,7 @@ public class GuiIronoxideFurnace extends GuiContainer{
 		
 		if(this.Furnace.hasPower()){
 			i1 = this.Furnace.getPowerRemainingScaled(45);
-			this.drawTexturedModalRect(guiLeft + 12, guiTop + 53 - i1, 176, 62 - i1, 31, i1);
+			this.drawTexturedModalRect(guiLeft + 11, guiTop + 53 - i1, 176, 62 - i1, 31, i1);
 		}
 		
 		i1 = this.Furnace.getCookProgressScaled(24);

@@ -27,8 +27,8 @@ import net.minecraft.world.World;
 
 public class BlockSaltOre extends Block implements IBookable{
 
-	protected BlockSaltOre(Material p_i45394_1_) {
-		super(p_i45394_1_);
+	protected BlockSaltOre() {
+		super(Material.rock);
 		this.setHarvestLevel("pickaxe", 2);
 		this.setBlockName(BlockNames.SALTORE);
 		this.setCreativeTab(MachineryCraft.tabMachineryCraft);

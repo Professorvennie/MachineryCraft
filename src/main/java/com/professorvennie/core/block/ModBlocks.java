@@ -11,7 +11,6 @@ package com.professorvennie.core.block;
 
 import com.professorvennie.core.world.biome.BiomePlastic;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 
 import com.professorvennie.core.item.itemblock.ItemBlockWasher;
 import com.professorvennie.core.main.utils.RegistryUtils;
@@ -61,11 +60,11 @@ public class ModBlocks {
     public static BiomeGenBase biomePlastic;
 	
 	public static void InitialiseBlock(){
-		BlockOres = new BlockOres(Material.rock);
-		Saltore = new BlockSaltOre(Material.rock);
-		BlockMetals = new BlockMetals(Material.iron);	
-		windmill = new BlockWindmill(Material.rock);
-		windmillground = new BlockWindmillGround(Material.ground);
+		BlockOres = new BlockOres();
+		Saltore = new BlockSaltOre();
+		BlockMetals = new BlockMetals();
+		windmill = new BlockWindmill();
+		windmillground = new BlockWindmillGround();
 	
 		SaltFurnaceIdle = new BlockSaltFurnace(false);
 		SaltFurnaceActive = new BlockSaltFurnace(true);
@@ -83,11 +82,11 @@ public class ModBlocks {
 		goldOxideGrinderActive = new BlockGoldoxideGrinder(true);
 		goldOxideFurnaceIdle = new BlockGoldoxideFurnace(false);
 		goldOxideFurnaceActive = new BlockGoldoxideFurnace(true);
-//		goldOxideAlloyIdle = new BlockGoldoxideAlloy(false);
-//		goldOxideAlloyActive = new BlockGoldoxideAlloy(true);
+		goldOxideAlloyIdle = new BlockGoldoxideAlloy(false);
+		goldOxideAlloyActive = new BlockGoldoxideAlloy(true);
 		
 		washer = new BlockWasher();
-		cable = new BlockCable(Material.rock);	
+		cable = new BlockCable();
 		plasticLog = new BlockPlasticLog();
 		plasticLeaf = new BlockPlasticLeave();
 		plasticSapling = new BlockPlasticSapling();
@@ -96,6 +95,8 @@ public class ModBlocks {
         plasticDirt = new BlockPlasticDirt();
         plasticPlanks = new BlockPlasticPlanks();
         plasticStairs = new BlockPlasticStairs(plasticPlanks);
+        plasticSlabHalf = new BlockPlasticSlab(false);
+        plasticSlabDouble = new BlockPlasticSlab(true);
 
 
         biomePlastic = new BiomePlastic(167);
@@ -121,6 +122,8 @@ public class ModBlocks {
 		RegistryUtils.registerBlock(goldOxideGrinderActive);
 		RegistryUtils.registerBlock(goldOxideFurnaceIdle);
 		RegistryUtils.registerBlock(goldOxideFurnaceActive);
+        RegistryUtils.registerBlock(goldOxideAlloyIdle);
+        RegistryUtils.registerBlock(goldOxideAlloyActive);
 		RegistryUtils.registerBlock(cable);
 		RegistryUtils.registerBlock(washer, ItemBlockWasher.class);
 		RegistryUtils.registerBlock(plasticLog);
@@ -131,6 +134,9 @@ public class ModBlocks {
         RegistryUtils.registerBlock(plasticDirt);
         RegistryUtils.registerBlock(plasticPlanks);
         RegistryUtils.registerBlock(plasticStairs);
+
+        RegistryUtils.registerBlock(plasticSlabHalf, ItemPlasticSlab.class);
+        RegistryUtils.registerBlock(plasticSlabDouble, ItemPlasticSlab.class);
 	}
 	
 }

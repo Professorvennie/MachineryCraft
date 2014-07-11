@@ -36,8 +36,6 @@ public class BlockPlasticLog extends BlockRotatedPillar {
 
     public BlockPlasticLog() {
         super(Material.wood);
-
-        // Propiedades
         this.setHardness(1.5F);
         this.setHarvestLevel("axe", 0);
         this.setStepSound(Block.soundTypeWood);
@@ -50,15 +48,11 @@ public class BlockPlasticLog extends BlockRotatedPillar {
         return true;
     }
 
-
-    public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face)
-    {
+    public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face){
         return 20;
     }
 
-
-    public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face)
-    {
+    public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face){
         return 5;
     }
 

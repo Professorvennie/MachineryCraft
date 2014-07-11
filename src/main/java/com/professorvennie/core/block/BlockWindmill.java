@@ -34,8 +34,8 @@ import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
 public class BlockWindmill extends BlockContainer implements IBookable{
 
-	public BlockWindmill(Material p_i45394_1_) {
-		super(p_i45394_1_);
+	public BlockWindmill() {
+		super(Material.rock);
 		this.setHardness(3.0f);
 		this.setHarvestLevel("Pickaxe", 2);
 		setBlockName(BlockNames.WINDMILL);

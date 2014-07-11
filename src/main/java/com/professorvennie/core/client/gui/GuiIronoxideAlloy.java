@@ -55,7 +55,7 @@ public static final ResourceLocation texture = new ResourceLocation(Reference.MO
 		List<String> text = new ArrayList<String>();
 		if (Alloy.getCurrentCharge() > 0) {
             text.clear();
-            text.add(Alloy.getCurrentCharge() + "/" + Alloy.getChargeCapcity() + " Jewels");
+            text.add(Alloy.getCurrentCharge() + "/" + Alloy.getChargeCapacity() + " Jewels");
             drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 48, text, fontRendererObj);
         }
 		

@@ -35,8 +35,8 @@ public class BlockOres extends Block implements IBookable{
 	@SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 
-	protected BlockOres(Material mat) {
-		super(mat);
+	protected BlockOres() {
+		super(Material.rock);
 		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		this.setBlockName("ore");
 		this.setHardness(3.5f);

@@ -9,6 +9,7 @@
  * */
 package com.professorvennie.core.common.containers;
 
+import com.professorvennie.core.main.utils.PowerAmounts;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -35,11 +36,15 @@ public class ContainerIronoxideFurnace extends Container {
 
 	public ContainerIronoxideFurnace(InventoryPlayer inventory,	TileEntityIronOxideFurnace entity) {
 		this.furnace = entity;
-		
+
+        //input slot
 		this.addSlotToContainer(new Slot(entity, 0, 56, 35));
+        //power slot
 		this.addSlotToContainer(new Slot(entity, 1, 11, 53));
+        //OutPut Slot
 		this.addSlotToContainer(new SlotFurnace(inventory.player, entity, 2, 116, 35));
-		
+
+        //players slots
 		for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 9; j++){
 				this.addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
@@ -106,7 +111,7 @@ public class ContainerIronoxideFurnace extends Container {
 					if(!this.mergeItemStack(itemstack1, 0, 1, false)){
 						return null;
 					}
-				}else if(TileEntityIronOxideFurnace.isItemPower(itemstack1)){
+				}else if(PowerAmounts.isItemPower(itemstack1)){
 					if(!this.mergeItemStack(itemstack1, 1, 2, false)){
 						return null;
 					}

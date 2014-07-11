@@ -27,8 +27,8 @@ import net.minecraft.world.World;
 
 public class BlockCable extends BlockContainer implements IBookable{
 
-	protected BlockCable(Material material) {
-		super(material);
+	protected BlockCable() {
+		super(Material.rock);
 		float pixel = 1F/16F;
 		this.setBlockBounds(11*pixel/2, 11*pixel/2, 11*pixel/2, 1 - 11*pixel/2, 1-11*pixel/2, 1-11*pixel/2);
 		this.setCreativeTab(MachineryCraft.tabMachineryCraft);

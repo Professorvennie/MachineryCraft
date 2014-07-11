@@ -11,13 +11,13 @@ package com.professorvennie.core.block.tileEntity;
 
 
 import com.professorvennie.core.block.ModBlocks;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
-
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,7 +26,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
 import com.professorvennie.core.block.BlockSaltFurnace;
-import com.professorvennie.core.item.ModItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -48,14 +47,12 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 	
 	public int cookTime;
 
-	private int smeltItem;
-	
-	public int getsizeInventory(){
+	public int getSizeInventory(){
 		return this.slots.length;
 	}
 	
 	public String getInvName(){
-		return this.isInvNameLocalized() ? this.localizedName : "container.saltfurnace";
+		return this.isInvNameLocalized() ? this.localizedName : "container.saltFurnace";
 	}
 	
 	public boolean isInvNameLocalized(){
@@ -68,13 +65,8 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 	}
 
 	@Override
-	public int getSizeInventory() {
-		return 0;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int var1) {
-		return this.slots[var1];
+	public ItemStack getStackInSlot(int slot) {
+		return this.slots[slot];
 	}
 
 	@Override
@@ -97,10 +89,10 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int var1) {
-		if(this.slots[var1] != null){
-			ItemStack itemstack = this.slots[var1];
-			this.slots[var1] = null;
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		if(this.slots[slot] != null){
+			ItemStack itemstack = this.slots[slot];
+			this.slots[slot] = null;
 			return itemstack;
 		}
 		
@@ -108,29 +100,26 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 	}
 
 	@Override
-	public void setInventorySlotContents(int var1, ItemStack var2) {
-		this.slots[var1]= var2;
+	public void setInventorySlotContents(int slot, ItemStack itemStack) {
+		this.slots[slot]= itemStack;
 		
-		if(var2 != null && var2.stackSize > this.getInventoryStackLimit()){
-			var2.stackSize = this.getInventoryStackLimit();
+		if(itemStack != null && itemStack.stackSize > this.getInventoryStackLimit()){
+			itemStack.stackSize = this.getInventoryStackLimit();
 		}
 	}
 
 	@Override
 	public String getInventoryName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO Auto-generated method stub
 		return 64;
 	}
 
@@ -138,7 +127,7 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 		super.readFromNBT(nbt);
 		
 		NBTTagList list = nbt.getTagList("items", Constants.NBT.TAG_COMPOUND);
-		this.slots = new ItemStack[this.getsizeInventory()];
+		this.slots = new ItemStack[this.getSizeInventory()];
 		
 		for(int i = 0; i < list.tagCount(); i ++){
 			NBTTagCompound compound = list.getCompoundTagAt(i);
@@ -149,12 +138,12 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 				
 			}
 		}
-		this.burnTime = (int)nbt.getShort("burntime");
-		this.cookTime = (int)nbt.getShort("cooktime");
+		this.burnTime = (int)nbt.getShort("burnTime");
+		this.cookTime = (int)nbt.getShort("cookTime");
 		this.currentItemBurnTime = (int)nbt.getShort("currentItemBurnTime");
 		
-		if(nbt.hasKey("customname")){
-			this.localizedName = nbt.getString("customname");
+		if(nbt.hasKey("customName")){
+			this.localizedName = nbt.getString("customName");
 		}
 
 	}
@@ -162,8 +151,8 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 	public void writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		
-		nbt.setShort("burntime", (short) this.burnTime);
-		nbt.setShort("cooktime", (short) this.cookTime);
+		nbt.setShort("burnTime", (short) this.burnTime);
+		nbt.setShort("cookTime", (short) this.cookTime);
 		nbt.setShort("currentItemBurnTime", (short) this.currentItemBurnTime);
 		
 		NBTTagList list = new NBTTagList();
@@ -178,26 +167,20 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 		}
 		nbt.setTag("items", list);
 		if(this.isInvNameLocalized()){
-			nbt.setString("customname", this.localizedName);
+			nbt.setString("customName", this.localizedName);
 		}
 	}
 	
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer var1) {
-		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64D;
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64D;
 	}
 
 	@Override
-	public void openInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void openInventory() {}
 
 	@Override
-	public void closeInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void closeInventory() {}
 	
 	public boolean isBurning(){
 		return this.burnTime > 0;
@@ -207,9 +190,7 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 		boolean flag = this.burnTime > 0;
 		boolean flag1 = false;
 		
-		if(this.burnTime > 0){
-			this.burnTime--;
-		}
+		if(this.burnTime > 0) this.burnTime--;
 		
 		if(!this.worldObj.isRemote){
 			if(this.burnTime == 0 && this.canSmelt()){
@@ -236,9 +217,7 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 					this.smeltItem();
 					flag1 = true;
 				}
-			}else{
-				this.cookTime = 0;
-			}
+			}else this.cookTime = 0;
 			
 			if(flag != this.isBurning()){
 				flag1 = true;
@@ -248,9 +227,7 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 		}
 	
 	
-	if(flag1){
-		this.markDirty();
-	}
+	if(flag1) this.markDirty();
 }
 	
 	private boolean canSmelt(){
@@ -290,44 +267,38 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 }
 	
 	public static int getItemBurnTime(ItemStack itemstack){
-		if(itemstack == null){
-			return 0;
-		}else{
-			int i = itemstack.getItem().getIdFromItem(itemstack.getItem());
-			
-			Item item = itemstack.getItem();
-			/*
-			if(item instanceof ItemBlock && Block.blockRegistry != null){
-				Block block = blockRegistry;
-				
-				if(block == Blocks.wooden_slab){
-					return 150;
-				}
-				if(block.getMaterial().equals(Material.wood)){
-					return 300;
-				}
-				
-				if(block == Blocks.coal_block){
-					return 16000;
-				}
-			*/
-			
-			//if(item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
-			//if(item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-			//if(item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
-			//if(i == Items.stick.getIdFromItem(Items.stick)) return 100;
-			if(i == Items.coal.getIdFromItem(Items.coal)) return 1600;
-			if(i == Items.lava_bucket.getIdFromItem(Items.lava_bucket)) return 20000;
-			//if(i == Blocks.sapling.getIdFromBlock(Blocks.sapling)) return 100;
-			if(i == Blocks.coal_block.getIdFromBlock(Blocks.coal_block)) return 16000;
-			//if(i == Blocks.wooden_slab.getIdFromBlock(Blocks.wooden_slab)) return 300;
-			if(i == Items.blaze_rod.getIdFromItem(Items.blaze_rod)) return 2400;
-			
-			
-			if(i == ModItems.saltcyrstals.getIdFromItem(ModItems.saltcyrstals)) return 500;
-			
-			return GameRegistry.getFuelValue(itemstack);
-		}
+        if (itemstack == null){
+            return 0;
+        }
+        else{
+            Item item = itemstack.getItem();
+
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air){
+                Block block = Block.getBlockFromItem(item);
+
+                if (block == Blocks.wooden_slab){
+                    return 150;
+                }
+
+                if (block.getMaterial() == Material.wood){
+                    return 300;
+                }
+
+                if (block == Blocks.coal_block){
+                    return 16000;
+                }
+            }
+
+            if (item instanceof ItemTool && ((ItemTool)item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemSword && ((ItemSword)item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe)item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item == Items.stick) return 100;
+            if (item == Items.coal) return 1600;
+            if (item == Items.lava_bucket) return 20000;
+            if (item == Item.getItemFromBlock(Blocks.sapling)) return 100;
+            if (item == Items.blaze_rod) return 2400;
+            return GameRegistry.getFuelValue(itemstack);
+        }
 	}
 	
 	public static boolean isItemFuel(ItemStack itemstack){
@@ -335,14 +306,13 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 	}
 	
 	@Override
-	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-	
-		return var1 == 2 ? false : (var1 == 1 ? isItemFuel(var2) : true);
+	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
+		return slot == 2 ? false : (slot == 1 ? isItemFuel(itemStack) : true);
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
-		return var1 == 0 ? slots_bottom  : (var1 == 1 ? slots_top : slots_sides);
+	public int[] getAccessibleSlotsFromSide(int side) {
+		return side == 0 ? slots_bottom  : (side == 1 ? slots_top : slots_sides);
 	}
 
 	@Override

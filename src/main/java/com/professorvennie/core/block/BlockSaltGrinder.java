@@ -17,11 +17,14 @@ import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
 import net.minecraft.world.World;
@@ -37,6 +40,8 @@ public class BlockSaltGrinder extends BlockBasicMachine{
 
 	public BlockSaltGrinder(boolean isActive) {
         super(BlockNames.SaltGrinder, isActive);
+        setHardness(3.5F);
+        setHarvestLevel("pickaxe", 1);
     }
 
 	public Item getItemDropped(int par1, Random random, int par2) {
@@ -75,5 +80,45 @@ public class BlockSaltGrinder extends BlockBasicMachine{
 	public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
 		return BookData.firstTierMachines;
 	}
+
+    public void breakBlock(World world, int x, int y, int z, Block block, int side){
+        if(!keepInventory) {
+            TileEntitySaltGrinder tileEntity = (TileEntitySaltGrinder) world.getTileEntity(x, y, z);
+            if (tileEntity != null) {
+                for (int i = 0; i < tileEntity.getSizeInventory(); i++) {
+                    ItemStack itemStack = tileEntity.getStackInSlot(i);
+
+                    if (itemStack != null) {
+                        float f = this.rand.nextFloat() * 0.6F + 01F;//x
+                        float f1 = this.rand.nextFloat() * 0.6F + 01F;//y
+                        float f2 = this.rand.nextFloat() * 0.6F + 01F;//z
+
+                        while (itemStack.stackSize > 0) {
+                            int j = this.rand.nextInt(21) + 10;
+
+                            if (j > itemStack.stackSize)
+                                j = itemStack.stackSize;
+
+                            itemStack.stackSize -= j;
+                            EntityItem entityItem = new EntityItem(world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), new ItemStack(itemStack.getItem(), j, itemStack.getItemDamage()));
+
+                            if (itemStack.hasTagCompound()) {
+                                entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
+                            }
+
+                            float f3 = 0.025F;
+                            entityItem.motionX = (double) ((float) this.rand.nextGaussian() * f3);
+                            entityItem.motionY = (double) ((float) this.rand.nextGaussian() * f3 + 0.1F);
+                            entityItem.motionZ = (double) ((float) this.rand.nextGaussian() * f3);
+
+                            world.spawnEntityInWorld(entityItem);
+                        }
+                    }
+                }
+                world.func_147453_f(x, y, z, block);
+            }
+        }
+        super.breakBlock(world, x, y, z, block, side);
+    }
 	
 }

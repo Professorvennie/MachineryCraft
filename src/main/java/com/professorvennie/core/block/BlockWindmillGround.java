@@ -26,8 +26,8 @@ import net.minecraft.world.World;
 
 public class BlockWindmillGround extends BlockContainer implements IBookable{
 
-	protected BlockWindmillGround(Material p_i45394_1_) {
-		super(p_i45394_1_);
+	protected BlockWindmillGround() {
+		super(Material.ground);
 		this.setBlockBounds(0, 0, 0, 1, (1F / 16f) * 14, 1);
 		setBlockName(BlockNames.windmillground);
 		setCreativeTab(MachineryCraft.tabMachineryCraft);

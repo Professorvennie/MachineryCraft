@@ -12,14 +12,11 @@ package com.professorvennie.core.block.tileEntity;
 
 import com.professorvennie.core.block.BlockIronoxideFurnace;
 import com.professorvennie.core.block.ModBlocks;
-import com.professorvennie.core.item.ModItems;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import com.professorvennie.core.main.utils.PowerAmounts;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
@@ -30,47 +27,45 @@ import net.minecraftforge.common.util.Constants;
 public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInventory {
 	
 	private String localizedName;
-	
-	private static final int[] slots_top = new int[]{0};
-	private static final int[] slots_bottom = new int[]{2, 1};
-	private static final int[] slots_sides = new int[]{1};
+
+    private static final int[] slots_top = new int[] {0};
+    private static final int[] slots_bottom = new int[] {2, 1};
+    private static final int[] slots_sides = new int[] {1};
 	
 	private ItemStack[] slots = new ItemStack[3];
 	
 	public int furnaceSpeed = 70;
 	
 	public int power;
-	public final int  maxpower = 10000;
+
+	public final int maxPower = 10000;
 	
 	public int currentItemBurnTime;
 	
 	public int cookTime;
 
-	private int smeltItem;
-
-	public int getsizeInventory(){
+    @Override
+	public int getSizeInventory(){
 		return this.slots.length;
 	}
-	
-	
 
 	@Override
-	public ItemStack getStackInSlot(int var1) {
-		return this.slots[var1];
+	public ItemStack getStackInSlot(int slot) {
+		return this.slots[slot];
 	}
 
 	@Override
-	public ItemStack decrStackSize(int var1, int var2) {
-		if(this.slots[var1] != null){
+	public ItemStack decrStackSize(int slot1, int slot2) {
+		if(this.slots[slot1] != null){
 			ItemStack itemstack;
-			if(this.slots[var1].stackSize <= var2){
-				itemstack = this.slots[var1];
-				this.slots[var1] = null;
+			if(this.slots[slot1].stackSize <= slot2){
+				itemstack = this.slots[slot1];
+				this.slots[slot1] = null;
 				return itemstack;
 			}else{
-				itemstack = this.slots[var1].splitStack(var2);
-				if(this.slots[var1].stackSize == 0){
-					this.slots[var1] = null;
+				itemstack = this.slots[slot1].splitStack(slot2);
+				if(this.slots[slot1].stackSize == 0){
+					this.slots[slot1] = null;
 				}
 				return itemstack;
 			}
@@ -79,10 +74,10 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int var1) {
-		if(this.slots[var1] != null){
-			ItemStack itemstack = this.slots[var1];
-			this.slots[var1] = null;
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		if(this.slots[slot] != null){
+			ItemStack itemstack = this.slots[slot];
+			this.slots[slot] = null;
 			return itemstack;
 		}
 		
@@ -90,23 +85,21 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 	}
 
 	@Override
-	public void setInventorySlotContents(int var1, ItemStack var2) {
-		this.slots[var1]= var2;
+	public void setInventorySlotContents(int slot, ItemStack itemStack) {
+		this.slots[slot]= itemStack;
 		
-		if(var2 != null && var2.stackSize > this.getInventoryStackLimit()){
-			var2.stackSize = this.getInventoryStackLimit();
+		if(itemStack != null && itemStack.stackSize > this.getInventoryStackLimit()){
+            itemStack.stackSize = this.getInventoryStackLimit();
 		}
 	}
 
 	@Override
 	public String getInventoryName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -119,7 +112,7 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 		super.readFromNBT(nbt);
 		
 		NBTTagList list = nbt.getTagList("items", Constants.NBT.TAG_COMPOUND);
-		this.slots = new ItemStack[this.getsizeInventory()];
+		this.slots = new ItemStack[this.getSizeInventory()];
 		
 		for(int i = 0; i < list.tagCount(); i ++){
 			NBTTagCompound compound = list.getCompoundTagAt(i);
@@ -130,12 +123,12 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 				
 			}
 		}
-		this.power = (int)nbt.getShort("burntime");
-		this.cookTime = (int)nbt.getShort("cooktime");
+		this.power = (int)nbt.getShort("burnTime");
+		this.cookTime = (int)nbt.getShort("cookTime");
 		this.currentItemBurnTime = (int)nbt.getShort("currentItemBurnTime");
 		
-		if(nbt.hasKey("customname")){
-			this.localizedName = nbt.getString("customname");
+		if(nbt.hasKey("customName")){
+			this.localizedName = nbt.getString("customName");
 		}
 
 	}
@@ -143,8 +136,8 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 	public void writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		
-		nbt.setShort("burntime", (short) this.power);
-		nbt.setShort("cooktime", (short) this.cookTime);
+		nbt.setShort("burnTime", (short) this.power);
+		nbt.setShort("cookTime", (short) this.cookTime);
 		nbt.setShort("currentItemBurnTime", (short) this.currentItemBurnTime);
 		
 		NBTTagList list = new NBTTagList();
@@ -159,7 +152,7 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 		}
 		nbt.setTag("items", list);
 		if(this.isInvNameLocalized()){
-			nbt.setString("customname", this.localizedName);
+			nbt.setString("customName", this.localizedName);
 		}
 	}
 
@@ -169,21 +162,13 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 	}
 
 	@Override
-	public void openInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void openInventory() {}
 
 	@Override
-	public void closeInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void closeInventory() {}
 	
 	public boolean hasPower(){
-		if(this.power> 0) return true;
-		
-		return false;
+		return this.power > 0;
 	}
 	
 	public boolean isSmelting(){
@@ -191,58 +176,48 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 	}
 	
 	public void updateEntity(){
-		boolean flag = this.power > 0;
+		boolean flag = this.cookTime > 0;
     	boolean flag1 = false;
 	
-    	if (hasPower() && isSmelting()){
-        		this.power--;
-    	}
+    	if (hasPower() && isSmelting()) this.power--;
     	
-    	if(this.power > this.maxpower){
-    		this.power = this.maxpower;
-    	}
+    	if(this.power > this.maxPower) this.power = this.maxPower;
 
     	if (!this.worldObj.isRemote){
-        	if (this.power < this.maxpower && this.getItemPower(this.slots[1]) > 0){
-        		this.power += getItemPower(this.slots[1]);
+        	if (this.power < this.maxPower && PowerAmounts.getItemPower(this.slots[1]) > 0) {
+                if (maxPower - power > PowerAmounts.getItemPower(slots[1])) {
+                    this.power += PowerAmounts.getItemPower(this.slots[1]);
 
-        		flag1 = true;
-        	
-        		if (this.slots[1] != null){
-                		this.slots[1].stackSize--;
+                    flag1 = true;
 
-                		if (this.slots[1].stackSize == 0){
-                    		this.slots[1] = this.slots[1].getItem().getContainerItem(slots[1]);
-                		}
-            	}                
-        	}
-        	if (this.hasPower() && this.canSmelt())
-        	{
-            	++this.cookTime;
+                    if (this.slots[1] != null) {
+                            this.slots[1].stackSize--;
 
-            	if (this.cookTime == this.furnaceSpeed)
-            	{
+                        if (this.slots[1].stackSize == 0) {
+                            this.slots[1] = this.slots[1].getItem().getContainerItem(slots[1]);
+                        }
+                    }
+                }
+            }
+        	if (this.hasPower() && this.canSmelt()){
+            	this.cookTime++;
+
+            	if (this.cookTime == this.furnaceSpeed){
+                    this.smeltItem();
                 	this.cookTime = 0;
-                	this.smeltItem();
                	flag1 = true;
             	}
-        	}
-        	else
-        	{
-            	this.cookTime = 0;
-        	}
+        	}else this.cookTime = 0;
 			
 			if(flag != this.hasPower()){
 				flag1 = true;
-				BlockIronoxideFurnace.updateBlockState(this.power > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.ironOxideFurnaceActive, ModBlocks.ironOxideFurnaceIdle);
+				BlockIronoxideFurnace.updateBlockState(this.cookTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.ironOxideFurnaceActive, ModBlocks.ironOxideFurnaceIdle);
 			}
 			
 		}
 	
 	
-	if(flag1){
-		this.markDirty();
-	}
+	if(flag1) this.markDirty();
 }
 
 	private boolean canSmelt(){
@@ -281,28 +256,9 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 	}
 }
 	
-	public static int getItemPower(ItemStack itemstack){
-		if(itemstack == null){
-			return 0;
-		}else{
-			int i = itemstack.getItem().getIdFromItem(itemstack.getItem());
-			
-			
-			
-			if(i == ModItems.saltcyrstals.getIdFromItem(ModItems.saltcyrstals)) return 100;
-			
-			return 0;
-		}
-	}
-	
-	public static boolean isItemPower(ItemStack itemstack){
-		return getItemPower(itemstack) > 0;
-	}
-	
 	@Override
-	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-	
-		return var1 == 2 ? false : (var1 == 1 ? isItemPower(var2) : true);
+	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
+		return slot == 2 ? false : (slot == 1 ? PowerAmounts.isItemPower(itemStack) : true);
 	}
 
 	@Override
@@ -326,7 +282,7 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 	}
 
 	public int getPowerRemainingScaled(int par1){
-    	return this.power * par1 / this.maxpower;
+    	return this.power * par1 / this.maxPower;
 	}
 
 	public boolean isInvNameLocalized() {
@@ -337,26 +293,11 @@ public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInve
 		return "container.IronOxideFurnace";
 	}
 
-	public void setGuiDisplayName(String displayName) {
-		
-	}
-
-	@Override
-	public int getSizeInventory() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-
 	public int getCurrentCharge() {
 		return this.power;
 	}
 
-
-
 	public int getChargeCapcity() {
-		return this.maxpower;
+		return this.maxPower;
 	}
-
 }
