@@ -73,6 +73,11 @@ public class GuiHandler implements IGuiHandler{
 				if(entity instanceof TileEntityWasher ){
 					return new ContainerWasher(player.inventory, (TileEntityWasher) entity);
 				}
+
+            case LibGuiIds.GUIID_GOLDOXIDE_ALLOY:
+                if(entity instanceof TileEntityGoldOxideAlloy){
+                    return new ContainerGoldoxideAlloy(player.inventory, (TileEntityGoldOxideAlloy) entity);
+                }
 			}	
 		return null;
 	}
@@ -134,6 +139,11 @@ public class GuiHandler implements IGuiHandler{
 				if(GuiBook.stackUsed == null)
 					return null;
 				return Book;
+
+            case LibGuiIds.GUIID_GOLDOXIDE_ALLOY:
+                if(entity instanceof TileEntityGoldOxideAlloy){
+                    return new GuiGoldoxideAlloy(player.inventory, (TileEntityGoldOxideAlloy) entity);
+                }
             }
 		
 		

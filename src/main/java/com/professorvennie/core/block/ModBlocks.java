@@ -9,12 +9,10 @@
  * */
 package com.professorvennie.core.block;
 
-import com.professorvennie.core.world.biome.BiomePlastic;
 import net.minecraft.block.Block;
 
 import com.professorvennie.core.item.itemblock.ItemBlockWasher;
 import com.professorvennie.core.main.utils.RegistryUtils;
-import net.minecraft.world.biome.BiomeGenBase;
 
 public class ModBlocks {
 	
@@ -57,8 +55,6 @@ public class ModBlocks {
     public static Block plasticSlabHalf;
     public static Block plasticSlabDouble;
 
-    public static BiomeGenBase biomePlastic;
-	
 	public static void InitialiseBlock(){
 		BlockOres = new BlockOres();
 		Saltore = new BlockSaltOre();
@@ -97,9 +93,6 @@ public class ModBlocks {
         plasticStairs = new BlockPlasticStairs(plasticPlanks);
         plasticSlabHalf = new BlockPlasticSlab(false);
         plasticSlabDouble = new BlockPlasticSlab(true);
-
-
-        biomePlastic = new BiomePlastic(167);
 	}
 	
 	public static void registerBlock(){
@@ -134,7 +127,6 @@ public class ModBlocks {
         RegistryUtils.registerBlock(plasticDirt);
         RegistryUtils.registerBlock(plasticPlanks);
         RegistryUtils.registerBlock(plasticStairs);
-
         RegistryUtils.registerBlock(plasticSlabHalf, ItemPlasticSlab.class);
         RegistryUtils.registerBlock(plasticSlabDouble, ItemPlasticSlab.class);
 	}

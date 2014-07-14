@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 
 import com.professorvennie.core.block.ModBlocks;
 import com.professorvennie.core.item.ModItems;
@@ -27,6 +28,7 @@ public class GrinderRecipes {
 	private static final GrinderRecipes SMELTING_BASE = new GrinderRecipes();
 	private Map grindingList = new HashMap();
 	private Map expList = new HashMap();
+    private Random random = new Random();
 
 
 	public static GrinderRecipes grinding(){
@@ -34,21 +36,28 @@ public class GrinderRecipes {
 	}
 	
 	public GrinderRecipes(){
-		this.addRecipe(Item.getItemFromBlock(Blocks.iron_ore), new ItemStack(Items.iron_ingot, 2), 0.8f);
-		this.addRecipe(Item.getItemFromBlock(Blocks.diamond_ore), new ItemStack(Items.diamond, 2), 0.8f);
-		this.addRecipe(Item.getItemFromBlock(Blocks.redstone_ore), new ItemStack(Items.redstone, 6), 0.8f);
-		this.addRecipe(Item.getItemFromBlock(Blocks.emerald_ore), new ItemStack(Items.emerald, 2), 0.8f);
-		this.addRecipe(Item.getItemFromBlock(Blocks.quartz_ore), new ItemStack(Items.quartz, 6), 0.8f);
-		this.addRecipe(Item.getItemFromBlock(ModBlocks.Saltore), new ItemStack(ModItems.saltcyrstals, 6), 0.8f);
-        this.addRecipe(Item.getItemFromBlock(Blocks.cobblestone), new ItemStack(Blocks.sand), 0.8f);
+		this.addRecipe(new ItemStack(Blocks.iron_ore), new ItemStack(ModItems.Dusts, 2, 0), 0.8f);
+        this.addRecipe(new ItemStack(Blocks.gold_ore), new ItemStack(ModItems.Dusts, 2, 1), 0.8f);
+        this.addRecipe(new ItemStack(ModBlocks.BlockOres, 1, 0), new ItemStack(ModItems.Dusts, 2, 5), 0.8f);
+        this.addRecipe(new ItemStack(ModBlocks.BlockOres, 1, 1), new ItemStack(ModItems.Dusts, 2, 2), 0.8f);
+        this.addRecipe(new ItemStack(ModBlocks.BlockOres, 1, 2), new ItemStack(ModItems.Dusts, 2, 3), 0.8f);
+        this.addRecipe(new ItemStack(ModBlocks.BlockOres, 1, 3), new ItemStack(ModItems.Dusts, 2, 4), 0.8f);
+        this.addRecipe(new ItemStack(Blocks.diamond_ore), new ItemStack(Items.diamond, 2), 0.8f);
+		this.addRecipe(new ItemStack(Blocks.redstone_ore), new ItemStack(Items.redstone, 6 + random.nextInt(2)), 0.8f);
+		this.addRecipe(new ItemStack(Blocks.emerald_ore), new ItemStack(Items.emerald, 2), 0.8f);
+		this.addRecipe(new ItemStack(Blocks.quartz_ore), new ItemStack(Items.quartz, 6 + random.nextInt(2)), 0.8f);
+        this.addRecipe(new ItemStack(Blocks.lapis_ore), new ItemStack(Items.dye, 6 + random.nextInt(2), 4), 0.8f);
+        this.addRecipe(new ItemStack(Blocks.coal_ore), new ItemStack(Items.coal, 5 + random.nextInt(2)), 0.8f);
+        this.addRecipe(new ItemStack(ModBlocks.Saltore), new ItemStack(ModItems.saltcyrstals, 6 + random.nextInt(2)), 0.8f);
+        this.addRecipe(new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.sand), 0.8f);
     }
 	
-	public void addRecipe(Item item, ItemStack itemstack, float exp){
-		this.addLists(item, itemstack, exp);
+	public void addRecipe(ItemStack itemStack1, ItemStack itemstack2 , float exp){
+		this.addLists(itemStack1, itemstack2, exp);
 	}
 	
-	public void addLists(Item item, ItemStack itemstack, float exp){
-		this.putLists(new ItemStack(item, 1, 32767), itemstack, exp);
+	public void addLists(ItemStack itemStack1, ItemStack itemstack2, float exp){
+		this.putLists(itemStack1, itemstack2, exp);
 	}
 	
 	public void putLists(ItemStack itemstack, ItemStack itemstack2, float exp){

@@ -17,7 +17,6 @@ public class BiomePlastic extends BiomeGenBase {
     public BiomePlastic(int id) {
         super(id);
         setDisableRain();
-        setBiomeName("biomePlastic");
         addFlower(ModBlocks.plasticFlower, 0, 4);
         topBlock = ModBlocks.plasticGrass;
         fillerBlock = ModBlocks.plasticDirt;

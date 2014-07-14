@@ -12,6 +12,8 @@ package com.professorvennie.core.main;
 import com.professorvennie.core.common.proxey.CommonProxey;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.creativetab.CreativeTabsMachineryCraft;
+import com.professorvennie.core.main.plugins.PluginTConstruct;
+import com.professorvennie.core.world.biome.BiomePlastic;
 import com.professorvennie.core.world.village.ComponentWorkShop;
 import com.professorvennie.core.world.village.VillageTrades;
 import com.professorvennie.core.world.village.VillageWorkShopHandler;
@@ -19,7 +21,11 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeManager;
+import net.minecraftforge.common.BiomeManager.*;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.professorvennie.core.achievements.ModAchievements;
@@ -50,22 +56,21 @@ public class MachineryCraft {
 	
 	@Instance(Reference.MOD_ID)
 	public static MachineryCraft instance;
-	
-	GuiHandler GuiHandler = new GuiHandler();
-	
-	static OreGen oremanager = new OreGen();
-	
-	public static CreativeTabs tabMachineryCraft = new CreativeTabsMachineryCraft("MachineryCraft");
+
+    public static BiomeGenBase biomePlastic = new BiomePlastic(150).setBiomeName("plastic");
+
+    public static CreativeTabs tabMachineryCraft = new CreativeTabsMachineryCraft("MachineryCraft");
+
 	@SidedProxy(clientSide = Reference.CLIENT_PROXEY , serverSide = Reference.SERVER_PROXEY)
 	public static CommonProxey proxy;
 
 	@Mod.EventHandler
-	public static void PreLoad(FMLPreInitializationEvent PreEvent){
+	public static void preInit(FMLPreInitializationEvent event){
 		ModBlocks.mainRegistry();
 		ModItems.mainRegistry();
 		ModFuilds.mainRegistry();
 		proxy.registerRenderThings();
-		ConfigHandler.init(PreEvent.getSuggestedConfigurationFile());
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigHandler());
 		ModRecipes.init();
 		BookData.init();
@@ -80,19 +85,22 @@ public class MachineryCraft {
 		
 
 	@Mod.EventHandler
-	public static void load(FMLInitializationEvent event){
-		GameRegistry.registerWorldGenerator(oremanager, 2);
+	public static void init(FMLInitializationEvent event){
+		GameRegistry.registerWorldGenerator(new OreGen(), 2);
 		NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MOD_ID, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new HudHandler());
 		ModAchievements.registerAchievements();
 		ModEvents.registerEvents();
 		
 		RegisterTileEntitys.mainRegistry();
-		
+
+        BiomeDictionary.registerBiomeType(biomePlastic, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.HILLS);
+        BiomeManager.addSpawnBiome(biomePlastic);
+        BiomeManager.warmBiomes.add(new BiomeEntry(biomePlastic, 15));
 	}
 	
 	@Mod.EventHandler
-	public static void PostLoad(FMLPostInitializationEvent PostEvent){
+	public static void postInit(FMLPostInitializationEvent event){
 		ModRecipes.oreDict();
 	}
 	

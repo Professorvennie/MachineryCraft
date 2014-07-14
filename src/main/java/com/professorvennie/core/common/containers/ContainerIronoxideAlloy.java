@@ -10,7 +10,6 @@
 package com.professorvennie.core.common.containers;
 
 import com.professorvennie.core.block.tileEntity.TileEntityIronOxideAlloy;
-import com.professorvennie.core.block.tileEntity.TileEntityIronOxideFurnace;
 
 import com.professorvennie.core.main.utils.PowerAmounts;
 import cpw.mods.fml.relauncher.Side;
@@ -130,7 +129,7 @@ public class ContainerIronoxideAlloy extends Container{
 			return null;
 		}
 			if(itemstack1.stackSize == 0){
-				slot.putStack((ItemStack)null);
+				slot.putStack(null);
 			}else{
 				slot.onSlotChanged();
 			}
@@ -142,6 +141,5 @@ public class ContainerIronoxideAlloy extends Container{
 			slot.onPickupFromSlot(player, itemstack1);
 	}
 		return itemstack;
-}
-
+  }
 }

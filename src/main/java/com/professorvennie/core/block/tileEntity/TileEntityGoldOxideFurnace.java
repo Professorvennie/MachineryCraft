@@ -105,10 +105,6 @@ public class TileEntityGoldOxideFurnace extends TileEntity implements ISidedInve
 		return false;
 	}
 
-	public void setGuiDisplayName(String displayName) {
-		
-	}
-
 	public boolean isInvNameLocalized() {
 		// TODO Auto-generated method stub
 		return false;

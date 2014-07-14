@@ -13,7 +13,7 @@ item.ironoxidehelment.name=Iron Oxide Helment
 item.ironoxidechest.name=Iron Oxide ChestPlate
 item.ironoxidepants.name=Iron Oxide Leggings
 item.ironoxideboots.name=Iron Oxide Boots
-container.saltfurnace=Salt Furnace
+container.saltFurnace=Salt Furnace
 contaniner.inventory=Inventory
 container.SaltGrinder=Salt Grinder
 container.IronOxideGrinder=Iron Oxide Grinder
@@ -21,6 +21,7 @@ container.GoldOxideFurace=Gold Oxide Furnace
 container.GoldOxideGrinder=Gold Oxide Grinder
 container.IronOxideFurnace=Iron Oxide Furnace
 container.IronOxideAlloy=Iron Oxide Alloy Smelter
+container.Windmill=Windmill
 
 item.emeraldpickaxe.name=Emerald Pickaxe
 item.emeraldaxe.name=Emerald Axe

@@ -86,9 +86,9 @@ public static final ResourceLocation texture = new ResourceLocation(Reference.MO
                 drawHoveringText(list, mouseX, mouseY, font);
         }
     }
-	
+
 	 @Override
-	    public void handleMouseInput() {
+	  public void handleMouseInput() {
 	        int x = Mouse.getEventX() * this.width / this.mc.displayWidth;
 	        int y = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
 
@@ -98,7 +98,6 @@ public static final ResourceLocation texture = new ResourceLocation(Reference.MO
 	        super.handleMouseInput();
 	    }
 
-    @SuppressWarnings("rawtypes")
     protected void drawTooltipHoveringTextf(List list, int x, int y, FontRenderer font) {
         if (list == null || list.isEmpty())
             return;

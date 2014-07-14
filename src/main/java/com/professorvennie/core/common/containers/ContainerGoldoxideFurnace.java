@@ -24,7 +24,7 @@ public class ContainerGoldoxideFurnace extends Container{
 	public ContainerGoldoxideFurnace(InventoryPlayer inventory, TileEntityGoldOxideFurnace entity) {
 		this.furnace = entity;
 		
-		this.addSlotToContainer(new Slot(entity, 0, 11, 53));
+		this.addSlotToContainer(new Slot(entity, 0, 56, 35));
 		this.addSlotToContainer(new SlotFurnace(inventory.player, entity, 1, 116, 35));
 		
 		for(int i = 0; i < 3; i++){

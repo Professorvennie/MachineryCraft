@@ -72,7 +72,7 @@ public class MachineryCraftAPI {
 		return newList;
 	}
 
-    public static void registerGrinderRecipe(Item input, ItemStack output, float xp){
+    public static void registerGrinderRecipe(ItemStack input, ItemStack output, float xp){
         RegisterRecipes.addGrinding(input, output, xp);
     }
 	

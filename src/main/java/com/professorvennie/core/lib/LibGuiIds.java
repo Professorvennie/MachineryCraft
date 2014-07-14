@@ -21,5 +21,6 @@ public class LibGuiIds {
 	public static final int GUIID_IRONOXIDE_ALLOY = 7;
 	public static final int GUIID_WASHER = 8;
 	public static final int GUIID_BOOK = 9;
+    public static final int GUIID_GOLDOXIDE_ALLOY = 10;
 
 }

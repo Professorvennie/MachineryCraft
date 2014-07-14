@@ -137,7 +137,7 @@ public class TileEntitywindmill extends TileEntity implements ISidedInventory{
 
 	@Override
 	public String getInventoryName() {
-		return this.isInvNameLocalized() ? this.localizedName : "container.WINDMILL";
+		return this.isInvNameLocalized() ? this.localizedName : "container.Windmill";
 	}
 
 	@Override

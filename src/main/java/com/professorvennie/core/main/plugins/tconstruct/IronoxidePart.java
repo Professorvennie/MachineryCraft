@@ -7,15 +7,16 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  * */
-package com.professorvennie.api.recipes;
+package com.professorvennie.core.main.plugins.tconstruct;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+//import tconstruct.library.util.IToolPart;
 
-public class RegisterRecipes {
-	
-	public static void addGrinding(ItemStack input, ItemStack output, float xp){
-		GrinderRecipes.grinding().addRecipe(input, output, xp);
-    }
+public class IronoxidePart /*extends Item implements IToolPart */{
 
+//    @Override
+//    public int getMaterialID(ItemStack stack) {
+//        return 0;
+//    }
 }

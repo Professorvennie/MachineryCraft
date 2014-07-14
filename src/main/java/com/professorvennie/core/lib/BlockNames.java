@@ -22,7 +22,7 @@ public class BlockNames {
     public static final String ironOxideAlloy = "ironOxideAlloy";
     public static final String goldOxideGrinder = "goldOxideGrinder";
     public static final String goldOxideFurnace = "goldOxideFurnace";
-    public static final String goldOxideAlloy = "";
+    public static final String goldOxideAlloy = "goldOxideAlloy";
     public static final String washer = "Washer";
     public static final String cable = "cable";
     public static final String[] BlockOres = new String[]{"oreCopper","oreTin","oreSilver","oreLead"};
