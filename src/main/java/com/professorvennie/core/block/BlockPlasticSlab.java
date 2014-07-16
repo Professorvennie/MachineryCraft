@@ -1,6 +1,7 @@
 package com.professorvennie.core.block;
 
 import com.professorvennie.core.lib.Names;
+import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
@@ -16,6 +17,7 @@ public class BlockPlasticSlab extends BlockSlab {
         super(isFull, Material.wood);
         useNeighborBrightness = true;
         setStepSound(Block.soundTypeWood);
+        setBlockTextureName(Reference.MOD_ID + ":plasticPlanks");
         if(!isFull) {
             setBlockName(Names.Blocks.BLOCK_PLASTIC_SLAB + "Half");
             setCreativeTab(MachineryCraft.tabMachineryCraft);

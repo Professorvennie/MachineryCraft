@@ -66,7 +66,18 @@ item.goldoxidechest.name=Gold Oxide ChestPlate
 item.goldoxidepants.name=Gold Oxide Leggings
 item.goldoxideboots.name=Gold Oxide Boots
 
-
+item.gear.0.name=Wooden Gear
+item.gear.1.name=Stone Gear
+item.gear.2.name=Salt Gear
+item.gear.3.name=Tin Gear
+item.gear.4.name=Copper Gear
+item.gear.5.name=Bronze Gear
+item.gear.6.name=Iron Gear
+item.gear.7.name=Silver Gear
+item.gear.8.name=Ironoxide Gear
+item.gear.9.name=Lead Gear
+item.gear.10.name=Gold Gear
+item.gear.11.name=Goldoxide Gear
 
 #-GUI Localizations
 container.saltFurnace=Salt Furnace
