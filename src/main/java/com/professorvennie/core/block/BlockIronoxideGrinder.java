@@ -12,8 +12,8 @@ package com.professorvennie.core.block;
 import java.util.Random;
 
 import com.professorvennie.api.book.BookEntry;
-import com.professorvennie.core.lib.BlockNames;
 import com.professorvennie.core.lib.BookData;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.block.Block;
@@ -26,7 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import com.professorvennie.core.block.tileEntity.TileEntityironOxideGrinder;
+import com.professorvennie.core.tileEntity.TileEntityironOxideGrinder;
 import com.professorvennie.core.lib.LibGuiIds;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
@@ -34,10 +34,12 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockIronoxideGrinder extends BlockBasicMachine{
+
 	public BlockIronoxideGrinder(boolean isActive) {
-		super(BlockNames.ironOxideGrinder, isActive);
+		super(Names.Blocks.IRONOXIDE_GRINDER, isActive);
         setHardness(4.5F);
         setHarvestLevel("pickaxe", 2);
+        setStepSound(Block.soundTypeMetal);
 	}
 
 	@Override

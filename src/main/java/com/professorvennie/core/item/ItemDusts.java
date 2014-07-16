@@ -11,7 +11,7 @@ package com.professorvennie.core.item;
 
 import java.util.List;
 
-import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -32,12 +32,13 @@ public class ItemDusts extends Item {
 		this.setUnlocalizedName("dust");
 		this.setHasSubtypes(true);
 		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
+        setFull3D();
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List list) {
-		for (int i = 0; i < ItemNames.Dusts.length; i++) {
+		for (int i = 0; i < Names.Items.DUSTS.length; i++) {
 			list.add(new ItemStack(this, 1, i));
 		}
 	}
@@ -49,7 +50,7 @@ public class ItemDusts extends Item {
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register){
-        iconArray = new IIcon[ItemNames.Dusts.length];
+        iconArray = new IIcon[Names.Items.DUSTS.length];
         for (int i = 0; i < iconArray.length; i++) {
             iconArray[i] = register.registerIcon(Reference.MOD_ID + ":" + "dust" + "_" + i);
         }

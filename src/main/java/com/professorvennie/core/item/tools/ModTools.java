@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.item.tools;
 
-import com.professorvennie.core.common.handlers.ConfigHandler;
+import com.professorvennie.core.main.handlers.ConfigHandler;
 import com.professorvennie.core.lib.ItemNames;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;

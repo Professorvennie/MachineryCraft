@@ -9,10 +9,9 @@
  * */
 package com.professorvennie.core.main;
 
-import com.professorvennie.core.common.proxey.CommonProxey;
+import com.professorvennie.core.main.proxeys.CommonProxey;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.creativetab.CreativeTabsMachineryCraft;
-import com.professorvennie.core.main.plugins.PluginTConstruct;
 import com.professorvennie.core.world.biome.BiomePlastic;
 import com.professorvennie.core.world.village.ComponentWorkShop;
 import com.professorvennie.core.world.village.VillageTrades;
@@ -30,15 +29,15 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.professorvennie.core.achievements.ModAchievements;
 import com.professorvennie.core.block.ModBlocks;
-import com.professorvennie.core.block.tileEntity.RegisterTileEntitys;
+import com.professorvennie.core.tileEntity.RegisterTileEntitys;
 import com.professorvennie.core.common.events.ModEvents;
 import com.professorvennie.core.fuilds.ModFuilds;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.BookData;
-import com.professorvennie.core.common.handlers.ConfigHandler;
-import com.professorvennie.core.client.handlers.HudHandler;
+import com.professorvennie.core.main.handlers.ConfigHandler;
+import com.professorvennie.core.main.handlers.HudHandler;
 import com.professorvennie.core.world.OreGen;
-import com.professorvennie.core.common.network.GuiHandler;
+import com.professorvennie.core.main.handlers.GuiHandler;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
@@ -69,17 +68,16 @@ public class MachineryCraft {
 		ModBlocks.mainRegistry();
 		ModItems.mainRegistry();
 		ModFuilds.mainRegistry();
-		proxy.registerRenderThings();
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigHandler());
 		ModRecipes.init();
 		BookData.init();
 
         VillagerRegistry.instance().registerVillagerId(78906);
-        VillagerRegistry.instance().registerVillagerSkin(78906, new ResourceLocation(Reference.MOD_ID, "/villager/workshopvillager"));
+        VillagerRegistry.instance().registerVillagerSkin(78906, new ResourceLocation(Reference.MOD_ID, "textures/entitys/machinerycraft_Villager.png"));
         VillagerRegistry.instance().registerVillageTradeHandler(78906, new VillageTrades());
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageWorkShopHandler());
-        MapGenStructureIO.func_143031_a(ComponentWorkShop.class, "MachineryCraft:WorkshopStructure");
+        MapGenStructureIO.func_143031_a(ComponentWorkShop.class, Reference.MOD_ID + ":WorkshopStructure");
 	}
 
 		
@@ -91,8 +89,9 @@ public class MachineryCraft {
 		MinecraftForge.EVENT_BUS.register(new HudHandler());
 		ModAchievements.registerAchievements();
 		ModEvents.registerEvents();
-		
+
 		RegisterTileEntitys.mainRegistry();
+        proxy.registerRenderThings();
 
         BiomeDictionary.registerBiomeType(biomePlastic, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.HILLS);
         BiomeManager.addSpawnBiome(biomePlastic);

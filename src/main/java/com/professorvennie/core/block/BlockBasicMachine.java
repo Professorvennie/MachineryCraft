@@ -11,7 +11,7 @@ package com.professorvennie.core.block;
 
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
-import com.professorvennie.core.block.tileEntity.TileEntitySaltFurnace;
+import com.professorvennie.core.tileEntity.TileEntitySaltFurnace;
 import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

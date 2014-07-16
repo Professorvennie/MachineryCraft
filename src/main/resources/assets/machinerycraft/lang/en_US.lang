@@ -1,96 +1,10 @@
-item.saltcyrstals.name=Salt Crystals
-item.saltpickaxe.name=Salt Pickaxe
-item.saltaxe.name=Salt Axe
-item.salthoe.name=Salt Hoe
-item.saltspade.name=Salt Shovel
-item.saltsword.name=Salt Sword
-item.ironoxidepickaxe.name=Iron Oxide Pickaxe
-item.ironoxideaxe.name=Iron Oxide Axe
-item.ironoxidehoe.name=Iron Oxide Hoe
-item.ironoxidesword.name=Iron Oxide Sword
-item.ironoxidespade.name=Iron Oxide Shovel
-item.ironoxidehelment.name=Iron Oxide Helment
-item.ironoxidechest.name=Iron Oxide ChestPlate
-item.ironoxidepants.name=Iron Oxide Leggings
-item.ironoxideboots.name=Iron Oxide Boots
-container.saltFurnace=Salt Furnace
-contaniner.inventory=Inventory
-container.SaltGrinder=Salt Grinder
-container.IronOxideGrinder=Iron Oxide Grinder
-container.GoldOxideFurace=Gold Oxide Furnace
-container.GoldOxideGrinder=Gold Oxide Grinder
-container.IronOxideFurnace=Iron Oxide Furnace
-container.IronOxideAlloy=Iron Oxide Alloy Smelter
-container.Windmill=Windmill
-
-item.emeraldpickaxe.name=Emerald Pickaxe
-item.emeraldaxe.name=Emerald Axe
-item.emeraldhoe.name=Emerald Hoe
-item.emeraldsword.name=Emerald Sword
-item.emeraldspade.name=Emerald Shovel
-
-item.goldoxidepickaxe.name=Gold Oxide Pickaxe
-item.goldoxideaxe.name=Gold Oxide Axe
-item.goldoxidehoe.name=Gold Oxide Hoe
-item.goldoxidesword.name=Gold Oxide Sword
-item.goldoxidespade.name=Gold Oxide Shovel
-
-item.goldoxidehelment.name=Gold Oxide Helment
-item.goldoxidechest.name=Gold Oxide ChestPlate
-item.goldoxidepants.name=Gold Oxide Leggings
-item.goldoxideboots.name=Gold Oxide Boots
-
-item.salthelment.name=Salt Helment
-item.saltchest.name=Salt ChestPlate
-item.saltpants.name=Salt Leggings
-item.saltboots.name=Salt Boots
-
-
-item.goldoxide.name=Gold Oxide
-tile.saltFurnaceIdle.name=Salt Furnace
-tile.saltGrinderIdle.name=Salt Grinder
-tile.saltblock.name=Block of Salt
-tile.ironOxideFurnaceIdle.name=Iron Oxide Furnace
-tile.ironOxideGrinderIdle.name=Iron Oxide Grinder
-tile.ironOxideAlloyIdle.name=Iron Oxide Alloy Smelter
-
-itemGroup.MachineryCraft=Machinery Craft
-
-tile.windmillground.name=Windmill Ground
-tile.cable.name=Cable
-tile.Washer.name=Washer
-tile.plasticLog.name=Plastic Log
-tile.plasticLeaves.name=Plastic Leaves
-tile.plasticSapling.name=Plastic Sapling
-tile.plasticFlower.name=Plastic Flower
-tile.plasticGrass.name=Plastic Grass
-tile.plasticDirt.name=Plastic Dirt
-tile.plasticPlanks.name=Plastic Planks
+#-Items Localizations
+item.saltCyrstals.name=Salt Crystals
+item.speedUpgrade.name=Speed Upgrade
+item.powerBoost.name=Power Booster
 item.plasticApple.name=Plastic Apple
-item.Itemwindmill.name=Windmill
-
-item.emeraldhelment.name=Emerald Helmet
-item.emeraldchest.name=Emerald ChestPlate
-item.emeraldpants.name=Emerald Leggings
-item.emeraldboots.name=Emerald Boots
-
-item.speedupgrade.name=Speed Upgrade
-item.powerboost.name=Power Booster
-
-tile.Saltore.name=Salt Ore
-tile.ore.0.name=Copper Ore
-tile.ore.1.name=Tin Ore
-tile.ore.2.name=Silver Ore
-tile.ore.3.name=Lead Ore
-
-tile.metal.0.name=Block of Copper
-tile.metal.1.name=Block of Tin
-tile.metal.2.name=Block of Silver
-tile.metal.3.name=Block of Lead
-tile.metal.4.name=Block of Salt
-tile.metal.5.name=Block of Goldoxide
-tile.metal.6.name=Block of Ironoxide
-tile.metal.7.name=Block of Bronze
+item.windmill.name=Windmill
+item.ItemBook.name=Machinery Craft Manual
 
 item.dust.0.name=Iron Dust
 item.dust.1.name=Gold Dust
@@ -108,8 +22,108 @@ item.ingot.5.name=Goldoxide Ingot
 item.ingot.6.name=Ironoxide Ingot
 item.ingot.7.name=Bronze Ingot
 
+item.saltpickaxe.name=Salt Pickaxe
+item.saltaxe.name=Salt Axe
+item.salthoe.name=Salt Hoe
+item.saltspade.name=Salt Shovel
+item.saltsword.name=Salt Sword
 
-item.ItemBook.name=Machinery Craft Manual
+item.salthelment.name=Salt Helment
+item.saltchest.name=Salt ChestPlate
+item.saltpants.name=Salt Leggings
+item.saltboots.name=Salt Boots
+
+item.ironoxidepickaxe.name=Iron Oxide Pickaxe
+item.ironoxideaxe.name=Iron Oxide Axe
+item.ironoxidehoe.name=Iron Oxide Hoe
+item.ironoxidesword.name=Iron Oxide Sword
+item.ironoxidespade.name=Iron Oxide Shovel
+
+item.ironoxidehelment.name=Iron Oxide Helment
+item.ironoxidechest.name=Iron Oxide ChestPlate
+item.ironoxidepants.name=Iron Oxide Leggings
+item.ironoxideboots.name=Iron Oxide Boots
+
+item.emeraldpickaxe.name=Emerald Pickaxe
+item.emeraldaxe.name=Emerald Axe
+item.emeraldhoe.name=Emerald Hoe
+item.emeraldsword.name=Emerald Sword
+item.emeraldspade.name=Emerald Shovel
+
+item.emeraldhelment.name=Emerald Helmet
+item.emeraldchest.name=Emerald ChestPlate
+item.emeraldpants.name=Emerald Leggings
+item.emeraldboots.name=Emerald Boots
+
+item.goldoxidepickaxe.name=Gold Oxide Pickaxe
+item.goldoxideaxe.name=Gold Oxide Axe
+item.goldoxidehoe.name=Gold Oxide Hoe
+item.goldoxidesword.name=Gold Oxide Sword
+item.goldoxidespade.name=Gold Oxide Shovel
+
+item.goldoxidehelment.name=Gold Oxide Helment
+item.goldoxidechest.name=Gold Oxide ChestPlate
+item.goldoxidepants.name=Gold Oxide Leggings
+item.goldoxideboots.name=Gold Oxide Boots
+
+
+
+#-GUI Localizations
+container.saltFurnace=Salt Furnace
+container.inventory=Inventory
+container.saltGrinder=Salt Grinder
+container.ironoxideGrinder=Ironoxide Grinder
+container.goldoxideFurnace=Goldoxide Furnace
+container.goldoxideGrinder=Goldoxide Grinder
+container.goldoxideAlloy=Goldoxide Alloy Smelter
+container.ironoxideFurnace=Ironoxide Furnace
+container.ironoxideAlloy=Ironoxide Alloy Smelter
+container.windmill=Windmill
+container.plasticChest=Plastic Chest
+container.washer=Washer
+
+#-Creative Tab Localization
+itemGroup.MachineryCraft=Machinery Craft
+
+#-Blocks Localizations
+tile.plasticChest.name=Plastic Chest
+tile.saltFurnaceIdle.name=Salt Furnace
+tile.saltGrinderIdle.name=Salt Grinder
+tile.ironOxideFurnaceIdle.name=Iron Oxide Furnace
+tile.ironOxideGrinderIdle.name=Iron Oxide Grinder
+tile.ironOxideAlloyIdle.name=Iron Oxide Alloy Smelter
+
+
+tile.windmillground.name=Windmill Ground
+tile.cable.name=Cable
+tile.Washer.name=Washer
+tile.plasticLog.name=Plastic Log
+tile.plasticLeaves.name=Plastic Leaves
+tile.plasticSapling.name=Plastic Sapling
+tile.plasticFlower.name=Plastic Flower
+tile.plasticGrass.name=Plastic Grass
+tile.plasticDirt.name=Plastic Dirt
+tile.plasticPlanks.name=Plastic Planks
+tile.saltOre.name=Salt Ore
+tile.ore.0.name=Copper Ore
+tile.ore.1.name=Tin Ore
+tile.ore.2.name=Silver Ore
+tile.ore.3.name=Lead Ore
+tile.metal.0.name=Block of Copper
+tile.metal.1.name=Block of Tin
+tile.metal.2.name=Block of Silver
+tile.metal.3.name=Block of Lead
+tile.metal.4.name=Block of Salt
+tile.metal.5.name=Block of Goldoxide
+tile.metal.6.name=Block of Ironoxide
+tile.metal.7.name=Block of Bronze
+tile.plasticStair.name=Plastic Stairs
+plasticSlab.name=Plastic Slab
+tile.goldOxideGrinderIdle.name=Goldoxide Grinder
+tile.goldOxideFurnaceIdle.name=Goldoxide Furnace
+tile.goldOxideAlloyIdle=Goldoxide Alloy Smelter
+
+#-Manual Localizations
 mc.book.header=
 mc.book.shiftToRead=Shift-right click to read more
 mc.book.backbutton=Back

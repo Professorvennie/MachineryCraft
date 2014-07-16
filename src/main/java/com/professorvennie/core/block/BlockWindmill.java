@@ -13,7 +13,7 @@ import java.util.Random;
 
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.block.Block;
@@ -26,7 +26,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.professorvennie.core.block.tileEntity.TileEntitywindmill;
+import com.professorvennie.core.tileEntity.TileEntitywindmill;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.LibGuiIds;
 
@@ -38,8 +38,9 @@ public class BlockWindmill extends BlockContainer implements IBookable{
 		super(Material.rock);
 		this.setHardness(3.0f);
 		this.setHarvestLevel("Pickaxe", 2);
-		setBlockName(BlockNames.WINDMILL);
+		setBlockName(Names.Blocks.WINDMILL);
 		setBlockTextureName(Reference.MOD_ID + ":windmillground");
+        setStepSound(Block.soundTypeMetal);
 	}
 	
 	public void setBlockBoundsBasedOnState(IBlockAccess block, int x, int y, int z){

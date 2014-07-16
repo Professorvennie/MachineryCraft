@@ -10,7 +10,7 @@
 package com.professorvennie.core.client.gui;
 
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.common.handlers.ConfigHandler;
+import com.professorvennie.core.main.handlers.ConfigHandler;
 import cpw.mods.fml.client.config.GuiConfig;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;

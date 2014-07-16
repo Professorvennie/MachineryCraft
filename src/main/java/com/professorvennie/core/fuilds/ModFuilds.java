@@ -32,7 +32,7 @@ public class ModFuilds {
 			saltFluid = FluidRegistry.getFluid("saltFluid");
 		}
 		
-		salt = new FuildSaltWaterBlock(saltFluid, Material.lava).setBlockName("saltFluid").setCreativeTab(MachineryCraft.tabMachineryCraft);
+		salt = new FluidSaltWaterBlock(saltFluid, Material.lava).setBlockName("saltFluid").setCreativeTab(MachineryCraft.tabMachineryCraft);
 		GameRegistry.registerBlock(salt, salt.getUnlocalizedName());
 		saltFluid.setBlock(salt).setDensity(3000).setViscosity(6000).setTemperature(1300);
 	}

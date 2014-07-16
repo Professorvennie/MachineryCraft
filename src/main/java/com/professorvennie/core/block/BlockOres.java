@@ -41,6 +41,7 @@ public class BlockOres extends Block implements IBookable{
 		this.setBlockName("ore");
 		this.setHardness(3.5f);
 		this.setHarvestLevel("pickaxe", 2);
+        setStepSound(Block.soundTypeStone);
 	}
 	
 	@Override
@@ -51,7 +52,7 @@ public class BlockOres extends Block implements IBookable{
 	 	@Override
 	    @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister register) {
-	        iconArray = new IIcon[BlockNames.BlockOres.length];
+	        iconArray = new IIcon[Names.Blocks.ORES.length];
 	        for (int i = 0; i < iconArray.length; i++) {
 	            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + "ore" + "_" + i);
 	        }
@@ -108,7 +109,7 @@ public class BlockOres extends Block implements IBookable{
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs tab, List list) {
-        for (int i = 0; i < BlockNames.BlockOres.length; i++) {
+        for (int i = 0; i < Names.Blocks.ORES.length; i++) {
             list.add(new ItemStack(item, 1, i));
         }
     }

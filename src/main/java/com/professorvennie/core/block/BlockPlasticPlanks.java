@@ -1,6 +1,7 @@
 package com.professorvennie.core.block;
 
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -8,9 +9,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class BlockPlasticPlanks extends BlockMod {
 
     public BlockPlasticPlanks() {
-        super(Material.wood, BlockNames.BLOCK_PLASTIC_PLANKS);
+        super(Material.wood, Names.Blocks.BLOCK_PLASTIC_PLANKS);
         this.setHardness(1.5F);
         this.setHarvestLevel("axe", 0);
+        setStepSound(Block.soundTypeWood);
     }
 
     @Override

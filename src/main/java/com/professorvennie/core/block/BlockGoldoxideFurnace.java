@@ -12,8 +12,8 @@ package com.professorvennie.core.block;
 import java.util.Random;
 
 import com.professorvennie.api.book.BookEntry;
-import com.professorvennie.core.block.tileEntity.TileEntityGoldOxideFurnace;
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
+import com.professorvennie.core.tileEntity.TileEntityGoldOxideFurnace;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
 import com.professorvennie.core.lib.Reference;
@@ -35,9 +35,10 @@ import net.minecraft.world.World;
 public class BlockGoldoxideFurnace extends BlockBasicMachine{
 
 	public BlockGoldoxideFurnace(boolean isActive) {
-		super(BlockNames.goldOxideFurnace, isActive);
+		super(Names.Blocks.GOLDOXIDE_FURNACE, isActive);
         setHardness(5.0F);
         setHarvestLevel("pickaxe", 3);
+        setStepSound(Block.soundTypeMetal);
 	}
 
 	@Override

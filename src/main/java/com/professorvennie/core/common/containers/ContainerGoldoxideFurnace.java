@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.common.containers;
 
-import com.professorvennie.core.block.tileEntity.TileEntityGoldOxideFurnace;
+import com.professorvennie.core.tileEntity.TileEntityGoldOxideFurnace;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

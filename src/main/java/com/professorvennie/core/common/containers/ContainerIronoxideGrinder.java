@@ -10,8 +10,7 @@
 package com.professorvennie.core.common.containers;
 
 import com.professorvennie.api.recipes.GrinderRecipes;
-import com.professorvennie.core.block.tileEntity.TileEntityIronOxideFurnace;
-import com.professorvennie.core.block.tileEntity.TileEntityironOxideGrinder;
+import com.professorvennie.core.tileEntity.TileEntityironOxideGrinder;
 
 import com.professorvennie.core.main.utils.PowerAmounts;
 import cpw.mods.fml.relauncher.Side;

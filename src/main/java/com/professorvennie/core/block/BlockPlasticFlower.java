@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.block;
 
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
@@ -32,7 +32,7 @@ public class BlockPlasticFlower extends BlockFlower{
 
     public BlockPlasticFlower() {
         super(0);
-        setBlockName(BlockNames.BLOCK_PLASTIC_FLOWER);
+        setBlockName(Names.Blocks.BLOCK_PLASTIC_FLOWER);
         setCreativeTab(MachineryCraft.tabMachineryCraft);
     }
 

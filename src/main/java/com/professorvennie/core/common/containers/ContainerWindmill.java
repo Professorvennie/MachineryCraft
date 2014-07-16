@@ -14,7 +14,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 
-import com.professorvennie.core.block.tileEntity.TileEntitywindmill;
+import com.professorvennie.core.tileEntity.TileEntitywindmill;
 
 public class ContainerWindmill extends Container{
 

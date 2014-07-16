@@ -9,6 +9,7 @@
  * */
 package com.professorvennie.core.block;
 
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.block.Block;
@@ -18,11 +19,12 @@ public class BlockPlasticStairs extends BlockStairs {
 
     protected BlockPlasticStairs(Block block) {
         super(block, 0);
-        setBlockName("plasticStairs");
+        setBlockName(Names.Blocks.BLOCK_PLASTIC_STAIRS);
         setCreativeTab(MachineryCraft.tabMachineryCraft);
         useNeighborBrightness = true;
         setBlockTextureName(Reference.MOD_ID + ":plasticPlanks");
         setHardness(1.5F);
         setHarvestLevel("axe", 0);
+        setStepSound(Block.soundTypeWood);
     }
 }

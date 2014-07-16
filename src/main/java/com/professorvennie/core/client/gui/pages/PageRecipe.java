@@ -72,17 +72,17 @@ public class PageRecipe extends BookPage {
 				first = false;
 			}
 
-			com.professorvennie.core.client.helpers.RenderHelper.renderTooltip(mx, my, parsedTooltip);
+			com.professorvennie.core.main.helpers.RenderHelper.renderTooltip(mx, my, parsedTooltip);
 
 			int tooltipY = 8 + tooltipData.size() * 11;
 
 			if(tooltipEntry) {
-				com.professorvennie.core.client.helpers.RenderHelper.renderTooltipOrange(mx, my + tooltipY, Arrays.asList(EnumChatFormatting.GRAY + StatCollector.translateToLocal("mc.book.clickToRecipe")));
+				com.professorvennie.core.main.helpers.RenderHelper.renderTooltipOrange(mx, my + tooltipY, Arrays.asList(EnumChatFormatting.GRAY + StatCollector.translateToLocal("mc.book.clickToRecipe")));
 				tooltipY += 18;
 			}
 
 			if(tooltipContainerStack != null)
-				com.professorvennie.core.client.helpers.RenderHelper.renderTooltipOrange(mx, my + tooltipY, Arrays.asList(EnumChatFormatting.AQUA + StatCollector.translateToLocal("botaniamisc.craftingContainer"), tooltipContainerStack.getDisplayName()));
+				com.professorvennie.core.main.helpers.RenderHelper.renderTooltipOrange(mx, my + tooltipY, Arrays.asList(EnumChatFormatting.AQUA + StatCollector.translateToLocal("botaniamisc.craftingContainer"), tooltipContainerStack.getDisplayName()));
 		}
 
 		tooltipStack = tooltipContainerStack = null;

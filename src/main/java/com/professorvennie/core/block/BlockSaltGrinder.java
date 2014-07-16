@@ -11,8 +11,8 @@ package com.professorvennie.core.block;
 
 import java.util.Random;
 
-import com.professorvennie.core.lib.BlockNames;
 
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
@@ -30,7 +30,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.professorvennie.api.book.BookEntry;
-import com.professorvennie.core.block.tileEntity.TileEntitySaltGrinder;
+import com.professorvennie.core.tileEntity.TileEntitySaltGrinder;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
 
@@ -39,9 +39,10 @@ import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 public class BlockSaltGrinder extends BlockBasicMachine{
 
 	public BlockSaltGrinder(boolean isActive) {
-        super(BlockNames.SaltGrinder, isActive);
+        super(Names.Blocks.SALT_GRINDER, isActive);
         setHardness(3.5F);
         setHarvestLevel("pickaxe", 1);
+        setStepSound(Block.soundTypeMetal);
     }
 
 	public Item getItemDropped(int par1, Random random, int par2) {

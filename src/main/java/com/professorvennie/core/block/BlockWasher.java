@@ -10,33 +10,31 @@
 package com.professorvennie.core.block;
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.main.MachineryCraft;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import com.professorvennie.core.block.tileEntity.TileEntityWasher;
+import com.professorvennie.core.tileEntity.TileEntityWasher;
 import com.professorvennie.core.lib.LibGuiIds;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 public class BlockWasher extends BlockContainer implements ITileEntityProvider, IBookable {
-    @SideOnly(Side.CLIENT)
-    private IIcon[] iconArray;
 
     public BlockWasher() {
         super(Material.iron);
-        setBlockName(BlockNames.washer);
+        setBlockName(Names.Blocks.WASHER);
         setHardness(2.0F);
         setResistance(10.0F);
         this.setCreativeTab(MachineryCraft.tabMachineryCraft);
+        setStepSound(Block.soundTypeMetal);
+        setHardness(2.5f);
+        setHarvestLevel("pickAxe", 2);
     }
     
     public int getRenderType(){

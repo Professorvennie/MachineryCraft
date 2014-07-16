@@ -19,7 +19,7 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.core.client.gui.book.GuiBook;
-import com.professorvennie.core.client.helpers.RenderHelper;
+import com.professorvennie.core.main.helpers.RenderHelper;
 
 public class GuiButtonBack extends GuiButton {
 

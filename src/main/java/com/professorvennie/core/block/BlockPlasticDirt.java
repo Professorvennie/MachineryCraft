@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.block;
 
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
@@ -33,8 +33,11 @@ public class BlockPlasticDirt extends BlockDirt {
 
     public BlockPlasticDirt() {
         super();
-        setBlockName(BlockNames.BLOCK_PLASTIC_DIRT);
+        setBlockName(Names.Blocks.BLOCK_PLASTIC_DIRT);
         setCreativeTab(MachineryCraft.tabMachineryCraft);
+        setStepSound(Block.soundTypeGravel);
+        setHarvestLevel("shovel", 0);
+        setHardness(1.0f);
     }
 
 

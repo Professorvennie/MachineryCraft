@@ -19,7 +19,7 @@ import net.minecraft.util.StatCollector;
 
 import com.professorvennie.api.book.BookPage;
 import com.professorvennie.api.book.IGuiBookEntry;
-import com.professorvennie.core.client.helpers.FontHelper;
+import com.professorvennie.core.main.helpers.FontHelper;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

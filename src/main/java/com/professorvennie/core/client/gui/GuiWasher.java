@@ -13,13 +13,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import com.professorvennie.core.block.tileEntity.TileEntityWasher;
+import com.professorvennie.core.tileEntity.TileEntityWasher;
 import com.professorvennie.core.common.containers.ContainerWasher;
 
 import net.minecraft.client.Minecraft;
@@ -52,7 +53,7 @@ public static final ResourceLocation texture = new ResourceLocation(Reference.MO
 		String name = this.Washer.isInvNameLocalized() ? this.Washer.getInvName() : I18n.format(this.Washer.getInvName(), MachineryCraft.instance);
 		
 		this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
-		this.fontRendererObj.drawString(I18n.format("contaniner.inventory", MachineryCraft.instance), 30, this.ySize - 96 + 2, 4210752);
+		this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 30, this.ySize - 96 + 2, 4210752);
 		this.fontRendererObj.drawString(I18n.format("In", MachineryCraft.instance), 141, this.ySize - 116, 4210752);
 		this.fontRendererObj.drawString(I18n.format("Out", MachineryCraft.instance), 135, this.ySize - 99, 4210752);
 		

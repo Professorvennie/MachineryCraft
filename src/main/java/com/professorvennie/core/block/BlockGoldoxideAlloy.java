@@ -11,8 +11,8 @@ package com.professorvennie.core.block;
 
 
 import com.professorvennie.api.book.BookEntry;
-import com.professorvennie.core.block.tileEntity.TileEntityGoldOxideAlloy;
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
+import com.professorvennie.core.tileEntity.TileEntityGoldOxideAlloy;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
 import com.professorvennie.core.lib.Reference;
@@ -34,9 +34,10 @@ import java.util.Random;
 
 public class BlockGoldoxideAlloy extends BlockBasicMachine {
     public BlockGoldoxideAlloy(boolean isActive) {
-        super(BlockNames.goldOxideAlloy, isActive);
+        super(Names.Blocks.GOLDOXIDE_ALLOY, isActive);
         setHardness(5.5F);
         setHarvestLevel("pickaxe", 3);
+        setStepSound(Block.soundTypeMetal);
     }
 
     @Override

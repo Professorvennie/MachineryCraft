@@ -11,12 +11,11 @@ package com.professorvennie.core.main;
 
 import com.professorvennie.api.MachineryCraftAPI;
 import com.professorvennie.core.block.ModBlocks;
-import com.professorvennie.core.common.handlers.ConfigHandler;
+import com.professorvennie.core.lib.Names;
+import com.professorvennie.core.main.handlers.ConfigHandler;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.item.armor.ModArmor;
 import com.professorvennie.core.item.tools.ModTools;
-import com.professorvennie.core.lib.BlockNames;
-import com.professorvennie.core.lib.ItemNames;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -78,8 +77,15 @@ public class ModRecipes {
     public static IRecipe recipeEmeraldPants;
     public static IRecipe recipeEmeraldBoots;
 
-	
-	public static void init() {
+    //misc
+    public static IRecipe recipePlasticPlanks;
+    public static IRecipe recipePlasticStairs;
+    public static IRecipe recipePlasticSlab;
+    public static IRecipe recipePlasticChest;
+
+
+
+    public static void init() {
 		//machines
 		addOreDictRecipe(new ItemStack(ModBlocks.SaltFurnaceIdle),"SSS", "SFS", "SSS", 'S', new ItemStack(ModItems.Ingots, 1, 4), 'F', Blocks.furnace);
 		recipeSaltFurnace = MachineryCraftAPI.getLatestAddedRecipe();
@@ -222,6 +228,17 @@ public class ModRecipes {
             recipeEmeraldBoots = MachineryCraftAPI.getLatestAddedRecipe();
         }
 		//misc
+        addShapelessOreDictRecipe(new ItemStack(ModBlocks.plasticPlanks, 4), ModBlocks.plasticLog);
+        recipePlasticPlanks = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModBlocks.plasticStairs, 4), "P  ", "PP ", "PPP", 'P', ModBlocks.plasticPlanks);
+        recipePlasticStairs = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModBlocks.plasticSlabHalf, 6), "   ", "   ", "PPP",'P', ModBlocks.plasticPlanks);
+        recipePlasticSlab = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModBlocks.plasticChest), "PPP", "P P", "PPP",'P', ModBlocks.plasticPlanks);
+        recipePlasticChest = MachineryCraftAPI.getLatestAddedRecipe();
 	}
 	
 	
@@ -237,13 +254,13 @@ public class ModRecipes {
 	}
 	
 	public static void oreDict(){
-		for(int i = 0; i < ItemNames.Ingots.length-2; i++){
-			OreDictionary.registerOre(ItemNames.Ingots[i], new ItemStack(ModItems.Ingots, 1, i));
+		for(int i = 0; i < Names.Items.INGOTS.length-2; i++){
+			OreDictionary.registerOre(Names.Items.INGOTS[i], new ItemStack(ModItems.Ingots, 1, i));
 		}
 		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.Saltore));
 		
-		for(int i = 0; i < BlockNames.BlockOres.length; i++){
-			OreDictionary.registerOre(BlockNames.BlockOres[i], new ItemStack(ModBlocks.BlockOres, 1, i));
+		for(int i = 0; i < Names.Blocks.ORES.length; i++){
+			OreDictionary.registerOre(Names.Blocks.ORES[i], new ItemStack(ModBlocks.BlockOres, 1, i));
 		}
 	}
 	

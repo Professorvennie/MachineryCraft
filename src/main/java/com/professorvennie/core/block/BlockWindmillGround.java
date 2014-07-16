@@ -11,8 +11,8 @@ package com.professorvennie.core.block;
 
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IBookable;
-import com.professorvennie.core.block.tileEntity.TileEntitywindmillground;
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
+import com.professorvennie.core.tileEntity.TileEntitywindmillground;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 
@@ -29,9 +29,10 @@ public class BlockWindmillGround extends BlockContainer implements IBookable{
 	protected BlockWindmillGround() {
 		super(Material.ground);
 		this.setBlockBounds(0, 0, 0, 1, (1F / 16f) * 14, 1);
-		setBlockName(BlockNames.windmillground);
+		setBlockName(Names.Blocks.WINDMILL_GROUND);
 		setCreativeTab(MachineryCraft.tabMachineryCraft);
 		setBlockTextureName(Reference.MOD_ID + ":windmillground");
+        setStepSound(Block.soundTypeStone);
 	}
 
 	public boolean renderAsNormalBlock() {

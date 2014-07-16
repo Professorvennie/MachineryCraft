@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.block;
 
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 
@@ -31,7 +31,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import java.util.List;
 import java.util.Random;
 
-public class BlockPlasticSapling extends BlockFlower {
+public class BlockPlasticSapling extends BlockFlower{
 
     public static final String[] typesSapling = new String[] { "PlasticSapling" };
     private static final IIcon[] textures = new IIcon[typesSapling.length];
@@ -43,7 +43,7 @@ public class BlockPlasticSapling extends BlockFlower {
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
         this.setCreativeTab(MachineryCraft.tabMachineryCraft);
-        this.setBlockName(BlockNames.BLOCK_SAPLING);
+        this.setBlockName(Names.Blocks.BLOCK_SAPLING);
     }
 
     protected boolean canPlaceBlockOn(Block block){
@@ -113,7 +113,4 @@ public class BlockPlasticSapling extends BlockFlower {
             }
         }
     }
-	
-
-
 }

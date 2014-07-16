@@ -14,7 +14,7 @@ import com.professorvennie.api.book.BookCategory;
 import com.professorvennie.core.client.gui.book.BookEntry;
 import com.professorvennie.core.client.gui.pages.PageCraftingRecipe;
 import com.professorvennie.core.client.gui.pages.PageText;
-import com.professorvennie.core.common.handlers.ConfigHandler;
+import com.professorvennie.core.main.handlers.ConfigHandler;
 import com.professorvennie.core.main.ModRecipes;
 
 public class BookData {

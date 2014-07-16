@@ -9,8 +9,8 @@
  * */
 package com.professorvennie.core.common.containers;
 
-import com.professorvennie.core.block.tileEntity.TileEntitySaltFurnace;
-import com.professorvennie.core.block.tileEntity.TileEntityWasher;
+import com.professorvennie.core.tileEntity.TileEntitySaltFurnace;
+import com.professorvennie.core.tileEntity.TileEntityWasher;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

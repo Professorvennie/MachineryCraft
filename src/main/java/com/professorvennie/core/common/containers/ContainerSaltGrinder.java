@@ -10,7 +10,7 @@
 package com.professorvennie.core.common.containers;
 
 import com.professorvennie.api.recipes.GrinderRecipes;
-import com.professorvennie.core.block.tileEntity.TileEntitySaltGrinder;
+import com.professorvennie.core.tileEntity.TileEntitySaltGrinder;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

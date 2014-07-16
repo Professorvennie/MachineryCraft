@@ -136,8 +136,7 @@ public class ComponentWorkShop extends StructureVillagePieces.House1{
 
 
         this.placeBlockAtCurrentPosition(world, Blocks.crafting_table, 0, 7, 1, 1, sbb);
-        this.placeBlockAtCurrentPosition(world, Blocks.chest, 0, 1, 1, 1, sbb);
-        this.placeBlockAtCurrentPosition(world, Blocks.chest, 0, 2, 1, 1, sbb);
+        this.placeBlockAtCurrentPosition(world, ModBlocks.plasticChest, 0, 1, 1, 1, sbb);
 
         this.placeBlockAtCurrentPosition(world, Blocks.lit_redstone_lamp, 0, 4, 0, 4, sbb);
         this.placeBlockAtCurrentPosition(world, Blocks.lit_redstone_lamp, 0, 4, 0, 5, sbb);

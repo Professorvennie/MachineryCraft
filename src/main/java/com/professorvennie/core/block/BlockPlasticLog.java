@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.block;
 
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
@@ -40,7 +40,7 @@ public class BlockPlasticLog extends BlockRotatedPillar {
         this.setHarvestLevel("axe", 0);
         this.setStepSound(Block.soundTypeWood);
         this.setCreativeTab(MachineryCraft.tabMachineryCraft);
-        this.setBlockName(BlockNames.BLOCK_LOG);
+        this.setBlockName(Names.Blocks.BLOCK_LOG);
     }
 
     @Override
@@ -58,26 +58,22 @@ public class BlockPlasticLog extends BlockRotatedPillar {
 
     @Override
     public int damageDropped(int damage) {
-        return 20;
+        return 0;
     }
-
-
-    public static int func_150165_c(int par1)
-    {
-        return par1 & 3;
-    }
-
 
     @Override
-    public int quantityDropped(Random par1Random)
-    {
+    public int quantityDropped(Random par1Random){
         return 1;
     }
 
     @Override
-    public Item getItemDropped(int x, Random yRandom, int z)
-    {
-        return Item.getItemFromBlock(this);
+    public Item getItemDropped(int x, Random yRandom, int z){
+        return new ItemStack(this, 1, 0).getItem();
+    }
+
+    @Override
+    public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
+        return new ItemStack(this, 1, 0).getItem();
     }
 
     @Override
@@ -122,8 +118,7 @@ public class BlockPlasticLog extends BlockRotatedPillar {
     }
 
     @Override
-    public void breakBlock(World world, int x, int y, int z, Block bloque, int meta)
-    {
+    public void breakBlock(World world, int x, int y, int z, Block bloque, int meta){
         byte b0 = 4;
         int i1 = b0 + 1;
 
@@ -145,5 +140,4 @@ public class BlockPlasticLog extends BlockRotatedPillar {
             }
         }
     }
-
 }

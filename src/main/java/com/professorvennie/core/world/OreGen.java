@@ -13,7 +13,7 @@ import java.util.Random;
 
 import com.professorvennie.core.block.ModBlocks;
 
-import com.professorvennie.core.common.handlers.ConfigHandler;
+import com.professorvennie.core.main.handlers.ConfigHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

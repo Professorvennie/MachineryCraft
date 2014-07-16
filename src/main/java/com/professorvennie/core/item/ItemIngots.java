@@ -11,7 +11,7 @@ package com.professorvennie.core.item;
 
 import java.util.List;
 
-import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 
@@ -32,12 +32,13 @@ public class ItemIngots extends Item {
 		this.setUnlocalizedName("ingot");
 		this.setHasSubtypes(true);
 		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
+        setFull3D();
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List list) {
-		for (int i = 0; i < ItemNames.Ingots.length; i++) {
+		for (int i = 0; i < Names.Items.INGOTS.length; i++) {
 			list.add(new ItemStack(this, 1, i));
 		}
 	}
@@ -49,7 +50,7 @@ public class ItemIngots extends Item {
 	
 	@SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register){
-		 iconArray = new IIcon[ItemNames.Ingots.length];
+		 iconArray = new IIcon[Names.Items.INGOTS.length];
 	        for (int i = 0; i < iconArray.length; i++) {
 	        	  iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ingots/" + "ingot" + "_" + i);
 	        }

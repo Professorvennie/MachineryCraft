@@ -12,8 +12,8 @@ package com.professorvennie.core.block;
 import java.util.Random;
 
 import com.professorvennie.api.book.BookEntry;
-import com.professorvennie.core.block.tileEntity.TileEntityGoldOxideGrinder;
-import com.professorvennie.core.lib.BlockNames;
+import com.professorvennie.core.lib.Names;
+import com.professorvennie.core.tileEntity.TileEntityGoldOxideGrinder;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
 import com.professorvennie.core.lib.Reference;
@@ -35,9 +35,10 @@ import net.minecraft.world.World;
 public class BlockGoldoxideGrinder extends BlockBasicMachine{
 
 	public BlockGoldoxideGrinder(boolean isActive) {
-		super(BlockNames.goldOxideGrinder,isActive);
+		super(Names.Blocks.GOLDOXIDE_GRINDER,isActive);
         setHardness(5.0F);
         setHarvestLevel("pickaxe", 3);
+        setStepSound(Block.soundTypeMetal);
 	}
 
 	@Override

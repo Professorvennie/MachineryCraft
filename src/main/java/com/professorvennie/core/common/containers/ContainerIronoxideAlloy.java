@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.common.containers;
 
-import com.professorvennie.core.block.tileEntity.TileEntityIronOxideAlloy;
+import com.professorvennie.core.tileEntity.TileEntityIronOxideAlloy;
 
 import com.professorvennie.core.main.utils.PowerAmounts;
 import cpw.mods.fml.relauncher.Side;

@@ -30,7 +30,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.api.book.BookEntry;
 import com.professorvennie.api.book.IGuiBookEntry;
-import com.professorvennie.core.client.helpers.RenderHelper;
+import com.professorvennie.core.main.helpers.RenderHelper;
 
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;

@@ -54,6 +54,7 @@ public class ModBlocks {
     public static Block plasticStairs;
     public static Block plasticSlabHalf;
     public static Block plasticSlabDouble;
+    public static Block plasticChest;
 
 	public static void InitialiseBlock(){
 		BlockOres = new BlockOres();
@@ -93,6 +94,7 @@ public class ModBlocks {
         plasticStairs = new BlockPlasticStairs(plasticPlanks);
         plasticSlabHalf = new BlockPlasticSlab(false);
         plasticSlabDouble = new BlockPlasticSlab(true);
+        plasticChest = new BlockPlasticChest();
 	}
 	
 	public static void registerBlock(){
@@ -129,6 +131,7 @@ public class ModBlocks {
         RegistryUtils.registerBlock(plasticStairs);
         RegistryUtils.registerBlock(plasticSlabHalf, ItemPlasticSlab.class);
         RegistryUtils.registerBlock(plasticSlabDouble, ItemPlasticSlab.class);
+        RegistryUtils.registerBlock(plasticChest);
 	}
 	
 }

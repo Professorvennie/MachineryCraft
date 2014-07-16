@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.item;
 
-import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 import net.minecraft.item.Item;
@@ -43,17 +43,17 @@ public class ModItems {
 
     public static void InitialiseItem(){
 		//Random items
-		saltcyrstals = new Item().setUnlocalizedName(ItemNames.saltcyrstals).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":saltcyrstals");
-		Itemwindmill = new ItemWindmill().setUnlocalizedName(ItemNames.Itemwindmill).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName("diamond");
+		saltcyrstals = new Item().setUnlocalizedName(Names.Items.SALTCYRASTALS).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":saltcyrstals");
+		Itemwindmill = new ItemWindmill().setUnlocalizedName(Names.Items.WINDMILL).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName("diamond");
 		Dusts = new ItemDusts();
 		Ingots = new ItemIngots();
 		book = new ItemBook();
-        itemPlasticApple = new ItemFood(5, 0.5F, false).setUnlocalizedName(ItemNames.PLASTIC_APPLE).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":plasticApple");
+        itemPlasticApple = new ItemFood(5, 0.5F, false).setUnlocalizedName(Names.Items.PLASTIC_APPLE).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":plasticApple");
 
 		//upgrades
-		speedupgrade = new ItemSpeedUpgrade().setUnlocalizedName(ItemNames.speedupgrade).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":speedupgrade");
-		powerboost = new Item().setUnlocalizedName(ItemNames.powerboost).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(1).setTextureName(Reference.MOD_ID + ":powerboost");
-		efficiency = new Item().setUnlocalizedName(ItemNames.efficiency).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":");
+		speedupgrade = new ItemSpeedUpgrade().setUnlocalizedName(Names.Items.SPPED_UPGRADE).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":speedupgrade");
+		powerboost = new Item().setUnlocalizedName(Names.Items.POWERBOOST).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(1).setTextureName(Reference.MOD_ID + ":powerboost");
+		efficiency = new Item().setUnlocalizedName(Names.Items.EFFICIENCY).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":");
 	}
 	
 	
@@ -67,8 +67,5 @@ public class ModItems {
 		RegistryUtils.registerItem(Dusts);
 		RegistryUtils.registerItem(book);
         RegistryUtils.registerItem(itemPlasticApple);
-
     }
 }
-
-;
