@@ -9,6 +9,7 @@
  * */
 package com.professorvennie.core.tileEntity;
 
+import com.professorvennie.api.blocks.IMachine;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -25,19 +26,31 @@ public class TileEntityCable extends TileEntity {
 	}
 	
 	public void updateConnections(){
-		if(this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord) instanceof TileEntityCable) connections[0] = ForgeDirection.UP;
+		if(isCable(xCoord, yCoord+1, zCoord)) connections[0] = ForgeDirection.UP;
 			else connections[0] = null;
-		if(this.worldObj.getTileEntity(xCoord, yCoord-1, zCoord) instanceof TileEntityCable) connections[1] = ForgeDirection.DOWN;
+		if(isCable(xCoord, yCoord-1, zCoord)) connections[1] = ForgeDirection.DOWN;
 			else connections[1] = null;
-		if(this.worldObj.getTileEntity(xCoord, yCoord, zCoord-1) instanceof TileEntityCable) connections[2] = ForgeDirection.NORTH;
+		if(isCable(xCoord, yCoord, zCoord-1) || isWindmill(xCoord, yCoord, zCoord-1)) connections[2] = ForgeDirection.NORTH;
 			else connections[2] = null;
-		if(this.worldObj.getTileEntity(xCoord+1, yCoord, zCoord) instanceof TileEntityCable) connections[3] = ForgeDirection.EAST;
+		if(isCable(xCoord+1, yCoord, zCoord) || isWindmill(xCoord+1, yCoord, zCoord)) connections[3] = ForgeDirection.EAST;
 			else connections[3] = null;
-		if(this.worldObj.getTileEntity(xCoord, yCoord, zCoord+1) instanceof TileEntityCable) connections[4] = ForgeDirection.SOUTH;
+		if(isCable(xCoord, yCoord, zCoord+1) || isWindmill(xCoord, yCoord, zCoord+1)) connections[4] = ForgeDirection.SOUTH;
 			else connections[4] = null;
-		if(this.worldObj.getTileEntity(xCoord-1, yCoord, zCoord) instanceof TileEntityCable) connections[5] = ForgeDirection.WEST;
+		if(isCable(xCoord-1, yCoord, zCoord) || isWindmill(xCoord-1, yCoord, zCoord)) connections[5] = ForgeDirection.WEST;
 			else connections[5] = null;
 	}
+
+    public boolean isCable(int x, int y, int z){
+       return this.worldObj.getTileEntity(x, y, z) instanceof TileEntityCable;
+    }
+
+    public boolean isMachine(int x, int y, int z){
+        return this.worldObj.getTileEntity(x, y, z) instanceof IMachine;
+    }
+    public boolean isWindmill(int x, int y, int z){
+        return (this.worldObj.getTileEntity(x, y, z) instanceof IMachine) && worldObj.getBlockMetadata(x, y, z) == 1;
+    }
+
 	
 	public boolean onlyOneOppsoite(ForgeDirection[] directions){
 		ForgeDirection mainDirection = null;

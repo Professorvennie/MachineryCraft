@@ -10,6 +10,8 @@
 package com.professorvennie.core.client.renderer.tileentity;
 
 import com.professorvennie.core.lib.Reference;
+import com.professorvennie.core.tileEntity.TileEntityCable;
+import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 
 import com.professorvennie.core.block.ModBlocks;
@@ -45,11 +47,26 @@ public class TileEntityRendererwindmill extends TileEntitySpecialRenderer {
 			GL11.glTranslatef(0.5F, 0, 0.5F);
 			GL11.glRotatef(direction*90, 0, 1, 0);
 			GL11.glTranslatef(-0.5F, 0, -0.5F);
+
+        if(metadata == 1){
+            TileEntity cable = tileentity.getWorldObj().getTileEntity(tileentity.xCoord+1, tileentity.yCoord, tileentity.zCoord);
+            if(cable instanceof TileEntityCable) drawConnector(ForgeDirection.EAST);
+
+            cable = tileentity.getWorldObj().getTileEntity(tileentity.xCoord-1, tileentity.yCoord, tileentity.zCoord);
+            if(cable instanceof TileEntityCable) drawConnector(ForgeDirection.WEST);
+
+            cable = tileentity.getWorldObj().getTileEntity(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord+1);
+            if(cable instanceof TileEntityCable) drawConnector(ForgeDirection.SOUTH);
+
+            cable = tileentity.getWorldObj().getTileEntity(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord-1);
+            if(cable instanceof TileEntityCable) drawConnector(ForgeDirection.NORTH);
+        }
 			
 			Tessellator tessellator = Tessellator.instance;
 			this.bindTexture(texterwindmill);
 			tessellator.startDrawingQuads();
 			{
+
 				if(metadata > 0 && metadata < 7){
 					tessellator.addVertexWithUV((8)/2*pixel, 0, 1-(8)/2*pixel, 8*(1F/textureWidth), 1*(1F/textureHeight));
 					tessellator.addVertexWithUV((8)/2*pixel, 1, 1-(8)/2*pixel, 8*(1F/textureWidth), 0*(1F/textureHeight));
@@ -132,4 +149,78 @@ public class TileEntityRendererwindmill extends TileEntitySpecialRenderer {
 				}
 			tessellator.draw();
 	}
+    public void drawConnector(ForgeDirection direction){
+        ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/model/cable.png");
+
+        float texturePixel = 1F/32F;
+        Tessellator tessellator = Tessellator.instance;
+        this.bindTexture(texture);
+        tessellator.startDrawingQuads();
+        {
+            GL11.glTranslated(0.5F, 0.5F, 0.5F);
+            if(direction.equals(ForgeDirection.EAST)){
+                GL11.glRotatef(-90, 1, 0, 0);
+            }else if(direction.equals(ForgeDirection.SOUTH)){
+                GL11.glRotatef(-90, 0, 0, 1);
+            }else if(direction.equals(ForgeDirection.NORTH)){
+                GL11.glRotatef(90, 0, 0, 1);
+            }else if(direction.equals(ForgeDirection.WEST)){
+                GL11.glRotatef(90, 1, 0, 0);
+            }
+            GL11.glTranslated(-0.5F, -0.5F, -0.5F);
+
+            tessellator.addVertexWithUV(1- 11*pixel/2, 1-4*pixel, 1-11*pixel/2, 10*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(1- 11*pixel/2, 1, 1-11*pixel/2, 26*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1, 1-11*pixel/2, 14*texturePixel, 0*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1-4*pixel, 1-11*pixel/2, 10*texturePixel, 0*texturePixel);
+
+            tessellator.addVertexWithUV(1- 11*pixel/2, 1, 1-11*pixel/2, 10*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(1- 11*pixel/2, 1-11*pixel/2, 1-11*pixel/2, 14*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1-11*pixel/2, 1-11*pixel/2, 14*texturePixel, 0*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1, 1-11*pixel/2, 10*texturePixel, 0*texturePixel);
+
+            tessellator.addVertexWithUV(11*pixel/2, 1-4*pixel, 11*pixel/2, 10*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1, 11*pixel/2, 14*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1, 11*pixel/2,14*texturePixel, 0*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1-4*pixel, 11*pixel/2, 10*texturePixel, 0*texturePixel);
+
+            tessellator.addVertexWithUV(11*pixel/2, 1, 11*pixel/2, 10*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1-4*pixel, 11*pixel/2, 14*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1-4*pixel, 11*pixel/2, 14*texturePixel, 0*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1, 11*pixel/2, 10*texturePixel, 0*texturePixel);
+
+            tessellator.addVertexWithUV(1-11*pixel/2, 1-4*pixel, 11*pixel/2, 10*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1, 11*pixel/2, 14*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1, 1-11*pixel/2, 14*texturePixel, 0*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1-4*pixel, 1-11*pixel/2, 10*texturePixel, 0*texturePixel);
+
+            tessellator.addVertexWithUV(1-11*pixel/2, 1, 11*pixel/2, 10*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1-4*pixel, 11*pixel/2, 14*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1-4*pixel, 1-11*pixel/2, 14*texturePixel, 0*texturePixel);
+            tessellator.addVertexWithUV(1-11*pixel/2, 1, 1-11*pixel/2, 10*texturePixel, 0*texturePixel);
+
+            tessellator.addVertexWithUV(11*pixel/2, 1-4*pixel, 1-11*pixel/2, 10*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1, 1-11*pixel/2, 14*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1, 11*pixel/2, 14*texturePixel, 0*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1-4*pixel, 11*pixel/2, 10*texturePixel, 0*texturePixel);
+
+            tessellator.addVertexWithUV(11*pixel/2, 1, 1-11*pixel/2, 10*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1-4*pixel, 1-11*pixel/2, 14*texturePixel, 5*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1-4*pixel, 11*pixel/2, 14*texturePixel, 0*texturePixel);
+            tessellator.addVertexWithUV(11*pixel/2, 1, 11*pixel/2, 10*texturePixel, 0*texturePixel);
+        }
+        tessellator.draw();
+
+        GL11.glTranslated(0.5F, 0.5F, 0.5F);
+        if(direction.equals(ForgeDirection.EAST)){
+            GL11.glRotatef(90, 1, 0, 0);
+        }else if(direction.equals(ForgeDirection.SOUTH)){
+            GL11.glRotatef(90, 0, 0, 1);
+        }else if(direction.equals(ForgeDirection.NORTH)){
+            GL11.glRotatef(-90, 0, 0, 1);
+        }else if(direction.equals(ForgeDirection.WEST)){
+            GL11.glRotatef(-90, 1, 0, 0);
+        }
+        GL11.glTranslated(-0.5F, -0.5F, -0.5F);
+    }
 }

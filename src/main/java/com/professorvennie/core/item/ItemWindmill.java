@@ -14,7 +14,9 @@ import com.professorvennie.core.block.ModBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class ItemWindmill extends Item {
 
@@ -31,11 +33,15 @@ public class ItemWindmill extends Item {
 					 }
 				 }
 				 if(!notEnoughspace){
-					int direction = (-(int)player.rotationYaw+45)/90;
-					if(direction == 0) direction = 4;
+					int direction = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+                     int meta = 0;
+                     if(direction == 0) meta = ForgeDirection.WEST.ordinal();
+                     if(direction == 1) meta = ForgeDirection.SOUTH.ordinal();
+                     if(direction == 2) meta = ForgeDirection.NORTH.ordinal();
+                     if(direction == 3) meta = ForgeDirection.EAST.ordinal();
+
 					 for(int y1 = 0; y1 < 7; y1++){
-						 world.setBlock(x, y+y1+1, z, ModBlocks.windmill, (y1+1) == 7?(y1+1+direction):(y1+1), 2);
-							
+						 world.setBlock(x, y+y1+1, z, ModBlocks.windmill, (y1+1) == 7?(y1+1+meta):(y1+1), 2);
 					 }
 					 return true;
 				 }

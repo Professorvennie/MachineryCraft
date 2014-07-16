@@ -49,8 +49,6 @@ public class TileEntityRendererCable extends TileEntitySpecialRenderer {
 			}
 		
 		}
-		
-		
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glTranslated(-x, -y, -z);
 	}

@@ -48,6 +48,7 @@ public class TileEntityMod extends TileEntity {
 
         if (nbtTagCompound.hasKey("direction")) {
             this.orientation = ForgeDirection.getOrientation(nbtTagCompound.getByte("direction"));
+            //System.out.println("readFromNBT- orientation:" + orientation);
         }
 
         if (nbtTagCompound.hasKey("customName")) {
@@ -60,6 +61,7 @@ public class TileEntityMod extends TileEntity {
         super.writeToNBT(nbtTagCompound);
 
         nbtTagCompound.setByte("direction", (byte) orientation.ordinal());
+       //System.out.println("writeToNBT - orientation:" + orientation);
 
         if (this.hasCustomName()) {
             nbtTagCompound.setString("customName", customName);
