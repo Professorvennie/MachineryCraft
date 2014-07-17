@@ -10,26 +10,40 @@
 package com.professorvennie.core.block;
 
 import com.professorvennie.core.lib.Names;
+import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.tileEntity.TileEntityPlasticChest;
 import com.professorvennie.core.lib.LibGuiIds;
 import com.professorvennie.core.main.MachineryCraft;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import java.util.Random;
+
 public class BlockPlasticChest extends BlockContainer {
+
+    private Random rand = new Random();
+    public static boolean keepInventory;
 
     protected BlockPlasticChest() {
         super(Material.wood);
         setBlockName(Names.Blocks.BLOCK_PLASTIC_CHEST);
         setCreativeTab(MachineryCraft.tabMachineryCraft);
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+        keepInventory = false;
+        setBlockTextureName(Reference.MOD_ID + ":plastic_Chest");
+        setHardness(2.0F);
+        setHarvestLevel("axe", 0);
+        setStepSound(Block.soundTypeWood);
     }
 
     @Override
@@ -95,5 +109,45 @@ public class BlockPlasticChest extends BlockContainer {
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
         return new TileEntityPlasticChest();
+    }
+
+    public void breakBlock(World world, int x, int y, int z, Block block, int side){
+        if(!keepInventory) {
+            TileEntityPlasticChest tileEntitySaltFurnace = (TileEntityPlasticChest) world.getTileEntity(x, y, z);
+            if (tileEntitySaltFurnace != null) {
+                for (int i = 0; i < tileEntitySaltFurnace.getSizeInventory(); i++) {
+                    ItemStack itemStack = tileEntitySaltFurnace.getStackInSlot(i);
+
+                    if (itemStack != null) {
+                        float f = this.rand.nextFloat() * 0.6F + 01F;//x
+                        float f1 = this.rand.nextFloat() * 0.6F + 01F;//y
+                        float f2 = this.rand.nextFloat() * 0.6F + 01F;//z
+
+                        while (itemStack.stackSize > 0) {
+                            int j = this.rand.nextInt(21) + 10;
+
+                            if (j > itemStack.stackSize)
+                                j = itemStack.stackSize;
+
+                            itemStack.stackSize -= j;
+                            EntityItem entityItem = new EntityItem(world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), new ItemStack(itemStack.getItem(), j, itemStack.getItemDamage()));
+
+                            if (itemStack.hasTagCompound()) {
+                                entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
+                            }
+
+                            float f3 = 0.025F;
+                            entityItem.motionX = (double) ((float) this.rand.nextGaussian() * f3);
+                            entityItem.motionY = (double) ((float) this.rand.nextGaussian() * f3 + 0.1F);
+                            entityItem.motionZ = (double) ((float) this.rand.nextGaussian() * f3);
+
+                            world.spawnEntityInWorld(entityItem);
+                        }
+                    }
+                }
+                world.func_147453_f(x, y, z, block);
+            }
+        }
+        super.breakBlock(world, x, y, z, block, side);
     }
 }

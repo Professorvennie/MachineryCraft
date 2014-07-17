@@ -33,6 +33,8 @@ public class BlockWindmillGround extends BlockContainer implements IBookable{
 		setCreativeTab(MachineryCraft.tabMachineryCraft);
 		setBlockTextureName(Reference.MOD_ID + ":windmillground");
         setStepSound(Block.soundTypeStone);
+        setHardness(2.5F);
+        setHarvestLevel("pickAxe", 2);
 	}
 
 	public boolean renderAsNormalBlock() {
@@ -47,8 +49,7 @@ public class BlockWindmillGround extends BlockContainer implements IBookable{
 		return false;
 	}
 
-	public void onNeighborBlockChange(World world, int x, int y, int z,
-			Block neighborblock) {
+	public void onNeighborBlockChange(World world, int x, int y, int z,Block neighborblock) {
 		updateMultiBlockStructure(world, x, y, z);
 	}
 
@@ -72,9 +73,7 @@ public class BlockWindmillGround extends BlockContainer implements IBookable{
 					for (int x3 = 0; x3 < 3; x3++) {
 						for (int z3 = 0; z3 < 3; z3++) {
 							if (currentCheckStrucre
-									&& !world.getBlock(x1 + x2 - x3, y1,
-											z1 + z2 - z3).equals(
-											ModBlocks.windmillground)) {
+									&& !world.getBlock(x1 + x2 - x3, y1, z1 + z2 - z3).equals( ModBlocks.windmillground)) {
 								currentCheckStrucre = false;
 							}
 						}
@@ -82,8 +81,7 @@ public class BlockWindmillGround extends BlockContainer implements IBookable{
 					if (currentCheckStrucre) {
 						for (int x3 = 0; x3 < 3; x3++) {
 							for (int z3 = 0; z3 < 3; z3++) {
-								world.setBlockMetadataWithNotify(x1 + x2 - x3,
-										y1, z1 + z2 - z3, x3 * 3 + z3 + 1, 2);
+								world.setBlockMetadataWithNotify(x1 + x2 - x3, y1, z1 + z2 - z3, x3 * 3 + z3 + 1, 2);
 							}
 						}
 					}

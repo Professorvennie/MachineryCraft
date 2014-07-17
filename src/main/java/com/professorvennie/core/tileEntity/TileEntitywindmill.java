@@ -9,7 +9,6 @@
  * */
 package com.professorvennie.core.tileEntity;
 
-import com.professorvennie.api.blocks.IMachine;
 import com.professorvennie.core.lib.Names;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -19,7 +18,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-public class TileEntitywindmill extends TileEntity implements ISidedInventory, IMachine{
+public class TileEntitywindmill extends TileEntity implements ISidedInventory{
 
 	private ItemStack[] slots = new ItemStack[2];
 	

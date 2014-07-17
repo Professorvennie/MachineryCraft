@@ -17,6 +17,7 @@ import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.item.armor.ModArmor;
 import com.professorvennie.core.item.tools.ModTools;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -83,6 +84,31 @@ public class ModRecipes {
     public static IRecipe recipePlasticSlab;
     public static IRecipe recipePlasticChest;
 
+    //nuggets
+    public static IRecipe recipeStoneNugget;
+    public static IRecipe recipeSaltNugget;
+    public static IRecipe recipeIronNugget;
+    public static IRecipe recipeCopperNugget;
+    public static IRecipe recipeTinNugget;
+    public static IRecipe recipeSilverNugget;
+    public static IRecipe recipeLeadNugget;
+    public static IRecipe recipeBronzeNugget;
+    public static IRecipe recipeIronoxideNugget;
+    public static IRecipe recipeGoldoxideNugget;
+
+    //gears
+    public static IRecipe recipeWoodenGear;
+    public static IRecipe recipeStoneGear;
+    public static IRecipe recipeSaltGear;
+    public static IRecipe recipeIronGear;
+    public static IRecipe recipeCopperGear;
+    public static IRecipe recipeTinGear;
+    public static IRecipe recipeSilverGear;
+    public static IRecipe recipeLeadGear;
+    public static IRecipe recipeBronzeGear;
+    public static IRecipe recipeIronoxideGear;
+    public static IRecipe recipeGoldoxideGear;
+    public static IRecipe recipeGoldGear;
 
 
     public static void init() {
@@ -239,6 +265,74 @@ public class ModRecipes {
 
         addOreDictRecipe(new ItemStack(ModBlocks.plasticChest), "PPP", "P P", "PPP",'P', ModBlocks.plasticPlanks);
         recipePlasticChest = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 0), Blocks.stone);
+        recipeStoneNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 1), new ItemStack(ModItems.Ingots, 1, 4));
+        recipeSaltNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 5), Items.iron_ingot);
+        recipeIronNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 3), new ItemStack(ModItems.Ingots, 1, 0));
+        recipeCopperNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 2), new ItemStack(ModItems.Ingots, 1, 1));
+        recipeTinNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 6), new ItemStack(ModItems.Ingots, 1, 2));
+        recipeSilverNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 8), new ItemStack(ModItems.Ingots, 1, 3));
+        recipeLeadNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 4), new ItemStack(ModItems.Ingots, 1, 7));
+        recipeBronzeNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 7), new ItemStack(ModItems.Ingots, 1, 6));
+        recipeIronoxideNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addShapelessOreDictRecipe(new ItemStack(ModItems.nuggets, 9, 9), new ItemStack(ModItems.Ingots, 1, 5));
+        recipeGoldoxideNugget = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 0), " N ", "NIN", " N ", 'N', Items.stick, 'I', Blocks.planks);
+        recipeWoodenGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 1), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 0), 'I', Blocks.stone);
+        recipeStoneGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 2), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 1), 'I', new ItemStack(ModItems.Ingots, 1, 4));
+        recipeSaltGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 6), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 5), 'I', Items.iron_ingot);
+        recipeIronGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 4), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 3), 'I', new ItemStack(ModItems.Ingots, 1, 0));
+        recipeCopperGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 3), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 2), 'I', new ItemStack(ModItems.Ingots, 1, 1));
+        recipeTinGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 7), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 6), 'I', new ItemStack(ModItems.Ingots, 1, 2));
+        recipeSilverGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 9), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 8), 'I', new ItemStack(ModItems.Ingots, 1, 3));
+        recipeLeadGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 5), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 4), 'I', new ItemStack(ModItems.Ingots, 1, 7));
+        recipeBronzeGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 8), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 7), 'I', new ItemStack(ModItems.Ingots, 1, 6));
+        recipeIronoxideGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 10), " N ", "NIN", " N ", 'N', Items.gold_nugget, 'I', Items.gold_ingot);
+        recipeGoldGear= MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModItems.gears, 1, 11), " N ", "NIN", " N ", 'N', new ItemStack(ModItems.nuggets, 1, 9), 'I', new ItemStack(ModItems.Ingots, 1, 5));
+        recipeGoldoxideGear = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addSmelting();
 	}
 	
 	
@@ -262,9 +356,27 @@ public class ModRecipes {
 		for(int i = 0; i < Names.Blocks.ORES.length; i++){
 			OreDictionary.registerOre(Names.Blocks.ORES[i], new ItemStack(ModBlocks.BlockOres, 1, i));
 		}
+
+        for(int i = 0; i < Names.Items.NUGGETS.length; i++){
+            OreDictionary.registerOre(Names.Items.NUGGETS[i], new ItemStack(ModItems.nuggets, 1, i));
+        }
+
+        for(int i = 0; i < Names.Items.DUSTS.length; i++){
+            OreDictionary.registerOre(Names.Items.DUSTS[i], new ItemStack(ModItems.Dusts, 1, i));
+        }
 	}
 	
 	public static void addChestLoot(){
 		
 	}
+
+    public static void addSmelting(){
+/*iron*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 0), new ItemStack(Items.iron_ingot, 2), 0.8f);
+/*gold*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 1), new ItemStack(Items.gold_ingot, 2), 0.8f);
+/*tin*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 2), new ItemStack(ModItems.Ingots, 2, 1), 0.8f);
+/*silver*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 3), new ItemStack(ModItems.Ingots, 2, 2), 0.8f);
+/*lead*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 4), new ItemStack(ModItems.Ingots, 2, 3), 0.8f);
+/*copper*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 5), new ItemStack(ModItems.Ingots, 2, 0), 0.8f);
+/*salt*/GameRegistry.addSmelting(ModItems.saltcyrstals, new ItemStack(ModItems.Ingots, 1, 4), 0.8f);
+    }
 }

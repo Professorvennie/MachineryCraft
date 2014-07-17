@@ -10,6 +10,9 @@
 package com.professorvennie.core.tileEntity;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -48,7 +51,6 @@ public class TileEntityMod extends TileEntity {
 
         if (nbtTagCompound.hasKey("direction")) {
             this.orientation = ForgeDirection.getOrientation(nbtTagCompound.getByte("direction"));
-            //System.out.println("readFromNBT- orientation:" + orientation);
         }
 
         if (nbtTagCompound.hasKey("customName")) {
@@ -61,7 +63,6 @@ public class TileEntityMod extends TileEntity {
         super.writeToNBT(nbtTagCompound);
 
         nbtTagCompound.setByte("direction", (byte) orientation.ordinal());
-       //System.out.println("writeToNBT - orientation:" + orientation);
 
         if (this.hasCustomName()) {
             nbtTagCompound.setString("customName", customName);
@@ -71,4 +72,16 @@ public class TileEntityMod extends TileEntity {
     public boolean hasCustomName() {
         return customName != null && customName.length() > 0;
     }
+    @Override
+    public Packet getDescriptionPacket() {
+        NBTTagCompound tileTag = new NBTTagCompound();
+        this.writeToNBT(tileTag);
+        return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 0, tileTag);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+        this.readFromNBT(pkt.func_148857_g());
+    }
+
 }

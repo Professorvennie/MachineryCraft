@@ -219,8 +219,6 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
         }
     }
 
-//    
-
     @Override
     public int getSizeInventory() {
         return this.slots.length;
@@ -280,9 +278,6 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
         return hasMaster();
     }
 
-
-   
-
     public void readFromNBT(NBTTagCompound data) {
     	super.readFromNBT(data);
 
@@ -307,36 +302,23 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
     
 	@Override
 	public String getInventoryName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void openInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void openInventory() {}
 
 	@Override
-	public void closeInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void closeInventory() {}
 
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-	
-		return var1 == 2 ? false : (var1 == 1 ? isItemFuel(var2) : true);
-	}
-
-	private boolean isItemFuel(ItemStack var2) {
-		return false;
+		return true;
 	}
 
 	@Override

@@ -10,6 +10,7 @@
 package com.professorvennie.core.tileEntity;
 
 
+import com.professorvennie.api.blocks.IMachine;
 import com.professorvennie.core.block.BlockIronoxideFurnace;
 import com.professorvennie.core.block.ModBlocks;
 
@@ -25,7 +26,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInventory {
+public class TileEntityIronOxideFurnace extends TileEntity implements ISidedInventory, IMachine {
 	
 	private String localizedName;
 

@@ -26,17 +26,17 @@ public class TileEntityCable extends TileEntity {
 	}
 	
 	public void updateConnections(){
-		if(isCable(xCoord, yCoord+1, zCoord)) connections[0] = ForgeDirection.UP;
+		if(isCable(xCoord, yCoord+1, zCoord)  || isMachine(xCoord, yCoord+1, zCoord)) connections[0] = ForgeDirection.UP;
 			else connections[0] = null;
 		if(isCable(xCoord, yCoord-1, zCoord)) connections[1] = ForgeDirection.DOWN;
 			else connections[1] = null;
-		if(isCable(xCoord, yCoord, zCoord-1) || isWindmill(xCoord, yCoord, zCoord-1)) connections[2] = ForgeDirection.NORTH;
+		if(isCable(xCoord, yCoord, zCoord-1) || isWindmill(xCoord, yCoord, zCoord-1)  || isMachine(xCoord, yCoord, zCoord-1)) connections[2] = ForgeDirection.NORTH;
 			else connections[2] = null;
-		if(isCable(xCoord+1, yCoord, zCoord) || isWindmill(xCoord+1, yCoord, zCoord)) connections[3] = ForgeDirection.EAST;
+		if(isCable(xCoord+1, yCoord, zCoord) || isWindmill(xCoord+1, yCoord, zCoord) || isMachine(xCoord+1, yCoord, zCoord)) connections[3] = ForgeDirection.EAST;
 			else connections[3] = null;
-		if(isCable(xCoord, yCoord, zCoord+1) || isWindmill(xCoord, yCoord, zCoord+1)) connections[4] = ForgeDirection.SOUTH;
+		if(isCable(xCoord, yCoord, zCoord+1) || isWindmill(xCoord, yCoord, zCoord+1) || isMachine(xCoord, yCoord, zCoord+1)) connections[4] = ForgeDirection.SOUTH;
 			else connections[4] = null;
-		if(isCable(xCoord-1, yCoord, zCoord) || isWindmill(xCoord-1, yCoord, zCoord)) connections[5] = ForgeDirection.WEST;
+		if(isCable(xCoord-1, yCoord, zCoord) || isWindmill(xCoord-1, yCoord, zCoord) || isMachine(xCoord-1, yCoord, zCoord)) connections[5] = ForgeDirection.WEST;
 			else connections[5] = null;
 	}
 
