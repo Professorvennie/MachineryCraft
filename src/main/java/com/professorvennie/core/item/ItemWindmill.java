@@ -39,7 +39,8 @@ public class ItemWindmill extends Item {
                      if(direction == 1) meta = ForgeDirection.SOUTH.ordinal();
                      if(direction == 2) meta = ForgeDirection.NORTH.ordinal();
                      if(direction == 3) meta = ForgeDirection.EAST.ordinal();
-
+                     if(itemstack.stackSize > 0)
+                            itemstack.stackSize -= 1;
 					 for(int y1 = 0; y1 < 7; y1++){
 						 world.setBlock(x, y+y1+1, z, ModBlocks.windmill, (y1+1) == 7?(y1+1+meta):(y1+1), 2);
 					 }

@@ -43,6 +43,7 @@ public class Names {
         public static final String BOOK = "ItemBook";
         public static final String PLASTIC_APPLE = "plasticApple";
         public static final String[] GEARS = new String[]{"gearWood", "gearStone", "gearSalt", "gearIron", "gearCopper", "gearTin","gearSilver","gearLead", "gearBronze", "gearIronoxide", "gearGold", "gearGoldxxide"};
+        public static final String[] NUGGETS = new String[]{"nuggetStone", "nuggetSalt", "nuggetIron", "nuggetCopper", "nuggetTin","nuggetSilver","nuggetLead", "nuggetBronze", "nuggetIronoxide", "nuggetGoldxxide"};
 
 
         //Tools

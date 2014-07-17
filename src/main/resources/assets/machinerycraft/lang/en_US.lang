@@ -79,6 +79,18 @@ item.gear.9.name=Lead Gear
 item.gear.10.name=Gold Gear
 item.gear.11.name=Goldoxide Gear
 
+item.nugget.0.name=Stone Nugget
+item.nugget.1.name=Salt Nugget
+item.nugget.2.name=Tin Nugget
+item.nugget.3.name=Copper Nugget
+item.nugget.4.name=Bronze Nugget
+item.nugget.5.name=Iron Nugget
+item.nugget.6.name=Silver Nugget
+item.nugget.7.name=Ironoxide Nugget
+item.nugget.8.name=Lead Nugget
+item.nugget.9.name=Goldoxide Nugget
+
+
 #-GUI Localizations
 container.saltFurnace=Salt Furnace
 container.inventory=Inventory

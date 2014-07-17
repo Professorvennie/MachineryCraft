@@ -40,6 +40,7 @@ public class ModItems {
 	public static Item book;
     public static Item itemPlasticApple;
     public static Item gears;
+    public static Item nuggets;
 
 
     public static void InitialiseItem(){
@@ -51,6 +52,7 @@ public class ModItems {
 		book = new ItemBook();
         itemPlasticApple = new ItemFood(5, 0.5F, false).setUnlocalizedName(Names.Items.PLASTIC_APPLE).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":plasticApple");
         gears = new ItemGears();
+        nuggets = new ItemNuggets();
 
 		//upgrades
 		speedupgrade = new ItemSpeedUpgrade().setUnlocalizedName(Names.Items.SPPED_UPGRADE).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":speedupgrade");
@@ -70,5 +72,6 @@ public class ModItems {
 		RegistryUtils.registerItem(book);
         RegistryUtils.registerItem(itemPlasticApple);
         RegistryUtils.registerItem(gears);
+        RegistryUtils.registerItem(nuggets);
     }
 }
