@@ -12,6 +12,7 @@ package com.professorvennie.core.client.gui;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
+import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
@@ -39,7 +40,7 @@ public class GuiSaltFurnace extends GuiContainer{
 	}
 
 	public void drawGuiContainerForegroundLayer(int par1, int par2){
-		String name = this.saltFurnace.isInvNameLocalized() ? this.saltFurnace.getInvName() : I18n.format(this.saltFurnace.getInvName(), MachineryCraft.instance);
+		String name = StatCollector.translateToLocal(saltFurnace.getInventoryName());
 		
 		this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
 		this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 8, this.ySize - 96 + 2, 4210752);

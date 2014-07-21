@@ -113,10 +113,10 @@ public class BlockPlasticChest extends BlockContainer {
 
     public void breakBlock(World world, int x, int y, int z, Block block, int side){
         if(!keepInventory) {
-            TileEntityPlasticChest tileEntitySaltFurnace = (TileEntityPlasticChest) world.getTileEntity(x, y, z);
-            if (tileEntitySaltFurnace != null) {
-                for (int i = 0; i < tileEntitySaltFurnace.getSizeInventory(); i++) {
-                    ItemStack itemStack = tileEntitySaltFurnace.getStackInSlot(i);
+            TileEntityPlasticChest tileEntityPlasticChest = (TileEntityPlasticChest) world.getTileEntity(x, y, z);
+            if (tileEntityPlasticChest != null) {
+                for (int i = 0; i < tileEntityPlasticChest.getSizeInventory(); i++) {
+                    ItemStack itemStack = tileEntityPlasticChest.getStackInSlot(i);
 
                     if (itemStack != null) {
                         float f = this.rand.nextFloat() * 0.6F + 01F;//x

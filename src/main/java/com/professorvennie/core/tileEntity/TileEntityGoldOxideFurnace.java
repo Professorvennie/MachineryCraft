@@ -15,7 +15,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityGoldOxideFurnace extends TileEntity implements ISidedInventory {
+public class TileEntityGoldOxideFurnace extends TileEntityMod implements ISidedInventory {
 
 	@Override
 	public int getSizeInventory() {

@@ -17,7 +17,7 @@ import com.professorvennie.core.world.tree.PlasticWorldGenTrees;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlower;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -31,13 +31,13 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import java.util.List;
 import java.util.Random;
 
-public class BlockPlasticSapling extends BlockFlower{
+public class BlockPlasticSapling extends BlockSapling{
 
     public static final String[] typesSapling = new String[] { "PlasticSapling" };
     private static final IIcon[] textures = new IIcon[typesSapling.length];
 
     public BlockPlasticSapling() {
-        super(0);
+        super();
         this.stepSound = soundTypeGrass;
         this.setHardness(0.0F);
         float f = 0.4F;
@@ -49,7 +49,6 @@ public class BlockPlasticSapling extends BlockFlower{
     protected boolean canPlaceBlockOn(Block block){
         return block == ModBlocks.plasticDirt || block == ModBlocks.plasticGrass || block == Blocks.dirt || block == Blocks.glass;
     }
-
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
@@ -64,10 +63,6 @@ public class BlockPlasticSapling extends BlockFlower{
         }
     }
 
-    public boolean isSameSapling(World par1World, int par2, int par3, int par4, int par5)
-    {
-        return par1World.getBlock(par2, par3, par4) == this && (par1World.getBlockMetadata(par2, par3, par4) & 3) == par5;
-    }
     public int damageDropped(int par1) {
         return par1 & 3;
     }
@@ -77,20 +72,10 @@ public class BlockPlasticSapling extends BlockFlower{
         listSaplings.add(new ItemStack(item, 1, 0));
     }
 
-    public void markOrGrowMarked(World world, int x, int y, int z,	Random par1Random) {
-        int l = world.getBlockMetadata(x, y, z);
-
-        if ((l & 8) == 0) {
-            world.setBlockMetadataWithNotify(x, y, z, l | 8, 4);
-        } else {
-            this.growTree(world, x, y, z, par1Random);
-        }
-    }
-
-    public void growTree(World world, int x, int y, int z, Random random) {
+    public void func_149878_d(World world, int x, int y, int z, Random random) {
         if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
         int l = world.getBlockMetadata(x, y, z) & 7;
-        Object object = null;
+        Object object;
         int i1 = 0;
         int j1 = 0;
 
@@ -100,17 +85,6 @@ public class BlockPlasticSapling extends BlockFlower{
 
         if (!((WorldGenerator) object).generate(world, random, x + i1, y, z	+ j1)) {
             world.setBlock(x, y, z, this, l, 4);
-        }
-    }
-
-    @Override
-    public void updateTick(World world, int x, int y, int z, Random par1Random) {
-        if (!world.isRemote) {
-            super.updateTick(world, x, y, z, par1Random);
-
-            if (world.getBlockLightValue(x, y + 1, z) >= 9 && par1Random.nextInt(7) == 0) {
-                this.markOrGrowMarked(world, x, y, z, par1Random);
-            }
         }
     }
 }

@@ -17,6 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityMod extends TileEntity {
+
     protected ForgeDirection orientation;
     protected String customName;
 
@@ -83,5 +84,4 @@ public class TileEntityMod extends TileEntity {
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
         this.readFromNBT(pkt.func_148857_g());
     }
-
 }

@@ -38,8 +38,9 @@ public class BlockSaltFurnace extends BlockBasicMachine{
 	public BlockSaltFurnace(boolean isActive) {
 		super(Names.Blocks.SALT_FURNACE, isActive);
         setHardness(3.5F);
-        setHarvestLevel("pickaxe", 1);
+        setHarvestLevel("pickAxe", 1);
         setStepSound(Block.soundTypeMetal);
+        this.guiId = LibGuiIds.GUIID_SALTFURNACE;
 	}
 
 	public Item getItemDropped(int par1, Random random, int par2) {
@@ -58,13 +59,6 @@ public class BlockSaltFurnace extends BlockBasicMachine{
         this.iconFront = iiconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "saltFurnace_front_on" : "saltFurnace_front_off"));
     }
 
-    public boolean onBlockActivated(World world, int x, int y, int z,EntityPlayer player, int side, float hitx, float hity, float hitz) {
-        if (!world.isRemote) {
-            FMLNetworkHandler.openGui(player, MachineryCraft.instance, LibGuiIds.GUIID_SALTFURNACE, world, x, y, z);
-        }
-        return true;
-    }
-
 	public boolean hasComparatorInputOverride() {
 		return true;
 	}
@@ -77,45 +71,5 @@ public class BlockSaltFurnace extends BlockBasicMachine{
     @Override
     public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
         return BookData.firstTierMachines;
-    }
-
-    public void breakBlock(World world, int x, int y, int z, Block block, int side){
-        if(!keepInventory) {
-            TileEntitySaltFurnace tileEntitySaltFurnace = (TileEntitySaltFurnace) world.getTileEntity(x, y, z);
-            if (tileEntitySaltFurnace != null) {
-                for (int i = 0; i < tileEntitySaltFurnace.getSizeInventory(); i++) {
-                    ItemStack itemStack = tileEntitySaltFurnace.getStackInSlot(i);
-
-                    if (itemStack != null) {
-                        float f = this.rand.nextFloat() * 0.6F + 01F;//x
-                        float f1 = this.rand.nextFloat() * 0.6F + 01F;//y
-                        float f2 = this.rand.nextFloat() * 0.6F + 01F;//z
-
-                        while (itemStack.stackSize > 0) {
-                            int j = this.rand.nextInt(21) + 10;
-
-                            if (j > itemStack.stackSize)
-                                    j = itemStack.stackSize;
-
-                            itemStack.stackSize -= j;
-                            EntityItem entityItem = new EntityItem(world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), new ItemStack(itemStack.getItem(), j, itemStack.getItemDamage()));
-
-                            if (itemStack.hasTagCompound()) {
-                                entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
-                            }
-
-                            float f3 = 0.025F;
-                            entityItem.motionX = (double) ((float) this.rand.nextGaussian() * f3);
-                            entityItem.motionY = (double) ((float) this.rand.nextGaussian() * f3 + 0.1F);
-                            entityItem.motionZ = (double) ((float) this.rand.nextGaussian() * f3);
-
-                            world.spawnEntityInWorld(entityItem);
-                        }
-                    }
-                }
-                world.func_147453_f(x, y, z, block);
-            }
-        }
-        super.breakBlock(world, x, y, z, block, side);
     }
 }

@@ -24,9 +24,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-public class TileEntityIronOxideAlloy extends TileEntity implements ISidedInventory{
-
-	private String localizedName;
+public class TileEntityIronOxideAlloy extends TileEntityMod implements ISidedInventory{
 
 	private static final int[] slots_top = new int[]{0};
 	private static final int[] slots_bottom = new int[]{2, 1};
@@ -93,7 +91,8 @@ public class TileEntityIronOxideAlloy extends TileEntity implements ISidedInvent
 
 	@Override
 	public String getInventoryName() {
-		return null;
+        return this.hasCustomName() ? this.getCustomName() : Names.Containers.CONTAINER_IRONOXIDE_ALLOY;
+
 	}
 
 	@Override
@@ -124,11 +123,6 @@ public class TileEntityIronOxideAlloy extends TileEntity implements ISidedInvent
 		this.power = (int)nbt.getShort("burnTime");
 		this.cookTime = (int)nbt.getShort("cookTime");
 		this.currentItemBurnTime = (int)nbt.getShort("currentItemBurnTime");
-		
-		if(nbt.hasKey("customName")){
-			this.localizedName = nbt.getString("customName");
-		}
-
 	}
 	
 	public void writeToNBT(NBTTagCompound nbt){
@@ -149,9 +143,6 @@ public class TileEntityIronOxideAlloy extends TileEntity implements ISidedInvent
 			}
 		}
 		nbt.setTag("items", list);
-		if(this.isInvNameLocalized()){
-			nbt.setString("customName", this.localizedName);
-		}
 	}
 
 	@Override
@@ -322,11 +313,7 @@ public class TileEntityIronOxideAlloy extends TileEntity implements ISidedInvent
 	}
 	
 	public boolean isInvNameLocalized() {
-		return false;
-	}
-
-	public String getInvName() {
-		return Names.Containers.CONTAINER_IRONOXIDE_ALLOY;
+		return hasCustomName();
 	}
 
 	public int getCurrentCharge() {

@@ -15,7 +15,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityGoldOxideAlloy extends TileEntity implements ISidedInventory{
+public class TileEntityGoldOxideAlloy extends TileEntityMod implements ISidedInventory{
     @Override
     public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
         return new int[0];

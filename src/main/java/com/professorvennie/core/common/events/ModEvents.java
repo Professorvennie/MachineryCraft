@@ -10,13 +10,11 @@
 package com.professorvennie.core.common.events;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import net.minecraftforge.common.MinecraftForge;
 
 public class ModEvents {
 	
 	public static void registerEvents(){
 		FMLCommonHandler.instance().bus().register(new EventOnCrafted());
-        MinecraftForge.EVENT_BUS.register(new PlasticBoneMealEvent());
 	}
 
 }

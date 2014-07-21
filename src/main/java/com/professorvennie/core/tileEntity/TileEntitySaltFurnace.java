@@ -23,17 +23,14 @@ import net.minecraft.item.*;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
 import com.professorvennie.core.block.BlockSaltFurnace;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory{
+public class TileEntitySaltFurnace extends TileEntityMod implements ISidedInventory{
 
-	private String localizedName;
-	
 	private static final int[] slots_top = new int[]{0};
 	private static final int[] slots_bottom = new int[]{2, 1};
 	private static final int[] slots_sides = new int[]{1};
@@ -48,21 +45,13 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 	
 	public int cookTime;
 
+    @Override
+    public String getInventoryName(){
+        return this.hasCustomName() ? this.getCustomName() : Names.Containers.CONTAINER_SALT_FURNACE;
+    }
+
 	public int getSizeInventory(){
 		return this.slots.length;
-	}
-	
-	public String getInvName(){
-		return this.isInvNameLocalized() ? this.localizedName : Names.Containers.CONTAINER_SALT_FURNACE;
-	}
-	
-	public boolean isInvNameLocalized(){
-		return this.localizedName != null && this.localizedName.length() > 0;
-	}
-	
-	public void setGuiDisplayName(String displayName) {
-		
-		this.localizedName= displayName;
 	}
 
 	@Override
@@ -110,13 +99,8 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 	}
 
 	@Override
-	public String getInventoryName() {
-		return null;
-	}
-
-	@Override
 	public boolean hasCustomInventoryName() {
-		return false;
+		return this.hasCustomName();
 	}
 
 	@Override
@@ -142,11 +126,6 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 		this.burnTime = (int)nbt.getShort("burnTime");
 		this.cookTime = (int)nbt.getShort("cookTime");
 		this.currentItemBurnTime = (int)nbt.getShort("currentItemBurnTime");
-		
-		if(nbt.hasKey("customName")){
-			this.localizedName = nbt.getString("customName");
-		}
-
 	}
 	
 	public void writeToNBT(NBTTagCompound nbt){
@@ -167,9 +146,6 @@ public class TileEntitySaltFurnace extends TileEntity implements ISidedInventory
 			}
 		}
 		nbt.setTag("items", list);
-		if(this.isInvNameLocalized()){
-			nbt.setString("customName", this.localizedName);
-		}
 	}
 	
 	@Override

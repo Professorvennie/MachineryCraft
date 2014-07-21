@@ -25,12 +25,9 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-public class TileEntitySaltGrinder extends TileEntity implements ISidedInventory {
-
-	private String localizedName;
+public class TileEntitySaltGrinder extends TileEntityMod implements ISidedInventory {
 
 	private static final int[] slots_top = new int[] {0};
 	private static final int[] slots_bottom = new int[] {2, 1};
@@ -49,14 +46,6 @@ public class TileEntitySaltGrinder extends TileEntity implements ISidedInventory
     @Override
 	public int getSizeInventory() {
 		return this.slots.length;
-	}
-
-	public String getInvName() {
-		return this.isInvNameLocalized() ? this.localizedName : Names.Containers.CONTAINER_SALT_GRINDER;
-	}
-
-	public boolean isInvNameLocalized() {
-		return this.localizedName != null && this.localizedName.length() > 0;
 	}
 
 	@Override
@@ -83,6 +72,11 @@ public class TileEntitySaltGrinder extends TileEntity implements ISidedInventory
 		return null;
 	}
 
+    @Override
+    public String getInventoryName(){
+        return this.hasCustomName() ? this.getCustomName() : Names.Containers.CONTAINER_SALT_GRINDER;
+    }
+
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		if (this.slots[slot] != null) {
@@ -101,11 +95,6 @@ public class TileEntitySaltGrinder extends TileEntity implements ISidedInventory
 		if (itemStack != null && itemStack.stackSize > this.getInventoryStackLimit()) {
 			itemStack.stackSize = this.getInventoryStackLimit();
 		}
-	}
-
-	@Override
-	public String getInventoryName() {
-		return null;
 	}
 
 	@Override
@@ -135,11 +124,6 @@ public class TileEntitySaltGrinder extends TileEntity implements ISidedInventory
 		}
 		this.burnTime = (int) nbt.getShort("burnTime");
 		this.cookTime = (int) nbt.getShort("cookTime");
-		this.GrinderSpeed = (int) nbt.getShort("grindSpeed");
-
-		if (nbt.hasKey("customName")) {
-			this.localizedName = nbt.getString("customName");
-		}
 	}
 
 	public void writeToNBT(NBTTagCompound nbt) {
@@ -147,7 +131,6 @@ public class TileEntitySaltGrinder extends TileEntity implements ISidedInventory
 
 		nbt.setShort("burnTime", (short) this.burnTime);
 		nbt.setShort("cookTime", (short) this.cookTime);
-		nbt.setShort("grindSpeed", (short) this.GrinderSpeed);
 
 		NBTTagList list = new NBTTagList();
 
@@ -160,9 +143,6 @@ public class TileEntitySaltGrinder extends TileEntity implements ISidedInventory
 			}
 		}
 		nbt.setTag("items", list);
-		if (this.isInvNameLocalized()) {
-			nbt.setString("customName", this.localizedName);
-		}
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import java.util.List;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
+import net.minecraft.util.StatCollector;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -48,7 +49,7 @@ public class GuiIronoxideFurnace extends GuiContainer{
 	}
 	
 	public void drawGuiContainerForegroundLayer(int par1, int par2){
-		String name = this.Furnace.isInvNameLocalized() ? this.Furnace.getInvName() : I18n.format(this.Furnace.getInvName(), MachineryCraft.instance);
+		String name = StatCollector.translateToLocal(Furnace.getInventoryName());
 		
 		this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
 		this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 8, this.ySize - 96 + 2, 4210752);
