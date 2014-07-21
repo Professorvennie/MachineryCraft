@@ -82,6 +82,10 @@ public class GuiHandler implements IGuiHandler{
             case LibGuiIds.GUIID_PLASTIC_CHEST:
                     TileEntityPlasticChest entityPlasticChest = (TileEntityPlasticChest)world.getTileEntity(x, y, z);
                     return new ContainerPlasticChest(player.inventory, entityPlasticChest);
+
+            case LibGuiIds.GUIID_PORTABLE_COBBLEGEN:
+                TileEntityPortableCobbleGen tileEntityPortableCobbleGen = (TileEntityPortableCobbleGen)world.getTileEntity(x, y, z);
+                return new ContainerPortableCobbleGen(player.inventory, tileEntityPortableCobbleGen);
 			}
 		return null;
 	}
@@ -154,6 +158,12 @@ public class GuiHandler implements IGuiHandler{
                      TileEntityPlasticChest entityPlasticChest = (TileEntityPlasticChest) world.getTileEntity(x, y, z);
                      return new GuiPlasticChest(player.inventory, entityPlasticChest);
                  }
+
+            case LibGuiIds.GUIID_PORTABLE_COBBLEGEN:
+                if(entity instanceof TileEntityPortableCobbleGen){
+                    TileEntityPortableCobbleGen entityPortableCobbleGen = (TileEntityPortableCobbleGen)world.getTileEntity(x, y, z);
+                    return new GuiPortableCobbleGen(player.inventory, entityPortableCobbleGen);
+                }
             }
         return null;
 	}

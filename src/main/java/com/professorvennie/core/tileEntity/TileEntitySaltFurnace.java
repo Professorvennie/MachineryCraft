@@ -220,8 +220,6 @@ public class TileEntitySaltFurnace extends TileEntityMod implements ISidedInvent
 			int result = this.slots[2].stackSize + itemstack.stackSize;
 			
 			return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
-				
-			
 		}
 	}
 	

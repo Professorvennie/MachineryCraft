@@ -28,6 +28,7 @@ public class Names {
         public static final String BLOCK_PLASTIC_CHEST = "plasticChest";
         public static final String BLOCK_PLASTIC_SLAB = "plasticSlab";
         public static final String BLOCK_PLASTIC_STAIRS = "plasticStair";
+        public static final String BLOCK_PORTABLE_COBBLEGEN = "portableCobbleGen";
     }
 
 
@@ -90,5 +91,6 @@ public class Names {
         public static final String CONTAINER_WINDMILL = CONTAINER_BASE + "windmill";
         public static final String CONTAINER_WASHER = CONTAINER_BASE + "washer";
         public static final String CONTAINER_PLASTIC_CHEST = CONTAINER_BASE + "plasticChest";
+        public static final String CONTAINER_PORTABLE_COBBLEGEN = CONTAINER_BASE + "portableCobbleGen";
     }
 }

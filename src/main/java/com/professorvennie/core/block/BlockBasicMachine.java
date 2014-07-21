@@ -150,8 +150,7 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
     }
 
     @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(World world, int x, int y, int z,
-                                  Random random) {
+    public void randomDisplayTick(World world, int x, int y, int z, Random random) {
         if (this.isActive) {
             int direction = world.getBlockMetadata(x, y, z);
 
