@@ -104,7 +104,7 @@ container.ironoxdeAlloy=Ironoxide Alloy Smelter
 container.windmill=Windmill
 container.plasticChest=Plastic Chest
 container.washer=Washer
-container.portableCobbleGen=Portable CobbleStone Generator
+container.portableCobbleGen=Portable Cobblestone Generator
 
 #-Creative Tab Localization
 itemGroup.MachineryCraft=Machinery Craft
@@ -116,7 +116,7 @@ tile.saltGrinderIdle.name=Salt Grinder
 tile.ironOxideFurnaceIdle.name=Iron Oxide Furnace
 tile.ironOxideGrinderIdle.name=Iron Oxide Grinder
 tile.ironOxideAlloyIdle.name=Iron Oxide Alloy Smelter
-tile.portableCobbleGenIdle.name=Portable CobbleStone Generator
+tile.portableCobbleGenIdle.name=Portable Cobblestone Generator
 
 tile.windmillground.name=Windmill Ground
 tile.cable.name=Cable

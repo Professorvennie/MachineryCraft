@@ -30,6 +30,12 @@ public class GuiPortableCobbleGen extends GuiContainer{
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+
+        int lava = this.entity.getCookProgressScaled(24);
+        drawTexturedModalRect(guiLeft + 45, guiTop + 36, 176, 0, lava + 1, 16);
+
+        int water = this.entity.getCookProgressScaled(24);
+        drawTexturedModalRect(guiLeft + 131-24, guiTop + 36, 176, 18, water, 16);
     }
 
     @Override

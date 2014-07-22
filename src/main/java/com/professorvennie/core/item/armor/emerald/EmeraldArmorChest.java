@@ -9,12 +9,13 @@
  * */
 package com.professorvennie.core.item.armor.emerald;
 
-import com.professorvennie.core.lib.ItemNames;
+
+import com.professorvennie.core.lib.Names;
 
 public class EmeraldArmorChest extends EmeraldArmor{
 
 	public EmeraldArmorChest() {
-		super(1, ItemNames.EMERALD_CHEST);
+		super(1, Names.Items.EMERALD_CHEST);
 	}
 
 }

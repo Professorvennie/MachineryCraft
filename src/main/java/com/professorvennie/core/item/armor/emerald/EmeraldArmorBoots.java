@@ -10,12 +10,12 @@
 package com.professorvennie.core.item.armor.emerald;
 
 
-import com.professorvennie.core.lib.ItemNames;
+import com.professorvennie.core.lib.Names;
 
 public class EmeraldArmorBoots extends EmeraldArmor{
 
 	public EmeraldArmorBoots() {
-		super(3, ItemNames.EMERALD_BOOTS);
+		super(3, Names.Items.EMERALD_BOOTS);
 	}
 
 }

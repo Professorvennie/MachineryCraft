@@ -21,7 +21,6 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
 public class TileEntityIronOxideAlloy extends TileEntityMod implements ISidedInventory{
@@ -182,7 +181,6 @@ public class TileEntityIronOxideAlloy extends TileEntityMod implements ISidedInv
                     this.power += PowerAmounts.getItemPower(this.slots[1]);
 
                     flag1 = true;
-
                     if (this.slots[1] != null) {
                         this.slots[1].stackSize--;
 

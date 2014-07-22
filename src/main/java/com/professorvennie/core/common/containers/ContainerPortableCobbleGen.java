@@ -1,9 +1,12 @@
 package com.professorvennie.core.common.containers;
 
 import com.professorvennie.core.tileEntity.TileEntityPortableCobbleGen;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
@@ -11,6 +14,7 @@ import net.minecraft.item.ItemStack;
 public class ContainerPortableCobbleGen extends Container{
 
     private TileEntityPortableCobbleGen entity;
+    public int lastCookTime;
 
     public ContainerPortableCobbleGen(InventoryPlayer inventory, TileEntityPortableCobbleGen tileEntityPortableCobbleGen) {
         this.entity = tileEntityPortableCobbleGen;
@@ -28,6 +32,31 @@ public class ContainerPortableCobbleGen extends Container{
         for(int i = 0; i < 9; i++){
             this.addSlotToContainer(new Slot(inventory, i, 8 + i*18, 142));
         }
+    }
+
+    @Override
+    public void addCraftingToCrafters(ICrafting iCrafting) {
+        super.addCraftingToCrafters(iCrafting);
+        iCrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
+    }
+
+    @Override
+    public void detectAndSendChanges() {
+        super.detectAndSendChanges();
+
+        for(int i = 0; i < this.crafters.size(); i ++){
+            ICrafting icrafting = (ICrafting) this.crafters.get(i);
+
+            if(this.lastCookTime != this.entity.cookTime){
+                icrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
+            }
+        }
+        this.lastCookTime = this.entity.cookTime;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void updateProgressBar(int slot, int par2) {
+        if(slot == 0) this.entity.cookTime = par2;
     }
 
     @Override
