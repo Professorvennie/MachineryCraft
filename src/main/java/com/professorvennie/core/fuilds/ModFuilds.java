@@ -19,21 +19,21 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 public class ModFuilds {
 	
-	public static Fluid saltFluid;
-	public static Block salt;
+	public static Fluid fluidSteam;
+	public static Block blockSteam;
 		
 	public static void mainRegistry(){
 		init();
 	}
 	
 	private static void init() {
-		saltFluid = new Fluid("saltFluid");
-		if(!FluidRegistry.registerFluid(saltFluid)){
-			saltFluid = FluidRegistry.getFluid("saltFluid");
+        fluidSteam = new Fluid("steam");
+		if(!FluidRegistry.registerFluid(fluidSteam)){
+            fluidSteam = FluidRegistry.getFluid("steam");
 		}
-		
-		salt = new FluidSaltWaterBlock(saltFluid, Material.lava).setBlockName("saltFluid").setCreativeTab(MachineryCraft.tabMachineryCraft);
-		GameRegistry.registerBlock(salt, salt.getUnlocalizedName());
-		saltFluid.setBlock(salt).setDensity(3000).setViscosity(6000).setTemperature(1300);
+
+        blockSteam = new FluidSteamBlock(fluidSteam, Material.water).setBlockName("steam").setCreativeTab(MachineryCraft.tabMachineryCraft);
+		GameRegistry.registerBlock(blockSteam, blockSteam.getUnlocalizedName());
+        fluidSteam.setBlock(blockSteam).setGaseous(true).setTemperature(1000).setDensity(450);
 	}
 }

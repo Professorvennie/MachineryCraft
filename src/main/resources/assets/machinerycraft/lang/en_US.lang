@@ -102,6 +102,9 @@ container.windmill=Windmill
 container.plasticChest=Plastic Chest
 container.washer=Washer
 container.portableCobbleGen=Portable Cobblestone Generator
+container.bronzeFurnace=Bronze Furnace
+container.bronzeGrinder=Bronze Grinder
+
 
 #-Creative Tab Localization
 itemGroup.MachineryCraft=Machinery Craft
@@ -111,6 +114,9 @@ tile.plasticChest.name=Plastic Chest
 
 tile.copperFurnaceIdle.name=Copper Furnace
 tile.copperGrinderIdle.name=Copper Grinder
+
+tile.bronzeFurnaceIdle.name=Bronze Furnace
+tile.bronzeGrinderIdle.name=Bronze Furnace
 
 tile.ironOxideFurnaceIdle.name=Iron Oxide Furnace
 tile.ironOxideGrinderIdle.name=Iron Oxide Grinder

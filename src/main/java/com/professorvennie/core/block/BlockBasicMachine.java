@@ -101,7 +101,6 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
                 b0 = 4;
             }
             world.setBlockMetadataWithNotify(x, y, z, b0, 2);
-
         }
     }
 

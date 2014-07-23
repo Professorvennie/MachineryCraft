@@ -36,7 +36,7 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
 	private static final int[] slots_sides = new int[]{1};
 	
 	private ItemStack[] slots;
-	public FluidTank[] tanks;
+	public static FluidTank[] tanks;
 	
 	public int furnaceSpeed = 70;
 	
@@ -79,8 +79,27 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
                                 tanks[i].setFluid(null);
                         }
                     }
-                    	this.tanks[0].fill(new FluidStack(FluidRegistry.WATER, 1000), true);
-                    
+                    	if(slots[2] != null) {
+                            if (slots[2].getItem() == Items.water_bucket) {
+
+                                if (slots[1] == null) {
+                                    setInventorySlotContents(1, new ItemStack(Items.bucket));
+                                    fill(ForgeDirection.UP, new FluidStack(FluidRegistry.WATER, 1000), true);
+
+                                    slots[2].stackSize--;
+                                    if (slots[2].stackSize == 0)
+                                        slots[2] = null;
+
+
+                                } else {
+                                    slots[2].stackSize--;
+                                    if (slots[2].stackSize == 0)
+                                        slots[2] = null;
+                                    slots[1].stackSize++;
+                                }
+                            }
+                        }
+
                    
                 } else {
                     if (!checkForMaster())
@@ -337,12 +356,10 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
 	}
 
 	public boolean isInvNameLocalized() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public String getInvName() {
-		// TODO Auto-generated method stub
 		return Names.Containers.CONTAINER_WASHER;
 	}
 

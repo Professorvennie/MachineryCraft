@@ -63,7 +63,6 @@ public static final ResourceLocation texture = new ResourceLocation(Reference.MO
             text.add(Washer.tanks[0].getFluid().getFluid().getUnlocalizedName());
             text.add(Washer.tanks[0].getFluidAmount() + "/" + Washer.tanks[0].getCapacity() + "mB");
             drawToolTipOverArea(mouseX, mouseY, 40, 39, 56, 82, text, fontRendererObj);
-          //  System.out.println("hi");
         } else {
             text.clear();
             text.add("Empty");
@@ -80,14 +79,14 @@ public static final ResourceLocation texture = new ResourceLocation(Reference.MO
 		
 		drawTanks();
 	}
-	
+
 	public void drawTanks() {
         int j;
         if (Washer.tanks[0].getFluid() != null) {
             j = getValueScaled(Washer.tanks[0].getFluidAmount(), Washer.tanks[0].getCapacity(), 49);
             this.drawFluid(guiLeft + 80, guiTop + 17 - j, Washer.tanks[0].getFluid(), 16, j);
         }
-        
+
     }
 
     @Override
@@ -100,9 +99,9 @@ public static final ResourceLocation texture = new ResourceLocation(Reference.MO
 
         super.handleMouseInput();
     }
-    
-    
-    
+
+
+
     public int getValueScaled(int value, int max, int scale) {
         return (value * scale) / max;
     }

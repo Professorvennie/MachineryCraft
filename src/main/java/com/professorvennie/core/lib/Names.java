@@ -94,5 +94,6 @@ public class Names {
         public static final String CONTAINER_PLASTIC_CHEST = CONTAINER_BASE + "plasticChest";
         public static final String CONTAINER_PORTABLE_COBBLEGEN = CONTAINER_BASE + "portableCobbleGen";
         public static final String BRONZE_FURNACE = CONTAINER_BASE + "bronzeFurnace";
+        public static final String BRONZE_STEAMBOILER = CONTAINER_BASE + "bronzeSteamBoiler";
     }
 }
