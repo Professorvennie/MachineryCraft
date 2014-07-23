@@ -24,9 +24,9 @@ public class VillageTrades  implements VillagerRegistry.IVillageTradeHandler{
     @Override
     public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
        if(villager.getProfession() == 78906){
-           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 0, 4), null, new ItemStack(ModBlocks.SaltFurnaceIdle)));
-           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(ModBlocks.SaltGrinderIdle), null, new ItemStack(Items.emerald, 0, 5)));
-           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 0, 5), null, new ItemStack(ModBlocks.SaltGrinderIdle)));
+           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 0, 4), null, new ItemStack(ModBlocks.copperFurnaceIdle)));
+           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(ModBlocks.copperGrinderIdle), null, new ItemStack(Items.emerald, 0, 5)));
+           recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 0, 5), null, new ItemStack(ModBlocks.copperGrinderIdle)));
        }
     }
 }

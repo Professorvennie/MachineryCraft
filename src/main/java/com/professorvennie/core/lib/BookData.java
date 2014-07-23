@@ -30,11 +30,11 @@ public class BookData {
 	public static BookEntry basics;
 
 	//machines
+    public static BookEntry basicMachines;
 	public static BookEntry firstTierMachines;
 	public static BookEntry secondTierMachines;
 	public static BookEntry thridTierMachines;
-	public static BookEntry miscMachines;
-	
+
 	//tools
 	public static BookEntry saltTools;
 	public static BookEntry ironoxideTools;
@@ -64,17 +64,17 @@ public class BookData {
 		basics = new BookEntry(LibBookText.ENTRY_BASICS, categoryBasics);
 		
 		//machines
+        basicMachines = new BookEntry(LibBookText.ENTRY_BASIC_MACHINES, categoryMachines);
+        basicMachines.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipePortableCobbleGen));
+
 		firstTierMachines = new BookEntry(LibBookText.ENTRY_FIRST_TIER_MACHINES, categoryMachines);
-		firstTierMachines.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeSaltFurnace), new PageText("2"), new PageCraftingRecipe("4", ModRecipes.recipeSaltGrinder));
+		firstTierMachines.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeSaltFurnace), new PageText("2"), new PageCraftingRecipe("3", ModRecipes.recipeSaltGrinder));
 		
 		secondTierMachines = new BookEntry(LibBookText.ENTRY_SECOND_TIER_MACHINES, categoryMachines);
 		secondTierMachines.setPriority();
 		
 		thridTierMachines = new BookEntry(LibBookText.ENTRY_THRID_TIER_MACHINES, categoryMachines);
 		thridTierMachines.setPriority();
-		
-		miscMachines = new BookEntry(LibBookText.ENTRY_MISC_MACHINES ,categoryMachines);
-		miscMachines.setPriority();
 		
 		//tools
         if(ConfigHandler.saltTools) {

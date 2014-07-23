@@ -24,7 +24,6 @@ public class PowerAmounts {
             return 0;
         }else{
             Item item = itemstack.getItem();
-            if(item == ModItems.saltcyrstals) return 100;
             if(item == new ItemStack(ModBlocks.BlockMetals, 1, 4).getItem()) return 910;
             if(item == Items.redstone) return 150;
             if(item == Item.getItemFromBlock(Blocks.redstone_block)) return 150 * 9 + 10;

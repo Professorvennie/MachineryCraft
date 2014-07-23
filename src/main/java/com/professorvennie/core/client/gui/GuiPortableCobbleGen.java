@@ -10,6 +10,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 public class GuiPortableCobbleGen extends GuiContainer{
@@ -35,12 +36,12 @@ public class GuiPortableCobbleGen extends GuiContainer{
         drawTexturedModalRect(guiLeft + 45, guiTop + 36, 176, 0, lava + 1, 16);
 
         int water = this.entity.getCookProgressScaled(24);
-        drawTexturedModalRect(guiLeft + 131-24, guiTop + 36, 176, 18, water, 16);
+        drawTexturedModalRect(guiLeft + 131-24, guiTop + 36, 176, 18, 24+water+1, 16);
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
-        String name = this.entity.hasCustomName() ? this.entity.getCustomName() : I18n.format(this.entity.getInventoryName(), MachineryCraft.instance);
+        String name = StatCollector.translateToLocal(entity.getInventoryName());
 
         this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
         this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 8, this.ySize - 96 + 2, 4210752);

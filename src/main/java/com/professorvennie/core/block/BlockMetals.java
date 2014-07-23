@@ -51,7 +51,7 @@ public class BlockMetals extends Block {
 	    public void registerBlockIcons(IIconRegister register) {
 	        iconArray = new IIcon[Names.Blocks.METAL_BLOCKS.length];
 	        for (int i = 0; i < iconArray.length; i++) {
-	            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + "metal" + "_" + i);
+	            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + Names.Blocks.METAL_BLOCKS[i]);
 	        }
 	    }
 	

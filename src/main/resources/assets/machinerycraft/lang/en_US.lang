@@ -1,5 +1,4 @@
 #-Items Localizations
-item.saltCyrstals.name=Salt Crystals
 item.speedUpgrade.name=Speed Upgrade
 item.powerBoost.name=Power Booster
 item.plasticApple.name=Plastic Apple
@@ -12,15 +11,15 @@ item.dust.2.name=Tin Dust
 item.dust.3.name=Silver Dust
 item.dust.4.name=Lead Dust
 item.dust.5.name=Copper Dust
+item.dust.6.name=Zinc Dust
 
 item.ingot.0.name=Copper Ingot
 item.ingot.1.name=Tin Ingot
 item.ingot.2.name=Silver Ingot
 item.ingot.3.name=Lead Ingot
-item.ingot.4.name=Salt Ingot
-item.ingot.5.name=Goldoxide Ingot
-item.ingot.6.name=Ironoxide Ingot
-item.ingot.7.name=Bronze Ingot
+item.ingot.4.name=Zinc Ingot
+item.ingot.5.name=Brass Ingot
+item.ingot.6.name=Bronze Ingot
 
 item.saltpickaxe.name=Salt Pickaxe
 item.saltaxe.name=Salt Axe
@@ -68,33 +67,31 @@ item.goldoxideboots.name=Gold Oxide Boots
 
 item.gear.0.name=Wooden Gear
 item.gear.1.name=Stone Gear
-item.gear.2.name=Salt Gear
-item.gear.3.name=Tin Gear
-item.gear.4.name=Copper Gear
+item.gear.2.name=Iron Gear
+item.gear.3.name=Copper Gear
+item.gear.4.name=Tin Gear
 item.gear.5.name=Bronze Gear
-item.gear.6.name=Iron Gear
+item.gear.6.name=Zinc Gear
 item.gear.7.name=Silver Gear
-item.gear.8.name=Ironoxide Gear
-item.gear.9.name=Lead Gear
+item.gear.8.name=Lead Gear
+item.gear.9.name=Brass Gear
 item.gear.10.name=Gold Gear
-item.gear.11.name=Goldoxide Gear
 
 item.nugget.0.name=Stone Nugget
-item.nugget.1.name=Salt Nugget
-item.nugget.2.name=Tin Nugget
+item.nugget.1.name=Zinc Nugget
+item.nugget.2.name=Iron Nugget
 item.nugget.3.name=Copper Nugget
-item.nugget.4.name=Bronze Nugget
-item.nugget.5.name=Iron Nugget
-item.nugget.6.name=Silver Nugget
-item.nugget.7.name=Ironoxide Nugget
-item.nugget.8.name=Lead Nugget
-item.nugget.9.name=Goldoxide Nugget
+item.nugget.4.name=Tin Nugget
+item.nugget.5.name=Silver Nugget
+item.nugget.6.name=Lead Nugget
+item.nugget.7.name=Bronze Nugget
+item.nugget.8.name=Brass Nugget
 
 
 #-GUI Localizations
-container.saltFurnace=Salt Furnace
+container.copperFurnace=Copper Furnace
 container.inventory=Inventory
-container.saltGrinder=Salt Grinder
+container.copperGrinder=Copper Grinder
 container.ironoxideGrinder=Ironoxide Grinder
 container.goldoxideFurnace=Goldoxide Furnace
 container.goldoxideGrinder=Goldoxide Grinder
@@ -111,8 +108,10 @@ itemGroup.MachineryCraft=Machinery Craft
 
 #-Blocks Localizations
 tile.plasticChest.name=Plastic Chest
-tile.saltFurnaceIdle.name=Salt Furnace
-tile.saltGrinderIdle.name=Salt Grinder
+
+tile.copperFurnaceIdle.name=Copper Furnace
+tile.copperGrinderIdle.name=Copper Grinder
+
 tile.ironOxideFurnaceIdle.name=Iron Oxide Furnace
 tile.ironOxideGrinderIdle.name=Iron Oxide Grinder
 tile.ironOxideAlloyIdle.name=Iron Oxide Alloy Smelter
@@ -128,19 +127,19 @@ tile.plasticFlower.name=Plastic Flower
 tile.plasticGrass.name=Plastic Grass
 tile.plasticDirt.name=Plastic Dirt
 tile.plasticPlanks.name=Plastic Planks
-tile.saltOre.name=Salt Ore
+
 tile.ore.0.name=Copper Ore
 tile.ore.1.name=Tin Ore
 tile.ore.2.name=Silver Ore
 tile.ore.3.name=Lead Ore
+tile.ore.4.name=Zinc Ore
 tile.metal.0.name=Block of Copper
 tile.metal.1.name=Block of Tin
 tile.metal.2.name=Block of Silver
 tile.metal.3.name=Block of Lead
-tile.metal.4.name=Block of Salt
-tile.metal.5.name=Block of Goldoxide
-tile.metal.6.name=Block of Ironoxide
-tile.metal.7.name=Block of Bronze
+tile.metal.4.name=Block of Zinc
+tile.metal.5.name=Block of Brass
+tile.metal.6.name=Block of Bronze
 tile.plasticStair.name=Plastic Stairs
 plasticSlab.name=Plastic Slab
 tile.goldOxideGrinderIdle.name=Goldoxide Grinder
@@ -165,10 +164,18 @@ mc.book.category.armor=Armor
 mc.book.category.worldgen=World Generation
 mc.book.category.multiblocks=MultiBlocks
 mc.entry.firsttiermachines=First Tier Machines
+mc.page.firsttiermachines0=The material salt has the ability to conduct heat and be turned into a furnace.  It is much faster and more efficient on fuel.
+mc.page.firsttiermachines1=Salt Furnace
+mc.page.firsttiermachines2=Salt also has the ability to double ores.  The salt grinder will turn ores into two dust of that type of ore.  It runs on burnable products like a furnace.
+mc.page.firsttiermachines3=salt Grinder
+
 mc.entry.secondtiermachines=Second Tier Machines
 mc.entry.thridtiermachines=Third Tier Machines
-mc.entry.miscmachines=Misc Machines
 mc.entry.basics=Basics
+
+mc.entry.basicMachines=Basic Machines
+mc.page.basicMachines0=The portable cobblestone generator in a basic machine that generates cobblestone.  All you have to do is place a bucket of lava in the left slot and a bucket of water in the right slot to make to start generating.
+mc.page.basicMachines1=Portable Cobblestone Generator
 
 mc.entry.saltTools=Salt Tools
 mc.page.saltTools0=When forging the metal known as salt you have found out how to mold it in to a set of tools.  Also salt has the same mining level as iron with more durability.

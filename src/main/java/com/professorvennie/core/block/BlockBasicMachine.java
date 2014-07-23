@@ -178,40 +178,40 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
     }
 
     public void breakBlock(World world, int x, int y, int z, Block block, int side){
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        if(!keepInventory) {
+            TileEntity tileEntity = world.getTileEntity(x, y, z);
 
-        if (!(tileEntity instanceof ISidedInventory))
-        {
-            return;
-        }
+            if (!(tileEntity instanceof ISidedInventory)) {
+                return;
+            }
 
-        ISidedInventory inventory = (ISidedInventory) tileEntity;
+            ISidedInventory inventory = (ISidedInventory) tileEntity;
 
-        for (int i = 0; i < inventory.getSizeInventory(); i++)
-        {
-            ItemStack itemStack = inventory.getStackInSlot(i);
+            for (int i = 0; i < inventory.getSizeInventory(); i++) {
 
-            if (itemStack != null && itemStack.stackSize > 0)
-            {
-                Random rand = new Random();
+                ItemStack itemStack = inventory.getStackInSlot(i);
 
-                float dX = rand.nextFloat() * 0.8F + 0.1F;
-                float dY = rand.nextFloat() * 0.8F + 0.1F;
-                float dZ = rand.nextFloat() * 0.8F + 0.1F;
+                if (itemStack != null && itemStack.stackSize > 0) {
 
-                EntityItem entityItem = new EntityItem(world, x + dX, y + dY, z + dZ, itemStack.copy());
+                    Random rand = new Random();
 
-                if (itemStack.hasTagCompound())
-                {
-                    entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
+                    float dX = rand.nextFloat() * 0.8F + 0.1F;
+                    float dY = rand.nextFloat() * 0.8F + 0.1F;
+                    float dZ = rand.nextFloat() * 0.8F + 0.1F;
+
+                    EntityItem entityItem = new EntityItem(world, x + dX, y + dY, z + dZ, itemStack.copy());
+
+                    if (itemStack.hasTagCompound()) {
+                        entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
+                    }
+
+                    float factor = 0.05F;
+                    entityItem.motionX = rand.nextGaussian() * factor;
+                    entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
+                    entityItem.motionZ = rand.nextGaussian() * factor;
+                    world.spawnEntityInWorld(entityItem);
+                    itemStack.stackSize = 0;
                 }
-
-                float factor = 0.05F;
-                entityItem.motionX = rand.nextGaussian() * factor;
-                entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
-                entityItem.motionZ = rand.nextGaussian() * factor;
-                world.spawnEntityInWorld(entityItem);
-                itemStack.stackSize = 0;
             }
         }
         super.breakBlock(world, x, y, z, block, side);

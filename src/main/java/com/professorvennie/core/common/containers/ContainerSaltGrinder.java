@@ -10,7 +10,7 @@
 package com.professorvennie.core.common.containers;
 
 import com.professorvennie.api.recipes.GrinderRecipes;
-import com.professorvennie.core.tileEntity.TileEntitySaltGrinder;
+import com.professorvennie.core.tileEntity.TileEntityCopperGrinder;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,9 +32,9 @@ public class ContainerSaltGrinder extends Container {
 	public int lastCookTime;
 	
 
-	private TileEntitySaltGrinder grinder;
+	private TileEntityCopperGrinder grinder;
 	
-	public ContainerSaltGrinder(InventoryPlayer inventory, TileEntitySaltGrinder tileentity){
+	public ContainerSaltGrinder(InventoryPlayer inventory, TileEntityCopperGrinder tileentity){
 		this.grinder = tileentity;
 		
 		this.addSlotToContainer(new Slot(tileentity, 0, 56, 17));
@@ -110,7 +110,7 @@ public class ContainerSaltGrinder extends Container {
 					if(!this.mergeItemStack(itemstack1, 0, 1, false)){
 						return null;
 					}
-				}else if(TileEntitySaltGrinder.isItemFuel(itemstack1)){
+				}else if(TileEntityCopperGrinder.isItemFuel(itemstack1)){
 					if(!this.mergeItemStack(itemstack1, 1, 2, false)){
 						return null;
 					}

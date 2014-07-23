@@ -43,8 +43,6 @@ public class OreGen implements IWorldGenerator {
 	}
 
 	private void generateSurface(World world, Random random, int x, int z) {
-        if(ConfigHandler.spawnSalt)
-		    this.addOreSpawn(ModBlocks.Saltore, world, random, x, z, 16, 16, ConfigHandler.saltVienSize, ConfigHandler.saltRate, 15, 160);
         if(ConfigHandler.spawnCopper)
             addOreSpawn(Block.getBlockFromItem(copperOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.copperVienSize, ConfigHandler.copperRate, 15, 160);
         if(ConfigHandler.spawnTin)

@@ -48,7 +48,6 @@ public class GrinderRecipes {
 		this.addRecipe(new ItemStack(Blocks.quartz_ore), new ItemStack(Items.quartz, 6 + random.nextInt(2)), 0.8f);
         this.addRecipe(new ItemStack(Blocks.lapis_ore), new ItemStack(Items.dye, 6 + random.nextInt(2), 4), 0.8f);
         this.addRecipe(new ItemStack(Blocks.coal_ore), new ItemStack(Items.coal, 5 + random.nextInt(2)), 0.8f);
-        this.addRecipe(new ItemStack(ModBlocks.Saltore), new ItemStack(ModItems.saltcyrstals, 6 + random.nextInt(2)), 0.8f);
         this.addRecipe(new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.sand), 0.8f);
     }
 	

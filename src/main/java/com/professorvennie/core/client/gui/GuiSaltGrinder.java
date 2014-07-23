@@ -12,10 +12,10 @@ package com.professorvennie.core.client.gui;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
+import com.professorvennie.core.tileEntity.TileEntityCopperGrinder;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
-import com.professorvennie.core.tileEntity.TileEntitySaltGrinder;
 import com.professorvennie.core.common.containers.ContainerSaltGrinder;
 
 import net.minecraft.client.Minecraft;
@@ -28,9 +28,9 @@ public class GuiSaltGrinder  extends GuiContainer{
 
 public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/Grinder.png");
 	
-	public TileEntitySaltGrinder Grinder;
+	public TileEntityCopperGrinder Grinder;
 	
-	public GuiSaltGrinder(InventoryPlayer inventoryPlayer, TileEntitySaltGrinder entity) {
+	public GuiSaltGrinder(InventoryPlayer inventoryPlayer, TileEntityCopperGrinder entity) {
 		super(new ContainerSaltGrinder(inventoryPlayer, entity));
 		
 		this.Grinder = entity;

@@ -9,6 +9,7 @@
  * */
 package com.professorvennie.core.common.containers;
 
+import com.professorvennie.core.tileEntity.TileEntityCopperFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -17,8 +18,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-
-import com.professorvennie.core.tileEntity.TileEntitySaltFurnace;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,9 +30,9 @@ public class ContainerSaltFurnace extends Container {
 	
 	public int lastCookTime;
 
-	private TileEntitySaltFurnace saltfurnace;
+	private TileEntityCopperFurnace saltfurnace;
 	
-	public ContainerSaltFurnace(InventoryPlayer inventory, TileEntitySaltFurnace tileentity){
+	public ContainerSaltFurnace(InventoryPlayer inventory, TileEntityCopperFurnace tileentity){
 		this.saltfurnace = tileentity;
 		
 		this.addSlotToContainer(new Slot(tileentity, 0, 56, 17));
@@ -106,7 +105,7 @@ public class ContainerSaltFurnace extends Container {
 					if(!this.mergeItemStack(itemstack1, 0, 1, false)){
 						return null;
 					}
-				}else if(TileEntitySaltFurnace.isItemFuel(itemstack1)){
+				}else if(TileEntityCopperFurnace.isItemFuel(itemstack1)){
 					if(!this.mergeItemStack(itemstack1, 1, 2, false)){
 						return null;
 					}

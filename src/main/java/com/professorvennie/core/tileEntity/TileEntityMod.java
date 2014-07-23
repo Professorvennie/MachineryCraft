@@ -73,6 +73,8 @@ public class TileEntityMod extends TileEntity {
     public boolean hasCustomName() {
         return customName != null && customName.length() > 0;
     }
+
+
     @Override
     public Packet getDescriptionPacket() {
         NBTTagCompound tileTag = new NBTTagCompound();

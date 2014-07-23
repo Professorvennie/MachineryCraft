@@ -31,6 +31,7 @@ public class ModRecipes {
 	//machines
 	public static IRecipe recipeSaltFurnace;
     public static IRecipe recipeSaltGrinder;
+    public static IRecipe recipePortableCobbleGen;
 	
 	//tools
 	public static IRecipe recipeSaltPickaxe;
@@ -113,11 +114,14 @@ public class ModRecipes {
 
     public static void init() {
 		//machines
-		addOreDictRecipe(new ItemStack(ModBlocks.SaltFurnaceIdle),"SSS", "SFS", "SSS", 'S', new ItemStack(ModItems.Ingots, 1, 4), 'F', Blocks.furnace);
+		addOreDictRecipe(new ItemStack(ModBlocks.copperFurnaceIdle),"SSS", "SFS", "SSS", 'S', new ItemStack(ModItems.Ingots, 1, 4), 'F', Blocks.furnace);
 		recipeSaltFurnace = MachineryCraftAPI.getLatestAddedRecipe();
 
-        addOreDictRecipe(new ItemStack(ModBlocks.SaltGrinderIdle), " s ", "sfs", "sss", 's', "ingotSalt", 'f', ModBlocks.SaltFurnaceIdle);
+        addOreDictRecipe(new ItemStack(ModBlocks.copperGrinderIdle), " s ", "sfs", "sss", 's', "ingotSalt", 'f', ModBlocks.copperFurnaceIdle);
         recipeSaltGrinder = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModBlocks.portableCobbleGen), "CCC", "CSC", "CGC", 'C', Blocks.cobblestone, 'S', "ingotSalt", 'G', new ItemStack(ModItems.gears, 1, 0));
+        recipePortableCobbleGen = MachineryCraftAPI.getLatestAddedRecipe();
 		
 		//tools
 		//salt tools
@@ -351,7 +355,6 @@ public class ModRecipes {
 		for(int i = 0; i < Names.Items.INGOTS.length-2; i++){
 			OreDictionary.registerOre(Names.Items.INGOTS[i], new ItemStack(ModItems.Ingots, 1, i));
 		}
-		OreDictionary.registerOre("oreSalt", new ItemStack(ModBlocks.Saltore));
 		
 		for(int i = 0; i < Names.Blocks.ORES.length; i++){
 			OreDictionary.registerOre(Names.Blocks.ORES[i], new ItemStack(ModBlocks.BlockOres, 1, i));
@@ -371,12 +374,16 @@ public class ModRecipes {
 	}
 
     public static void addSmelting(){
-/*iron*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 0), new ItemStack(Items.iron_ingot, 2), 0.8f);
-/*gold*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 1), new ItemStack(Items.gold_ingot, 2), 0.8f);
-/*tin*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 2), new ItemStack(ModItems.Ingots, 2, 1), 0.8f);
-/*silver*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 3), new ItemStack(ModItems.Ingots, 2, 2), 0.8f);
-/*lead*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 4), new ItemStack(ModItems.Ingots, 2, 3), 0.8f);
-/*copper*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 5), new ItemStack(ModItems.Ingots, 2, 0), 0.8f);
-/*salt*/GameRegistry.addSmelting(ModItems.saltcyrstals, new ItemStack(ModItems.Ingots, 1, 4), 0.8f);
+/*iron*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 0), new ItemStack(Items.iron_ingot, 1), 0.8f);
+/*gold*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 1), new ItemStack(Items.gold_ingot, 1), 0.8f);
+/*tin*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 2), new ItemStack(ModItems.Ingots, 1, 1), 0.8f);
+/*silver*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 3), new ItemStack(ModItems.Ingots, 1, 2), 0.8f);
+/*lead*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 4), new ItemStack(ModItems.Ingots, 1, 3), 0.8f);
+/*copper*/GameRegistry.addSmelting(new ItemStack(ModItems.Dusts, 1, 5), new ItemStack(ModItems.Ingots, 1, 0), 0.8f);
+
+/*copper*/GameRegistry.addSmelting(new ItemStack(ModBlocks.BlockOres, 1, 0), new ItemStack(ModItems.Ingots, 1, 0), 0.8f);
+/*tin*/GameRegistry.addSmelting(new ItemStack(ModBlocks.BlockOres, 1, 1), new ItemStack(ModItems.Ingots, 1, 1), 0.8f);
+/*silver*/GameRegistry.addSmelting(new ItemStack(ModBlocks.BlockOres, 1, 2), new ItemStack(ModItems.Ingots, 1, 2), 0.8f);
+/*lead*/GameRegistry.addSmelting(new ItemStack(ModBlocks.BlockOres, 1, 3), new ItemStack(ModItems.Ingots, 1, 3), 0.8f);
     }
 }

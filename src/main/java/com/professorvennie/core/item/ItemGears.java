@@ -26,7 +26,7 @@ public class ItemGears extends Item {
     public void registerIcons(IIconRegister iconRegister) {
         textures = new IIcon[Names.Items.GEARS.length];
         for(int i = 0; i < Names.Items.GEARS.length; i++){
-            textures[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + "gear" + "_" + i);
+            textures[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Items.GEARS[i]);
         }
     }
 

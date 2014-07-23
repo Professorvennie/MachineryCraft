@@ -52,7 +52,7 @@ public class ItemDusts extends Item {
     public void registerIcons(IIconRegister register){
         iconArray = new IIcon[Names.Items.DUSTS.length];
         for (int i = 0; i < iconArray.length; i++) {
-            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":" + "dust" + "_" + i);
+            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":" + Names.Items.DUSTS[i]);
         }
     }
 

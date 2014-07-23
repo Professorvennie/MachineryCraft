@@ -22,27 +22,30 @@ public class ModBlocks {
 	}
 
 	public static Block BlockOres;
-	public static Block Saltore;
 	public static Block BlockMetals;
 	public static Block windmill;
 	public static Block windmillground;
-	public static Block SaltFurnaceIdle;
-	public static Block SaltFurnaceActive;
-	public static Block SaltGrinderIdle;
-	public static Block SaltGrinderActive;
+
+	public static Block copperFurnaceIdle;
+	public static Block copperFurnaceActive;
+	public static Block copperGrinderIdle;
+	public static Block copperGrinderActive;
+
 	public static Block ironOxideGrinderIdle;
 	public static Block ironOxideGrinderActive;
 	public static Block ironOxideFurnaceIdle;
 	public static Block ironOxideFurnaceActive;
 	public static Block ironOxideAlloyIdle;
 	public static Block ironOxideAlloyActive;
+
 	public static Block goldOxideGrinderIdle;
 	public static Block goldOxideGrinderActive;
 	public static Block goldOxideFurnaceIdle;
 	public static Block goldOxideFurnaceActive;
 	public static Block goldOxideAlloyIdle;
 	public static Block goldOxideAlloyActive;
-	public static Block washer;	
+	public static Block washer;
+
 	public static Block cable;
 	public static Block plasticLog;
 	public static Block plasticLeaf;
@@ -57,17 +60,23 @@ public class ModBlocks {
     public static Block plasticChest;
     public static Block portableCobbleGen;
 
+    public static Block bronzeSteamBoiler;
+    public static Block bronzeFurnaceIdle;
+    public static Block bronzeFurnaceActive;
+    public static Block bronzeGrinderIdle;
+    public static Block bronzeGrinderActive;
+    public static Block bronzeExtractor;
+
 	public static void InitialiseBlock(){
 		BlockOres = new BlockOres();
-		Saltore = new BlockSaltOre();
 		BlockMetals = new BlockMetals();
 		windmill = new BlockWindmill();
 		windmillground = new BlockWindmillGround();
 	
-		SaltFurnaceIdle = new BlockSaltFurnace(false);
-		SaltFurnaceActive = new BlockSaltFurnace(true);
-		SaltGrinderIdle = new BlockSaltGrinder(false);
-		SaltGrinderActive = new BlockSaltGrinder(true);
+		copperFurnaceIdle = new BlockCopperFurnace(false);
+		copperFurnaceActive = new BlockCopperFurnace(true);
+		copperGrinderIdle = new BlockCopperGrinder(false);
+		copperGrinderActive = new BlockCopperGrinder(true);
 		
 		ironOxideGrinderIdle = new BlockIronoxideGrinder(false);
 		ironOxideGrinderActive = new BlockIronoxideGrinder(true);
@@ -98,16 +107,22 @@ public class ModBlocks {
         plasticChest = new BlockPlasticChest();
 
         portableCobbleGen = new BlockPortableCobbleGen();
+
+        bronzeSteamBoiler = new BlockBronzeSteamBoiler();
+        bronzeFurnaceIdle = new BlockBronzeFurnace(false);
+        bronzeFurnaceActive = new BlockBronzeFurnace(true);
+        bronzeGrinderIdle = new BlockBronzeGrinder(false);
+        bronzeGrinderActive = new BlockBronzeGrinder(true);
+        bronzeExtractor = new BlockBronzeExtractor();
 	}
 	
 	public static void registerBlock(){
 		RegistryUtils.registerBlock(BlockOres, BlockOres.ItemBlockOres.class);
-		RegistryUtils.registerBlock(Saltore);
 		RegistryUtils.registerBlock(BlockMetals, BlockMetals.ItemBlockMetals.class);
-		RegistryUtils.registerBlock(SaltFurnaceIdle);
-		RegistryUtils.registerBlock(SaltFurnaceActive);
-		RegistryUtils.registerBlock(SaltGrinderIdle);
-		RegistryUtils.registerBlock(SaltGrinderActive);
+		RegistryUtils.registerBlock(copperFurnaceIdle);
+		RegistryUtils.registerBlock(copperFurnaceActive);
+		RegistryUtils.registerBlock(copperGrinderIdle);
+		RegistryUtils.registerBlock(copperGrinderActive);
 		RegistryUtils.registerBlock(windmill);
 		RegistryUtils.registerBlock(windmillground);
 		RegistryUtils.registerBlock(ironOxideGrinderIdle);
@@ -136,5 +151,10 @@ public class ModBlocks {
         RegistryUtils.registerBlock(plasticSlabDouble, ItemPlasticSlab.class);
         RegistryUtils.registerBlock(plasticChest);
         RegistryUtils.registerBlock(portableCobbleGen);
+        RegistryUtils.registerBlock(bronzeExtractor);
+        RegistryUtils.registerBlock(bronzeFurnaceIdle);
+        RegistryUtils.registerBlock(bronzeFurnaceActive);
+        RegistryUtils.registerBlock(bronzeGrinderIdle);
+        RegistryUtils.registerBlock(bronzeGrinderActive);
 	}
 }

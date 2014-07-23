@@ -16,8 +16,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class RegisterTileEntitys {
 	
 	public static void mainRegistry(){
-		GameRegistry.registerTileEntity(TileEntitySaltFurnace.class, Reference.MOD_ID + "_tileEntitySaltFurnace");
-        GameRegistry.registerTileEntity(TileEntitySaltGrinder.class, Reference.MOD_ID + "_tileEntitySaltGrinder");
+		GameRegistry.registerTileEntity(TileEntityCopperFurnace.class, Reference.MOD_ID + "_tileEntitySaltFurnace");
+        GameRegistry.registerTileEntity(TileEntityCopperGrinder.class, Reference.MOD_ID + "_tileEntitySaltGrinder");
         GameRegistry.registerTileEntity(TileEntitywindmillground.class, Reference.MOD_ID + "_tileEntityWindmillGround");
         GameRegistry.registerTileEntity(TileEntitywindmill.class, Reference.MOD_ID + "_tileEntityWindmill");
         GameRegistry.registerTileEntity(TileEntityironOxideGrinder.class, Reference.MOD_ID + "_tileEntityIronxideGrinder");

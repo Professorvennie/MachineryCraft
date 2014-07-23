@@ -24,7 +24,7 @@ public class LibBookText {
 	public static final String ENTRY_FIRST_TIER_MACHINES = "firsttiermachines";
 	public static final String ENTRY_SECOND_TIER_MACHINES = "secondtiermachines";
 	public static final String ENTRY_THRID_TIER_MACHINES = "thridtiermachines";
-	public static final String ENTRY_MISC_MACHINES = "miscmachines";
+	public static final String ENTRY_BASIC_MACHINES = "basicMachines";
 	
 	public static final String ENTRY_SALT_TOOLS = "saltTools";
 	public static final String ENTRY_IRONOXIDE_TOOLS = "ironoxideTools";

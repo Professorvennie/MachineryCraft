@@ -30,7 +30,6 @@ public class ModItems {
 	}
 	
 	//misc.
-	public static Item saltcyrstals;
 	public static Item speedupgrade;
 	public static Item powerboost;
 	public static Item efficiency;
@@ -45,7 +44,6 @@ public class ModItems {
 
     public static void InitialiseItem(){
 		//Random items
-		saltcyrstals = new Item().setUnlocalizedName(Names.Items.SALTCYRASTALS).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName(Reference.MOD_ID + ":saltcyrstals");
 		Itemwindmill = new ItemWindmill().setUnlocalizedName(Names.Items.WINDMILL).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName("diamond");
 		Dusts = new ItemDusts();
 		Ingots = new ItemIngots();
@@ -62,7 +60,6 @@ public class ModItems {
 	
 	
 	public static void registerItem(){
-		RegistryUtils.registerItem(saltcyrstals);	
 		RegistryUtils.registerItem(Ingots);
 		RegistryUtils.registerItem(speedupgrade);
 		RegistryUtils.registerItem(powerboost);

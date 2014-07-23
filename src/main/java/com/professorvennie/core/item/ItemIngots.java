@@ -52,7 +52,7 @@ public class ItemIngots extends Item {
     public void registerIcons(IIconRegister register){
 		 iconArray = new IIcon[Names.Items.INGOTS.length];
 	        for (int i = 0; i < iconArray.length; i++) {
-	        	  iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ingots/" + "ingot" + "_" + i);
+	        	  iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ingots/" + Names.Items.INGOTS[i]);
 	        }
 	}
 	

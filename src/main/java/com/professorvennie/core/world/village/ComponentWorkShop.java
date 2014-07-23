@@ -158,8 +158,8 @@ public class ComponentWorkShop extends StructureVillagePieces.House1{
 
         this.placeBlockAtCurrentPosition(world, ModBlocks.plasticPlanks, 0, 4 ,2, 9, sbb);
 
-        this.placeBlockAtCurrentPosition(world, ModBlocks.SaltFurnaceIdle, 0, 3 ,1, 8, sbb);
-        this.placeBlockAtCurrentPosition(world, ModBlocks.SaltGrinderIdle, 0, 5 ,1, 8, sbb);
+        this.placeBlockAtCurrentPosition(world, ModBlocks.copperFurnaceIdle, 0, 3 ,1, 8, sbb);
+        this.placeBlockAtCurrentPosition(world, ModBlocks.copperGrinderIdle, 0, 5 ,1, 8, sbb);
 
         int i = this.getMetadataWithOffset(Blocks.ladder, 3);
         this.placeBlockAtCurrentPosition(world, Blocks.ladder, i, 4 ,1, 8, sbb);

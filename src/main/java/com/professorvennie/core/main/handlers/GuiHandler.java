@@ -28,14 +28,14 @@ public class GuiHandler implements IGuiHandler{
 	TileEntity entity= world.getTileEntity(x, y, z);
 		
 			switch(ID){
-			case LibGuiIds.GUIID_SALTFURNACE:
-				if(entity instanceof TileEntitySaltFurnace){
-					return new ContainerSaltFurnace(player.inventory, (TileEntitySaltFurnace) entity);	
+			case LibGuiIds.CCOPPER_FURNACE:
+				if(entity instanceof TileEntityCopperFurnace){
+					return new ContainerSaltFurnace(player.inventory, (TileEntityCopperFurnace) entity);
 				}
 					
-			case LibGuiIds.GUIID_SALTGRINDER:
-					if(entity instanceof TileEntitySaltGrinder){
-						return new ContainerSaltGrinder(player.inventory, (TileEntitySaltGrinder) entity);
+			case LibGuiIds.COPPER_GRINDER:
+					if(entity instanceof TileEntityCopperGrinder){
+						return new ContainerSaltGrinder(player.inventory, (TileEntityCopperGrinder) entity);
 				}
 					
 			case LibGuiIds.GUIID_IRONOXIDE_GRINDER:
@@ -86,6 +86,10 @@ public class GuiHandler implements IGuiHandler{
             case LibGuiIds.GUIID_PORTABLE_COBBLEGEN:
                 TileEntityPortableCobbleGen tileEntityPortableCobbleGen = (TileEntityPortableCobbleGen)world.getTileEntity(x, y, z);
                 return new ContainerPortableCobbleGen(player.inventory, tileEntityPortableCobbleGen);
+
+            case LibGuiIds.BRONZE_FURNACE:
+                TileEntityBronzeFurnace tileEntityBronzeFurnace = (TileEntityBronzeFurnace)world.getTileEntity(x, y, z);
+                return new ContainerBronzeFurnace(player.inventory, tileEntityBronzeFurnace);
 			}
 		return null;
 	}
@@ -95,14 +99,14 @@ public class GuiHandler implements IGuiHandler{
 		TileEntity entity= world.getTileEntity(x, y, z);
 		
 			switch(ID){
-			case LibGuiIds.GUIID_SALTFURNACE:
-				if(entity instanceof TileEntitySaltFurnace){
-					return new GuiSaltFurnace(player.inventory, (TileEntitySaltFurnace) entity);
+			case LibGuiIds.CCOPPER_FURNACE:
+				if(entity instanceof TileEntityCopperFurnace){
+					return new GuiSaltFurnace(player.inventory, (TileEntityCopperFurnace) entity);
 					}
 			
-			case LibGuiIds.GUIID_SALTGRINDER:
-							if(entity instanceof TileEntitySaltGrinder){
-								return new GuiSaltGrinder(player.inventory, (TileEntitySaltGrinder) entity);
+			case LibGuiIds.COPPER_GRINDER:
+							if(entity instanceof TileEntityCopperGrinder){
+								return new GuiSaltGrinder(player.inventory, (TileEntityCopperGrinder) entity);
 								}
 							
 			case LibGuiIds.GUIID_IRONOXIDE_GRINDER:
@@ -163,6 +167,12 @@ public class GuiHandler implements IGuiHandler{
                 if(entity instanceof TileEntityPortableCobbleGen){
                     TileEntityPortableCobbleGen entityPortableCobbleGen = (TileEntityPortableCobbleGen)world.getTileEntity(x, y, z);
                     return new GuiPortableCobbleGen(player.inventory, entityPortableCobbleGen);
+                }
+
+            case LibGuiIds.BRONZE_FURNACE:
+                if(entity instanceof TileEntityBronzeFurnace){
+                    TileEntityBronzeFurnace tileEntityBronzeFurnace = (TileEntityBronzeFurnace)world.getTileEntity(x, y, z);
+                    return new GuiBronzeFurnace(player.inventory, tileEntityBronzeFurnace);
                 }
             }
         return null;

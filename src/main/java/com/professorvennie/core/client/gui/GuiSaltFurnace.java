@@ -12,6 +12,7 @@ package com.professorvennie.core.client.gui;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
+import com.professorvennie.core.tileEntity.TileEntityCopperFurnace;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
@@ -21,16 +22,15 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import com.professorvennie.core.tileEntity.TileEntitySaltFurnace;
 import com.professorvennie.core.common.containers.ContainerSaltFurnace;
 
 public class GuiSaltFurnace extends GuiContainer{
 
 	public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/saltfurnace.png");
 	
-	public TileEntitySaltFurnace saltFurnace;
+	public TileEntityCopperFurnace saltFurnace;
 	
-	public GuiSaltFurnace(InventoryPlayer inventoryPlayer, TileEntitySaltFurnace entity) {
+	public GuiSaltFurnace(InventoryPlayer inventoryPlayer, TileEntityCopperFurnace entity) {
 		super(new ContainerSaltFurnace(inventoryPlayer, entity));
 		
 		this.saltFurnace = entity;

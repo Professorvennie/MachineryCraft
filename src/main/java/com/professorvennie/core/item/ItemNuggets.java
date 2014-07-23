@@ -31,7 +31,7 @@ public class ItemNuggets extends Item {
     public void registerIcons(IIconRegister iconRegister) {
         textures = new IIcon[Names.Items.NUGGETS.length];
         for(int i = 0; i < Names.Items.NUGGETS.length; i++){
-            textures[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + "nugget" + i);
+            textures[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Items.NUGGETS[i]);
         }
     }
 

@@ -2,12 +2,11 @@ package com.professorvennie.core.lib;
 
 public class Names {
 
-    public static final class Blocks{
-        public static final String SALTORE = "saltOre";
+    public static final class Blocks {
         public static final String WINDMILL = "windmill";
         public static final String WINDMILL_GROUND = "windmillground";
-        public static final String SALT_FURNACE = "saltFurnace";
-        public static final String SALT_GRINDER = "saltGrinder";
+        public static final String COPPER_FURNACE = "copperFurnace";
+        public static final String COPPER_GRINDER = "copperGrinder";
         public static final String IRONOXIDE_GRINDER = "ironOxideGrinder";
         public static final String IRONOXIDE_FURNACE = "ironOxideFurnace";
         public static final String IRONOXIDE_ALLOY = "ironOxideAlloy";
@@ -16,10 +15,10 @@ public class Names {
         public static final String GOLDOXIDE_ALLOY = "goldOxideAlloy";
         public static final String WASHER = "Washer";
         public static final String CABLE = "cable";
-        public static final String[] ORES = new String[]{"oreCopper","oreTin","oreSilver","oreLead"};
-        public static final String[] METAL_BLOCKS = new String[]{"blockCopper", "blockTin", "blockSilver", "blockLead", "blockSalt", "blockIronOxide", "blockGoldOxide", "blockBronze"};
+        public static final String[] ORES = new String[]{"oreCopper", "oreTin", "oreSilver", "oreLead", "oreZinc"};
+        public static final String[] METAL_BLOCKS = new String[]{"blockCopper", "blockTin", "blockSilver", "blockLead", "blockZinc", "blockBrass", "blockBronze"};
         public static final String BLOCK_LOG = "plasticLog";
-        public static final String BLOCK_LEAVES= "plasticLeaves";
+        public static final String BLOCK_LEAVES = "plasticLeaves";
         public static final String BLOCK_SAPLING = "plasticSapling";
         public static final String BLOCK_PLASTIC_FLOWER = "plasticFlower";
         public static final String BLOCK_PLASTIC_GRASS = "plasticGrass";
@@ -29,22 +28,24 @@ public class Names {
         public static final String BLOCK_PLASTIC_SLAB = "plasticSlab";
         public static final String BLOCK_PLASTIC_STAIRS = "plasticStair";
         public static final String BLOCK_PORTABLE_COBBLEGEN = "portableCobbleGen";
+        public static final String BRONZE_FURNACE = "bronzeFurnace";
+        public static final String BRONZE_GRINDER = "bronzeGrinder";
+        public static final String BRONZE_STEAM_BOILER = "bronzeSteamBoiler";
+        public static final String BRONZE_EXTRACTOR = "bronzeExtractor";
     }
 
 
-
     public static final class Items{
-        public static final String SALTCYRASTALS ="saltCyrstals";
         public static final String SPPED_UPGRADE ="speedUpgrade";
         public static final String POWERBOOST ="powerBoost";
         public static final String EFFICIENCY ="efficiency";
         public static final String WINDMILL ="windmill";
-        public static final String[] DUSTS = new String[]{"dustIron", "dustGold", "dustTin", "dustSilver", "dustLead", "dustCopper"};
-        public static final String[] INGOTS = new String[]{"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "ingotSalt", "ingotGoldOxide", "ingotIronOxide", "ingotBronze"};
+        public static final String[] DUSTS = new String[]{"dustIron", "dustGold", "dustTin", "dustSilver", "dustLead", "dustCopper", "dustZinc"};
+        public static final String[] INGOTS = new String[]{"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "ingotZinc", "ingotBrass","ingotBronze"};
         public static final String BOOK = "ItemBook";
         public static final String PLASTIC_APPLE = "plasticApple";
-        public static final String[] GEARS = new String[]{"gearWood", "gearStone", "gearSalt", "gearIron", "gearCopper", "gearTin","gearSilver","gearLead", "gearBronze", "gearIronoxide", "gearGold", "gearGoldxxide"};
-        public static final String[] NUGGETS = new String[]{"nuggetStone", "nuggetSalt", "nuggetIron", "nuggetCopper", "nuggetTin","nuggetSilver","nuggetLead", "nuggetBronze", "nuggetIronoxide", "nuggetGoldxxide"};
+        public static final String[] GEARS = new String[]{"gearWood", "gearStone", "gearIron", "gearCopper", "gearTin", "gearBronze", "gearZinc", "gearSilver","gearLead", "gearBrass", "gearGold"};
+        public static final String[] NUGGETS = new String[]{"nuggetStone", "nuggetZinc", "nuggetIron", "nuggetCopper", "nuggetTin","nuggetSilver","nuggetLead", "nuggetBronze", "nuggetBrass"};
 
 
         //Tools
@@ -80,8 +81,8 @@ public class Names {
 
         public static final String CONTAINER_BASE = "container.";
         public static final String CONTAINER_INVENTORY = CONTAINER_BASE + "inventory";
-        public static final String CONTAINER_SALT_FURNACE = CONTAINER_BASE + "saltFurnace";
-        public static final String CONTAINER_SALT_GRINDER = CONTAINER_BASE + "saltGrinder";
+        public static final String CONTAINER_COPPER_FURNACE = CONTAINER_BASE + "copperFurnace";
+        public static final String CONTAINER_COPPER_GRINDER = CONTAINER_BASE + "copperGrinder";
         public static final String CONTAINER_IRONOXIDE_FURNACE = CONTAINER_BASE + "ironoxideFurnace";
         public static final String CONTAINER_IRONOXIDE_GRINDER = CONTAINER_BASE + "ironoxideGrinder";
         public static final String CONTAINER_IRONOXIDE_ALLOY = CONTAINER_BASE + "ironoxdeAlloy";
@@ -92,5 +93,6 @@ public class Names {
         public static final String CONTAINER_WASHER = CONTAINER_BASE + "washer";
         public static final String CONTAINER_PLASTIC_CHEST = CONTAINER_BASE + "plasticChest";
         public static final String CONTAINER_PORTABLE_COBBLEGEN = CONTAINER_BASE + "portableCobbleGen";
+        public static final String BRONZE_FURNACE = CONTAINER_BASE + "bronzeFurnace";
     }
 }

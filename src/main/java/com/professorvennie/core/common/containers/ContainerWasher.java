@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.common.containers;
 
-import com.professorvennie.core.tileEntity.TileEntitySaltFurnace;
+import com.professorvennie.core.tileEntity.TileEntityCopperFurnace;
 import com.professorvennie.core.tileEntity.TileEntityWasher;
 
 import cpw.mods.fml.relauncher.Side;
@@ -111,7 +111,7 @@ public class ContainerWasher extends Container{
 						if(!this.mergeItemStack(itemstack1, 0, 1, false)){
 							return null;
 						}
-					}else if(TileEntitySaltFurnace.isItemFuel(itemstack1)){
+					}else if(TileEntityCopperFurnace.isItemFuel(itemstack1)){
 						if(!this.mergeItemStack(itemstack1, 1, 2, false)){
 							return null;
 						}
