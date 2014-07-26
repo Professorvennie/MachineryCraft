@@ -9,7 +9,11 @@
  * */
 package com.professorvennie.core.common.containers;
 
-import com.professorvennie.core.tileEntity.TileEntityCopperFurnace;
+import com.professorvennie.api.recipes.GrinderRecipes;
+import com.professorvennie.core.tileEntity.TileEntityCopperGrinder;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -17,23 +21,21 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+public class ContainerCopperGrinder extends Container {
 
-public class ContainerSaltFurnace extends Container {
-	
-	public int lastBurnTime;
+
+	public int lastGrindTime;
 	
 	public int lastItemBurnTime;
 	
 	public int lastCookTime;
-
-	private TileEntityCopperFurnace saltfurnace;
 	
-	public ContainerSaltFurnace(InventoryPlayer inventory, TileEntityCopperFurnace tileentity){
-		this.saltfurnace = tileentity;
+
+	private TileEntityCopperGrinder grinder;
+	
+	public ContainerCopperGrinder(InventoryPlayer inventory, TileEntityCopperGrinder tileentity){
+		this.grinder = tileentity;
 		
 		this.addSlotToContainer(new Slot(tileentity, 0, 56, 17));
 		this.addSlotToContainer(new Slot(tileentity, 1, 56, 53));
@@ -52,9 +54,10 @@ public class ContainerSaltFurnace extends Container {
 
 	public void addCraftingToCrafters(ICrafting icrafting){
 		super.addCraftingToCrafters(icrafting);
-		icrafting.sendProgressBarUpdate(this, 0, this.saltfurnace.cookTime);
-		icrafting.sendProgressBarUpdate(this, 1, this.saltfurnace.burnTime);
-		icrafting.sendProgressBarUpdate(this, 2, this.saltfurnace.currentItemBurnTime);
+		icrafting.sendProgressBarUpdate(this, 0, this.grinder.cookTime);
+		icrafting.sendProgressBarUpdate(this, 1, this.grinder.burnTime);
+		icrafting.sendProgressBarUpdate(this, 2, this.grinder.currentItemBurnTime);
+
 	}
 	
 	public void detectAndSendChanges(){
@@ -63,29 +66,31 @@ public class ContainerSaltFurnace extends Container {
 		for(int i = 0; i < this.crafters.size(); i ++){
 			ICrafting icrafting = (ICrafting) this.crafters.get(i);
 			
-			if(this.lastCookTime != this.saltfurnace.cookTime){
-				icrafting.sendProgressBarUpdate(this, 0, this.saltfurnace.cookTime);
+			if(this.lastCookTime != this.grinder.cookTime){
+				icrafting.sendProgressBarUpdate(this, 0, this.grinder.cookTime);
+			}
+			if(this.lastGrindTime != this.grinder.burnTime){
+				icrafting.sendProgressBarUpdate(this, 1, this.grinder.burnTime);
+			}
+			if(this.lastItemBurnTime != this.grinder.currentItemBurnTime){
+				icrafting.sendProgressBarUpdate(this, 2, this.grinder.currentItemBurnTime);
 			}
 			
-			if(this.lastBurnTime != this.saltfurnace.burnTime){
-				icrafting.sendProgressBarUpdate(this, 1, this.saltfurnace.burnTime);
-			}
 			
-			if(this.lastItemBurnTime != this.saltfurnace.currentItemBurnTime){
-				icrafting.sendProgressBarUpdate(this, 2, this.saltfurnace.currentItemBurnTime);
-			}
+			
 		}
-		this.lastCookTime = this.saltfurnace.cookTime;
-		this.lastBurnTime = this.saltfurnace.burnTime;
-		this.lastItemBurnTime = this.saltfurnace.currentItemBurnTime;
+		this.lastCookTime = this.grinder.cookTime;
+		this.lastGrindTime = this.grinder.burnTime;
+		this.lastItemBurnTime = this.grinder.currentItemBurnTime;
+		
 	}
 	
 	
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int slot, int par2){
-		if(slot == 0) this.saltfurnace.cookTime = par2;
-		if(slot == 1) this.saltfurnace.burnTime = par2;
-		if(slot == 2) this.saltfurnace.currentItemBurnTime = par2;
+		if(slot == 0) this.grinder.cookTime = par2;
+		if(slot == 1) this.grinder.burnTime = par2;
+		if(slot == 2) this.grinder.currentItemBurnTime = par2;
 	}
 	
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot0){
@@ -101,11 +106,11 @@ public class ContainerSaltFurnace extends Container {
 				}
 				slot.onSlotChange(itemstack1, itemstack);
 			}else if(slot0 != 1 && slot0 != 0){
-				if(FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null){
+				if(GrinderRecipes.grinding().getGrindingResult(itemstack1) != null){
 					if(!this.mergeItemStack(itemstack1, 0, 1, false)){
 						return null;
 					}
-				}else if(TileEntityCopperFurnace.isItemFuel(itemstack1)){
+				}else if(TileEntityCopperGrinder.isItemFuel(itemstack1)){
 					if(!this.mergeItemStack(itemstack1, 1, 2, false)){
 						return null;
 					}
@@ -137,7 +142,7 @@ public class ContainerSaltFurnace extends Container {
 }
 	
 	public boolean canInteractWith(EntityPlayer var1) {
-		return this.saltfurnace.isUseableByPlayer(var1);
+		return this.grinder.isUseableByPlayer(var1);
 	}
 
 }

@@ -46,7 +46,7 @@ public class Names {
         public static final String PLASTIC_APPLE = "plasticApple";
         public static final String[] GEARS = new String[]{"gearWood", "gearStone", "gearIron", "gearCopper", "gearTin", "gearBronze", "gearZinc", "gearSilver","gearLead", "gearBrass", "gearGold"};
         public static final String[] NUGGETS = new String[]{"nuggetStone", "nuggetZinc", "nuggetIron", "nuggetCopper", "nuggetTin","nuggetSilver","nuggetLead", "nuggetBronze", "nuggetBrass"};
-
+        public static final String STEAM_BUCKET = "steamBucket";
 
         //Tools
         public static final String SALT_PICKAXE ="saltpickaxe";

@@ -4,19 +4,20 @@ import com.professorvennie.core.lib.Names;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 
 public class TileEntityBronzeSteamBoiler extends TileEntityMod implements ISidedInventory, IFluidHandler {
 
     private ItemStack[] inventory;
-    private FluidTank[] tanks;
+    public static FluidTank[] tanks;
 
     public TileEntityBronzeSteamBoiler(){
-        inventory = new ItemStack[2];
+        inventory = new ItemStack[6];
         tanks = new FluidTank[2];
         for(int i = 0; i < tanks.length; i++){
-            tanks[i] = new FluidTank(1000);
+            tanks[i] = new FluidTank(10000);
         }
     }
 
@@ -62,6 +63,25 @@ public class TileEntityBronzeSteamBoiler extends TileEntityMod implements ISided
             }
         }
         return null;
+    }
+
+    @Override
+    public void updateEntity() {
+        super.updateEntity();
+
+        if(!worldObj.isRemote){
+
+        }
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound nbtTagCompound) {
+        super.readFromNBT(nbtTagCompound);
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound nbtTagCompound) {
+        super.writeToNBT(nbtTagCompound);
     }
 
     @Override

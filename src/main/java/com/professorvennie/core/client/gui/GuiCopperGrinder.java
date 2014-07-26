@@ -9,10 +9,11 @@
  * */
 package com.professorvennie.core.client.gui;
 
+import com.professorvennie.core.common.containers.ContainerCopperGrinder;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
-import com.professorvennie.core.tileEntity.TileEntityCopperFurnace;
+import com.professorvennie.core.tileEntity.TileEntityCopperGrinder;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
@@ -22,25 +23,23 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import com.professorvennie.core.common.containers.ContainerSaltFurnace;
+public class GuiCopperGrinder extends GuiContainer{
 
-public class GuiSaltFurnace extends GuiContainer{
-
-	public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/saltfurnace.png");
+public static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/gui/Grinder.png");
 	
-	public TileEntityCopperFurnace saltFurnace;
+	public TileEntityCopperGrinder Grinder;
 	
-	public GuiSaltFurnace(InventoryPlayer inventoryPlayer, TileEntityCopperFurnace entity) {
-		super(new ContainerSaltFurnace(inventoryPlayer, entity));
+	public GuiCopperGrinder(InventoryPlayer inventoryPlayer, TileEntityCopperGrinder entity) {
+		super(new ContainerCopperGrinder(inventoryPlayer, entity));
 		
-		this.saltFurnace = entity;
+		this.Grinder = entity;
 		
 		this.xSize = 176;
 		this.ySize = 166;
 	}
 
 	public void drawGuiContainerForegroundLayer(int par1, int par2){
-		String name = StatCollector.translateToLocal(saltFurnace.getInventoryName());
+		String name = StatCollector.translateToLocal(Grinder.getInventoryName());
 		
 		this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
 		this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 8, this.ySize - 96 + 2, 4210752);
@@ -53,13 +52,14 @@ public class GuiSaltFurnace extends GuiContainer{
 		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
-		if(this.saltFurnace.isBurning()){
-			int k = this.saltFurnace.getBurnTimeReamingScaled(12);
+		if(this.Grinder.isBurning()){
+			int k = this.Grinder.getBurnTimeReamingScaled(12);
 			drawTexturedModalRect(guiLeft + 56, guiTop + 36 + 12 - k, 176, 12 - k, 14, k + 2);
 		}
 		
-		int k = this.saltFurnace.getCookProgressSacled(24);
+		int k = this.Grinder.getCookProgressSacled(24);
 		drawTexturedModalRect(guiLeft + 79, guiTop + 34, 176, 14, k + 1, 16);
 	}
+
 
 }

@@ -58,7 +58,7 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
     	slots  = new ItemStack[4];
     	tanks  = new FluidTank[1];
     	for(int i =0; i < tanks.length; i++){
-    		tanks[i] = new FluidTank(1000);
+    		tanks[i] = new FluidTank(10000);
     	}
     	
     }
@@ -79,26 +79,41 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
                                 tanks[i].setFluid(null);
                         }
                     }
-                    	if(slots[2] != null) {
-                            if (slots[2].getItem() == Items.water_bucket) {
-
-                                if (slots[1] == null) {
+                    if(slots[2] != null) {
+                        if (slots[2].getItem() == Items.water_bucket) {
+                            if (slots[1] == null) {
+                                if(tanks[0].getFluidAmount() < tanks[0].getCapacity())
                                     setInventorySlotContents(1, new ItemStack(Items.bucket));
-                                    fill(ForgeDirection.UP, new FluidStack(FluidRegistry.WATER, 1000), true);
-
+                                if(tanks[0].getFluid() == null) {
+                                    tanks[0].fill(new FluidStack(FluidRegistry.WATER, 1000), true);
+                                }else if(tanks[0].getFluidAmount() < tanks[0].getCapacity()){
+                                    if(tanks[0].getFluidAmount() < tanks[0].getCapacity())
+                                        tanks[0].getFluid().amount += 1000;
+                                }
+                                if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
                                     slots[2].stackSize--;
                                     if (slots[2].stackSize == 0)
                                         slots[2] = null;
+                                }
 
 
-                                } else {
+                            } else {
+                                if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
                                     slots[2].stackSize--;
                                     if (slots[2].stackSize == 0)
                                         slots[2] = null;
                                     slots[1].stackSize++;
                                 }
+
+                                if(tanks[0].getFluid() == null) {
+                                    tanks[0].fill(new FluidStack(FluidRegistry.WATER, 1000), true);
+                                }else if(tanks[0].getFluidAmount() < tanks[0].getCapacity()){
+                                    tanks[0].getFluid().amount += 1000;
+                                    System.out.println(tanks[0].getFluidAmount());
+                                }
                             }
                         }
+                    }
 
                    
                 } else {

@@ -30,12 +30,12 @@ public class GuiHandler implements IGuiHandler{
 			switch(ID){
 			case LibGuiIds.CCOPPER_FURNACE:
 				if(entity instanceof TileEntityCopperFurnace){
-					return new ContainerSaltFurnace(player.inventory, (TileEntityCopperFurnace) entity);
+					return new ContainerCopperFurnace(player.inventory, (TileEntityCopperFurnace) entity);
 				}
 					
 			case LibGuiIds.COPPER_GRINDER:
 					if(entity instanceof TileEntityCopperGrinder){
-						return new ContainerSaltGrinder(player.inventory, (TileEntityCopperGrinder) entity);
+						return new ContainerCopperGrinder(player.inventory, (TileEntityCopperGrinder) entity);
 				}
 					
 			case LibGuiIds.GUIID_IRONOXIDE_GRINDER:
@@ -90,6 +90,10 @@ public class GuiHandler implements IGuiHandler{
             case LibGuiIds.BRONZE_FURNACE:
                 TileEntityBronzeFurnace tileEntityBronzeFurnace = (TileEntityBronzeFurnace)world.getTileEntity(x, y, z);
                 return new ContainerBronzeFurnace(player.inventory, tileEntityBronzeFurnace);
+
+            case LibGuiIds.BRONZE_STEAM_BOILER:
+                TileEntityBronzeSteamBoiler tileEntityBronzeSteamBoiler = (TileEntityBronzeSteamBoiler)world.getTileEntity(x, y, z);
+                return new ContainerBronzeSteamBoiler(player.inventory, tileEntityBronzeSteamBoiler);
 			}
 		return null;
 	}
@@ -101,12 +105,12 @@ public class GuiHandler implements IGuiHandler{
 			switch(ID){
 			case LibGuiIds.CCOPPER_FURNACE:
 				if(entity instanceof TileEntityCopperFurnace){
-					return new GuiSaltFurnace(player.inventory, (TileEntityCopperFurnace) entity);
+					return new GuiCopperFurnace(player.inventory, (TileEntityCopperFurnace) entity);
 					}
 			
 			case LibGuiIds.COPPER_GRINDER:
 							if(entity instanceof TileEntityCopperGrinder){
-								return new GuiSaltGrinder(player.inventory, (TileEntityCopperGrinder) entity);
+								return new GuiCopperGrinder(player.inventory, (TileEntityCopperGrinder) entity);
 								}
 							
 			case LibGuiIds.GUIID_IRONOXIDE_GRINDER:
@@ -173,6 +177,12 @@ public class GuiHandler implements IGuiHandler{
                 if(entity instanceof TileEntityBronzeFurnace){
                     TileEntityBronzeFurnace tileEntityBronzeFurnace = (TileEntityBronzeFurnace)world.getTileEntity(x, y, z);
                     return new GuiBronzeFurnace(player.inventory, tileEntityBronzeFurnace);
+                }
+
+            case LibGuiIds.BRONZE_STEAM_BOILER:
+                if(entity instanceof TileEntityBronzeSteamBoiler){
+                    TileEntityBronzeSteamBoiler tileEntityBronzeSteamBoiler = (TileEntityBronzeSteamBoiler)world.getTileEntity(x, y, z);
+                    return new GuiBronzeSteamBoiler(player.inventory, tileEntityBronzeSteamBoiler);
                 }
             }
         return null;

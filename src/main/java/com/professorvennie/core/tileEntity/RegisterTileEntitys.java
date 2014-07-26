@@ -30,5 +30,6 @@ public class RegisterTileEntitys {
         GameRegistry.registerTileEntity(TileEntityPlasticChest.class, Reference.MOD_ID + "_tileEntityPlasticChest");
         GameRegistry.registerTileEntity(TileEntityPortableCobbleGen.class, Reference.MOD_ID + "_tileEntityPortableCobbleGen");
         GameRegistry.registerTileEntity(TileEntityBronzeFurnace.class, Reference.MOD_ID + "_tileEntityBronzeFurnace");
+        GameRegistry.registerTileEntity(TileEntityBronzeSteamBoiler.class, Reference.MOD_ID + "_tileEntityBronzeSteamBoiler");
     }
 }

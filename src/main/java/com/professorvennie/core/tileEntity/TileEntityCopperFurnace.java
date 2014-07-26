@@ -201,8 +201,6 @@ public class TileEntityCopperFurnace extends TileEntityMod implements ISidedInve
 			}
 			
 		}
-	
-	
 	if(flag1) this.markDirty();
 }
 	

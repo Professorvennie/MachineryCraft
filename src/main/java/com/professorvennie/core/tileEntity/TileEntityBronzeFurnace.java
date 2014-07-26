@@ -1,18 +1,25 @@
 package com.professorvennie.core.tileEntity;
 
 
+import com.professorvennie.core.block.BlockBronzeFurnace;
+import com.professorvennie.core.block.ModBlocks;
+import com.professorvennie.core.fuilds.ModFuilds;
+import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.Names;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 
 public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInventory, IFluidHandler {
 
-    public int cookTime = 0, furnaceSpeed = 65;
+    public int cookTime = 0, furnaceSpeed = 110;
 
     private ItemStack[] inventory;
 
@@ -73,44 +80,120 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
     @Override
     public void updateEntity() {
         super.updateEntity();
+        boolean flag = this.cookTime > 0;
+        boolean flag1 = false;
 
         if(!worldObj.isRemote){
-            if(inventory[0] != null) {
+            if(tanks[0].getFluidAmount() > tanks[0].getCapacity())
+                tanks[0].getFluid().amount = tanks[0].getCapacity();
 
-                //todo change for steam bucket when i make that
-                if (inventory[0].getItem() == Items.water_bucket) {
+            if(inventory[0] != null) {
+                if (inventory[0].getItem() == ModItems.steamBucket) {
+                    int temp = tanks[0].getCapacity() - tanks[0].getFluidAmount();
                     if (inventory[1] == null) {
-                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity())
-                            setInventorySlotContents(1, new ItemStack(Items.bucket));
+                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                            if(temp >= 1000)
+                                setInventorySlotContents(1, new ItemStack(Items.bucket));
+                        }
                         if(tanks[0].getFluid() == null) {
-                            tanks[0].fill(new FluidStack(FluidRegistry.WATER, 1000), true);
+                            tanks[0].fill(new FluidStack(ModFuilds.fluidSteam, 1000), true);
                         }else if(tanks[0].getFluidAmount() < tanks[0].getCapacity()){
-                            if(tanks[0].getFluidAmount() < tanks[0].getCapacity())
+                            if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                                if(temp >= 1000)
+                                    tanks[0].getFluid().amount += 1000;
+                            }
+                        }
+
+                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                            if(temp >= 1000) {
+                                inventory[0].stackSize--;
+                                if (inventory[0].stackSize == 0)
+                                    inventory[0] = null;
+                            }
+                        }
+
+                    } else if(inventory[1].getItem() == Items.bucket){
+                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                            if(temp >= 1000) {
+                                inventory[0].stackSize--;
+                                if (inventory[0].stackSize == 0)
+                                    inventory[0] = null;
+                                inventory[1].stackSize++;
+                            }
+                        }
+
+                        if(tanks[0].getFluid() == null) {
+                            if(temp >= 1000)
+                                tanks[0].fill(new FluidStack(ModFuilds.fluidSteam, 1000), true);
+                        }else if(tanks[0].getFluidAmount() < tanks[0].getCapacity()){
+                            if(temp >= 1000)
                                 tanks[0].getFluid().amount += 1000;
                         }
-                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                    }
+
+                }else if (inventory[0].getItem() == Items.bucket) {
+                    if(inventory[1] == null){
+                        if(tanks[0].getFluidAmount() >= 1000){
+                            tanks[0].drain(1000, true);
                             inventory[0].stackSize--;
-                            if (inventory[0].stackSize == 0)
+                            if(inventory[0].stackSize == 0)
                                 inventory[0] = null;
-                        }
-
-
-                    } else {
-                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
-                            inventory[0].stackSize--;
-                            if (inventory[0].stackSize == 0)
-                                inventory[0] = null;
-                            inventory[1].stackSize++;
-                        }
-
-                        if(tanks[0].getFluid() == null) {
-                            tanks[0].fill(new FluidStack(FluidRegistry.WATER, 1000), true);
-                        }else if(tanks[0].getFluidAmount() < tanks[0].getCapacity()){
-                            tanks[0].getFluid().amount += 1000;
-                            System.out.println(tanks[0].getFluidAmount());
+                            setInventorySlotContents(1, new ItemStack(ModItems.steamBucket));
                         }
                     }
                 }
+            }
+            if(tanks[0].getFluid() != null) {
+                if (tanks[0].getFluid().amount >= 1 && canSmelt()) {
+                    cookTime++;
+                    tanks[0].getFluid().amount--;
+                    if (cookTime == furnaceSpeed) {
+                        cookTime = 0;
+                        smeltItem();
+                        flag1 = true;
+                    }
+                }else
+                    cookTime = 0;
+            }
+
+            if(flag != cookTime > 0) {
+                flag1 = true;
+                //BlockBronzeFurnace.updateBlockState(cookTime > 0, worldObj, xCoord, yCoord, zCoord, ModBlocks.bronzeFurnaceActive, ModBlocks.bronzeFurnaceIdle);
+            }
+        }
+        if(flag1) this.markDirty();
+    }
+
+    private boolean canSmelt(){
+        if(this.inventory[2] == null){
+            return false;
+        }else{
+            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.inventory[2]);
+
+            if(itemstack == null) return false;
+            if(this.inventory[3] == null) return true;
+            if(!this.inventory[3].isItemEqual(itemstack)) return false;
+
+            int result = this.inventory[3].stackSize + itemstack.stackSize;
+
+            return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
+        }
+    }
+
+    private void smeltItem(){
+        if(this.canSmelt()){
+            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.inventory[2]);
+
+            if(this.inventory[3] == null){
+                this.inventory[3] = itemstack.copy();
+            }else if(this.inventory[3].isItemEqual(itemstack)){
+                this.inventory[3].stackSize += itemstack.stackSize;
+            }
+
+            this.inventory[2].stackSize--;
+
+            if(this.inventory[2].stackSize <= 0){
+                this.inventory[2] = null;
             }
         }
     }
@@ -140,14 +223,41 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
         return this.hasCustomName() ? this.getCustomName() : Names.Containers.BRONZE_FURNACE;
     }
 
-    @Override
-    public void readFromNBT(NBTTagCompound nbtTagCompound) {
-        super.readFromNBT(nbtTagCompound);
+    public void readFromNBT(NBTTagCompound nbt){
+        super.readFromNBT(nbt);
+
+        NBTTagList list = nbt.getTagList("items", Constants.NBT.TAG_COMPOUND);
+        this.inventory = new ItemStack[this.getSizeInventory()];
+
+        for(int i = 0; i < list.tagCount(); i ++){
+            NBTTagCompound compound = list.getCompoundTagAt(i);
+            int j = compound.getByte("slot") & 0xff;
+
+            if(j >= 0 && j < this.inventory.length){
+                this.inventory[j] = ItemStack.loadItemStackFromNBT(compound);
+
+            }
+        }
+        this.cookTime = (int)nbt.getShort("cookTime");
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound nbtTagCompound) {
-        super.writeToNBT(nbtTagCompound);
+    public void writeToNBT(NBTTagCompound nbt) {
+        super.writeToNBT(nbt);
+
+        nbt.setShort("cookTime", (short) this.cookTime);
+
+        NBTTagList list = new NBTTagList();
+
+        for(int i = 0; i < this.inventory.length; i ++){
+            if(this.inventory[i] != null){
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setByte("slot", (byte) i);
+                this.inventory[i].writeToNBT(compound);
+                list.appendTag(compound);
+            }
+        }
+        nbt.setTag("items", list);
     }
 
     @Override

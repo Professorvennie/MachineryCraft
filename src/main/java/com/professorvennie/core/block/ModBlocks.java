@@ -156,5 +156,6 @@ public class ModBlocks {
         RegistryUtils.registerBlock(bronzeFurnaceActive);
         RegistryUtils.registerBlock(bronzeGrinderIdle);
         RegistryUtils.registerBlock(bronzeGrinderActive);
+        RegistryUtils.registerBlock(bronzeSteamBoiler);
 	}
 }

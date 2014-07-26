@@ -9,12 +9,18 @@
  * */
 package com.professorvennie.core.common.events;
 
+
+import com.professorvennie.core.fuilds.ModFuilds;
+import com.professorvennie.core.item.ModItems;
 import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraftforge.common.MinecraftForge;
+
 
 public class ModEvents {
 	
 	public static void registerEvents(){
 		FMLCommonHandler.instance().bus().register(new EventOnCrafted());
+        BucketHandler.INSTANCE.buckets.put(ModFuilds.blockSteam, ModItems.steamBucket);
+        MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
 	}
-
 }

@@ -35,7 +35,7 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
 
     private static String name;
     @SideOnly(Side.CLIENT)
-    public IIcon iconFront;
+    public IIcon iconFront, iconTop;
     public boolean isActive;
     public static boolean keepInventory;
     public final Random rand = new Random();

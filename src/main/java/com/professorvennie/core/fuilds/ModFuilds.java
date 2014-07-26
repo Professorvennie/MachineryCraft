@@ -28,12 +28,10 @@ public class ModFuilds {
 	
 	private static void init() {
         fluidSteam = new Fluid("steam");
-		if(!FluidRegistry.registerFluid(fluidSteam)){
-            fluidSteam = FluidRegistry.getFluid("steam");
-		}
+		FluidRegistry.registerFluid(fluidSteam);
 
         blockSteam = new FluidSteamBlock(fluidSteam, Material.water).setBlockName("steam").setCreativeTab(MachineryCraft.tabMachineryCraft);
 		GameRegistry.registerBlock(blockSteam, blockSteam.getUnlocalizedName());
-        fluidSteam.setBlock(blockSteam).setGaseous(true).setTemperature(1000).setDensity(450);
+        fluidSteam.setBlock(blockSteam).setGaseous(true).setTemperature(1000).setDensity(450).setUnlocalizedName(blockSteam.getUnlocalizedName());
 	}
 }
