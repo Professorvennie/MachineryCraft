@@ -9,9 +9,12 @@
  * */
 package com.professorvennie.core.main;
 
+import com.professorvennie.core.entitys.ModEntities;
+import com.professorvennie.core.main.creativetab.CreativeTabMachineryCraft;
+import com.professorvennie.core.main.creativetab.CreativeTabMachineryCraftEquipment;
+import com.professorvennie.core.main.plugins.PluginHandler;
 import com.professorvennie.core.main.proxeys.CommonProxey;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.creativetab.CreativeTabsMachineryCraft;
 import com.professorvennie.core.world.biome.BiomePlastic;
 import com.professorvennie.core.world.village.ComponentWorkShop;
 import com.professorvennie.core.world.village.VillageTrades;
@@ -61,7 +64,8 @@ public class MachineryCraft {
 
     public static BiomeGenBase biomePlastic = new BiomePlastic(150).setBiomeName("plastic");
 
-    public static CreativeTabs tabMachineryCraft = new CreativeTabsMachineryCraft("MachineryCraft");
+    public static CreativeTabs tabMachineryCraft = new CreativeTabMachineryCraft("MachineryCraft");
+    public static CreativeTabs tabMachineryCraftEquipment = new CreativeTabMachineryCraftEquipment("MachineryCraftEquipment");
 
 	@SidedProxy(clientSide = Reference.CLIENT_PROXEY , serverSide = Reference.SERVER_PROXEY)
 	public static CommonProxey proxy;
@@ -71,10 +75,12 @@ public class MachineryCraft {
 		ModBlocks.mainRegistry();
 		ModItems.mainRegistry();
 		ModFuilds.mainRegistry();
+        ModEntities.init();
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigHandler());
 		ModRecipes.init();
 		BookData.init();
+        PluginHandler.preInit();
 
         VillagerRegistry.instance().registerVillagerId(78906);
         VillagerRegistry.instance().registerVillagerSkin(78906, new ResourceLocation(Reference.MOD_ID, "textures/entitys/machinerycraft_Villager.png"));
@@ -94,6 +100,7 @@ public class MachineryCraft {
 		MinecraftForge.EVENT_BUS.register(new HudHandler());
 		ModAchievements.registerAchievements();
 		ModEvents.registerEvents();
+        PluginHandler.Init();
 
 		RegisterTileEntitys.mainRegistry();
         proxy.registerRenderThings();
@@ -106,6 +113,7 @@ public class MachineryCraft {
 	@Mod.EventHandler
 	public static void postInit(FMLPostInitializationEvent event){
 		ModRecipes.oreDict();
+        PluginHandler.postInit();
 	}
 	
 }

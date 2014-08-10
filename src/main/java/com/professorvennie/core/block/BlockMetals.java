@@ -37,7 +37,7 @@ public class BlockMetals extends Block {
 		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
 		this.setBlockName("metal");
 		this.setHardness(3.5f);
-		this.setHarvestLevel("pickaxe", 2);
+        this.setHarvestLevel("pickAxe", 2);
         setStepSound(Block.soundTypeMetal);
 	}
 	
@@ -46,13 +46,13 @@ public class BlockMetals extends Block {
         return super.setBlockName(string);
     }
 	
-	 	@Override
-	    @SideOnly(Side.CLIENT)
-	    public void registerBlockIcons(IIconRegister register) {
-	        iconArray = new IIcon[Names.Blocks.METAL_BLOCKS.length];
-	        for (int i = 0; i < iconArray.length; i++) {
-	            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + Names.Blocks.METAL_BLOCKS[i]);
-	        }
+	 @Override
+	 @SideOnly(Side.CLIENT)
+	 public void registerBlockIcons(IIconRegister register) {
+	     iconArray = new IIcon[Names.Blocks.METAL_BLOCKS.length];
+	     for (int i = 0; i < iconArray.length; i++) {
+	         iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + Names.Blocks.METAL_BLOCKS[i]);
+	     }
 	    }
 	
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
@@ -77,40 +77,38 @@ public class BlockMetals extends Block {
         return this.damageDropped(world.getBlockMetadata(x, y, z));
     }
 
+    public static class ItemBlockMetals extends ItemBlock {
 
-public static class ItemBlockMetals extends ItemBlock {
+        public ItemBlockMetals(Block block) {
+            super(block);
+            this.setMaxDamage(0);
+            this.setHasSubtypes(true);
+        }
 
-    public ItemBlockMetals(Block block) {
-        super(block);
-        this.setMaxDamage(0);
-        this.setHasSubtypes(true);
-    }
+        @Override
+        public int getMetadata(int par1) {
+             return par1;
+        }
 
-    @Override
-    public int getMetadata(int par1) {
-        return par1;
-    }
+        @Override
+        @SideOnly(Side.CLIENT)
+        public IIcon getIconFromDamage(int par1) {
+            return this.field_150939_a.getIcon(0, par1);
+         }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int par1) {
-        return this.field_150939_a.getIcon(0, par1);
-    }
+        @SuppressWarnings({ "unchecked", "rawtypes" })
+        @Override
+        @SideOnly(Side.CLIENT)
+        public void getSubItems(Item item, CreativeTabs tab, List list) {
+            for (int i = 0; i < Names.Blocks.METAL_BLOCKS.length; i++) {
+                list.add(new ItemStack(item, 1, i));
+            }
+        }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs tab, List list) {
-        for (int i = 0; i < Names.Blocks.METAL_BLOCKS.length; i++) {
-            list.add(new ItemStack(item, 1, i));
+        @Override
+        public String getUnlocalizedName(ItemStack stack) {
+            return this.getUnlocalizedName() + "." + stack.getItemDamage();
         }
     }
-
-    @Override
-    public String getUnlocalizedName(ItemStack stack) {
-        return this.getUnlocalizedName() + "." + stack.getItemDamage();
-    }
-
-	}
 }
 

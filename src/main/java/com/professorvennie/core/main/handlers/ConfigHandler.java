@@ -38,14 +38,12 @@ public class ConfigHandler {
     public static int leadVienSize = 7;
     public static int saltVienSize = 4;
 
-    public static boolean saltTools = true;
-    public static boolean ironoxideTools = true;
-    public static boolean goldoxideTools = true;
+    public static boolean zincTools = true;
+    public static boolean brassTools = true;
     public static boolean emeraldTools = true;
 
-    public static boolean saltArmor = true;
-    public static boolean ironoxideArmor = true;
-    public static boolean goldoxideArmor = true;
+    public static boolean zincArmor = true;
+    public static boolean brassArmor = true;
     public static boolean emeraldArmor = true;
 
 
@@ -69,29 +67,26 @@ public class ConfigHandler {
         spawnTin = configuration.getBoolean("tin Spawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of tin veins.");
         spawnSilver = configuration.getBoolean("silver Spawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of silver veins.");
         spawnLead = configuration.getBoolean("lead Spawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of lead veins.");
-        spawnSalt= configuration.getBoolean("salt Spawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of salt veins.");
+        spawnSalt= configuration.getBoolean("zinc Spawn", Configuration.CATEGORY_GENERAL, true, "Enables/disables the spawning of zinc veins.");
 
         copperRate = configuration.getInt("copper Rate", Configuration.CATEGORY_GENERAL, 15, 1, 30, "Sets how much copper spawns in the world");
         tinRate = configuration.getInt("tin Rate", Configuration.CATEGORY_GENERAL, 16, 1, 30, "Sets how much tin spawns in the world");
         silverRate = configuration.getInt("silver Rate", Configuration.CATEGORY_GENERAL, 5, 1, 30, "Sets how much silver spawns in the world");
         leadRate = configuration.getInt("lead Rate", Configuration.CATEGORY_GENERAL, 20, 1, 30, "Sets how much lead spawns in the world");
-        saltRate = configuration.getInt("salt Rate", Configuration.CATEGORY_GENERAL, 10, 1, 30, "Sets how much salt spawns in the world");
+        saltRate = configuration.getInt("zinc Rate", Configuration.CATEGORY_GENERAL, 10, 1, 30, "Sets how much zinc spawns in the world");
 
         copperVienSize = configuration.getInt("copper VienSize", Configuration.CATEGORY_GENERAL, 6, 1, 10, "Sets how much copper spawns in each vien");
         tinVienSize = configuration.getInt("tin VienSize", Configuration.CATEGORY_GENERAL, 3, 1, 10, "Sets how much tin spawns in each vien");
         silverVienSize = configuration.getInt("silver VienSize", Configuration.CATEGORY_GENERAL, 5, 1, 10, "Sets how much silver spawns in each vien");
         leadVienSize = configuration.getInt("lead VienSize", Configuration.CATEGORY_GENERAL, 7, 1, 10, "Sets how much lead spawns in each vien");
-        saltVienSize = configuration.getInt("salt VienSize", Configuration.CATEGORY_GENERAL, 4, 1, 10, "Sets how much salt spawns in each vien");
+        saltVienSize = configuration.getInt("zinc VienSize", Configuration.CATEGORY_GENERAL, 4, 1, 10, "Sets how much zinc spawns in each vien");
 
-        saltTools = configuration.getBoolean("Salt Tools", Configuration.CATEGORY_GENERAL, true, "Enables/disables salt tools");
-        ironoxideTools = configuration.getBoolean("Ironoxide Tools", Configuration.CATEGORY_GENERAL, true, "Enables/disables Ironoxide tools");
-        goldoxideTools = configuration.getBoolean("Goldoxide Tools", Configuration.CATEGORY_GENERAL, true, "Enables/disables Goldoxide tools");
+        zincTools = configuration.getBoolean("Zinc Tools", Configuration.CATEGORY_GENERAL, true, "Enables/disables zinc tools");
+        brassTools = configuration.getBoolean("Brass Tools", Configuration.CATEGORY_GENERAL, true, "Enables/disables brass tools");
         emeraldTools = configuration.getBoolean("Emerald Tools", Configuration.CATEGORY_GENERAL, true, "Enables/disables Emerald tools");
 
-        saltArmor = configuration.getBoolean("Salt Armor", Configuration.CATEGORY_GENERAL, true, "Enables/disables salt Armor");
-        ironoxideArmor = configuration.getBoolean("Ironoxide Armor", Configuration.CATEGORY_GENERAL, true, "Enables/disables Ironoxide Armor");
-        goldoxideArmor = configuration.getBoolean("Goldoxide Armor", Configuration.CATEGORY_GENERAL, true, "Enables/disables Goldoxide Armor");
-        emeraldArmor = configuration.getBoolean("Emerald Armor", Configuration.CATEGORY_GENERAL, true, "Enables/disables Emerald Armor");
+        zincArmor = configuration.getBoolean("Zinc Armor", Configuration.CATEGORY_GENERAL, true, "Enables/disables zinc Armor");
+        brassArmor = configuration.getBoolean("Brass Armor", Configuration.CATEGORY_GENERAL, true, "Enables/disables brass Armor");
         emeraldArmor = configuration.getBoolean("Emerald Armor", Configuration.CATEGORY_GENERAL, true, "Enables/disables Emerald Armor");
 
         if (configuration.hasChanged()){

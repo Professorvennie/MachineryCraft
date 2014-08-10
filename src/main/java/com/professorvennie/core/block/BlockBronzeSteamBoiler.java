@@ -63,18 +63,7 @@ public class BlockBronzeSteamBoiler extends BlockBasicMachine {
                             player.addChatComponentMessage(new ChatComponentText("Not enough room for water.  Only " + temp + "mb left of room."));
                     }else
                         player.addChatComponentMessage(new ChatComponentText("Water tank is full."));
-                }else if(player.getHeldItem().getItem() == ModItems.steamBucket){
-                            if(entity.tanks[0].getFluidAmount() < entity.tanks[0].getCapacity()){
-                                int temp = entity.tanks[0].getCapacity() - entity.tanks[0].getFluidAmount();
-                                if(temp >= 1000){
-                                    entity.tanks[0].fill(new FluidStack(ModFuilds.fluidSteam, 1000), true);
-                                    if(!player.capabilities.isCreativeMode)
-                                        player.setCurrentItemOrArmor(0, new ItemStack(Items.bucket));
-                                }else
-                                    player.addChatComponentMessage(new ChatComponentText("Not Enough room for steam.  Only " + temp + "mb left of room."));
-                            }else
-                                player.addChatComponentMessage(new ChatComponentText("Steam tank is full"));
-                    }else if(player.getHeldItem().getItem() == Items.bucket){
+                }else if(player.getHeldItem().getItem() == Items.bucket){
                     if(entity.tanks[0].getFluidAmount() >= 1000){
                         entity.tanks[0].drain(1000, true);
                         if(player.getHeldItem().stackSize == 1)

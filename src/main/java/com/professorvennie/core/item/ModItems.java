@@ -41,6 +41,7 @@ public class ModItems {
     public static Item gears;
     public static Item nuggets;
     public static Item steamBucket;
+    public static Item gernade;
 
 
     public static void InitialiseItem(){
@@ -53,6 +54,7 @@ public class ModItems {
         gears = new ItemGears();
         nuggets = new ItemNuggets();
         steamBucket = new ItemSteamBucket();
+        gernade = new ItemGrenade();
 
 		//upgrades
 		speedupgrade = new ItemSpeedUpgrade().setUnlocalizedName(Names.Items.SPPED_UPGRADE).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":speedupgrade");
@@ -73,5 +75,6 @@ public class ModItems {
         RegistryUtils.registerItem(gears);
         RegistryUtils.registerItem(nuggets);
         RegistryUtils.registerItem(steamBucket);
+        RegistryUtils.registerItem(gernade);
     }
 }

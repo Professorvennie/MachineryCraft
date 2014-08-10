@@ -1,14 +1,27 @@
 package com.professorvennie.core.tileEntity;
 
+import com.professorvennie.core.fuilds.ModFuilds;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.*;
 
 
 /**
  * Created by ProfessorVennie on 7/23/2014 at 11:24 AM.
  */
-public class TileEntityBronzeExtractor extends TileEntityMod implements ISidedInventory {
+public class TileEntityBronzeExtractor extends TileEntityMod implements ISidedInventory, IFluidHandler {
+
+    public ItemStack[] inventory;
+    public FluidTank tank;
+
+    public int cookTime, furnaceSpeed;
+
+    public TileEntityBronzeExtractor(){
+        inventory = new ItemStack[4];
+        tank = new FluidTank(ModFuilds.fluidSteam, 0, 10000);
+    }
 
     @Override
     public int[] getAccessibleSlotsFromSide(int i) {
@@ -83,5 +96,35 @@ public class TileEntityBronzeExtractor extends TileEntityMod implements ISidedIn
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemStack) {
         return false;
+    }
+
+    @Override
+    public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
+        return 0;
+    }
+
+    @Override
+    public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain) {
+        return null;
+    }
+
+    @Override
+    public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
+        return null;
+    }
+
+    @Override
+    public boolean canFill(ForgeDirection from, Fluid fluid) {
+        return false;
+    }
+
+    @Override
+    public boolean canDrain(ForgeDirection from, Fluid fluid) {
+        return false;
+    }
+
+    @Override
+    public FluidTankInfo[] getTankInfo(ForgeDirection from) {
+        return new FluidTankInfo[0];
     }
 }

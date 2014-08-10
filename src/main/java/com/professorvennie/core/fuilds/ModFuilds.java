@@ -33,5 +33,6 @@ public class ModFuilds {
         blockSteam = new FluidSteamBlock(fluidSteam, Material.water).setBlockName("steam").setCreativeTab(MachineryCraft.tabMachineryCraft);
 		GameRegistry.registerBlock(blockSteam, blockSteam.getUnlocalizedName());
         fluidSteam.setBlock(blockSteam).setGaseous(true).setTemperature(1000).setDensity(450).setUnlocalizedName(blockSteam.getUnlocalizedName());
+        fluidSteam = FluidRegistry.getFluid("steam");
 	}
 }

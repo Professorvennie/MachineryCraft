@@ -118,6 +118,5 @@ public class BlockOres extends Block implements IBookable{
     public String getUnlocalizedName(ItemStack stack) {
         return this.getUnlocalizedName() + "." + stack.getItemDamage();
     }
-
 	}
 }

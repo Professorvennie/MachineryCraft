@@ -1,8 +1,7 @@
 package com.professorvennie.core.tileEntity;
 
 
-import com.professorvennie.core.block.BlockBronzeFurnace;
-import com.professorvennie.core.block.ModBlocks;
+import com.professorvennie.api.steam.ISteamTank;
 import com.professorvennie.core.fuilds.ModFuilds;
 import com.professorvennie.core.item.ModItems;
 import com.professorvennie.core.lib.Names;
@@ -17,20 +16,17 @@ import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 
-public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInventory, IFluidHandler {
+public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInventory, IFluidHandler, ISteamTank {
 
     public int cookTime = 0, furnaceSpeed = 110;
 
     private ItemStack[] inventory;
 
-    public static FluidTank[] tanks;
+    public FluidTank tank;
 
     public TileEntityBronzeFurnace(){
-        tanks = new FluidTank[1];
-        for(int i = 0; i < tanks.length; i++){
-            tanks[i] = new FluidTank(10000);
-        }
         inventory = new ItemStack[4];
+        tank = new FluidTank(ModFuilds.fluidSteam, 0, 10000);
     }
 
     @Override
@@ -80,31 +76,30 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
     @Override
     public void updateEntity() {
         super.updateEntity();
-        boolean flag = this.cookTime > 0;
         boolean flag1 = false;
 
         if(!worldObj.isRemote){
-            if(tanks[0].getFluidAmount() > tanks[0].getCapacity())
-                tanks[0].getFluid().amount = tanks[0].getCapacity();
+            if(tank.getFluidAmount() > tank.getCapacity())
+                tank.getFluid().amount = tank.getCapacity();
 
             if(inventory[0] != null) {
                 if (inventory[0].getItem() == ModItems.steamBucket) {
-                    int temp = tanks[0].getCapacity() - tanks[0].getFluidAmount();
+                    int temp = tank.getCapacity() - tank.getFluidAmount();
                     if (inventory[1] == null) {
-                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                        if(tank.getFluidAmount() < tank.getCapacity()) {
                             if(temp >= 1000)
                                 setInventorySlotContents(1, new ItemStack(Items.bucket));
                         }
-                        if(tanks[0].getFluid() == null) {
-                            tanks[0].fill(new FluidStack(ModFuilds.fluidSteam, 1000), true);
-                        }else if(tanks[0].getFluidAmount() < tanks[0].getCapacity()){
-                            if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                        if(tank.getFluid() == null) {
+                            tank.fill(new FluidStack(ModFuilds.fluidSteam, 1000), true);
+                        }else if(tank.getFluidAmount() < tank.getCapacity()){
+                            if(tank.getFluidAmount() < tank.getCapacity()) {
                                 if(temp >= 1000)
-                                    tanks[0].getFluid().amount += 1000;
+                                    tank.getFluid().amount += 1000;
                             }
                         }
 
-                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                        if(tank.getFluidAmount() < tank.getCapacity()) {
                             if(temp >= 1000) {
                                 inventory[0].stackSize--;
                                 if (inventory[0].stackSize == 0)
@@ -113,7 +108,7 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
                         }
 
                     } else if(inventory[1].getItem() == Items.bucket){
-                        if(tanks[0].getFluidAmount() < tanks[0].getCapacity()) {
+                        if(tank.getFluidAmount() < tank.getCapacity()) {
                             if(temp >= 1000) {
                                 inventory[0].stackSize--;
                                 if (inventory[0].stackSize == 0)
@@ -122,19 +117,19 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
                             }
                         }
 
-                        if(tanks[0].getFluid() == null) {
+                        if(tank.getFluid() == null) {
                             if(temp >= 1000)
-                                tanks[0].fill(new FluidStack(ModFuilds.fluidSteam, 1000), true);
-                        }else if(tanks[0].getFluidAmount() < tanks[0].getCapacity()){
+                                tank.fill(new FluidStack(ModFuilds.fluidSteam, 1000), true);
+                        }else if(tank.getFluidAmount() < tank.getCapacity()){
                             if(temp >= 1000)
-                                tanks[0].getFluid().amount += 1000;
+                                tank.getFluid().amount += 1000;
                         }
                     }
 
                 }else if (inventory[0].getItem() == Items.bucket) {
                     if(inventory[1] == null){
-                        if(tanks[0].getFluidAmount() >= 1000){
-                            tanks[0].drain(1000, true);
+                        if(tank.getFluidAmount() >= 1000){
+                            tank.drain(1000, true);
                             inventory[0].stackSize--;
                             if(inventory[0].stackSize == 0)
                                 inventory[0] = null;
@@ -143,22 +138,24 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
                     }
                 }
             }
-            if(tanks[0].getFluid() != null) {
-                if (tanks[0].getFluid().amount >= 1 && canSmelt()) {
+
+            if(!canSmelt())
+                cookTime = 0;
+
+            if(tank.getFluid() != null) {
+                if (tank.getFluid().amount >= 1 && canSmelt()) {
                     cookTime++;
-                    tanks[0].getFluid().amount--;
+                    if(cookTime > 0) {
+                        if(canSmelt())
+                            tank.getFluid().amount--;
+                    }
                     if (cookTime == furnaceSpeed) {
                         cookTime = 0;
                         smeltItem();
                         flag1 = true;
                     }
-                }else
+                } else
                     cookTime = 0;
-            }
-
-            if(flag != cookTime > 0) {
-                flag1 = true;
-                //BlockBronzeFurnace.updateBlockState(cookTime > 0, worldObj, xCoord, yCoord, zCoord, ModBlocks.bronzeFurnaceActive, ModBlocks.bronzeFurnaceIdle);
             }
         }
         if(flag1) this.markDirty();
@@ -238,6 +235,7 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
 
             }
         }
+        this.tank.readFromNBT(nbt);
         this.cookTime = (int)nbt.getShort("cookTime");
     }
 
@@ -245,6 +243,7 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
     public void writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
 
+        this.tank.writeToNBT(nbt);
         nbt.setShort("cookTime", (short) this.cookTime);
 
         NBTTagList list = new NBTTagList();
@@ -289,7 +288,7 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
     @Override
     public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
         if(from.equals(ForgeDirection.UP) || from.equals(ForgeDirection.DOWN) || from.equals(ForgeDirection.NORTH) || from.equals(ForgeDirection.SOUTH) || from.equals(ForgeDirection.WEST) || from.equals(ForgeDirection.EAST))
-            tanks[0].fill(resource, doFill);
+            tank.fill(resource, doFill);
         return 0;
     }
 
@@ -315,10 +314,30 @@ public class TileEntityBronzeFurnace extends TileEntityMod implements ISidedInve
 
     @Override
     public FluidTankInfo[] getTankInfo(ForgeDirection from) {
-        return new FluidTankInfo[]{tanks[0].getInfo()};
+        return new FluidTankInfo[]{tank.getInfo()};
     }
 
     public int getCookProgressScaled(int i){
         return cookTime * i / furnaceSpeed;
+    }
+
+    @Override
+    public FluidTank getSteamTank() {
+        return tank;
+    }
+
+    @Override
+    public int getSteamAmount() {
+        return tank.getFluidAmount();
+    }
+
+    @Override
+    public int getSteamCapacity() {
+        return tank.getCapacity();
+    }
+
+    @Override
+    public void setSteamAmount(int amount) {
+        tank.getFluid().amount += amount;
     }
 }

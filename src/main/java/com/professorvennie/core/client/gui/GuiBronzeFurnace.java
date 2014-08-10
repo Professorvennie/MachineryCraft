@@ -57,10 +57,10 @@ public class GuiBronzeFurnace extends GuiBase{
         this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 120, this.ySize - 96 + 2, 4210752);
 
         List<String> text = new ArrayList<String>();
-        if (entity.tanks[0].getFluidAmount() > 0 || (entity.tanks[0].getFluid() != null)) {
+        if (entity.tank.getFluidAmount() > 0 || (entity.tank.getFluid() != null && entity.tank.getFluid().getFluid() != null)) {
             text.clear();
-            text.add(entity.tanks[0].getFluid().getFluid().getUnlocalizedName());
-            text.add(entity.tanks[0].getFluidAmount() + "/" + entity.tanks[0].getCapacity() + "mB");
+            text.add(entity.tank.getFluid().getFluid().getUnlocalizedName());
+            text.add(entity.tank.getFluidAmount() + "/" + entity.tank.getCapacity() + "mB");
             drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text, fontRendererObj);
         } else {
             text.clear();
@@ -71,10 +71,9 @@ public class GuiBronzeFurnace extends GuiBase{
 
     public void drawTanks() {
         int j;
-        if (entity.tanks[0].getFluid() != null) {
-            j = getValueScaled(entity.tanks[0].getFluidAmount(), entity.tanks[0].getCapacity(), 66);
-            this.drawFluid(guiLeft + 11, guiTop + 74 - j, entity.tanks[0].getFluid(), 16, j);
+        if (entity.tank.getFluid() != null) {
+            j = getValueScaled(entity.tank.getFluidAmount(), entity.tank.getCapacity(), 66);
+            this.drawFluid(guiLeft + 11, guiTop + 74 - j, entity.tank.getFluid(), 16, j);
         }
-
     }
 }

@@ -52,6 +52,7 @@ public class BlockWindmill extends BlockContainer implements IBookable{
 	public int getRenderType(){
 		return -1;
 	}
+
 	public boolean isOpaqueCube(){
 		return false;
 	}
@@ -78,6 +79,7 @@ public class BlockWindmill extends BlockContainer implements IBookable{
 	public Item getItemDropped(int par1, Random random, int par2){
 		return (ModItems.Itemwindmill);
 	}
+
 	public Item getItem(World world, int x, int y, int z){
 		return ModItems.Itemwindmill;
 	}

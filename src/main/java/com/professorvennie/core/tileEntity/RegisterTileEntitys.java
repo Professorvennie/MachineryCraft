@@ -31,5 +31,8 @@ public class RegisterTileEntitys {
         GameRegistry.registerTileEntity(TileEntityPortableCobbleGen.class, Reference.MOD_ID + "_tileEntityPortableCobbleGen");
         GameRegistry.registerTileEntity(TileEntityBronzeFurnace.class, Reference.MOD_ID + "_tileEntityBronzeFurnace");
         GameRegistry.registerTileEntity(TileEntityBronzeSteamBoiler.class, Reference.MOD_ID + "_tileEntityBronzeSteamBoiler");
+        GameRegistry.registerTileEntity(TileEntityBronzeGrinder.class, Reference.MOD_ID + "_tileEntityBronzeGrinder");
+        GameRegistry.registerTileEntity(TileEntityBronzeExtractor.class, Reference.MOD_ID + "_tileEntityBronzeExtractor");
+        GameRegistry.registerTileEntity(TileEntitySteamPipe.class, Reference.MOD_ID + "_tileEntitySteamPipe");
     }
 }

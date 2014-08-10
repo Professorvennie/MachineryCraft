@@ -29,28 +29,22 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class ModRecipes {
 	//machines
-	public static IRecipe recipeSaltFurnace;
-    public static IRecipe recipeSaltGrinder;
+	public static IRecipe recipeCopperFurnace;
+    public static IRecipe recipeCopperGrinder;
     public static IRecipe recipePortableCobbleGen;
 	
 	//tools
-	public static IRecipe recipeSaltPickaxe;
-	public static IRecipe recipeSaltAxe;
-	public static IRecipe recipeSaltSword;
-	public static IRecipe recipeSaltSpade;
-	public static IRecipe recipeSaltHoe;
+	public static IRecipe recipeZincPickaxe;
+	public static IRecipe recipeZincAxe;
+	public static IRecipe recipeZincSword;
+	public static IRecipe recipeZincSpade;
+	public static IRecipe recipeZincHoe;
 
-	public static IRecipe recipeIronoxidePickaxe;
-	public static IRecipe recipeIronoxideAxe;
-	public static IRecipe recipeIronoxideSword;
-	public static IRecipe recipeIronoxideSpade;
-	public static IRecipe recipeIronoxideHoe;
-
-	public static IRecipe recipeGoldoxidePickaxe;
-	public static IRecipe recipeGoldoxideAxe;
-	public static IRecipe recipeGoldoxideSword;
-	public static IRecipe recipeGoldoxideSpade;
-	public static IRecipe recipeGoldoxideHoe;
+	public static IRecipe recipeBrassPickaxe;
+	public static IRecipe recipeBrassAxe;
+	public static IRecipe recipeBrassSword;
+	public static IRecipe recipeBrassSpade;
+	public static IRecipe recipeBrassHoe;
 
 	public static IRecipe recipeEmeraldPickaxe;
 	public static IRecipe recipeEmeraldAxe;
@@ -59,20 +53,15 @@ public class ModRecipes {
 	public static IRecipe recipeEmeraldHoe;
 
 	//armor
-    public static IRecipe recipeSaltHelm;
-    public static IRecipe recipeSaltChest;
-    public static IRecipe recipeSaltPants;
-    public static IRecipe recipeSaltBoots;
+    public static IRecipe recipeZincHelm;
+    public static IRecipe recipeZincChest;
+    public static IRecipe recipeZincPants;
+    public static IRecipe recipeZincBoots;
 
-    public static IRecipe recipeIronoxideHelm;
-    public static IRecipe recipeIronoxideChest;
-    public static IRecipe recipeIronoxidePants;
-    public static IRecipe recipeIronoxideBoots;
-
-    public static IRecipe recipeGoldoxideHelm;
-    public static IRecipe recipeGoldoxideChest;
-    public static IRecipe recipeGoldoxidePants;
-    public static IRecipe recipeGoldoxideBoots;
+    public static IRecipe recipeBrassHelm;
+    public static IRecipe recipeBrassChest;
+    public static IRecipe recipeBrassPants;
+    public static IRecipe recipeBrassBoots;
 
     public static IRecipe recipeEmeraldHelm;
     public static IRecipe recipeEmeraldChest;
@@ -115,67 +104,49 @@ public class ModRecipes {
     public static void init() {
 		//machines
 		addOreDictRecipe(new ItemStack(ModBlocks.copperFurnaceIdle),"SSS", "SFS", "SSS", 'S', new ItemStack(ModItems.Ingots, 1, 4), 'F', Blocks.furnace);
-		recipeSaltFurnace = MachineryCraftAPI.getLatestAddedRecipe();
+		recipeCopperFurnace = MachineryCraftAPI.getLatestAddedRecipe();
 
         addOreDictRecipe(new ItemStack(ModBlocks.copperGrinderIdle), " s ", "sfs", "sss", 's', "ingotSalt", 'f', ModBlocks.copperFurnaceIdle);
-        recipeSaltGrinder = MachineryCraftAPI.getLatestAddedRecipe();
+        recipeCopperGrinder = MachineryCraftAPI.getLatestAddedRecipe();
 
         addOreDictRecipe(new ItemStack(ModBlocks.portableCobbleGen), "CCC", "CSC", "CGC", 'C', Blocks.cobblestone, 'S', "ingotSalt", 'G', new ItemStack(ModItems.gears, 1, 0));
         recipePortableCobbleGen = MachineryCraftAPI.getLatestAddedRecipe();
 		
 		//tools
-		//salt tools
-        if(ConfigHandler.saltTools) {
-            addOreDictRecipe(new ItemStack(ModTools.saltpickaxe), "SSS", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
-            recipeSaltPickaxe = MachineryCraftAPI.getLatestAddedRecipe();
+		//zinc tools
+        if(ConfigHandler.zincTools) {
+            addOreDictRecipe(new ItemStack(ModTools.zincPickaxe), "SSS", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
+            recipeZincPickaxe = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModTools.saltaxe), "SS ", "Ss ", " s ", 'S', "ingotSalt", 's', Items.stick);
-            recipeSaltAxe = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModTools.zincAxe), "SS ", "Ss ", " s ", 'S', "ingotSalt", 's', Items.stick);
+            recipeZincAxe = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModTools.saltsword), " S ", " S ", " s ", 'S', "ingotSalt", 's', Items.stick);
-            recipeSaltSword = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModTools.zincSword), " S ", " S ", " s ", 'S', "ingotSalt", 's', Items.stick);
+            recipeZincSword = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModTools.saltspade), " S ", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
-            recipeSaltSpade = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModTools.zincSpade), " S ", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
+            recipeZincSpade = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModTools.salthoe), "SS ", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
-            recipeSaltHoe = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModTools.zincHoe), "SS ", " s ", " s ", 'S', "ingotSalt", 's', Items.stick);
+            recipeZincHoe = MachineryCraftAPI.getLatestAddedRecipe();
         }
 
-		//ironoxide tools
-        if(ConfigHandler.ironoxideTools) {
-            addOreDictRecipe(new ItemStack(ModTools.ironoxidepickaxe), "SSS", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
-            recipeIronoxidePickaxe = MachineryCraftAPI.getLatestAddedRecipe();
+		//brass tools
+        if(ConfigHandler.brassTools) {
+            addOreDictRecipe(new ItemStack(ModTools.brassPickaxe), "SSS", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
+            recipeBrassPickaxe = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModTools.ironoxideaxe), "SS ", "Ss ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
-            recipeIronoxideAxe = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModTools.brassAxe), "SS ", "Ss ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
+            recipeBrassAxe = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModTools.ironoxidesword), " S ", " S ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
-            recipeIronoxideSword = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModTools.brassSword), " S ", " S ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
+            recipeBrassSword = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModTools.ironoxidespade), " S ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
-            recipeIronoxideSpade = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModTools.brassSpade), " S ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
+            recipeBrassSpade = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModTools.ironoxidehoe), "SS ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
-            recipeIronoxideHoe = MachineryCraftAPI.getLatestAddedRecipe();
-        }
-
-		//goldoxide tools
-        if(ConfigHandler.goldoxideTools) {
-            addOreDictRecipe(new ItemStack(ModTools.goldoxidepickaxe), "SSS", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 5), 's', Items.stick);
-            recipeGoldoxidePickaxe = MachineryCraftAPI.getLatestAddedRecipe();
-
-            addOreDictRecipe(new ItemStack(ModTools.goldoxideaxe), "SS ", "Ss ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 5), 's', Items.stick);
-            recipeGoldoxideAxe = MachineryCraftAPI.getLatestAddedRecipe();
-
-            addOreDictRecipe(new ItemStack(ModTools.goldoxidesword), " S ", " S ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 5), 's', Items.stick);
-            recipeGoldoxideSword = MachineryCraftAPI.getLatestAddedRecipe();
-
-            addOreDictRecipe(new ItemStack(ModTools.goldoxidespade), " S ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 5), 's', Items.stick);
-            recipeGoldoxideSpade = MachineryCraftAPI.getLatestAddedRecipe();
-
-            addOreDictRecipe(new ItemStack(ModTools.goldoxidehoe), "SS ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 5), 's', Items.stick);
-            recipeGoldoxideHoe = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModTools.brassHoe), "SS ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
+            recipeBrassHoe = MachineryCraftAPI.getLatestAddedRecipe();
         }
 
 		//emerald tools
@@ -198,49 +169,34 @@ public class ModRecipes {
 
 		//armor
 
-        //salt armor
-        if(ConfigHandler.saltArmor) {
-            addOreDictRecipe(new ItemStack(ModArmor.salthelment), "sss", "s s", "   ", 's', "ingotSalt");
-            recipeSaltHelm = MachineryCraftAPI.getLatestAddedRecipe();
+        //zinc armor
+        if(ConfigHandler.zincArmor) {
+            addOreDictRecipe(new ItemStack(ModArmor.zincHemlent), "sss", "s s", "   ", 's', "ingotSalt");
+            recipeZincHelm = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.saltchest), "s s", "sss", "sss", 's', "ingotSalt");
-            recipeSaltChest = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModArmor.zincChest), "s s", "sss", "sss", 's', "ingotSalt");
+            recipeZincChest = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.saltpants), "sss", "s s", "s s", 's', "ingotSalt");
-            recipeSaltPants = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModArmor.zincPants), "sss", "s s", "s s", 's', "ingotSalt");
+            recipeZincPants = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.saltboots), "   ", "s s", "s s", 's', "ingotSalt");
-            recipeSaltBoots = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModArmor.zincBoots), "   ", "s s", "s s", 's', "ingotSalt");
+            recipeZincBoots = MachineryCraftAPI.getLatestAddedRecipe();
         }
 
-        //ironoxide armor
-        if(ConfigHandler.ironoxideArmor) {
-            addOreDictRecipe(new ItemStack(ModArmor.ironoxidehelment), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 6));
-            recipeIronoxideHelm = MachineryCraftAPI.getLatestAddedRecipe();
+        //brass armor
+        if(ConfigHandler.brassArmor) {
+            addOreDictRecipe(new ItemStack(ModArmor.brassHelment), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 6));
+            recipeBrassHelm = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.ironoxidechest), "s s", "sss", "sss", 's', new ItemStack(ModItems.Ingots, 1, 6));
-            recipeIronoxideChest = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModArmor.brassChest), "s s", "sss", "sss", 's', new ItemStack(ModItems.Ingots, 1, 6));
+            recipeBrassChest = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.ironoxidepants), "sss", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
-            recipeIronoxidePants = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModArmor.brassPants), "sss", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
+            recipeBrassPants = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.ironoxideboots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
-            recipeIronoxideBoots = MachineryCraftAPI.getLatestAddedRecipe();
-        }
-
-        //goldoxide armor
-        if(ConfigHandler.goldoxideArmor) {
-            addOreDictRecipe(new ItemStack(ModArmor.goldoxidehelment), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 5));
-            recipeGoldoxideHelm = MachineryCraftAPI.getLatestAddedRecipe();
-
-            addOreDictRecipe(new ItemStack(ModArmor.goldoxidechest), "s s", "sss", "sss", 's', new ItemStack(ModItems.Ingots, 1, 5));
-            recipeGoldoxideChest = MachineryCraftAPI.getLatestAddedRecipe();
-
-            addOreDictRecipe(new ItemStack(ModArmor.goldoxidepants), "sss", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 5));
-            recipeGoldoxidePants = MachineryCraftAPI.getLatestAddedRecipe();
-
-            addOreDictRecipe(new ItemStack(ModArmor.goldoxideboots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 5));
-            recipeGoldoxideBoots = MachineryCraftAPI.getLatestAddedRecipe();
+            addOreDictRecipe(new ItemStack(ModArmor.brassBoots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
+            recipeBrassBoots = MachineryCraftAPI.getLatestAddedRecipe();
         }
 
         //emerald armor

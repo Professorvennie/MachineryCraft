@@ -127,6 +127,7 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
             ((TileEntityMod) world.getTileEntity(x, y, z)).setCustomName(itemstack.getDisplayName());
         }
     }
+
     public static void updateBlockState(boolean active, World worldObj, int xCoord, int yCoord, int zCoord, Block blockActive, Block blockIdle) {
         int i = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
         TileEntity tileentity = worldObj.getTileEntity(xCoord, yCoord, zCoord);

@@ -9,16 +9,16 @@
  * */
 package com.professorvennie.core.item.armor.emerald;
 
+import com.professorvennie.core.item.armor.brass.BrassArmor;
 import com.professorvennie.core.lib.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import com.professorvennie.api.MachineryCraftAPI;
-import com.professorvennie.core.item.armor.goldoxide.GoldoxideArmor;
 
 
-public class EmeraldArmor extends GoldoxideArmor{
+public class EmeraldArmor extends BrassArmor {
 
 	public EmeraldArmor(int type, String name) {
 		super(type, name, MachineryCraftAPI.emeraldArmorMaterial);

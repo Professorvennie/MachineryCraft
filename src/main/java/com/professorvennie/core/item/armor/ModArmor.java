@@ -9,24 +9,10 @@
  * */
 package com.professorvennie.core.item.armor;
 
+import com.professorvennie.core.item.armor.emerald.*;
+import com.professorvennie.core.item.armor.brass.*;
+import com.professorvennie.core.item.armor.zinc.*;
 import net.minecraft.item.Item;
-
-import com.professorvennie.core.item.armor.emerald.EmeraldArmorBoots;
-import com.professorvennie.core.item.armor.emerald.EmeraldArmorChest;
-import com.professorvennie.core.item.armor.emerald.EmeraldArmorHelment;
-import com.professorvennie.core.item.armor.emerald.EmeraldArmorPants;
-import com.professorvennie.core.item.armor.goldoxide.ItemGoldoxideArmorBoots;
-import com.professorvennie.core.item.armor.goldoxide.ItemGoldoxideArmorChest;
-import com.professorvennie.core.item.armor.goldoxide.ItemGoldoxideArmorHelment;
-import com.professorvennie.core.item.armor.goldoxide.ItemGoldoxideArmorPants;
-import com.professorvennie.core.item.armor.ironoxide.ItemIronoxideArmorBoots;
-import com.professorvennie.core.item.armor.ironoxide.ItemIronoxideArmorChest;
-import com.professorvennie.core.item.armor.ironoxide.ItemIronoxideArmorHelment;
-import com.professorvennie.core.item.armor.ironoxide.ItemIronoxideArmorPants;
-import com.professorvennie.core.item.armor.salt.ItemSaltArmorBoots;
-import com.professorvennie.core.item.armor.salt.ItemSaltArmorChest;
-import com.professorvennie.core.item.armor.salt.ItemSaltArmorHelment;
-import com.professorvennie.core.item.armor.salt.ItemSaltArmorPants;
 
 public class ModArmor {
 	
@@ -34,43 +20,35 @@ public class ModArmor {
 		init();
 	}
 	
-	public static Item salthelment;
-	public static Item saltchest;
-	public static Item saltpants;
-	public static Item saltboots;
-	public static Item ironoxidehelment;
-	public static Item ironoxidechest;
-	public static Item ironoxidepants;
-	public static Item ironoxideboots;
-	public static Item goldoxidehelment;
-	public static Item goldoxidechest;
-	public static Item goldoxidepants;
-	public static Item goldoxideboots;
+	public static Item zincHemlent;
+	public static Item zincChest;
+	public static Item zincPants;
+	public static Item zincBoots;
+
+	public static Item brassHelment;
+	public static Item brassChest;
+	public static Item brassPants;
+	public static Item brassBoots;
+
 	public static Item emeraldhelment;
 	public static Item emeraldchest;
 	public static Item emeraldpants;
 	public static Item emeraldboots;
 
 	private static void init() {
-		salthelment = new ItemSaltArmorHelment();
-		saltchest = new ItemSaltArmorChest();
-		saltpants = new ItemSaltArmorPants();
-		saltboots = new ItemSaltArmorBoots();
+        zincHemlent = new ItemZincArmorHelment();
+        zincChest = new ItemZincArmorChest();
+        zincPants = new ItemZincArmorPants();
+        zincBoots = new ItemZincArmorBoots();
 		
-		ironoxidehelment = new ItemIronoxideArmorHelment();
-		ironoxidechest = new ItemIronoxideArmorChest();
-		ironoxidepants = new ItemIronoxideArmorPants();
-		ironoxideboots = new ItemIronoxideArmorBoots();
-	
-		goldoxidehelment = new ItemGoldoxideArmorHelment();
-		goldoxidechest = new ItemGoldoxideArmorChest();
-		goldoxidepants = new ItemGoldoxideArmorPants();
-		goldoxideboots = new ItemGoldoxideArmorBoots();
+		brassHelment = new ItemBrassArmorHelment();
+		brassChest = new ItemBrassArmorChest();
+		brassPants = new ItemBrassArmorPants();
+		brassBoots = new ItemBrassArmorBoots();
 		
-		emeraldhelment = new EmeraldArmorHelment();
-		emeraldchest = new EmeraldArmorChest();
-		emeraldpants = new EmeraldArmorPants();
-		emeraldboots = new EmeraldArmorBoots();
+		emeraldhelment = new ItemEmeraldArmorHelment();
+		emeraldchest = new ItemEmeraldArmorChest();
+		emeraldpants = new ItemEmeraldArmorPants();
+		emeraldboots = new ItemEmeraldArmorBoots();
 	}
-
 }

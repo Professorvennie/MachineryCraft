@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 public class ContainerBronzeFurnace extends Container{
 
     private TileEntityBronzeFurnace entity;
-    public int lastCookTime;
+    public int lastCookTime, lastTankAmount;
 
     public ContainerBronzeFurnace(InventoryPlayer inventory, TileEntityBronzeFurnace tileEntityBronzeFurnace) {
         entity = tileEntityBronzeFurnace;
@@ -41,6 +41,7 @@ public class ContainerBronzeFurnace extends Container{
     public void addCraftingToCrafters(ICrafting icrafting){
         super.addCraftingToCrafters(icrafting);
         icrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
+        icrafting.sendProgressBarUpdate(this, 1, lastTankAmount);
     }
 
     public void detectAndSendChanges(){
@@ -52,13 +53,24 @@ public class ContainerBronzeFurnace extends Container{
             if(this.lastCookTime != this.entity.cookTime){
                 icrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
             }
+
+            if(lastTankAmount != entity.tank.getFluidAmount()){
+                icrafting.sendProgressBarUpdate(this, 1, entity.tank.getFluidAmount());
+            }
         }
         this.lastCookTime = this.entity.cookTime;
+        lastTankAmount = entity.tank.getFluidAmount();
     }
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2){
+        super.updateProgressBar(slot, par2);
         if(slot == 0) this.entity.cookTime = par2;
+        if(slot == 1){
+            if(entity.tank.getFluid() != null)
+                entity.tank.getFluid().amount = par2;
+
+        }
     }
 
     @Override

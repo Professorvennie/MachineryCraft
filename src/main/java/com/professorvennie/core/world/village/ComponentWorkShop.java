@@ -62,12 +62,13 @@ public class ComponentWorkShop extends StructureVillagePieces.House1{
             for(int w1 = 0; w1 < 10; w1++){
                 this.placeBlockAtCurrentPosition(world, ModBlocks.plasticPlanks, 0, w, 3, w1, sbb);//Roof
                 this.placeBlockAtCurrentPosition(world, ModBlocks.plasticLog, 0, w, 4, w1, sbb);
-                this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, w, 5, 0, sbb);
-                this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, w, 5, 9, sbb);
-                this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, 0, 5, w1, sbb);
-                this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, 8, 5, w1, sbb);
+                this.placeBlockAtCurrentPosition(world, ModBlocks.plasticFence, 0, w, 5, 0, sbb);
+                this.placeBlockAtCurrentPosition(world, ModBlocks.plasticFence, 0, w, 5, 9, sbb);
+                this.placeBlockAtCurrentPosition(world, ModBlocks.plasticFence, 0, 0, 5, w1, sbb);
+                this.placeBlockAtCurrentPosition(world, ModBlocks.plasticFence, 0, 8, 5, w1, sbb);
             }
         }
+
         this.placeBlockAtCurrentPosition(world, ModBlocks.windmillground, 0, 3, 5, 4, sbb);
         this.placeBlockAtCurrentPosition(world, ModBlocks.windmillground, 0, 3, 5, 5, sbb);
         this.placeBlockAtCurrentPosition(world, ModBlocks.windmillground, 0, 3, 5, 6, sbb);

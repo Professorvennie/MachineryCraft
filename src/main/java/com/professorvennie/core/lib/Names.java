@@ -32,6 +32,27 @@ public class Names {
         public static final String BRONZE_GRINDER = "bronzeGrinder";
         public static final String BRONZE_STEAM_BOILER = "bronzeSteamBoiler";
         public static final String BRONZE_EXTRACTOR = "bronzeExtractor";
+        public static final String PLASTIC_FENCE = "plasticFence";
+        public static final String PLASTIC_FENCE_GATE = "plasticFenceGate";
+        public static final String STEAM_PIPE = "steamPipe";
+
+        public static final String COPPER_STAIRS = "copperStair";
+        public static final String BRONZE_STAIRS = "bronzeStair";
+        public static final String TIN_STAIRS = "tinStair";
+        public static final String SILVER_STAIRS = "silverStair";
+        public static final String LEAD_STAIRS = "leadStair";
+        public static final String ZINC_STAIRS = "zincStair";
+        public static final String BRASS_STAIRS = "brassStair";
+
+        public static final String COPPER_SLAB = "copperSlab";
+        public static final String BRONZE_SLAB = "bronzeSlab";
+        public static final String TIN_SLAB = "tinSlab";
+        public static final String SILVER_SLAB = "silverSlab";
+        public static final String LEAD_SLAB = "leadSlab";
+        public static final String ZINC_SLAB = "zincSlab";
+        public static final String BRASS_SLAB = "brassSlab";
+
+        public static final String[] METAL_WALLS = new String[]{"copperWall" , "tinWall", "silverWall", "leadWall", "zincWall", "brassWall", "bronzeWall"};
     }
 
 
@@ -49,32 +70,29 @@ public class Names {
         public static final String STEAM_BUCKET = "steamBucket";
 
         //Tools
-        public static final String SALT_PICKAXE ="saltpickaxe";
-        public static final String SALT_AXE ="saltaxe";
-        public static final String SALT_SWORD ="saltsword";
-        public static final String SALT_HOE ="salthoe";
-        public static final String SALT_SPADE="saltspade";
-        public static final String IRONOXIDE_PICKAXE ="ironoxidepickaxe";
-        public static final String IRONOXIDE_AXE ="ironoxideaxe";
-        public static final String IRONOXIDE_SWORD ="ironoxidesword";
-        public static final String IRONOXIDE_HOE ="ironoxidehoe";
-        public static final String IRONOXIDE_SPADE ="ironoxidespade";
-        public static final String EMEARALD_PICKAXE ="emeraldpickaxe";
-        public static final String EMEARALD_AXE ="emeraldaxe";
-        public static final String EMEARALD_SWORD ="emeraldsword";
-        public static final String EMEARALD_HOE ="emeraldhoe";
-        public static final String EMEARALD_SPADE="emeraldspade";
-        public static final String GOLDOXIDE_PICKAXE ="goldoxidepickaxe";
-        public static final String GOLDOXIDE_AXE ="goldoxideaxe";
-        public static final String GOLDOXIDE_SWORD ="goldoxidesword";
-        public static final String GOLDOXIDE_HOE ="goldoxidehoe";
-        public static final String GOLDOXIDE_SPADE ="goldoxidespade";
+        public static final String ZINC_PICKAXE ="zincPickaxe";
+        public static final String ZINC_AXE = "zincAxe";
+        public static final String ZINC_SWORD = "zincSword";
+        public static final String ZINC_HOE = "zincHoe";
+        public static final String ZINC_SPADE = "zincSpade";
+
+        public static final String BRASS_PICKAXE ="brassPickaxe";
+        public static final String BRASS_AXE ="brassAxe";
+        public static final String BRASS_SWORD ="brassSword";
+        public static final String BRASS_HOE ="brassHoe";
+        public static final String BRASS_SPADE ="brassSpade";
+
+        public static final String EMEARALD_PICKAXE ="emeraldPickaxe";
+        public static final String EMEARALD_AXE ="emeraldAxe";
+        public static final String EMEARALD_SWORD ="emeraldSword";
+        public static final String EMEARALD_HOE ="emeraldHoe";
+        public static final String EMEARALD_SPADE="emeraldSpade";
 
         //Armor
-        public static final String EMERALD_HELMENT = "emeraldhelment";
-        public static final String EMERALD_CHEST = "emeraldchest";
-        public static final String EMERALD_PANTS = "emeraldpants";
-        public static final String EMERALD_BOOTS = "emeraldboots";
+        public static final String EMERALD_HELMENT = "emeraldHelment";
+        public static final String EMERALD_CHEST = "emeraldChestPlate";
+        public static final String EMERALD_PANTS = "emeraldPants";
+        public static final String EMERALD_BOOTS = "emeraldBoots";
     }
 
     public static final class Containers{

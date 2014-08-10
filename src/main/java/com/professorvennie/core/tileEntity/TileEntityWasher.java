@@ -49,7 +49,6 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
 
 	private int smeltItem;
 
-    
     private boolean hasMaster, isMaster;
     private int masterX, masterY, masterZ;
  
@@ -60,7 +59,6 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
     	for(int i =0; i < tanks.length; i++){
     		tanks[i] = new FluidTank(10000);
     	}
-    	
     }
 
     @Override
@@ -138,7 +136,6 @@ public class TileEntityWasher extends TileEntity implements ISidedInventory, IFl
                     if (tile != null && (tile instanceof TileEntityWasher))
                         i++;
                 }
-
         return i > 25 && worldObj.isAirBlock(xCoord, yCoord + 1, zCoord);
     }
 

@@ -5,11 +5,14 @@ import com.professorvennie.core.lib.LibGuiIds;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.tileEntity.TileEntityBronzeGrinder;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -24,12 +27,25 @@ public class BlockBronzeGrinder extends BlockBasicMachine {
     @Override
     public void registerBlockIcons(IIconRegister iconRegister) {
         blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":ores/" + "blockBronze");
+        iconTop = iconRegister.registerIcon(Reference.MOD_ID + ":" + "bronzeMachines_Top");
         iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "bronzeGrinder_Front_Active" : "bronzeGrinder_Front_Idle"));
     }
 
     @Override
-    public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
+    public Item getItem(World world, int x, int y, int z) {
         return Item.getItemFromBlock(ModBlocks.bronzeGrinderIdle);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int metadata) {
+        if(side == 1)
+            return iconTop;
+        else if(side == metadata)
+            return iconFront;
+        else if(metadata  == 0 && side == 3)
+            return iconFront;
+        else
+            return blockIcon;
     }
 
     @Override

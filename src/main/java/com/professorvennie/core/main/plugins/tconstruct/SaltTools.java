@@ -37,29 +37,29 @@ public class SaltTools {
     public static SaltPart tough_rod;
 
     public static void preInit(){
-//        arrowhead = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        axe_Head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        battle_Sign_Head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        binding = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        broad_axe_head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        chisel_head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        chunk = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        excavator_head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        frypan_head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        full_gaurd = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        hammer_head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        hand_guard = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        knife_blade = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        large_guard = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        large_sword_blade = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        large_plate = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        pickaxe_head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        scthe_head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        shovel_head = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        sword_blade = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        tool_rod = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        tough_binding = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
-//        tough_rod = (SaltPart) new SaltPart().setUnlocalizedName("salt.arrow.head");
+//        arrowhead = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        axe_Head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        battle_Sign_Head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        binding = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        broad_axe_head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        chisel_head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        chunk = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        excavator_head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        frypan_head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        full_gaurd = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        hammer_head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        hand_guard = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        knife_blade = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        large_guard = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        large_sword_blade = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        large_plate = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        pickaxe_head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        scthe_head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        shovel_head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        sword_blade = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        tool_rod = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        tough_binding = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
+//        tough_rod = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
 //        registerItems(new Item[] {arrowhead, axe_Head, battle_Sign_Head, binding, broad_axe_head, chisel_head, chunk, excavator_head, frypan_head, full_gaurd, hammer_head, hand_guard, knife_blade, large_guard, large_sword_blade, large_plate, pickaxe_head, scthe_head, shovel_head, sword_blade, tool_rod, tough_binding, tough_rod});
     }
 
@@ -75,7 +75,7 @@ public class SaltTools {
         //addTools();
 
 //        TConstructRegistry.addToolMaterial(SALT_ID, "Salt", 2, 450, 500, 1,.5F, 1, 0.1F, "", "");
-//        TConstructClientRegistry.addMaterialRenderMapping(SALT_ID, Reference.MOD_ID, "salt", true);
+//        TConstructClientRegistry.addMaterialRenderMapping(SALT_ID, Reference.MOD_ID, "zinc", true);
 //        TConstructRegistry.addBowMaterial(SALT_ID, 450, 25, 0.55F);
 //        TConstructRegistry.addArrowMaterial(SALT_ID, 2.3F, 1.0F, 80.0F);
     }

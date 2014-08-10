@@ -21,50 +21,6 @@ item.ingot.4.name=Zinc Ingot
 item.ingot.5.name=Brass Ingot
 item.ingot.6.name=Bronze Ingot
 
-item.saltpickaxe.name=Salt Pickaxe
-item.saltaxe.name=Salt Axe
-item.salthoe.name=Salt Hoe
-item.saltspade.name=Salt Shovel
-item.saltsword.name=Salt Sword
-
-item.salthelment.name=Salt Helment
-item.saltchest.name=Salt ChestPlate
-item.saltpants.name=Salt Leggings
-item.saltboots.name=Salt Boots
-
-item.ironoxidepickaxe.name=Iron Oxide Pickaxe
-item.ironoxideaxe.name=Iron Oxide Axe
-item.ironoxidehoe.name=Iron Oxide Hoe
-item.ironoxidesword.name=Iron Oxide Sword
-item.ironoxidespade.name=Iron Oxide Shovel
-
-item.ironoxidehelment.name=Iron Oxide Helment
-item.ironoxidechest.name=Iron Oxide ChestPlate
-item.ironoxidepants.name=Iron Oxide Leggings
-item.ironoxideboots.name=Iron Oxide Boots
-
-item.emeraldpickaxe.name=Emerald Pickaxe
-item.emeraldaxe.name=Emerald Axe
-item.emeraldhoe.name=Emerald Hoe
-item.emeraldsword.name=Emerald Sword
-item.emeraldspade.name=Emerald Shovel
-
-item.emeraldhelment.name=Emerald Helmet
-item.emeraldchest.name=Emerald ChestPlate
-item.emeraldpants.name=Emerald Leggings
-item.emeraldboots.name=Emerald Boots
-
-item.goldoxidepickaxe.name=Gold Oxide Pickaxe
-item.goldoxideaxe.name=Gold Oxide Axe
-item.goldoxidehoe.name=Gold Oxide Hoe
-item.goldoxidesword.name=Gold Oxide Sword
-item.goldoxidespade.name=Gold Oxide Shovel
-
-item.goldoxidehelment.name=Gold Oxide Helment
-item.goldoxidechest.name=Gold Oxide ChestPlate
-item.goldoxidepants.name=Gold Oxide Leggings
-item.goldoxideboots.name=Gold Oxide Boots
-
 item.gear.0.name=Wooden Gear
 item.gear.1.name=Stone Gear
 item.gear.2.name=Iron Gear
@@ -133,6 +89,8 @@ tile.plasticFlower.name=Plastic Flower
 tile.plasticGrass.name=Plastic Grass
 tile.plasticDirt.name=Plastic Dirt
 tile.plasticPlanks.name=Plastic Planks
+tile.plasticFence.name=Plastic Fence
+tile.plasticFenceGate.name=Plastic Fence Gate
 
 tile.ore.0.name=Copper Ore
 tile.ore.1.name=Tin Ore
@@ -148,9 +106,30 @@ tile.metal.5.name=Block of Brass
 tile.metal.6.name=Block of Bronze
 tile.plasticStair.name=Plastic Stairs
 plasticSlab.name=Plastic Slab
-tile.goldOxideGrinderIdle.name=Goldoxide Grinder
-tile.goldOxideFurnaceIdle.name=Goldoxide Furnace
-tile.goldOxideAlloyIdle=Goldoxide Alloy Smelter
+
+tile.wall.0.name=Copper Wall
+tile.wall.1.name=Tin Wall
+tile.wall.2.name=Silver Wall
+tile.wall.3.name=Lead Wall
+tile.wall.4.name=Zinc Wall
+tile.wall.5.name=Brass Wall
+tile.wall.6.name=Bronze Wall
+
+tile.copperStair.name=Copper Stairs
+tile.tinStair.name=Tin Stairs
+tile.silverStair.name=Silver Stairs
+tile.leadStair.name=Lead Stairs
+tile.zincStair.name=Zinc Stairs
+tile.brassStair.name=Brass Stairs
+tile.bronzeStair.name=Bronze Stairs
+
+copperSlab.name=Copper Slab
+tinSlab.name=Tin Slab
+silverSlab.name=Silver Slab
+leadSlab.name=Lead Slab
+zincSlab.name=Zinc Slab
+brassSlab.name=Brass Slab
+bronzeSlab.name=Bronze Slab
 
 #-Manual Localizations
 mc.book.header=
