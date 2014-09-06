@@ -13,62 +13,94 @@ import java.util.Random;
  */
 public class EntityGrenade extends EntityThrowable{
 
+    int meta;
+
     public EntityGrenade(World world) {
         super(world);
     }
 
-    public EntityGrenade(World world, EntityLivingBase entity){
+    public EntityGrenade(World world, EntityLivingBase entity, int meta){
         super(world, entity);
+        this.meta = meta;
     }
 
     @Override
     protected void onImpact(MovingObjectPosition mop) {
-        //nuke grenade
-        if(!worldObj.isRemote) {
-            setDead();
-            if(!worldObj.isRemote) {
-                worldObj.createExplosion(this, posX, posY, posZ, 16.0F, true);
+
+        switch (meta){
+            case 0: {
+                if (!worldObj.isRemote) {
+                    setDead();
+                    if (!worldObj.isRemote) {
+                        worldObj.createExplosion(this, posX, posY, posZ, 4.0F, true);
+                    }
+                }
+                break;
+            }
+            case 1: {
+                for (int x = 0; x < 4; x++) {
+                    for (int y = 0; y < 4; y++) {
+                        for (int z = 0; z < 4; z++) {
+                            if (!worldObj.isRemote) {
+                                setDead();
+                                int x2 = (int) posX + x;
+                                int y2 = (int) posY + y;
+                                int z2 = (int) posZ + z;
+                                if (worldObj.getBlock(x2, y2, z2) == Blocks.air)
+                                    worldObj.setBlock(x2, y2, z2, Blocks.fire);
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+            case 2: {
+                for (int x = 0; x < 5; x++) {
+                    for (int y = 0; y < 1; y++) {
+                        for (int z = 0; z < 5; z++) {
+                            if (!worldObj.isRemote) {
+                                setDead();
+                                int x2 = (int) posX + x;
+                                int y2 = (int) posY + y;
+                                int z2 = (int) posZ + z;
+                                if (worldObj.getBlock(x2, y2, z2) == Blocks.air)
+                                    worldObj.setBlock(x2, y2, z2, Blocks.flowing_water);
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+            case 3: {
+                for (int x = 0; x < 5; x++) {
+                    for (int y = 0; y < 1; y++) {
+                        for (int z = 0; z < 5; z++) {
+                            if (!worldObj.isRemote) {
+                                setDead();
+                                int x2 = (int) posX + x;
+                                int y2 = (int) posY + y;
+                                int z2 = (int) posZ + z;
+                                if (worldObj.getBlock(x2, y2, z2) == Blocks.air)
+                                    worldObj.setBlock(x2, y2, z2, Blocks.flowing_lava);
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+            case 4: {
+                if (!worldObj.isRemote) {
+                    setDead();
+                    if (!worldObj.isRemote) {
+                        worldObj.createExplosion(this, posX, posY, posZ, 16.0F, true);
+                    }
+                }
+                break;
+            }
+            default: {
+                if (!worldObj.isRemote)
+                    setDead();
             }
         }
-
-        //normal grenade
-//        if(!worldObj.isRemote) {
-//            setDead();
-//            if(!worldObj.isRemote) {
-//                worldObj.createExplosion(this, posX, posY, posZ, 4.0F, true);
-//            }
-//        }
-
-        //fire grenade
-//        for(int x = 0; x < 6; x++){
-//            for(int y = 0; y < 6; y++) {
-//                for (int z = 0; z < 6; z++) {
-//                     if(!worldObj.isRemote) {
-//                         setDead();
-//                         int x2 = (int) posX + x;
-//                         int y2 = (int) posY + y;
-//                         int z2 = (int) posZ + z;
-//                         if (worldObj.getBlock(x2, y2, z2) == Blocks.air)
-//                             worldObj.setBlock(x2, y2, z2, Blocks.fire);
-//                     }
-//                }
-//            }
-//        }
-
-        //lava/water grenade
-//        for(int x = 0; x < 5; x++){
-//            for(int y = 0; y < 1; y++) {
-//                for (int z = 0; z < 5; z++) {
-//                    if(!worldObj.isRemote) {
-//                        setDead();
-//                        int x2 = (int) posX + x;
-//                        int y2 = (int) posY + y;
-//                        int z2 = (int) posZ + z;
-//                        if (worldObj.getBlock(x2, y2, z2) == Blocks.air)
-//                            worldObj.setBlock(x2, y2, z2, Blocks.flowing_lava);
-//                    }
-//                }
-//            }
-//        }
     }
 }

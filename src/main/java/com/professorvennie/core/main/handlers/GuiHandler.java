@@ -16,6 +16,16 @@ import com.professorvennie.core.lib.*;
 import com.professorvennie.core.client.gui.*;
 import com.professorvennie.core.client.gui.book.GuiBook;
 
+import com.professorvennie.core.tileEntity.machines.basic.TileEntityPortableCobbleGen;
+import com.professorvennie.core.tileEntity.machines.brass.TileEntityBrassAlloy;
+import com.professorvennie.core.tileEntity.machines.brass.TileEntityBrassFurnace;
+import com.professorvennie.core.tileEntity.machines.brass.TileEntityBrassGrinder;
+import com.professorvennie.core.tileEntity.machines.copper.TileEntityCopperFurnace;
+import com.professorvennie.core.tileEntity.machines.copper.TileEntityCopperGrinder;
+import com.professorvennie.core.tileEntity.machines.steam.TileEntityBronzeExtractor;
+import com.professorvennie.core.tileEntity.machines.steam.TileEntityBronzeFurnace;
+import com.professorvennie.core.tileEntity.machines.steam.TileEntityBronzeGrinder;
+import com.professorvennie.core.tileEntity.machines.steam.TileEntityBronzeSteamBoiler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -38,9 +48,9 @@ public class GuiHandler implements IGuiHandler{
 						return new ContainerCopperGrinder(player.inventory, (TileEntityCopperGrinder) entity);
 				}
 					
-			case LibGuiIds.GUIID_IRONOXIDE_GRINDER:
-				if(entity instanceof TileEntityironOxideGrinder){
-					return new ContainerIronoxideGrinder(player.inventory, (TileEntityironOxideGrinder) entity);
+			case LibGuiIds.BRASS_GRINDER:
+				if(entity instanceof TileEntityBrassGrinder){
+					return new ContainerBrassGrinder(player.inventory, (TileEntityBrassGrinder) entity);
 				}				
 			
 			case LibGuiIds.GUIID_WINDMILL:
@@ -49,9 +59,9 @@ public class GuiHandler implements IGuiHandler{
 				}
 					return new ContainerWindmill(player.inventory, (TileEntitywindmill) world.getTileEntity(x, y, z));
 					
-			case LibGuiIds.GUIID_IRONOXIDE_FURNACE:
-				if(entity instanceof TileEntityIronOxideFurnace){
-					return new ContainerIronoxideFurnace(player.inventory, (TileEntityIronOxideFurnace) entity);
+			case LibGuiIds.BRASS_FURNACE:
+				if(entity instanceof TileEntityBrassFurnace){
+					return new ContainerBrassFurnace(player.inventory, (TileEntityBrassFurnace) entity);
 				}
 				
 			case LibGuiIds.GUIID_GOLDOXIDE_FURNACE:
@@ -64,9 +74,9 @@ public class GuiHandler implements IGuiHandler{
 					return new ContainerGoldoxideGrinder(player.inventory, (TileEntityGoldOxideGrinder) entity);
 				}
 				
-			case LibGuiIds.GUIID_IRONOXIDE_ALLOY:
-				if(entity instanceof TileEntityIronOxideAlloy){
-					return new ContainerIronoxideAlloy(player.inventory, (TileEntityIronOxideAlloy) entity);
+			case LibGuiIds.BRASS_ALLOYSMELTER:
+				if(entity instanceof TileEntityBrassAlloy){
+					return new ContainerBrassAlloy(player.inventory, (TileEntityBrassAlloy) entity);
 				}
 				
 			case LibGuiIds.GUIID_WASHER:
@@ -103,6 +113,14 @@ public class GuiHandler implements IGuiHandler{
                 if(entity instanceof TileEntityBronzeGrinder){
                     return new ContainerBronzeGrinder(player.inventory, (TileEntityBronzeGrinder)entity);
                 }
+
+            case LibGuiIds.BRONZE_EXTRACTOR:
+                if(entity instanceof TileEntityBronzeExtractor){
+                    return new ContainerBronzeExtractor(player.inventory, (TileEntityBronzeExtractor)entity);
+                }
+
+            case LibGuiIds.BAGS:
+                return new ContainerBag(player, new InventoryBag(player.getHeldItem()));
 			}
 		return null;
 	}
@@ -122,9 +140,9 @@ public class GuiHandler implements IGuiHandler{
 					return new GuiCopperGrinder(player.inventory, (TileEntityCopperGrinder) entity);
 					}
 							
-			case LibGuiIds.GUIID_IRONOXIDE_GRINDER:
-				if(entity instanceof TileEntityironOxideGrinder){
-					return new GuiIronoxideGrinder(player.inventory, (TileEntityironOxideGrinder) entity);
+			case LibGuiIds.BRASS_GRINDER:
+				if(entity instanceof TileEntityBrassGrinder){
+					return new GuiBrassGrinder(player.inventory, (TileEntityBrassGrinder) entity);
 					}
 							
 			case LibGuiIds.GUIID_WINDMILL:
@@ -133,9 +151,9 @@ public class GuiHandler implements IGuiHandler{
 				}
 					return new GuiWindmilll(player.inventory, (TileEntitywindmill) world.getTileEntity(x, y, z));	
 			
-			case LibGuiIds.GUIID_IRONOXIDE_FURNACE:
-				if(entity instanceof TileEntityIronOxideFurnace){
-					return new GuiIronoxideFurnace(player.inventory, (TileEntityIronOxideFurnace) entity);
+			case LibGuiIds.BRASS_FURNACE:
+				if(entity instanceof TileEntityBrassFurnace){
+					return new GuiBrassFurnace(player.inventory, (TileEntityBrassFurnace) entity);
 					}
 				
 			case LibGuiIds.GUIID_GOLDOXIDE_FURNACE:
@@ -148,9 +166,9 @@ public class GuiHandler implements IGuiHandler{
 					return new GuiGoldoxideGrinder(player.inventory, (TileEntityGoldOxideGrinder) entity);
 					}
 				
-			case LibGuiIds.GUIID_IRONOXIDE_ALLOY:
-				if(entity instanceof TileEntityIronOxideAlloy){
-					return new GuiIronoxideAlloy(player.inventory, (TileEntityIronOxideAlloy) entity);
+			case LibGuiIds.BRASS_ALLOYSMELTER:
+				if(entity instanceof TileEntityBrassAlloy){
+					return new GuiBrassAlloy(player.inventory, (TileEntityBrassAlloy) entity);
 					}
 				
 			case LibGuiIds.GUIID_WASHER:
@@ -198,6 +216,14 @@ public class GuiHandler implements IGuiHandler{
                 if(entity instanceof TileEntityBronzeGrinder){
                     return new GuiBronzeGrinder(player.inventory, (TileEntityBronzeGrinder)entity);
                 }
+
+            case LibGuiIds.BRONZE_EXTRACTOR:
+                if(entity instanceof TileEntityBronzeExtractor){
+                    return new GuiBronzeExtractor(player.inventory, (TileEntityBronzeExtractor)entity);
+                }
+
+            case LibGuiIds.BAGS:
+                return new GuiBag(player, new InventoryBag(player.getHeldItem()));
             }
         return null;
 	}

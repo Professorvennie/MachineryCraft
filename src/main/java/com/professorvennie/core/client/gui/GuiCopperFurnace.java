@@ -13,7 +13,7 @@ import com.professorvennie.core.common.containers.ContainerCopperFurnace;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
-import com.professorvennie.core.tileEntity.TileEntityCopperFurnace;
+import com.professorvennie.core.tileEntity.machines.copper.TileEntityCopperFurnace;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 

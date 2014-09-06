@@ -14,11 +14,11 @@ public class LibGuiIds {
 	public static final int CCOPPER_FURNACE = 0;
 	public static final int COPPER_GRINDER = 1;
 	public static final int GUIID_WINDMILL = 2;
-	public static final int GUIID_IRONOXIDE_GRINDER = 3;
-	public static final int GUIID_IRONOXIDE_FURNACE = 4;
+	public static final int BRASS_GRINDER = 3;
+	public static final int BRASS_FURNACE = 4;
 	public static final int GUIID_GOLDOXIDE_GRINDER = 5;
 	public static final int GUIID_GOLDOXIDE_FURNACE = 6;
-	public static final int GUIID_IRONOXIDE_ALLOY = 7;
+	public static final int BRASS_ALLOYSMELTER = 7;
 	public static final int GUIID_WASHER = 8;
 	public static final int GUIID_BOOK = 9;
     public static final int GUIID_GOLDOXIDE_ALLOY = 10;
@@ -28,4 +28,8 @@ public class LibGuiIds {
     public static final int BRONZE_GRINDER = 14;
     public static final int BRONZE_EXTRACTOR = 15;
     public static final int BRONZE_STEAM_BOILER = 16;
+    public static final int BAGS = 17;
+    public static final int BRASS_SOLAR_GEN = 18;
+    public static final int BRASS_GEN = 19;
+    public static final int BRASS_LAVA_GEN = 20;
 }

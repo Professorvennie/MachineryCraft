@@ -54,7 +54,7 @@ public class BlockOres extends Block implements IBookable{
 	    public void registerBlockIcons(IIconRegister register) {
 	        iconArray = new IIcon[Names.Blocks.ORES.length];
 	        for (int i = 0; i < iconArray.length; i++) {
-	            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + "ore" + "_" + i);
+	            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + Names.Blocks.ORES[i]);
 	        }
 	    }
 	
@@ -118,5 +118,5 @@ public class BlockOres extends Block implements IBookable{
     public String getUnlocalizedName(ItemStack stack) {
         return this.getUnlocalizedName() + "." + stack.getItemDamage();
     }
-	}
+  }
 }

@@ -12,27 +12,24 @@ package com.professorvennie.core.block;
 import java.util.Random;
 
 import com.professorvennie.api.book.BookEntry;
+import com.professorvennie.core.block.machines.BlockBasicMachine;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.tileEntity.TileEntityGoldOxideGrinder;
 import com.professorvennie.core.lib.BookData;
 import com.professorvennie.core.lib.LibGuiIds;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.main.MachineryCraft;
 
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockGoldoxideGrinder extends BlockBasicMachine{
+public class BlockGoldoxideGrinder extends BlockBasicMachine {
 
 	public BlockGoldoxideGrinder(boolean isActive) {
 		super(Names.Blocks.GOLDOXIDE_GRINDER,isActive);

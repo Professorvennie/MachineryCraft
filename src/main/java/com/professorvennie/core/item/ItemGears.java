@@ -3,6 +3,8 @@ package com.professorvennie.core.item;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -23,6 +25,7 @@ public class ItemGears extends Item {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
         textures = new IIcon[Names.Items.GEARS.length];
         for(int i = 0; i < Names.Items.GEARS.length; i++){
@@ -31,6 +34,7 @@ public class ItemGears extends Item {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int par1) {
         return par1 < textures.length ? textures[par1] : textures[0];
     }

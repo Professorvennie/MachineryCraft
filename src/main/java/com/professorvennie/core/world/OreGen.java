@@ -15,6 +15,7 @@ import com.professorvennie.core.block.ModBlocks;
 
 import com.professorvennie.core.main.handlers.ConfigHandler;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -22,11 +23,6 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class OreGen implements IWorldGenerator {
-	
-	private ItemStack copperOre = new ItemStack(ModBlocks.BlockOres, 1,0 );
-	private ItemStack tinOre = new ItemStack(ModBlocks.BlockOres, 1, 1);
-	private ItemStack silverrOre = new ItemStack(ModBlocks.BlockOres, 1, 2);
-	private ItemStack leadOre = new ItemStack(ModBlocks.BlockOres, 1,3 );
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
@@ -44,13 +40,15 @@ public class OreGen implements IWorldGenerator {
 
 	private void generateSurface(World world, Random random, int x, int z) {
         if(ConfigHandler.spawnCopper)
-            addOreSpawn(Block.getBlockFromItem(copperOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.copperVienSize, ConfigHandler.copperRate, 15, 160);
+            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 0 ).getItem()), 0, world, random, x, z, 16, 16,  ConfigHandler.copperVienSize, ConfigHandler.copperRate, 15, 160);
         if(ConfigHandler.spawnTin)
-            addOreSpawn(Block.getBlockFromItem(tinOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.tinVienSize, ConfigHandler.tinRate, 15, 160);
+            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 1 ).getItem()), 1, world, random, x, z, 16, 16, ConfigHandler.tinVienSize, ConfigHandler.tinRate, 15, 160);
         if(ConfigHandler.spawnSilver)
-            addOreSpawn(Block.getBlockFromItem(silverrOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.silverVienSize, ConfigHandler.silverRate, 15, 160);
+            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 2 ).getItem()),2,  world, random, x, z, 16, 16, ConfigHandler.silverVienSize, ConfigHandler.silverRate, 15, 160);
         if(ConfigHandler.spawnLead)
-            addOreSpawn(Block.getBlockFromItem(leadOre.getItem()), world, random, x, z, 16, 16,ConfigHandler.leadVienSize, ConfigHandler.leadRate, 15, 160);
+            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 3 ).getItem()), 3, world, random, x, z, 16, 16, ConfigHandler.leadVienSize, ConfigHandler.leadRate, 15, 160);
+        if(ConfigHandler.spawnZinc)
+            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 4 ).getItem()), 4, world, random, x, z, 16, 16, ConfigHandler.zincVienSize, ConfigHandler.zincRate, 15, 160);
     }
 
 	private void generateNether(World world, Random random, int x, int z) {
@@ -72,7 +70,7 @@ public class OreGen implements IWorldGenerator {
  * @param An int for the minimum Y-Coordinate height at which this block may spawn
  * @param An int for the maximum Y-Coordinate height at which this block may spawn
  **/
-public void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chancesToSpawn, int minY, int maxY)
+public void addOreSpawn(Block block, int meta,  World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chancesToSpawn, int minY, int maxY)
 {
       int maxPossY = minY + (maxY - 1);
       assert maxY > minY: "The maximum Y must be greater than the Minimum Y";
@@ -82,12 +80,11 @@ public void addOreSpawn(Block block, World world, Random random, int blockXPos, 
       assert maxZ > 0 && maxZ <= 16: "addOreSpawn: The Maximum Z must be greater than 0 and less than 16";
      
       int diffBtwnMinMaxY = maxY - minY;
-      for(int x = 0; x < chancesToSpawn; x++)
-      {
+      for(int x = 0; x < chancesToSpawn; x++){
              int posX = blockXPos + random.nextInt(maxX);
              int posY = minY + random.nextInt(diffBtwnMinMaxY);
              int posZ = blockZPos + random.nextInt(maxZ);
-             (new WorldGenMinable(block, maxVeinSize)).generate(world, random, posX, posY, posZ);
+             (new WorldGenMinable(block, meta,  maxVeinSize, Blocks.stone)).generate(world, random, posX, posY, posZ);
       }
 }
 

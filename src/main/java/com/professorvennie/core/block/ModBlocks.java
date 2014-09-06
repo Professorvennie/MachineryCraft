@@ -9,11 +9,20 @@
  * */
 package com.professorvennie.core.block;
 
+import com.professorvennie.core.block.machines.basic.BlockBlockBreaker;
+import com.professorvennie.core.block.machines.basic.BlockBlockPlacer;
+import com.professorvennie.core.block.machines.basic.BlockPortableCobbleGen;
+import com.professorvennie.core.block.machines.brass.*;
+import com.professorvennie.core.block.machines.copper.BlockCopperFurnace;
+import com.professorvennie.core.block.machines.copper.BlockCopperGrinder;
+import com.professorvennie.core.block.machines.steam.BlockBronzeExtractor;
+import com.professorvennie.core.block.machines.steam.BlockBronzeFurnace;
+import com.professorvennie.core.block.machines.steam.BlockBronzeGrinder;
+import com.professorvennie.core.block.machines.steam.BlockBronzeSteamBoiler;
 import com.professorvennie.core.block.slabs.*;
 import com.professorvennie.core.block.stairs.*;
 import com.professorvennie.core.item.itemblock.ItemBlockWalls;
 import com.professorvennie.core.lib.Names;
-import cpw.mods.fml.common.Loader;
 import net.minecraft.block.Block;
 
 import com.professorvennie.core.item.itemblock.ItemBlockWasher;
@@ -37,12 +46,15 @@ public class ModBlocks {
 	public static Block copperGrinderIdle;
 	public static Block copperGrinderActive;
 
-	public static Block ironOxideGrinderIdle;
-	public static Block ironOxideGrinderActive;
-	public static Block ironOxideFurnaceIdle;
-	public static Block ironOxideFurnaceActive;
-	public static Block ironOxideAlloyIdle;
-	public static Block ironOxideAlloyActive;
+	public static Block brassGrinderIdle;
+	public static Block brassGrinderActive;
+	public static Block brassFurnaceIdle;
+	public static Block brassFurnaceActive;
+	public static Block brassAlloyIdle;
+	public static Block brassAlloyActive;
+    public static Block brassSolarGenerator;
+    public static Block brassGenerator;
+    public static Block brassLavaGenerator;
 
 	public static Block goldOxideGrinderIdle;
 	public static Block goldOxideGrinderActive;
@@ -72,9 +84,7 @@ public class ModBlocks {
     public static Block bronzeSteamBoiler;
     public static Block bronzeFurnace;
     public static Block bronzeGrinderIdle;
-    public static Block bronzeGrinderActive;
     public static Block bronzeExtractor;
-    public static Block steamPipe;
 
     public static Block metalWalls;
     public static Block copperStairs;
@@ -100,6 +110,11 @@ public class ModBlocks {
     public static Block brassSlabHalf;
     public static Block brassSlabDouble;
 
+    public static Block mineingPortal;
+
+    public static Block blockBreaker;
+    public static Block blockPlacer;
+
 	public static void InitialiseBlock(){
 		BlockOres = new BlockOres();
 		BlockMetals = new BlockMetals();
@@ -111,12 +126,15 @@ public class ModBlocks {
 		copperGrinderIdle = new BlockCopperGrinder(false);
 		copperGrinderActive = new BlockCopperGrinder(true);
 		
-		ironOxideGrinderIdle = new BlockIronoxideGrinder(false);
-		ironOxideGrinderActive = new BlockIronoxideGrinder(true);
-		ironOxideFurnaceIdle = new BlockIronoxideFurnace(false);
-		ironOxideFurnaceActive = new BlockIronoxideFurnace(true);
-		ironOxideAlloyIdle = new BlockIronoxideAlloy(false);
-		ironOxideAlloyActive = new BlockIronoxideAlloy(true);
+		brassGrinderIdle = new BlockBrassGrinder(false);
+		brassGrinderActive = new BlockBrassGrinder(true);
+		brassFurnaceIdle = new BlockBrassFurnace(false);
+		brassFurnaceActive = new BlockBrassFurnace(true);
+		brassAlloyIdle = new BlockBrassAlloySmelter(false);
+		brassAlloyActive = new BlockBrassAlloySmelter(true);
+        brassSolarGenerator = new BlockBrassSolarGenerator();
+        brassGenerator = new BlockBrassGenerator();
+        brassLavaGenerator = new BlockBrassLavaGenerator();
 		
 		goldOxideGrinderIdle = new BlockGoldoxideGrinder(false);
 		goldOxideGrinderActive = new BlockGoldoxideGrinder(true);
@@ -146,9 +164,7 @@ public class ModBlocks {
         bronzeSteamBoiler = new BlockBronzeSteamBoiler();
         bronzeFurnace = new BlockBronzeFurnace(false);
         bronzeGrinderIdle = new BlockBronzeGrinder(false);
-        bronzeGrinderActive = new BlockBronzeGrinder(true);
         bronzeExtractor = new BlockBronzeExtractor();
-        steamPipe = new BlockSteamPipe();
 
         //stairs
        copperStairs = new BlockCopperStairs(BlockMetals, Names.Blocks.COPPER_STAIRS);
@@ -175,6 +191,10 @@ public class ModBlocks {
        brassSlabDouble = new BlockBrassSlab(Names.Blocks.BRASS_SLAB, true);
 
         metalWalls = new BlockMetalWalls();
+
+        mineingPortal = new BlockMiningPortal();
+        blockBreaker = new BlockBlockBreaker();
+        blockPlacer = new BlockBlockPlacer();
 	}
 
 	public static void registerBlock(){
@@ -186,12 +206,12 @@ public class ModBlocks {
 		RegistryUtils.registerBlock(copperGrinderActive);
 		RegistryUtils.registerBlock(windmill);
 		RegistryUtils.registerBlock(windmillground);
-		RegistryUtils.registerBlock(ironOxideGrinderIdle);
-		RegistryUtils.registerBlock(ironOxideGrinderActive);
-		RegistryUtils.registerBlock(ironOxideFurnaceIdle);
-		RegistryUtils.registerBlock(ironOxideFurnaceActive);
-		RegistryUtils.registerBlock(ironOxideAlloyIdle);
-		RegistryUtils.registerBlock(ironOxideAlloyActive);
+		RegistryUtils.registerBlock(brassGrinderIdle);
+		RegistryUtils.registerBlock(brassGrinderActive);
+		RegistryUtils.registerBlock(brassFurnaceIdle);
+		RegistryUtils.registerBlock(brassFurnaceActive);
+		RegistryUtils.registerBlock(brassAlloyIdle);
+		RegistryUtils.registerBlock(brassAlloyActive);
 		RegistryUtils.registerBlock(goldOxideGrinderIdle);
 		RegistryUtils.registerBlock(goldOxideGrinderActive);
 		RegistryUtils.registerBlock(goldOxideFurnaceIdle);
@@ -203,7 +223,7 @@ public class ModBlocks {
 		RegistryUtils.registerBlock(plasticLog);
 		RegistryUtils.registerBlock(plasticLeaf);
 		RegistryUtils.registerBlock(plasticSapling);
-        RegistryUtils.registerBlock(plasticFlower);
+        RegistryUtils.registerBlock(plasticFlower, BlockPlasticFlower.ItemBlockFlowers.class);
         RegistryUtils.registerBlock(plasticGrass);
         RegistryUtils.registerBlock(plasticDirt);
         RegistryUtils.registerBlock(plasticPlanks);
@@ -212,12 +232,16 @@ public class ModBlocks {
         RegistryUtils.registerBlock(bronzeExtractor);
         RegistryUtils.registerBlock(bronzeFurnace);
         RegistryUtils.registerBlock(bronzeGrinderIdle);
-        RegistryUtils.registerBlock(bronzeGrinderActive);
         RegistryUtils.registerBlock(bronzeSteamBoiler);
         RegistryUtils.registerBlock(plasticFence);
         RegistryUtils.registerBlock(plasticFenceGate);
         RegistryUtils.registerBlock(metalWalls, ItemBlockWalls.class);
-        RegistryUtils.registerBlock(steamPipe);
+        RegistryUtils.registerBlock(mineingPortal);
+        RegistryUtils.registerBlock(blockBreaker);
+        RegistryUtils.registerBlock(blockPlacer);
+        RegistryUtils.registerBlock(brassSolarGenerator);
+        RegistryUtils.registerBlock(brassLavaGenerator);
+        RegistryUtils.registerBlock(brassGenerator);
 
         ((BlockModSlab)copperSlabHalf).register();
         ((BlockModSlab)copperSlabDouble).register();
@@ -235,5 +259,6 @@ public class ModBlocks {
         ((BlockModSlab)brassSlabDouble).register();
         ((BlockModSlab)plasticSlabHalf).register();
         ((BlockModSlab)plasticSlabDouble).register();
+
 	}
 }

@@ -95,8 +95,7 @@ public class TileEntityPlasticChest extends TileEntityMod implements IInventory{
         for (int i = 0; i < tagList.tagCount(); ++i){
             NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
             byte slotIndex = tagCompound.getByte("Slot");
-            if (slotIndex >= 0 && slotIndex < slots.length)
-            {
+            if (slotIndex >= 0 && slotIndex < slots.length){
                 slots[slotIndex] = ItemStack.loadItemStackFromNBT(tagCompound);
             }
         }
@@ -124,7 +123,7 @@ public class TileEntityPlasticChest extends TileEntityMod implements IInventory{
 
     @Override
     public boolean hasCustomInventoryName() {
-        return customName != null && customName.length() > 0;
+        return hasCustomName();
     }
 
     @Override

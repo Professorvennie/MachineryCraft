@@ -29,7 +29,7 @@ public class TileEntityRendererWasher extends TileEntitySpecialRenderer{
 		int y1 = tileentity.yCoord;
 		int z1 = tileentity.zCoord;
 		
-		int metadata =tileentity.getWorldObj().getBlockMetadata(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord);
+		int metadata = tileentity.getWorldObj().getBlockMetadata(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord);
 		
 		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_LIGHTING);

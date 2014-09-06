@@ -28,9 +28,6 @@ import java.util.List;
 
 public class BlockPlasticDirt extends BlockDirt {
 
-    @SideOnly(Side.CLIENT)
-    private IIcon field_150010_M;
-
     public BlockPlasticDirt() {
         super();
         setBlockName(Names.Blocks.BLOCK_PLASTIC_DIRT);
@@ -44,28 +41,28 @@ public class BlockPlasticDirt extends BlockDirt {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister){
         super.registerBlockIcons(iconRegister);
-        this.field_150010_M = iconRegister.registerIcon(Reference.MOD_ID + ":plasticDirt");
+        this.blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":plasticDirt");
     }
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta){
-       return this.field_150010_M;
+       return this.blockIcon;
 
     }
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess iBlockAccess, int x, int y, int z, int meta){
-                Material material = iBlockAccess.getBlock(x, y + 1, z).getMaterial();
+           Material material = iBlockAccess.getBlock(x, y + 1, z).getMaterial();
 
-                if (material == Material.snow || material == Material.craftedSnow){
-                    return ModBlocks.plasticGrass.getIcon(iBlockAccess, x, y, z, meta);
-                }
+           if (material == Material.snow || material == Material.craftedSnow){
+               return ModBlocks.plasticGrass.getIcon(iBlockAccess, x, y, z, meta);
+           }
 
-                Block block = iBlockAccess.getBlock(x, y + 1, z);
+           Block block = iBlockAccess.getBlock(x, y + 1, z);
 
-                if (block != ModBlocks.plasticDirt && block != ModBlocks.plasticGrass){
-                    return this.field_150010_M;
-                }
+           if (block != ModBlocks.plasticDirt && block != ModBlocks.plasticGrass){
+               return this.blockIcon;
+           }
 
         return this.blockIcon;
     }

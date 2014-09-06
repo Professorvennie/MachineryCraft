@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.common.containers;
 
-import com.professorvennie.core.tileEntity.TileEntityCopperFurnace;
+import com.professorvennie.core.tileEntity.machines.copper.TileEntityCopperFurnace;
 import com.professorvennie.core.tileEntity.TileEntityWasher;
 
 import cpw.mods.fml.relauncher.Side;

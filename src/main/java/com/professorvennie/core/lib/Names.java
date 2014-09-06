@@ -1,3 +1,12 @@
+/**
+ * This class was created by <Professorvennie>. It's distributed as
+ * part of the Machinery Craft Mod. Get the Source Code in github:
+ * https://github.com/Professorvennie/MachineryCraft
+ *
+ * Machinery Craft is Open Source and distributed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+ * */
 package com.professorvennie.core.lib;
 
 public class Names {
@@ -7,9 +16,12 @@ public class Names {
         public static final String WINDMILL_GROUND = "windmillground";
         public static final String COPPER_FURNACE = "copperFurnace";
         public static final String COPPER_GRINDER = "copperGrinder";
-        public static final String IRONOXIDE_GRINDER = "ironOxideGrinder";
-        public static final String IRONOXIDE_FURNACE = "ironOxideFurnace";
-        public static final String IRONOXIDE_ALLOY = "ironOxideAlloy";
+        public static final String BRASS_GRINDER = "brassGrinder";
+        public static final String BRASS_FURNACE = "brassFurnace";
+        public static final String BRASS_ALLOY = "brassAlloy";
+        public static final String BRASS_SOLAR_GEN = "brassSolarGenerator";
+        public static final String BRASS_GENERATOR = "brassGenerator";
+        public static final String BRASS_LAVA_GEN = "brassLavaGenerator";
         public static final String GOLDOXIDE_GRINDER = "goldOxideGrinder";
         public static final String GOLDOXIDE_FURNACE = "goldOxideFurnace";
         public static final String GOLDOXIDE_ALLOY = "goldOxideAlloy";
@@ -20,7 +32,7 @@ public class Names {
         public static final String BLOCK_LOG = "plasticLog";
         public static final String BLOCK_LEAVES = "plasticLeaves";
         public static final String BLOCK_SAPLING = "plasticSapling";
-        public static final String BLOCK_PLASTIC_FLOWER = "plasticFlower";
+        public static final String[] BLOCK_PLASTIC_FLOWERS = new String[]{"plasticRose", "plasticDandelion", "plasticRedTulip", "plasticOrangeTulip", "plasticWhiteTulip", "plasticPinkTulip", "plasticBlueOrchid", "plasticAllium", "plasticOxeyeDaisy"};
         public static final String BLOCK_PLASTIC_GRASS = "plasticGrass";
         public static final String BLOCK_PLASTIC_DIRT = "plasticDirt";
         public static final String BLOCK_PLASTIC_PLANKS = "plasticPlanks";
@@ -34,7 +46,6 @@ public class Names {
         public static final String BRONZE_EXTRACTOR = "bronzeExtractor";
         public static final String PLASTIC_FENCE = "plasticFence";
         public static final String PLASTIC_FENCE_GATE = "plasticFenceGate";
-        public static final String STEAM_PIPE = "steamPipe";
 
         public static final String COPPER_STAIRS = "copperStair";
         public static final String BRONZE_STAIRS = "bronzeStair";
@@ -61,13 +72,15 @@ public class Names {
         public static final String POWERBOOST ="powerBoost";
         public static final String EFFICIENCY ="efficiency";
         public static final String WINDMILL ="windmill";
-        public static final String[] DUSTS = new String[]{"dustIron", "dustGold", "dustTin", "dustSilver", "dustLead", "dustCopper", "dustZinc"};
+        public static final String[] DUSTS = new String[]{"dustIron", "dustGold", "dustTin", "dustSilver", "dustLead", "dustCopper", "dustZinc", "dustBrass", "dustBronze"};
         public static final String[] INGOTS = new String[]{"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "ingotZinc", "ingotBrass","ingotBronze"};
         public static final String BOOK = "ItemBook";
         public static final String PLASTIC_APPLE = "plasticApple";
         public static final String[] GEARS = new String[]{"gearWood", "gearStone", "gearIron", "gearCopper", "gearTin", "gearBronze", "gearZinc", "gearSilver","gearLead", "gearBrass", "gearGold"};
         public static final String[] NUGGETS = new String[]{"nuggetStone", "nuggetZinc", "nuggetIron", "nuggetCopper", "nuggetTin","nuggetSilver","nuggetLead", "nuggetBronze", "nuggetBrass"};
         public static final String STEAM_BUCKET = "steamBucket";
+        public static final String[] BAGS = new String[]{"woodBag", "tinBag", "copperBag", "ironBag", "goldBag", "silverBag", "leadBag", "diamondBag", "zincBag"};
+        public static final String[] GERNADES = new String[]{"normal", "fire", "water", "lava", "nuke"};
 
         //Tools
         public static final String ZINC_PICKAXE ="zincPickaxe";
@@ -101,9 +114,9 @@ public class Names {
         public static final String CONTAINER_INVENTORY = CONTAINER_BASE + "inventory";
         public static final String CONTAINER_COPPER_FURNACE = CONTAINER_BASE + "copperFurnace";
         public static final String CONTAINER_COPPER_GRINDER = CONTAINER_BASE + "copperGrinder";
-        public static final String CONTAINER_IRONOXIDE_FURNACE = CONTAINER_BASE + "ironoxideFurnace";
-        public static final String CONTAINER_IRONOXIDE_GRINDER = CONTAINER_BASE + "ironoxideGrinder";
-        public static final String CONTAINER_IRONOXIDE_ALLOY = CONTAINER_BASE + "ironoxdeAlloy";
+        public static final String CONTAINER_BRASS_FURNACE = CONTAINER_BASE + "brassFurnace";
+        public static final String CONTAINER_BRASS_GRINDER = CONTAINER_BASE + "brassGrinder";
+        public static final String CONTAINER_BRASS_ALLOY = CONTAINER_BASE + "brassAlloy";
         public static final String CONTAINER_GOLDOXIDE_FURNACE = CONTAINER_BASE + "goldoxideFurnace";
         public static final String CONTAINER_GOLDOXIDE_GRINDER = CONTAINER_BASE + "goldoxideGrinder";
         public static final String CONTAINER_GOLDOXIDE_ALLOY = CONTAINER_BASE + "goldoxideAlloy";
@@ -113,5 +126,14 @@ public class Names {
         public static final String CONTAINER_PORTABLE_COBBLEGEN = CONTAINER_BASE + "portableCobbleGen";
         public static final String BRONZE_FURNACE = CONTAINER_BASE + "bronzeFurnace";
         public static final String BRONZE_STEAMBOILER = CONTAINER_BASE + "bronzeSteamBoiler";
+        public static final String BRONZE_GRINDER = CONTAINER_BASE + "bronzeGrinder";
+        public static final String BRONZE_EXTRACTOR = CONTAINER_BASE + "bronzeExtractor";
+        public static final String CONTAINER_BRASS_LAVA_GEN = CONTAINER_BASE + "brassLavaGen";
+        public static final String CONTAINER_BRASS_GENERATOR = CONTAINER_BASE + "brassGenerator";
+    }
+
+    public static final class NBT{
+        public static final String UUID_MOST_SIG = "UUIDMostSig";
+        public static final String UUID_LEAST_SIG = "UUIDLeastSig";
     }
 }

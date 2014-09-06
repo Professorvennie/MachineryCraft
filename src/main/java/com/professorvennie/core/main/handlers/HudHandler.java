@@ -46,22 +46,22 @@ public class HudHandler {
     	}
     }
 
-		private void drawBookGUI(BookEntry entry, ScaledResolution res) {
-			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-			Minecraft mc = Minecraft.getMinecraft();
-			int x = res.getScaledWidth() / 2  + 8;
-			int y = res.getScaledHeight() / 2 - 4;
+	private void drawBookGUI(BookEntry entry, ScaledResolution res) {
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		Minecraft mc = Minecraft.getMinecraft();
+		int x = res.getScaledWidth() / 2  + 8;
+		int y = res.getScaledHeight() / 2 - 4;
 
-			int color = 0xFF5A28;
+		int color = 0xFF5A28;
 
-			String info = StatCollector.translateToLocal("mc.book.shiftToRead");
-			int itemX = x - (mc.fontRenderer.getStringWidth(new ItemStack(ModItems.book).getDisplayName()) / 2);
-            mc.fontRenderer.drawStringWithShadow(StatCollector.translateToLocal(entry.getUnlocalizedName()), itemX, y + 6, color);
-			mc.fontRenderer.drawStringWithShadow(info, x - (mc.fontRenderer.getStringWidth(info) / 2), y + 18, color);
-			itemRender.renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.book), itemX - 20, y + 2);
-			GL11.glDisable(GL11.GL_LIGHTING);
-			GL11.glDisable(GL11.GL_BLEND);
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-		}
+		String info = StatCollector.translateToLocal("mc.book.shiftToRead");
+		int itemX = x - (mc.fontRenderer.getStringWidth(new ItemStack(ModItems.book).getDisplayName()) / 2);
+        mc.fontRenderer.drawStringWithShadow(StatCollector.translateToLocal(entry.getUnlocalizedName()), itemX, y + 6, color);
+		mc.fontRenderer.drawStringWithShadow(info, x - (mc.fontRenderer.getStringWidth(info) / 2), y + 18, color);
+		itemRender.renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.book), itemX - 20, y + 2);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+	}
 }

@@ -35,13 +35,11 @@ public class ClientProxey extends CommonProxey {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWasher.class, new TileEntityRendererWasher());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCable.class, new TileEntityRendererCable());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlasticChest.class, new TileEntityRendererPlasticChest());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySteamPipe.class, new TileEntityRendererSteamPipe());
 
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.washer), new ItemRenderWasher());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.cable), new ItemRenderCable());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.windmillground), new ItemRenderWindmillGround());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.plasticChest), new ItemRenderPlasticChest());
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.steamPipe), new ItemRenderSteamPipe());
 
         RenderingRegistry.registerEntityRenderingHandler(EntityGrenade.class, new RenderSnowball(ModItems.gernade));
     }

@@ -13,5 +13,5 @@ public interface ISteamTank {
 
     public int getSteamCapacity();
 
-    public void setSteamAmount(int amount);
+    public void addSteamAmount(int amount);
 }

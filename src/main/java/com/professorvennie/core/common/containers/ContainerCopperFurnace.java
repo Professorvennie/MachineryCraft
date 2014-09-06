@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.core.common.containers;
 
-import com.professorvennie.core.tileEntity.TileEntityCopperFurnace;
+import com.professorvennie.core.tileEntity.machines.copper.TileEntityCopperFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -109,19 +109,19 @@ public class ContainerCopperFurnace extends Container {
 						return null;
 					}
 				}else if(slot0 >= 3 && slot0 < 30){
-					if(!this.mergeItemStack(itemstack1, 30, 39, false)){
-						return null;
-					}
-				}else if(slot0 >= 30 && slot0 < 39){
-					if(!this.mergeItemStack(itemstack1, 0, 1, false)){
-						return null;
-					}
-				}
+                    if(!this.mergeItemStack(itemstack1, 30, 39, false)){
+                        return null;
+                    }
+                }else if(slot0 >= 30 && slot0 < 39){
+                    if(!this.mergeItemStack(itemstack1, 0, 1, false)){
+                        return null;
+                    }
+                }
 		}else if(!this.mergeItemStack(itemstack1, 3, 39, false)){
 			return null;
 		}
 			if(itemstack1.stackSize == 0){
-				slot.putStack((ItemStack)null);
+				slot.putStack(null);
 			}else{
 				slot.onSlotChanged();
 			}

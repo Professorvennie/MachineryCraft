@@ -12,24 +12,18 @@ package com.professorvennie.core.main;
 import com.professorvennie.core.entitys.ModEntities;
 import com.professorvennie.core.main.creativetab.CreativeTabMachineryCraft;
 import com.professorvennie.core.main.creativetab.CreativeTabMachineryCraftEquipment;
+import com.professorvennie.core.main.handlers.FuelHandler;
 import com.professorvennie.core.main.plugins.PluginHandler;
 import com.professorvennie.core.main.proxeys.CommonProxey;
 import com.professorvennie.core.lib.Reference;
-import com.professorvennie.core.world.biome.BiomePlastic;
-import com.professorvennie.core.world.village.ComponentWorkShop;
-import com.professorvennie.core.world.village.VillageTrades;
-import com.professorvennie.core.world.village.VillageWorkShopHandler;
+import com.professorvennie.core.world.biome.ModBiomes;
+import com.professorvennie.core.world.dimesion.WorldProviderMining;
+import com.professorvennie.core.world.village.VillageHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.registry.VillagerRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.common.BiomeManager.*;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.professorvennie.core.achievements.ModAchievements;
@@ -62,8 +56,6 @@ public class MachineryCraft {
 	@Instance(Reference.MOD_ID)
 	public static MachineryCraft instance;
 
-    public static BiomeGenBase biomePlastic = new BiomePlastic(150).setBiomeName("plastic");
-
     public static CreativeTabs tabMachineryCraft = new CreativeTabMachineryCraft("MachineryCraft");
     public static CreativeTabs tabMachineryCraftEquipment = new CreativeTabMachineryCraftEquipment("MachineryCraftEquipment");
 
@@ -78,20 +70,14 @@ public class MachineryCraft {
         ModEntities.init();
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigHandler());
+
 		ModRecipes.init();
 		BookData.init();
         PluginHandler.preInit();
-
-        VillagerRegistry.instance().registerVillagerId(78906);
-        VillagerRegistry.instance().registerVillagerSkin(78906, new ResourceLocation(Reference.MOD_ID, "textures/entitys/machinerycraft_Villager.png"));
-        VillagerRegistry.instance().registerVillageTradeHandler(78906, new VillageTrades());
-        VillagerRegistry.instance().registerVillageCreationHandler(new VillageWorkShopHandler());
-        MapGenStructureIO.func_143031_a(ComponentWorkShop.class, Reference.MOD_ID + ":WorkshopStructure");
+        VillageHandler.init();
 
         FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("steam", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(ModItems.steamBucket), new ItemStack(Items.bucket));
 	}
-
-		
 
 	@Mod.EventHandler
 	public static void init(FMLInitializationEvent event){
@@ -101,13 +87,14 @@ public class MachineryCraft {
 		ModAchievements.registerAchievements();
 		ModEvents.registerEvents();
         PluginHandler.Init();
-
 		RegisterTileEntitys.mainRegistry();
         proxy.registerRenderThings();
+        ModBiomes.init();
+        ModRecipes.addChestLoot();
+        GameRegistry.registerFuelHandler(new FuelHandler());
 
-        BiomeDictionary.registerBiomeType(biomePlastic, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.HILLS);
-        BiomeManager.addSpawnBiome(biomePlastic);
-        BiomeManager.warmBiomes.add(new BiomeEntry(biomePlastic, 15));
+        DimensionManager.registerProviderType(12, WorldProviderMining.class, false);
+        DimensionManager.registerDimension(12, 12);
 	}
 	
 	@Mod.EventHandler
@@ -115,6 +102,5 @@ public class MachineryCraft {
 		ModRecipes.oreDict();
         PluginHandler.postInit();
 	}
-	
 }
  

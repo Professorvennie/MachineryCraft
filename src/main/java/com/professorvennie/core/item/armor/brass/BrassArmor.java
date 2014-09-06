@@ -33,6 +33,7 @@ public class BrassArmor extends ItemArmor {
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
         setTextureName(Reference.MOD_ID + ":" + name);
+        setFull3D();
     }
 
     @Override

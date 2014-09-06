@@ -1,6 +1,6 @@
 package com.professorvennie.core.common.containers;
 
-import com.professorvennie.core.tileEntity.TileEntityPortableCobbleGen;
+import com.professorvennie.core.tileEntity.machines.basic.TileEntityPortableCobbleGen;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;

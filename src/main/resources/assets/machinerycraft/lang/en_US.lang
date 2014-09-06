@@ -12,6 +12,8 @@ item.dust.3.name=Silver Dust
 item.dust.4.name=Lead Dust
 item.dust.5.name=Copper Dust
 item.dust.6.name=Zinc Dust
+item.dust.7.name=Brass Dust
+item.dust.8.name=Bronze Dust
 
 item.ingot.0.name=Copper Ingot
 item.ingot.1.name=Tin Ingot
@@ -33,6 +35,22 @@ item.gear.8.name=Lead Gear
 item.gear.9.name=Brass Gear
 item.gear.10.name=Gold Gear
 
+item.grenade.0.name=TNT Grenade
+item.grenade.1.name=Fire Grenade
+item.grenade.2.name=Water Grenade
+item.grenade.3.name=Lave Grenade
+item.grenade.4.name=Hand Held Nuke
+
+item.bag.0.name=Wooden Backpack
+item.bag.1.name=Tin Backpack
+item.bag.2.name=Copper Backpack
+item.bag.3.name=Zinc Backpack
+item.bag.4.name=Iron Backpack
+item.bag.5.name=Silver Backpack
+item.bag.6.name=Lead Backpack
+item.bag.7.name=Golden Backpack
+item.bag.8.name=Diamond Backpack
+
 item.nugget.0.name=Stone Nugget
 item.nugget.1.name=Zinc Nugget
 item.nugget.2.name=Iron Nugget
@@ -43,6 +61,41 @@ item.nugget.6.name=Lead Nugget
 item.nugget.7.name=Bronze Nugget
 item.nugget.8.name=Brass Nugget
 
+
+#-Armor Localizations
+item.emeraldHelment.name=Emerald Helmet
+item.emeraldChestPlate.name=Emerald Chestplate
+item.emeraldPants.name=Emerald Leggings
+item.emeraldBoots.name=Emerald Boots
+
+item.zincHelment.name=Zinc Helmet
+item.zincChestPlate.name=Zinc Chestplate
+item.zincPants.name=Zinc Leggings
+item.zincBoots.name=Zinc Boots
+
+item.brassHelment.name=Brass Helmet
+item.brassChest.name=Brass Chestplate
+item.brassPants.name=Brass Leggings
+item.brassBoots.name=Brass Boots
+
+#-Tool Localizations
+item.emeraldPickaxe.name=Emerald Pickaxe
+item.emeraldAxe.name=Emerald Axe
+item.emeraldSword.name=Emerald Sword
+item.emeraldHoe.name=Emerald Hoe
+item.emeraldSpade.name=Emerald Spade
+
+item.zincPickaxe.name=Zinc Pickaxe
+item.zincAxe.name=Zinc Axe
+item.zincSword.name=Zinc Sword
+item.zincHoe.name=Zinc Hoe
+item.zincSpade.name=Zinc Spade
+
+item.brassPickaxe.name=Brass Pickaxe
+item.brassAxe.name=Brass Axe
+item.brassSword.name=Brass Sword
+item.brassHoe.name=Brass Hoe
+item.brassSpade.name=Brass Spade
 
 #-GUI Localizations
 container.copperFurnace=Copper Furnace
@@ -64,6 +117,7 @@ container.bronzeGrinder=Bronze Grinder
 
 #-Creative Tab Localization
 itemGroup.MachineryCraft=Machinery Craft
+itemGroup.MachineryCraftEquipment=Machinery Craft Equipment
 
 #-Blocks Localizations
 tile.plasticChest.name=Plastic Chest
@@ -85,12 +139,21 @@ tile.Washer.name=Washer
 tile.plasticLog.name=Plastic Log
 tile.plasticLeaves.name=Plastic Leaves
 tile.plasticSapling.name=Plastic Sapling
-tile.plasticFlower.name=Plastic Flower
 tile.plasticGrass.name=Plastic Grass
 tile.plasticDirt.name=Plastic Dirt
 tile.plasticPlanks.name=Plastic Planks
 tile.plasticFence.name=Plastic Fence
 tile.plasticFenceGate.name=Plastic Fence Gate
+
+tile.plasticFlower.0.name=Plastic Poppy
+tile.plasticFlower.1.name=Plastic Dandelion
+tile.plasticFlower.2.name=Plastic Red Tulip
+tile.plasticFlower.3.name=Plastic Orange Tulip
+tile.plasticFlower.4.name=Plastic White Tulip
+tile.plasticFlower.5.name=Plastic Pink Tulip
+tile.plasticFlower.6.name=Plastic Blue Orchid
+tile.plasticFlower.7.name=Plastic Allium
+tile.plasticFlower.8.name=Plastic Oxeye Daisy
 
 tile.ore.0.name=Copper Ore
 tile.ore.1.name=Tin Ore

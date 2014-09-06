@@ -25,6 +25,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockMetals extends Block {
@@ -53,7 +54,7 @@ public class BlockMetals extends Block {
 	     for (int i = 0; i < iconArray.length; i++) {
 	         iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + Names.Blocks.METAL_BLOCKS[i]);
 	     }
-	    }
+	 }
 	
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
     	for(int i = 0; i < Names.Blocks.METAL_BLOCKS.length; i++){
@@ -75,6 +76,11 @@ public class BlockMetals extends Block {
     @Override
     public int getDamageValue(World world, int x, int y, int z) {
         return this.damageDropped(world.getBlockMetadata(x, y, z));
+    }
+
+    @Override
+    public boolean isBeaconBase(IBlockAccess worldObj, int x, int y, int z, int beaconX, int beaconY, int beaconZ) {
+        return true;
     }
 
     public static class ItemBlockMetals extends ItemBlock {

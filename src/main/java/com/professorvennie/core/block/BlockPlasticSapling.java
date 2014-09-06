@@ -13,7 +13,7 @@ import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
 
-import com.professorvennie.core.world.tree.PlasticWorldGenTrees;
+import com.professorvennie.core.world.tree.WorldGenPlasticTree;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -79,7 +79,7 @@ public class BlockPlasticSapling extends BlockSapling{
         int i1 = 0;
         int j1 = 0;
 
-        object = new PlasticWorldGenTrees(true, (1 + random.nextInt(3)) * 2, 0, 0, false);
+        object = new WorldGenPlasticTree(true, (1 + random.nextInt(3)) * 2, 0, 0, false);
 
         world.setBlock(x, y, z, Blocks.air, 0, 4);
 

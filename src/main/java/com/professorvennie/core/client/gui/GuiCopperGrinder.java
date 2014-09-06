@@ -13,7 +13,7 @@ import com.professorvennie.core.common.containers.ContainerCopperGrinder;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
-import com.professorvennie.core.tileEntity.TileEntityCopperGrinder;
+import com.professorvennie.core.tileEntity.machines.copper.TileEntityCopperGrinder;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 

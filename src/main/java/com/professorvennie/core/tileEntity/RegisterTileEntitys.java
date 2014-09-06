@@ -10,6 +10,10 @@
 package com.professorvennie.core.tileEntity;
 
 import com.professorvennie.core.lib.Reference;
+import com.professorvennie.core.tileEntity.machines.basic.*;
+import com.professorvennie.core.tileEntity.machines.brass.*;
+import com.professorvennie.core.tileEntity.machines.copper.*;
+import com.professorvennie.core.tileEntity.machines.steam.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 
@@ -20,19 +24,23 @@ public class RegisterTileEntitys {
         GameRegistry.registerTileEntity(TileEntityCopperGrinder.class, Reference.MOD_ID + "_tileEntitySaltGrinder");
         GameRegistry.registerTileEntity(TileEntitywindmillground.class, Reference.MOD_ID + "_tileEntityWindmillGround");
         GameRegistry.registerTileEntity(TileEntitywindmill.class, Reference.MOD_ID + "_tileEntityWindmill");
-        GameRegistry.registerTileEntity(TileEntityironOxideGrinder.class, Reference.MOD_ID + "_tileEntityIronxideGrinder");
-        GameRegistry.registerTileEntity(TileEntityIronOxideFurnace.class, Reference.MOD_ID + "_tileEntityIronxideFurnace");
+        GameRegistry.registerTileEntity(TileEntityBrassGrinder.class, Reference.MOD_ID + "_tileEntityIronxideGrinder");
+        GameRegistry.registerTileEntity(TileEntityBrassFurnace.class, Reference.MOD_ID + "_tileEntityIronxideFurnace");
         GameRegistry.registerTileEntity(TileEntityGoldOxideGrinder.class, Reference.MOD_ID + "_tileEntityGoldOxideGrinder");
         GameRegistry.registerTileEntity(TileEntityGoldOxideFurnace.class, Reference.MOD_ID + "_tileEntityGoldOxideFurnace");
         GameRegistry.registerTileEntity(TileEntityWasher.class, Reference.MOD_ID + "_tileEntityWasher");
         GameRegistry.registerTileEntity(TileEntityCable.class, Reference.MOD_ID + "_tileEntityCable");
-        GameRegistry.registerTileEntity(TileEntityIronOxideAlloy.class, Reference.MOD_ID + "_tileEntityIronxideAlloy");
+        GameRegistry.registerTileEntity(TileEntityBrassAlloy.class, Reference.MOD_ID + "_tileEntityIronxideAlloy");
         GameRegistry.registerTileEntity(TileEntityPlasticChest.class, Reference.MOD_ID + "_tileEntityPlasticChest");
         GameRegistry.registerTileEntity(TileEntityPortableCobbleGen.class, Reference.MOD_ID + "_tileEntityPortableCobbleGen");
         GameRegistry.registerTileEntity(TileEntityBronzeFurnace.class, Reference.MOD_ID + "_tileEntityBronzeFurnace");
         GameRegistry.registerTileEntity(TileEntityBronzeSteamBoiler.class, Reference.MOD_ID + "_tileEntityBronzeSteamBoiler");
         GameRegistry.registerTileEntity(TileEntityBronzeGrinder.class, Reference.MOD_ID + "_tileEntityBronzeGrinder");
         GameRegistry.registerTileEntity(TileEntityBronzeExtractor.class, Reference.MOD_ID + "_tileEntityBronzeExtractor");
-        GameRegistry.registerTileEntity(TileEntitySteamPipe.class, Reference.MOD_ID + "_tileEntitySteamPipe");
+        GameRegistry.registerTileEntity(TileEntityBlockBreaker.class, Reference.MOD_ID + "_tileEntityBlockBreaker");
+        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, Reference.MOD_ID + "_tileEntityBlockPlacer");
+        GameRegistry.registerTileEntity(TileEntityBrassGenerator.class, Reference.MOD_ID + "_tileEntityBrassGenerator");
+        GameRegistry.registerTileEntity(TileEntityBrassSolarGenerator.class, Reference.MOD_ID + "_tileEntityBrassSolarGenerator");
+        GameRegistry.registerTileEntity(TileEntityBrassLavaGenerator.class, Reference.MOD_ID + "_tileEntityBrassLavaGenerator");
     }
 }

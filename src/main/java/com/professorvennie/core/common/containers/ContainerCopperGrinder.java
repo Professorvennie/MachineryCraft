@@ -10,7 +10,7 @@
 package com.professorvennie.core.common.containers;
 
 import com.professorvennie.api.recipes.GrinderRecipes;
-import com.professorvennie.core.tileEntity.TileEntityCopperGrinder;
+import com.professorvennie.core.tileEntity.machines.copper.TileEntityCopperGrinder;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,13 +24,7 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerCopperGrinder extends Container {
 
-
-	public int lastGrindTime;
-	
-	public int lastItemBurnTime;
-	
-	public int lastCookTime;
-	
+	public int lastGrindTime, lastItemBurnTime, lastCookTime;
 
 	private TileEntityCopperGrinder grinder;
 	
@@ -57,7 +51,6 @@ public class ContainerCopperGrinder extends Container {
 		icrafting.sendProgressBarUpdate(this, 0, this.grinder.cookTime);
 		icrafting.sendProgressBarUpdate(this, 1, this.grinder.burnTime);
 		icrafting.sendProgressBarUpdate(this, 2, this.grinder.currentItemBurnTime);
-
 	}
 	
 	public void detectAndSendChanges(){
@@ -75,14 +68,10 @@ public class ContainerCopperGrinder extends Container {
 			if(this.lastItemBurnTime != this.grinder.currentItemBurnTime){
 				icrafting.sendProgressBarUpdate(this, 2, this.grinder.currentItemBurnTime);
 			}
-			
-			
-			
 		}
 		this.lastCookTime = this.grinder.cookTime;
 		this.lastGrindTime = this.grinder.burnTime;
 		this.lastItemBurnTime = this.grinder.currentItemBurnTime;
-		
 	}
 	
 	
@@ -127,7 +116,7 @@ public class ContainerCopperGrinder extends Container {
 			return null;
 		}
 			if(itemstack1.stackSize == 0){
-				slot.putStack((ItemStack)null);
+				slot.putStack(null);
 			}else{
 				slot.onSlotChanged();
 			}
@@ -141,8 +130,8 @@ public class ContainerCopperGrinder extends Container {
 		return itemstack;
 }
 	
-	public boolean canInteractWith(EntityPlayer var1) {
-		return this.grinder.isUseableByPlayer(var1);
+	public boolean canInteractWith(EntityPlayer player) {
+		return this.grinder.isUseableByPlayer(player);
 	}
 
 }

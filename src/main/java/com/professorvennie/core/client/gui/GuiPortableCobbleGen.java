@@ -4,7 +4,7 @@ import com.professorvennie.core.common.containers.ContainerPortableCobbleGen;
 import com.professorvennie.core.lib.Names;
 import com.professorvennie.core.lib.Reference;
 import com.professorvennie.core.main.MachineryCraft;
-import com.professorvennie.core.tileEntity.TileEntityPortableCobbleGen;
+import com.professorvennie.core.tileEntity.machines.basic.TileEntityPortableCobbleGen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;

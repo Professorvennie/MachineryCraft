@@ -64,7 +64,7 @@ public class BlockPlasticGrass extends BlockGrass {
             return this.field_149991_b;
         }
         else if (side == 0){
-            return Blocks.dirt.getBlockTextureFromSide(side);
+            return ModBlocks.plasticDirt.getBlockTextureFromSide(side);
         }
         else{
             Material material = iBlockAccess.getBlock(x, y + 1, z).getMaterial();
@@ -92,4 +92,18 @@ public class BlockPlasticGrass extends BlockGrass {
         }
     }
 
+//    @SideOnly(Side.CLIENT)
+//    public int getBlockColor() {
+//        return 1;
+//    }
+//
+//    @SideOnly(Side.CLIENT)
+//    public int getRenderColor(int p_149741_1_) {
+//        return 0;
+//    }
+//
+//    @SideOnly(Side.CLIENT)
+//    public int colorMultiplier(IBlockAccess p_149720_1_, int p_149720_2_, int p_149720_3_, int p_149720_4_) {
+//        return 0;
+//    }
 }

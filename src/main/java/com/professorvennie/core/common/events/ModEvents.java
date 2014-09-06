@@ -10,6 +10,7 @@
 package com.professorvennie.core.common.events;
 
 
+import com.professorvennie.core.client.EventHandlerClient;
 import com.professorvennie.core.fuilds.ModFuilds;
 import com.professorvennie.core.item.ModItems;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -22,5 +23,7 @@ public class ModEvents {
 		FMLCommonHandler.instance().bus().register(new EventOnCrafted());
         BucketHandler.INSTANCE.buckets.put(ModFuilds.blockSteam, ModItems.steamBucket);
         MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
+        FMLCommonHandler.instance().bus().register(new EventHandlerClient());
+        MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
 	}
 }
