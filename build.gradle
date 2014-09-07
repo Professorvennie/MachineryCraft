@@ -22,7 +22,7 @@ group= "com.professorvennie.machinerycraft" // http://maven.apache.org/guides/mi
 archivesBaseName = "machinerycraft"
 
 minecraft {
-    version = "1.7.10-10.13.0.1180"
+    version = "1.7.10-10.13.0.1208"
     assetDir = "eclipse/assets"
 }
 
