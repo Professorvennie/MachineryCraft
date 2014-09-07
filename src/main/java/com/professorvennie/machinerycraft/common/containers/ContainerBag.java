@@ -22,109 +22,109 @@ public class ContainerBag extends Container {
 
     private InventoryBag invBag;
 
-    public ContainerBag(EntityPlayer player, InventoryBag inventoryBag){
+    public ContainerBag(EntityPlayer player, InventoryBag inventoryBag) {
         invBag = inventoryBag;
         int invXOffset = 0, hotBarXOffset = 0, invYOffset = 0, hotBarYOffset = 0;
 
-        if(player.getHeldItem().getItemDamage() == 0){
+        if (player.getHeldItem().getItemDamage() == 0) {
             invXOffset = 86;
             hotBarXOffset = 144;
             invYOffset = 8;
             hotBarYOffset = 8;
-            for(int i = 0; i < 3; i++){
-                for(int j = 0; j < 9; j++){
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 9; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 3, 8 + j * 18, 18 + i * 18));
                 }
             }
-        }else if(player.getHeldItem().getItemDamage() == 1){
+        } else if (player.getHeldItem().getItemDamage() == 1) {
             invXOffset = 86 + 18;
             hotBarXOffset = 144 + 18;
             invYOffset = 8;
             hotBarYOffset = 8;
-            for(int i = 0; i < 4; i++){
-                for(int j = 0; j < 9; j++){
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 9; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 4, 8 + j * 18, 18 + i * 18));
                 }
             }
-        }else if(player.getHeldItem().getItemDamage() == 2){
+        } else if (player.getHeldItem().getItemDamage() == 2) {
             invXOffset = 86 + (54 - 18);
             hotBarXOffset = 144 + (54 - 18);
             invYOffset = 8;
             hotBarYOffset = 8;
-            for(int i = 0; i < 5; i++){
-                for(int j = 0; j < 9; j++){
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 5, 8 + j * 18, 18 + i * 18));
                 }
             }
-        }else if(player.getHeldItem().getItemDamage() == 3){
+        } else if (player.getHeldItem().getItemDamage() == 3) {
             invXOffset = 86 + 54;
             hotBarXOffset = 144 + 54;
             invYOffset = 8;
             hotBarYOffset = 8;
-            for(int i = 0; i < 6; i++){
-                for(int j = 0; j < 9; j++){
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 9; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 6, 8 + j * 18, 18 + i * 18));
                 }
             }
-        }else if(player.getHeldItem().getItemDamage() == 4){
+        } else if (player.getHeldItem().getItemDamage() == 4) {
             invXOffset = 86 + (54 + 18);
             hotBarXOffset = 144 + (54 + 18);
             invYOffset = 8;
             hotBarYOffset = 8;
-            for(int i = 0; i < 7; i++){
-                for(int j = 0; j < 9; j++){
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 9; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 7, 8 + j * 18, 18 + i * 18));
                 }
             }
-        }else if(player.getHeldItem().getItemDamage() == 5){
+        } else if (player.getHeldItem().getItemDamage() == 5) {
             invXOffset = 86 + ((54 * 2) - 20);
             hotBarXOffset = 144 + ((54 * 2) - 20);
             invYOffset = 8;
             hotBarYOffset = 8;
-            for(int i = 0; i < 8; i++){
-                for(int j = 0; j < 9; j++){
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 9; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 8, 8 + j * 18, 16 + i * 18));
                 }
             }
-        }else if(player.getHeldItem().getItemDamage() == 6){
-            invXOffset = 86  + ((54 * 2) - 20);
+        } else if (player.getHeldItem().getItemDamage() == 6) {
+            invXOffset = 86 + ((54 * 2) - 20);
             hotBarXOffset = 144 + ((54 * 2) - 20);
             invYOffset = 8;
             hotBarYOffset = 8;
-            for(int i = 0; i < 9; i++){
-                for(int j = 0; j < 9; j++){
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 9, 8 + j * 18, 7 + i * 18));
                 }
             }
-        }else if(player.getHeldItem().getItemDamage() == 7){
+        } else if (player.getHeldItem().getItemDamage() == 7) {
             invXOffset = 86 + ((54 * 2) - 20);
             hotBarXOffset = 144 + ((54 * 2) - 20);
             invYOffset = 8 + 18;
             hotBarYOffset = 8 + 18;
-            for(int i = 0; i < 9; i++){
-                for(int j = 0; j < 11; j++){
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 11; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 9, 8 + j * 18, 7 + i * 18));
                 }
             }
-        }else if(player.getHeldItem().getItemDamage() == 8){
+        } else if (player.getHeldItem().getItemDamage() == 8) {
             invXOffset = 86 + ((54 * 2) - 20);
             hotBarXOffset = 144 + ((54 * 2) - 20);
             invYOffset = 8 + (18 * 2);
             hotBarYOffset = 8 + (18 * 2);
-            for(int i = 0; i < 9; i++){
-                for(int j = 0; j < 13; j++){
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 13; j++) {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 9, 8 + j * 18, 7 + i * 18));
                 }
             }
         }
 
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 9; j++){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 9; j++) {
                 this.addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, invYOffset + j * 18, invXOffset + i * 18));
             }
         }
 
-        for(int i = 0; i < 9; i++){
+        for (int i = 0; i < 9; i++) {
             this.addSlotToContainer(new Slot(player.inventory, i, hotBarYOffset + i * 18, hotBarXOffset));
         }
     }
@@ -134,32 +134,32 @@ public class ContainerBag extends Container {
         return true;
     }
 
-    public ItemStack transferStackInSlot(EntityPlayer player, int slot1){
+    public ItemStack transferStackInSlot(EntityPlayer player, int slot1) {
         ItemStack itemstack = null;
-        Slot slot = (Slot)this.inventorySlots.get(slot1);
+        Slot slot = (Slot) this.inventorySlots.get(slot1);
 
-        if (slot != null && slot.getHasStack()){
+        if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (slot1 < invBag.getSizeInventory()){
-                if (!this.mergeItemStack(itemstack1, invBag.getSizeInventory(), this.inventorySlots.size(), true)){
+            if (slot1 < invBag.getSizeInventory()) {
+                if (!this.mergeItemStack(itemstack1, invBag.getSizeInventory(), this.inventorySlots.size(), true)) {
                     return null;
                 }
-            } else if(itemstack1.getItem() instanceof ItemBags){
-                if(slot1 < (invBag.getSizeInventory()) + player.inventory.getSizeInventory()){
-                    if(!this.mergeItemStack(itemstack1, invBag.getSizeInventory(), this.inventorySlots.size(), false)){
+            } else if (itemstack1.getItem() instanceof ItemBags) {
+                if (slot1 < (invBag.getSizeInventory()) + player.inventory.getSizeInventory()) {
+                    if (!this.mergeItemStack(itemstack1, invBag.getSizeInventory(), this.inventorySlots.size(), false)) {
                         return null;
                     }
-                } else if (!this.mergeItemStack(itemstack1, invBag.getSizeInventory(), this.inventorySlots.size(), false)){
+                } else if (!this.mergeItemStack(itemstack1, invBag.getSizeInventory(), this.inventorySlots.size(), false)) {
                     return null;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 0, invBag.getSizeInventory(), false)){
+            } else if (!this.mergeItemStack(itemstack1, 0, invBag.getSizeInventory(), false)) {
                 return null;
             }
 
-            if (itemstack1.stackSize == 0){
-                slot.putStack((ItemStack)null);
+            if (itemstack1.stackSize == 0) {
+                slot.putStack((ItemStack) null);
             } else {
                 slot.onSlotChanged();
             }
@@ -171,7 +171,7 @@ public class ContainerBag extends Container {
     @Override
     public void onContainerClosed(EntityPlayer player) {
         super.onContainerClosed(player);
-        if(!player.worldObj.isRemote){
+        if (!player.worldObj.isRemote) {
             invBag.onGuiSaved(player);
         }
     }

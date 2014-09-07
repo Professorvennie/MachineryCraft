@@ -7,14 +7,16 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  * */
-package com.professorvennie.machinerycraft.plugins.tconstruct;
+package com.professorvennie.machinerycraft.achievements;
 
-//import tconstruct.library.util.IToolPart;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 
-public class BronzePart /*extends Item implements IToolPart*/ {
+public class EventOnCrafted {
+	
+	@SubscribeEvent
+	public void whenCrafted(PlayerEvent.ItemCraftedEvent e){
+		
+	}
 
-//    @Override
-//    public int getMaterialID(ItemStack stack) {
-//        return 0;
-//    }
 }

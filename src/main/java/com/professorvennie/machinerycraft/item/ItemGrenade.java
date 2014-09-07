@@ -19,14 +19,13 @@ import java.util.List;
 /**
  * Created by ProfessorVennie on 8/4/2014 at 10:52 AM.
  */
-public class ItemGrenade extends Item {
+public class ItemGrenade extends ItemBase {
 
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
 
     public ItemGrenade(){
-        setCreativeTab(MachineryCraft.tabMachineryCraft);
-        setUnlocalizedName("grenade");
+        super("grenade");
         setHasSubtypes(true);
     }
 

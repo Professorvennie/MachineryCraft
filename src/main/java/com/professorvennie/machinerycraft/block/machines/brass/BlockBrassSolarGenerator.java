@@ -19,9 +19,9 @@ public class BlockBrassSolarGenerator extends BlockBasicMachine {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-        if(world.getTileEntity(x, y, z) instanceof TileEntityBrassSolarGenerator){
-            TileEntityBrassSolarGenerator tile = (TileEntityBrassSolarGenerator)world.getTileEntity(x, y, z);
-            if(!world.isRemote)
+        if (world.getTileEntity(x, y, z) instanceof TileEntityBrassSolarGenerator) {
+            TileEntityBrassSolarGenerator tile = (TileEntityBrassSolarGenerator) world.getTileEntity(x, y, z);
+            if (!world.isRemote)
                 player.addChatComponentMessage(new ChatComponentText("Power lever - " + tile.getPower()));
         }
         return true;

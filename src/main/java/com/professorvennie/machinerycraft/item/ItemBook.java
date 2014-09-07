@@ -25,13 +25,10 @@ import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IBookable;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 
-public class ItemBook extends Item {
+public class ItemBook extends ItemBase {
 	
 	public ItemBook(){
-		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
-		this.setUnlocalizedName(Names.Items.BOOK);
-        setFull3D();
-        setMaxStackSize(1);
+		super(Names.Items.BOOK);
         setTextureName(Reference.MOD_ID + ":manual");
 	}
 
@@ -63,9 +60,7 @@ public class ItemBook extends Item {
 	}
 
     @SideOnly(Side.CLIENT)
-    @Deprecated
     public boolean hasEffect(ItemStack itemStack){
         return true;
     }
-
 }

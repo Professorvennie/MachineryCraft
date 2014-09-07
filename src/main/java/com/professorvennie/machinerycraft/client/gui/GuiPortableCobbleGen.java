@@ -24,10 +24,10 @@ public class GuiPortableCobbleGen extends GuiBase {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
 
         int lava = this.entity.getCookProgressScaled(24);
-        drawTexturedModalRect(guiLeft + 45, guiTop + 36, 176, 0, lava + 1, 16);
+        drawElement(45, 36, 176, 0, lava + 1, 16);
 
         int water = this.entity.getCookProgressScaled(24);
-        drawTexturedModalRect(guiLeft + 131 - 24, guiTop + 36, 176, 18, 24 + water + 1, 16);
+        drawElement(131, 36, 176, 18, water + 1, 16);
     }
 
     @Override

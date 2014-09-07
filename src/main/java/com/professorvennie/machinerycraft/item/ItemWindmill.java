@@ -11,6 +11,7 @@ package com.professorvennie.machinerycraft.item;
 
 import com.professorvennie.machinerycraft.block.ModBlocks;
 
+import com.professorvennie.machinerycraft.lib.Names;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,9 +19,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemWindmill extends Item {
+public class ItemWindmill extends ItemBase {
 
-	 public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float x2, float y2, float z2){
+    public ItemWindmill() {
+        super(Names.Items.WINDMILL);
+    }
+
+    public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float x2, float y2, float z2){
 		 if(!world.isRemote){
 			 if(side == 1 && world.getBlock(x, y, z).equals(ModBlocks.windmillground) && world.getBlockMetadata(x, y, z) == 5){
 				boolean notEnoughspace = false;	
@@ -51,7 +56,4 @@ public class ItemWindmill extends Item {
 			}
 	        return false;
 	    }
-	
-
-	
 }

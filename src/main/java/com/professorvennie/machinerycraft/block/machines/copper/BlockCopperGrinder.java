@@ -9,11 +9,11 @@
  * */
 package com.professorvennie.machinerycraft.block.machines.copper;
 
-import java.util.Random;
-
-
-import com.professorvennie.machinerycraft.block.machines.BlockBasicMachine;
+import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.block.ModBlocks;
+import com.professorvennie.machinerycraft.block.machines.BlockBasicMachine;
+import com.professorvennie.machinerycraft.lib.BookData;
+import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.tileEntity.machines.copper.TileEntityCopperGrinder;
@@ -24,18 +24,14 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.tileentity.TileEntity;
-
 import net.minecraft.world.World;
 
-import com.professorvennie.machinerycraft.api.book.BookEntry;
-import com.professorvennie.machinerycraft.lib.BookData;
-import com.professorvennie.machinerycraft.lib.LibGuiIds;
+import java.util.Random;
 
 public class BlockCopperGrinder extends BlockBasicMachine {
 
-	public BlockCopperGrinder(boolean isActive) {
+    public BlockCopperGrinder(boolean isActive) {
         super(Names.Blocks.COPPER_GRINDER, isActive);
         setHardness(3.5F);
         setHarvestLevel("pickaxe", 1);
@@ -43,18 +39,18 @@ public class BlockCopperGrinder extends BlockBasicMachine {
         guiId = LibGuiIds.COPPER_GRINDER;
     }
 
-	public Item getItemDropped(int par1, Random random, int par2) {
-		return Item.getItemFromBlock(ModBlocks.copperGrinderIdle);
-	}
+    public Item getItemDropped(int par1, Random random, int par2) {
+        return Item.getItemFromBlock(ModBlocks.copperGrinderIdle);
+    }
 
-	public Item getItem(World world, int x, int y, int z) {
-		return Item.getItemFromBlock(ModBlocks.copperGrinderIdle);
-	}
+    public Item getItem(World world, int x, int y, int z) {
+        return Item.getItemFromBlock(ModBlocks.copperGrinderIdle);
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int var2) {
-		return new TileEntityCopperGrinder();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int var2) {
+        return new TileEntityCopperGrinder();
+    }
 
     @SideOnly(Side.CLIENT)
     @Override
@@ -67,8 +63,8 @@ public class BlockCopperGrinder extends BlockBasicMachine {
         return true;
     }
 
-	@Override
-	public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
-		return BookData.firstTierMachines;
-	}
+    @Override
+    public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+        return BookData.firstTierMachines;
+    }
 }

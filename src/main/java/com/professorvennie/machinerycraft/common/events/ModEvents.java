@@ -10,6 +10,7 @@
 package com.professorvennie.machinerycraft.common.events;
 
 
+import com.professorvennie.machinerycraft.achievements.EventOnCrafted;
 import com.professorvennie.machinerycraft.client.EventHandlerClient;
 import com.professorvennie.machinerycraft.fuilds.ModFuilds;
 import com.professorvennie.machinerycraft.item.ModItems;

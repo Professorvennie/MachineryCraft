@@ -9,9 +9,9 @@
  * */
 package com.professorvennie.machinerycraft.block.machines;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IBookable;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,14 +31,14 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockBasicMachine extends BlockContainer implements IBookable{
+public class BlockBasicMachine extends BlockContainer implements IBookable {
 
+    public static boolean keepInventory;
     private static String name;
+    public final Random rand = new Random();
     @SideOnly(Side.CLIENT)
     public IIcon iconFront, iconTop;
     public boolean isActive;
-    public static boolean keepInventory;
-    public final Random rand = new Random();
     public int guiId = -1;
 
 
@@ -46,12 +46,33 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
         super(Material.iron);
         BlockBasicMachine.name = name;
         this.isActive = isActive;
-        if(isActive){
+        if (isActive) {
             setLightLevel(0.9F);
             setBlockName(name + "Active");
-        }else if(!isActive){
+        } else if (!isActive) {
             setCreativeTab(MachineryCraft.tabMachineryCraft);
             setBlockName(name + "Idle");
+        }
+    }
+
+    public static void updateBlockState(boolean active, World worldObj, int xCoord, int yCoord, int zCoord, Block blockActive, Block blockIdle) {
+        int i = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+        TileEntity tileentity = worldObj.getTileEntity(xCoord, yCoord, zCoord);
+        keepInventory = true;
+
+        if (active) {
+            worldObj.setBlock(xCoord, yCoord, zCoord, blockActive);
+        } else {
+            worldObj.setBlock(xCoord, yCoord, zCoord, blockIdle);
+        }
+
+        keepInventory = false;
+
+        worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, i, 2);
+
+        if (tileentity != null) {
+            tileentity.validate();
+            worldObj.setTileEntity(xCoord, yCoord, zCoord, tileentity);
         }
     }
 
@@ -71,7 +92,7 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
-        if(!world.isRemote){
+        if (!world.isRemote) {
             player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
         }
         return true;
@@ -128,27 +149,6 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
         }
     }
 
-    public static void updateBlockState(boolean active, World worldObj, int xCoord, int yCoord, int zCoord, Block blockActive, Block blockIdle) {
-        int i = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-        TileEntity tileentity = worldObj.getTileEntity(xCoord, yCoord, zCoord);
-        keepInventory = true;
-
-        if (active) {
-            worldObj.setBlock(xCoord, yCoord, zCoord, blockActive);
-        } else {
-            worldObj.setBlock(xCoord, yCoord, zCoord, blockIdle);
-        }
-
-        keepInventory = false;
-
-        worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, i, 2);
-
-        if (tileentity != null) {
-            tileentity.validate();
-            worldObj.setTileEntity(xCoord, yCoord, zCoord, tileentity);
-        }
-    }
-
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, int x, int y, int z, Random random) {
         if (this.isActive) {
@@ -178,8 +178,8 @@ public class BlockBasicMachine extends BlockContainer implements IBookable{
         }
     }
 
-    public void breakBlock(World world, int x, int y, int z, Block block, int side){
-        if(!keepInventory) {
+    public void breakBlock(World world, int x, int y, int z, Block block, int side) {
+        if (!keepInventory) {
             TileEntity tileEntity = world.getTileEntity(x, y, z);
 
             if (!(tileEntity instanceof ISidedInventory)) {

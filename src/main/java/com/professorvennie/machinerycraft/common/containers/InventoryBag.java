@@ -9,8 +9,8 @@
  * */
 package com.professorvennie.machinerycraft.common.containers;
 
-import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.core.helpers.NBTHelper;
+import com.professorvennie.machinerycraft.lib.Names;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -22,7 +22,7 @@ import java.util.UUID;
 /**
  * Created by ProfessorVennie on 8/28/2014 at 7:02 PM.
  */
-public class InventoryBag implements IInventory{
+public class InventoryBag implements IInventory {
 
     public ItemStack parentItemStack;
     public ItemStack[] inventory;
@@ -30,26 +30,26 @@ public class InventoryBag implements IInventory{
     public InventoryBag(ItemStack itemStack) {
         parentItemStack = itemStack;
 
-        if(itemStack.getItemDamage() == 0){
+        if (itemStack.getItemDamage() == 0) {
             inventory = new ItemStack[3 * 9];
-        }else if(itemStack.getItemDamage() == 1){
+        } else if (itemStack.getItemDamage() == 1) {
             inventory = new ItemStack[4 * 9];
-        }else if(itemStack.getItemDamage() == 2){
+        } else if (itemStack.getItemDamage() == 2) {
             inventory = new ItemStack[5 * 9];
-        }else if(itemStack.getItemDamage() == 3){
+        } else if (itemStack.getItemDamage() == 3) {
             inventory = new ItemStack[6 * 9];
-        }else if(itemStack.getItemDamage() == 4){
+        } else if (itemStack.getItemDamage() == 4) {
             inventory = new ItemStack[7 * 9];
-        }else if(itemStack.getItemDamage() == 5){
+        } else if (itemStack.getItemDamage() == 5) {
             inventory = new ItemStack[8 * 9];
-        }else if(itemStack.getItemDamage() == 6){
+        } else if (itemStack.getItemDamage() == 6) {
             inventory = new ItemStack[9 * 9];
-        }else if(itemStack.getItemDamage() == 7){
+        } else if (itemStack.getItemDamage() == 7) {
             inventory = new ItemStack[9 * 11];
-        }else if(itemStack.getItemDamage() == 8){
+        } else if (itemStack.getItemDamage() == 8) {
             inventory = new ItemStack[9 * 13];
         }
-        if(parentItemStack.getTagCompound() != null)
+        if (parentItemStack.getTagCompound() != null)
             readFromNBT(parentItemStack.getTagCompound());
     }
 
@@ -65,15 +65,15 @@ public class InventoryBag implements IInventory{
 
     @Override
     public ItemStack decrStackSize(int slot, int amount) {
-        if(this.inventory[slot] != null){
+        if (this.inventory[slot] != null) {
             ItemStack itemstack;
-            if(this.inventory[slot].stackSize <= amount){
+            if (this.inventory[slot].stackSize <= amount) {
                 itemstack = this.inventory[slot];
                 this.inventory[slot] = null;
                 return itemstack;
-            }else{
+            } else {
                 itemstack = this.inventory[slot].splitStack(amount);
-                if(this.inventory[slot].stackSize == 0){
+                if (this.inventory[slot].stackSize == 0) {
                     this.inventory[slot] = null;
                 }
                 return itemstack;
@@ -84,7 +84,7 @@ public class InventoryBag implements IInventory{
 
     @Override
     public ItemStack getStackInSlotOnClosing(int slot) {
-        if(this.inventory[slot] != null){
+        if (this.inventory[slot] != null) {
             ItemStack itemstack = this.inventory[slot];
             this.inventory[slot] = null;
             return itemstack;
@@ -97,7 +97,7 @@ public class InventoryBag implements IInventory{
     public void setInventorySlotContents(int slot, ItemStack itemStack) {
         this.inventory[slot] = itemStack;
 
-        if(itemStack != null && itemStack.stackSize > this.getInventoryStackLimit()){
+        if (itemStack != null && itemStack.stackSize > this.getInventoryStackLimit()) {
             itemStack.stackSize = this.getInventoryStackLimit();
         }
     }
@@ -118,7 +118,8 @@ public class InventoryBag implements IInventory{
     }
 
     @Override
-    public void markDirty() {}
+    public void markDirty() {
+    }
 
     @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
@@ -126,32 +127,34 @@ public class InventoryBag implements IInventory{
     }
 
     @Override
-    public void openInventory() {}
+    public void openInventory() {
+    }
 
     @Override
-    public void closeInventory() {}
+    public void closeInventory() {
+    }
 
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemStack) {
         return true;
     }
 
-    public void readFromNBT(NBTTagCompound nbtTagCompound){
+    public void readFromNBT(NBTTagCompound nbtTagCompound) {
         NBTTagList tagList = nbtTagCompound.getTagList("Items", 10);
         inventory = new ItemStack[this.getSizeInventory()];
-        for (int i = 0; i < tagList.tagCount(); i++){
+        for (int i = 0; i < tagList.tagCount(); i++) {
             NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
             byte slotIndex = tagCompound.getByte("Slot");
-            if (slotIndex >= 0 && slotIndex < inventory.length){
+            if (slotIndex >= 0 && slotIndex < inventory.length) {
                 inventory[slotIndex] = ItemStack.loadItemStackFromNBT(tagCompound);
             }
         }
     }
 
-    public void writeToNBT(NBTTagCompound nbtTagCompound){
+    public void writeToNBT(NBTTagCompound nbtTagCompound) {
         NBTTagList tagList = new NBTTagList();
-        for (int currentIndex = 0; currentIndex < inventory.length; currentIndex++){
-            if (inventory[currentIndex] != null){
+        for (int currentIndex = 0; currentIndex < inventory.length; currentIndex++) {
+            if (inventory[currentIndex] != null) {
                 NBTTagCompound tagCompound = new NBTTagCompound();
                 tagCompound.setByte("Slot", (byte) currentIndex);
                 inventory[currentIndex].writeToNBT(tagCompound);
@@ -167,7 +170,7 @@ public class InventoryBag implements IInventory{
     public void onGuiSaved(EntityPlayer player) {
         parentItemStack = findParentItemStack(player);
 
-        if(parentItemStack != null){
+        if (parentItemStack != null) {
             save();
         }
     }
@@ -175,13 +178,13 @@ public class InventoryBag implements IInventory{
     /**
      * @author Pahimar
      */
-    public ItemStack findParentItemStack(EntityPlayer player){
-        if(NBTHelper.hasUUID(parentItemStack)){
+    public ItemStack findParentItemStack(EntityPlayer player) {
+        if (NBTHelper.hasUUID(parentItemStack)) {
             UUID uuid = new UUID(parentItemStack.getTagCompound().getLong(Names.NBT.UUID_MOST_SIG), parentItemStack.getTagCompound().getLong(Names.NBT.UUID_LEAST_SIG));
-            for(int i = 0; i < player.inventory.getSizeInventory(); i++){
+            for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
                 ItemStack itemStack = player.inventory.getStackInSlot(i);
-                if(NBTHelper.hasUUID(itemStack)){
-                    if(itemStack.getTagCompound().getLong(Names.NBT.UUID_MOST_SIG) == uuid.getMostSignificantBits() && itemStack.getTagCompound().getLong(Names.NBT.UUID_LEAST_SIG) == uuid.getLeastSignificantBits()){
+                if (NBTHelper.hasUUID(itemStack)) {
+                    if (itemStack.getTagCompound().getLong(Names.NBT.UUID_MOST_SIG) == uuid.getMostSignificantBits() && itemStack.getTagCompound().getLong(Names.NBT.UUID_LEAST_SIG) == uuid.getLeastSignificantBits()) {
                         return itemStack;
                     }
                 }
@@ -193,9 +196,9 @@ public class InventoryBag implements IInventory{
     /**
      * @author Pahimar
      */
-    public void save(){
+    public void save() {
         NBTTagCompound nbtTagCompound = parentItemStack.getTagCompound();
-        if(nbtTagCompound == null){
+        if (nbtTagCompound == null) {
             nbtTagCompound = new NBTTagCompound();
 
             UUID uuid = UUID.randomUUID();

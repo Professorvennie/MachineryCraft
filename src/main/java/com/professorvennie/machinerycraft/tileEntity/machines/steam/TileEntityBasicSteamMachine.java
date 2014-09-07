@@ -45,7 +45,7 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicSidedInventory i
                 if (tile != null) {
                     if (tile instanceof ISteamTank) {
                         if (tile instanceof ISteamBoiler) {
-
+                            //no-op
                         } else {
                             int tankAmount = ((ISteamTank) tile).getSteamAmount();
                             int tankCap = ((ISteamTank) tile).getSteamCapacity();
@@ -88,9 +88,7 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicSidedInventory i
                         if (tank.getFluidAmount() < tank.getCapacity()) {
                             if (temp >= 1000) {
                                 if (inventory[1].stackSize < 16) {
-                                    inventory[0].stackSize--;
-                                    if (inventory[0].stackSize == 0)
-                                        inventory[0] = null;
+                                    decrStackSize(0, 1);
                                 }
                             }
                         }
@@ -99,9 +97,7 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicSidedInventory i
                         if (tank.getFluidAmount() < tank.getCapacity()) {
                             if (temp >= 1000) {
                                 if (inventory[1].stackSize < 16) {
-                                    inventory[0].stackSize--;
-                                    if (inventory[0].stackSize == 0)
-                                        inventory[0] = null;
+                                    decrStackSize(0, 1);
                                     inventory[1].stackSize++;
                                 }
                             }
@@ -124,9 +120,7 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicSidedInventory i
                     if (inventory[1] == null) {
                         if (tank.getFluidAmount() >= 1000) {
                             tank.drain(1000, true);
-                            inventory[0].stackSize--;
-                            if (inventory[0].stackSize == 0)
-                                inventory[0] = null;
+                            decrStackSize(0, 1);
                             setInventorySlotContents(1, new ItemStack(ModItems.steamBucket));
                         }
                     }

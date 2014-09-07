@@ -4,6 +4,7 @@ import com.professorvennie.machinerycraft.block.BlockModContainer;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityBlockPlacer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 /**
@@ -16,7 +17,12 @@ public class BlockBlockPlacer extends BlockModContainer {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+    public TileEntity createNewTileEntity(World world, int i) {
         return new TileEntityBlockPlacer();
+    }
+
+    @Override
+    public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z, int side) {
+        return true;
     }
 }

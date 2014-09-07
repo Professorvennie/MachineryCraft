@@ -23,16 +23,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.util.IIcon;
 
-public class ItemDusts extends Item {
+public class ItemDusts extends ItemBase {
 
     @SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 
 	public ItemDusts(){
-		this.setUnlocalizedName("dust");
-		this.setHasSubtypes(true);
-		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
-        setFull3D();
+        super("dust");
+		setHasSubtypes(true);
 	}
 	
 	@SideOnly(Side.CLIENT)

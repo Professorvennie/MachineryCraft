@@ -9,12 +9,12 @@
  * */
 package com.professorvennie.machinerycraft.block.machines.steam;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.steam.ISteamBoiler;
 import com.professorvennie.machinerycraft.api.steam.ISteamTank;
 import com.professorvennie.machinerycraft.block.machines.BlockBasicMachine;
 import com.professorvennie.machinerycraft.item.ModItems;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -39,11 +39,11 @@ public class BlockBasicSteamMachine extends BlockBasicMachine {
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata) {
-        if(side == 1)
+        if (side == 1)
             return iconTop;
-        else if(side == metadata)
+        else if (side == metadata)
             return iconFront;
-        else if(metadata  == 0 && side == 3)
+        else if (metadata == 0 && side == 3)
             return iconFront;
         else
             return blockIcon;
@@ -57,41 +57,41 @@ public class BlockBasicSteamMachine extends BlockBasicMachine {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-        if(!world.isRemote) {
+        if (!world.isRemote) {
             TileEntity tileEntity = world.getTileEntity(x, y, z);
             if (tileEntity instanceof ISteamTank) {
-                if(tileEntity instanceof ISteamBoiler){
-                    if(player.getHeldItem() != null){
-                        if(player.getHeldItem().getItem() == Items.water_bucket){
-                            if(((ISteamBoiler)tileEntity).getWaterAmount() < ((ISteamBoiler)tileEntity).getWaterCapacity()){
-                                int temp = ((ISteamBoiler)tileEntity).getWaterCapacity() - ((ISteamBoiler)tileEntity).getWaterAmount();
-                                if(temp >= 1000){
-                                    ((ISteamBoiler)tileEntity).setWaterAmount(1000);
+                if (tileEntity instanceof ISteamBoiler) {
+                    if (player.getHeldItem() != null) {
+                        if (player.getHeldItem().getItem() == Items.water_bucket) {
+                            if (((ISteamBoiler) tileEntity).getWaterAmount() < ((ISteamBoiler) tileEntity).getWaterCapacity()) {
+                                int temp = ((ISteamBoiler) tileEntity).getWaterCapacity() - ((ISteamBoiler) tileEntity).getWaterAmount();
+                                if (temp >= 1000) {
+                                    ((ISteamBoiler) tileEntity).setWaterAmount(1000);
                                     if (!player.capabilities.isCreativeMode)
                                         player.setCurrentItemOrArmor(0, new ItemStack(Items.bucket));
-                                }else
-                                    player.addChatComponentMessage(new ChatComponentText("Not enough room for water.  Only" + temp + "mb left of room out of " + ((ISteamBoiler)tileEntity).getWaterCapacity() + "mb."));
-                            }else
+                                } else
+                                    player.addChatComponentMessage(new ChatComponentText("Not enough room for water.  Only" + temp + "mb left of room out of " + ((ISteamBoiler) tileEntity).getWaterCapacity() + "mb."));
+                            } else
                                 player.addChatComponentMessage(new ChatComponentText("Water tank is full."));
-                        }else
+                        } else
                             player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
-                    }else
+                    } else
                         player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
-                }else if (player.getHeldItem() != null) {
+                } else if (player.getHeldItem() != null) {
                     if (player.getHeldItem().getItem() == ModItems.steamBucket) {
-                        if (((ISteamTank)tileEntity).getSteamAmount() < ((ISteamTank)tileEntity).getSteamCapacity()) {
-                            int temp = ((ISteamTank)tileEntity).getSteamCapacity() - ((ISteamTank)tileEntity).getSteamAmount();
+                        if (((ISteamTank) tileEntity).getSteamAmount() < ((ISteamTank) tileEntity).getSteamCapacity()) {
+                            int temp = ((ISteamTank) tileEntity).getSteamCapacity() - ((ISteamTank) tileEntity).getSteamAmount();
                             if (temp >= 1000) {
-                                ((ISteamTank)tileEntity).addSteamAmount(1000);
+                                ((ISteamTank) tileEntity).addSteamAmount(1000);
                                 if (!player.capabilities.isCreativeMode)
                                     player.setCurrentItemOrArmor(0, new ItemStack(Items.bucket));
                             } else
-                                player.addChatComponentMessage(new ChatComponentText("Not enough room for steam.  Only" + temp + "mb left of room out of " + ((ISteamTank)tileEntity).getSteamCapacity() + "mb."));
+                                player.addChatComponentMessage(new ChatComponentText("Not enough room for steam.  Only" + temp + "mb left of room out of " + ((ISteamTank) tileEntity).getSteamCapacity() + "mb."));
                         } else
                             player.addChatComponentMessage(new ChatComponentText("Steam tank is full."));
                     } else if (player.getHeldItem().getItem() == Items.bucket) {
-                        if (((ISteamTank)tileEntity).getSteamAmount() >= 1000) {
-                            ((ISteamTank)tileEntity).addSteamAmount(-1000);
+                        if (((ISteamTank) tileEntity).getSteamAmount() >= 1000) {
+                            ((ISteamTank) tileEntity).addSteamAmount(-1000);
                             if (player.getHeldItem().stackSize == 1)
                                 player.setCurrentItemOrArmor(0, new ItemStack(ModItems.steamBucket));
                             else {

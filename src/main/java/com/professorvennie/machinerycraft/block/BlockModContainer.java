@@ -1,10 +1,12 @@
 package com.professorvennie.machinerycraft.block;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
+import com.professorvennie.machinerycraft.core.utils.ForgeDirectionUtils;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityMod;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
@@ -16,6 +18,8 @@ import net.minecraftforge.common.util.ForgeDirection;
  */
 public class BlockModContainer extends BlockContainer {
 
+    public int guiId;
+
     public BlockModContainer(Material mat, String name) {
         super(mat);
         setCreativeTab(MachineryCraft.tabMachineryCraft);
@@ -23,30 +27,17 @@ public class BlockModContainer extends BlockContainer {
     }
 
     @Override
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack){
-        if (world.getTileEntity(x, y, z) instanceof TileEntityMod){
-            int direction = 0;
-            int facing = MathHelper.floor_double(entityLiving.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
-
-            if (facing == 0){
-                direction = ForgeDirection.NORTH.ordinal();
-            }
-            else if (facing == 1){
-                direction = ForgeDirection.EAST.ordinal();
-            }
-            else if (facing == 2){
-                direction = ForgeDirection.SOUTH.ordinal();
-            }
-            else if (facing == 3){
-                direction = ForgeDirection.WEST.ordinal();
-            }
-
-            if (itemStack.hasDisplayName()){
-                ((TileEntityMod) world.getTileEntity(x, y, z)).setCustomName(itemStack.getDisplayName());
-            }
-               System.out.println(facing);
-            ((TileEntityMod) world.getTileEntity(x, y, z)).setOrientation(direction);
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+        if(!world.isRemote){
+            player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
         }
+        return true;
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack){
+        TileEntityMod tile = (TileEntityMod)world.getTileEntity(x, y, z);
+        tile.setOrientation(ForgeDirectionUtils.getDirectionFacing(entityLiving, true).getOpposite());
     }
 
     @Override

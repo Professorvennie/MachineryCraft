@@ -111,7 +111,7 @@ public class PageCraftingRecipe extends PageRecipe {
             if (recipeAt == recipes.size())
                 recipeAt = 0;
         }
-        ++ticksElapsed;
+        ticksElapsed++;
     }
 
     @SideOnly(Side.CLIENT)
@@ -124,8 +124,8 @@ public class PageCraftingRecipe extends PageRecipe {
                     renderItemAtGridPos(gui, 1 + x, 1 + y, shaped.recipeItems[y * shaped.recipeWidth + x], true);
         } else if (recipe instanceof ShapedOreRecipe) {
             ShapedOreRecipe shaped = (ShapedOreRecipe) recipe;
-            int width = (Integer) ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 4);
-            int height = (Integer) ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 5);
+            int width = ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 4);
+            int height = ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 5);
 
             for (int y = 0; y < height; y++)
                 for (int x = 0; x < width; x++) {

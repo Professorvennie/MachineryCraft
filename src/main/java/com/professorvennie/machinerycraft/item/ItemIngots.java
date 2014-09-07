@@ -23,16 +23,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-public class ItemIngots extends Item {
+public class ItemIngots extends ItemBase {
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 	
 	public ItemIngots(){
-		this.setUnlocalizedName("ingot");
-		this.setHasSubtypes(true);
-		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
-        setFull3D();
+        super("ingot");
+		setHasSubtypes(true);
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -13,14 +13,12 @@ import net.minecraft.util.IIcon;
 
 import java.util.List;
 
-public class ItemGears extends Item {
+public class ItemGears extends ItemBase {
 
     public IIcon[] textures;
 
     public ItemGears(){
-        setCreativeTab(MachineryCraft.tabMachineryCraft);
-        setUnlocalizedName("gear");
-        setFull3D();
+        super("gear");
         setHasSubtypes(true);
     }
 

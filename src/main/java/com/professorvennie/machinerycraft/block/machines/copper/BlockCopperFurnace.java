@@ -9,15 +9,16 @@
  * */
 package com.professorvennie.machinerycraft.block.machines.copper;
 
-import java.util.Random;
-
 import com.professorvennie.machinerycraft.api.book.BookEntry;
-import com.professorvennie.machinerycraft.block.machines.BlockBasicMachine;
 import com.professorvennie.machinerycraft.block.ModBlocks;
+import com.professorvennie.machinerycraft.block.machines.BlockBasicMachine;
 import com.professorvennie.machinerycraft.lib.BookData;
+import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.tileEntity.machines.copper.TileEntityCopperFurnace;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,29 +27,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import com.professorvennie.machinerycraft.lib.LibGuiIds;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
 
 public class BlockCopperFurnace extends BlockBasicMachine {
 
-	public BlockCopperFurnace(boolean isActive) {
-		super(Names.Blocks.COPPER_FURNACE, isActive);
+    public BlockCopperFurnace(boolean isActive) {
+        super(Names.Blocks.COPPER_FURNACE, isActive);
         setHardness(3.5F);
         setHarvestLevel("pickAxe", 1);
         setStepSound(Block.soundTypeMetal);
         this.guiId = LibGuiIds.CCOPPER_FURNACE;
-	}
+    }
 
-	public Item getItemDropped(int par1, Random random, int par2) {
-		return Item.getItemFromBlock(ModBlocks.copperFurnaceIdle);
-	}
+    public Item getItemDropped(int par1, Random random, int par2) {
+        return Item.getItemFromBlock(ModBlocks.copperFurnaceIdle);
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int var2) {
-		return new TileEntityCopperFurnace();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int var2) {
+        return new TileEntityCopperFurnace();
+    }
 
     @SideOnly(Side.CLIENT)
     @Override
@@ -57,14 +55,14 @@ public class BlockCopperFurnace extends BlockBasicMachine {
         this.iconFront = iiconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "copperFurnace_Front_Active" : "copperFurnace_Front_Idle"));
     }
 
-	public boolean hasComparatorInputOverride() {
-		return true;
-	}
+    public boolean hasComparatorInputOverride() {
+        return true;
+    }
 
-	@Override
-	public Item getItem(World world, int x, int y, int z) {
-		return Item.getItemFromBlock(ModBlocks.copperFurnaceIdle);
-	}
+    @Override
+    public Item getItem(World world, int x, int y, int z) {
+        return Item.getItemFromBlock(ModBlocks.copperFurnaceIdle);
+    }
 
     @Override
     public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {

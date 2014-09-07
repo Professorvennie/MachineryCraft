@@ -68,7 +68,7 @@ public class Names {
 
 
     public static final class Items{
-        public static final String SPPED_UPGRADE ="speedUpgrade";
+        public static final String SPPED_UPGRADE = "speedUpgrade";
         public static final String POWERBOOST ="powerBoost";
         public static final String EFFICIENCY ="efficiency";
         public static final String WINDMILL ="windmill";

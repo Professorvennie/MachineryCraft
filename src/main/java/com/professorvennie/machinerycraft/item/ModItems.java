@@ -24,7 +24,6 @@ public class ModItems {
 
     public static void mainRegistry(){
 		InitialiseItem();
-		registerItem();
 		ModTools.mainRegistry();
 		ModArmor.mainRegistry();
 	}
@@ -47,7 +46,7 @@ public class ModItems {
 
     public static void InitialiseItem(){
 		//Random items
-		Itemwindmill = new ItemWindmill().setUnlocalizedName(Names.Items.WINDMILL).setCreativeTab(MachineryCraft.tabMachineryCraft).setTextureName("diamond");
+		Itemwindmill = new ItemWindmill();
 		Dusts = new ItemDusts();
 		Ingots = new ItemIngots();
 		book = new ItemBook();
@@ -59,25 +58,8 @@ public class ModItems {
         bags = new ItemBags();
 
 		//upgrades
-		speedupgrade = new ItemSpeedUpgrade().setUnlocalizedName(Names.Items.SPPED_UPGRADE).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":speedupgrade");
-		powerboost = new Item().setUnlocalizedName(Names.Items.POWERBOOST).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(1).setTextureName(Reference.MOD_ID + ":powerboost");
-		efficiency = new Item().setUnlocalizedName(Names.Items.EFFICIENCY).setCreativeTab(MachineryCraft.tabMachineryCraft).setMaxStackSize(2).setTextureName(Reference.MOD_ID + ":");
+		speedupgrade = new ItemSpeedUpgrade();
+		powerboost = new ItemBase(Names.Items.POWERBOOST).setMaxStackSize(1);
+		efficiency = new ItemBase(Names.Items.EFFICIENCY).setMaxStackSize(2);
 	}
-	
-	
-	public static void registerItem(){
-		RegistryUtils.registerItem(Ingots);
-		RegistryUtils.registerItem(speedupgrade);
-		RegistryUtils.registerItem(powerboost);
-		RegistryUtils.registerItem(efficiency);
-		RegistryUtils.registerItem(Itemwindmill);
-		RegistryUtils.registerItem(Dusts);
-		RegistryUtils.registerItem(book);
-        RegistryUtils.registerItem(itemPlasticApple);
-        RegistryUtils.registerItem(gears);
-        RegistryUtils.registerItem(nuggets);
-        RegistryUtils.registerItem(steamBucket);
-        RegistryUtils.registerItem(gernades);
-        RegistryUtils.registerItem(bags);
-    }
 }

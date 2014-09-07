@@ -29,15 +29,13 @@ import java.util.List;
 /**
  * Created by ProfessorVennie on 8/28/2014 at 6:47 PM.
  */
-public class ItemBags extends Item {
+public class ItemBags extends ItemBase {
 
     @SideOnly(Side.CLIENT)
     public IIcon[] icons;
 
     public ItemBags(){
-        setCreativeTab(MachineryCraft.tabMachineryCraft);
-        setUnlocalizedName("bag");
-        setFull3D();
+        super("bag");
         setHasSubtypes(true);
         setMaxStackSize(1);
     }

@@ -11,14 +11,12 @@ import net.minecraft.util.IIcon;
 
 import java.util.List;
 
-public class ItemNuggets extends Item {
+public class ItemNuggets extends ItemBase {
 
     public IIcon[] textures;
 
     public ItemNuggets(){
-        setUnlocalizedName("nugget");
-        setCreativeTab(MachineryCraft.tabMachineryCraft);
-        setFull3D();
+        super("nugget");
         setHasSubtypes(true);
     }
 
