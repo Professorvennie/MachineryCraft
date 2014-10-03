@@ -11,10 +11,10 @@ package com.professorvennie.machinerycraft.item.tools.brass;
 
 import net.minecraft.item.ItemHoe;
 
-public class ItemBrassHoe extends ItemHoe{
+public class ItemBrassHoe extends ItemHoe {
 
-	public ItemBrassHoe(ToolMaterial p_i45343_1_) {
-		super(p_i45343_1_);
-	}
+    public ItemBrassHoe(ToolMaterial p_i45343_1_) {
+        super(p_i45343_1_);
+    }
 
 }

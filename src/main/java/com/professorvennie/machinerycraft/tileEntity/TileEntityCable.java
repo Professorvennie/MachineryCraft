@@ -10,10 +10,10 @@
 package com.professorvennie.machinerycraft.tileEntity;
 
 import com.professorvennie.machinerycraft.api.blocks.IMachine;
-import net.minecraft.tileentity.TileEntity;
+import com.professorvennie.machinerycraft.machines.windmill.TileEntityWindmill;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityCable extends TileEntity {
+public class TileEntityCable extends TileEntityMod {
 
     public ForgeDirection[] connections = new ForgeDirection[6];
 
@@ -54,7 +54,7 @@ public class TileEntityCable extends TileEntity {
     }
 
     public boolean isWindmill(int x, int y, int z) {
-        return (this.worldObj.getTileEntity(x, y, z) instanceof IMachine) && worldObj.getBlockMetadata(x, y, z) == 1;
+        return (this.worldObj.getTileEntity(x, y, z) instanceof TileEntityWindmill) && worldObj.getBlockMetadata(x, y, z) == 1;
     }
 
 

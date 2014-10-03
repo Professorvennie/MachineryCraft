@@ -9,6 +9,7 @@
  * */
 package com.professorvennie.machinerycraft.plugins;
 
+import com.professorvennie.machinerycraft.plugins.codechicken.fmp.FMPPlugin;
 import com.professorvennie.machinerycraft.plugins.codechicken.nei.NEIHandler;
 import cpw.mods.fml.common.Loader;
 
@@ -17,23 +18,25 @@ import cpw.mods.fml.common.Loader;
  */
 public class PluginHandler {
 
-    public static void preInit(){
-
+    public static void preInit() {
+        if (Loader.isModLoaded("ForgeMultipart")) {
+            FMPPlugin.init();
+        }
     }
 
-    public static void Init(){
+    public static void Init() {
         registerMultiParts();
-        if(Loader.isModLoaded("NotEnoughItems")){
+        if (Loader.isModLoaded("NotEnoughItems")) {
             NEIHandler.loadConfig();
         }
     }
 
-    public static void postInit(){
+    public static void postInit() {
 
     }
 
     private static void registerMultiParts() {
-        if(Loader.isModLoaded("ForgeMultipart")){
+        if (Loader.isModLoaded("ForgeMultipart")) {
             try {
                 Class clazz = Class.forName("com.professorvennie.machinerycraft.plugins.codechicken.fmp.MultiPartHandler");
                 clazz.newInstance();

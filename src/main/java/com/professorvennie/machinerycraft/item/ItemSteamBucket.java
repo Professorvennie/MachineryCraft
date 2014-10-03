@@ -1,8 +1,10 @@
 package com.professorvennie.machinerycraft.item;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.fuilds.ModFuilds;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.MachineryCraft;
+import com.professorvennie.machinerycraft.lib.Reference;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
@@ -15,13 +17,24 @@ public class ItemSteamBucket extends ItemBucket {
 
     public ItemSteamBucket() {
         super(ModFuilds.blockSteam);
-        setFull3D();
-        setCreativeTab(MachineryCraft.tabMachineryCraft);
+        setCreativeTab(MachineryCraft.tabMachineryCraftItems);
         setUnlocalizedName(Names.Items.STEAM_BUCKET);
+        setTextureName(Reference.MOD_ID + ":steamBucket");
+    }
+
+    @Override
+    public Item setUnlocalizedName(String name) {
+        GameRegistry.registerItem(this, name);
+        return super.setUnlocalizedName(name);
     }
 
     @Override
     public boolean hasContainerItem(ItemStack itemStack) {
+        return true;
+    }
+
+    @Override
+    public boolean isFull3D() {
         return true;
     }
 

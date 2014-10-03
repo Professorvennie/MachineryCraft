@@ -9,12 +9,9 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
-import java.util.List;
-
+import com.professorvennie.lib.base.blocks.BlockBase;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -28,40 +25,40 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockMetals extends Block {
-	
-	@SideOnly(Side.CLIENT)
+import java.util.List;
+
+public class BlockMetals extends BlockBase {
+
+    @SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 
-	protected BlockMetals() {
-		super(Material.iron);
-		this.setCreativeTab(MachineryCraft.tabMachineryCraft);
-		this.setBlockName("metal");
-		this.setHardness(3.5f);
+    protected BlockMetals() {
+        super(Material.iron, "metal");
+        this.setHardness(3.5f);
         this.setHarvestLevel("pickAxe", 2);
-        setStepSound(Block.soundTypeMetal);
-	}
-	
-	@Override
+        this.setStepSound(Block.soundTypeMetal);
+    }
+
+    @Override
     public Block setBlockName(String string) {
         return super.setBlockName(string);
     }
-	
-	 @Override
-	 @SideOnly(Side.CLIENT)
-	 public void registerBlockIcons(IIconRegister register) {
-	     iconArray = new IIcon[Names.Blocks.METAL_BLOCKS.length];
-	     for (int i = 0; i < iconArray.length; i++) {
-	         iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + Names.Blocks.METAL_BLOCKS[i]);
-	     }
-	 }
-	
-    public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-    	for(int i = 0; i < Names.Blocks.METAL_BLOCKS.length; i++){
-            list.add(new ItemStack(item, 1, i));
-    	}
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister register) {
+        iconArray = new IIcon[Names.Blocks.METAL_BLOCKS.length];
+        for (int i = 0; i < iconArray.length; i++) {
+            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + Names.Blocks.METAL_BLOCKS[i]);
+        }
     }
-    
+
+    public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+        for (int i = 0; i < Names.Blocks.METAL_BLOCKS.length; i++) {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
@@ -93,16 +90,16 @@ public class BlockMetals extends Block {
 
         @Override
         public int getMetadata(int par1) {
-             return par1;
+            return par1;
         }
 
         @Override
         @SideOnly(Side.CLIENT)
         public IIcon getIconFromDamage(int par1) {
             return this.field_150939_a.getIcon(0, par1);
-         }
+        }
 
-        @SuppressWarnings({ "unchecked", "rawtypes" })
+        @SuppressWarnings({"unchecked", "rawtypes"})
         @Override
         @SideOnly(Side.CLIENT)
         public void getSubItems(Item item, CreativeTabs tab, List list) {

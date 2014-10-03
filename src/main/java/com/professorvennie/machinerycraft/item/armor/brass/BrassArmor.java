@@ -9,26 +9,25 @@
  * */
 package com.professorvennie.machinerycraft.item.armor.brass;
 
-import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.MachineryCraft;
+import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
+import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.lib.Reference;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
-import com.professorvennie.machinerycraft.item.ModItems;
-
 public class BrassArmor extends ItemArmor {
-	
-	private static ItemStack brassIngot = new ItemStack(ModItems.Ingots, 1, 5);
 
-	public BrassArmor(int type, String name) {
-		this(type, name, MachineryCraftAPI.brassArmorMaterial);
-	}
+    private static ItemStack brassIngot = new ItemStack(ModItems.Ingots, 1, 5);
 
-    public BrassArmor(int type, String name, ArmorMaterial mat){
+    public BrassArmor(int type, String name) {
+        this(type, name, MachineryCraftAPI.brassArmorMaterial);
+    }
+
+    public BrassArmor(int type, String name, ArmorMaterial mat) {
         super(mat, 0, type);
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
@@ -43,10 +42,10 @@ public class BrassArmor extends ItemArmor {
     }
 
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		return slot == 2 ? Reference.MOD_ID + ":textures/armor/brass_Armor2.png" : Reference.MOD_ID + ":textures/armor/brass_Armor1.png";
-	}
-	
-	public boolean getIsRepairable(ItemStack itemstack, ItemStack itemstack1){
-		return itemstack1.getItem() == brassIngot.getItem() ? true : super.getIsRepairable(itemstack, itemstack);
-	}
+        return slot == 2 ? Reference.MOD_ID + ":textures/armor/brass_Armor2.png" : Reference.MOD_ID + ":textures/armor/brass_Armor1.png";
+    }
+
+    public boolean getIsRepairable(ItemStack itemstack, ItemStack itemstack1) {
+        return itemstack1.getItem() == brassIngot.getItem() ? true : super.getIsRepairable(itemstack, itemstack);
+    }
 }

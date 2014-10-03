@@ -9,9 +9,9 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -37,38 +37,42 @@ public class BlockPlasticDirt extends BlockDirt {
         setHardness(1.0f);
     }
 
+    @Override
+    public String getUnlocalizedName() {
+        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
+    }
 
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister){
+    public void registerBlockIcons(IIconRegister iconRegister) {
         super.registerBlockIcons(iconRegister);
         this.blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":plasticDirt");
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta){
-       return this.blockIcon;
+    public IIcon getIcon(int side, int meta) {
+        return this.blockIcon;
 
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(IBlockAccess iBlockAccess, int x, int y, int z, int meta){
-           Material material = iBlockAccess.getBlock(x, y + 1, z).getMaterial();
+    public IIcon getIcon(IBlockAccess iBlockAccess, int x, int y, int z, int meta) {
+        Material material = iBlockAccess.getBlock(x, y + 1, z).getMaterial();
 
-           if (material == Material.snow || material == Material.craftedSnow){
-               return ModBlocks.plasticGrass.getIcon(iBlockAccess, x, y, z, meta);
-           }
+        if (material == Material.snow || material == Material.craftedSnow) {
+            return ModBlocks.plasticGrass.getIcon(iBlockAccess, x, y, z, meta);
+        }
 
-           Block block = iBlockAccess.getBlock(x, y + 1, z);
+        Block block = iBlockAccess.getBlock(x, y + 1, z);
 
-           if (block != ModBlocks.plasticDirt && block != ModBlocks.plasticGrass){
-               return this.blockIcon;
-           }
+        if (block != ModBlocks.plasticDirt && block != ModBlocks.plasticGrass) {
+            return this.blockIcon;
+        }
 
         return this.blockIcon;
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list){
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list) {
         list.add(new ItemStack(this, 1, 0));
     }
 }

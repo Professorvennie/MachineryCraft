@@ -11,11 +11,11 @@ package com.professorvennie.machinerycraft.item.tools.zinc;
 
 import net.minecraft.item.ItemAxe;
 
-public class ItemZincAxe extends ItemAxe{
+public class ItemZincAxe extends ItemAxe {
 
-	public ItemZincAxe(ToolMaterial p_i45327_1_) {
-		super(p_i45327_1_);
-		// TODO Auto-generated constructor stub
-	}
+    public ItemZincAxe(ToolMaterial p_i45327_1_) {
+        super(p_i45327_1_);
+        // TODO Auto-generated constructor stub
+    }
 
 }

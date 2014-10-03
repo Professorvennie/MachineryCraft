@@ -27,7 +27,7 @@ public class ChunkProviderMiningWorld extends ChunkProviderGenerate implements I
         this.world = world;
     }
 
-    public void func_147424_a(int p_147424_1_, int p_147424_2_, Block[] blocks){
+    public void func_147424_a(int p_147424_1_, int p_147424_2_, Block[] blocks) {
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 for (int y = 0; (y <= 255) && (y >= 0); y++) {
@@ -42,7 +42,7 @@ public class ChunkProviderMiningWorld extends ChunkProviderGenerate implements I
         }
     }
 
-    public void replaceBlocksForBiome(int chunkX, int chunkZ, Block[] blocks, byte[] p_147422_4_, BiomeGenBase[] biomes){
+    public void replaceBlocksForBiome(int chunkX, int chunkZ, Block[] blocks, byte[] p_147422_4_, BiomeGenBase[] biomes) {
         ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, chunkX, chunkZ, blocks, biomes);
 
         OreGen oreGen = new OreGen();
@@ -54,8 +54,8 @@ public class ChunkProviderMiningWorld extends ChunkProviderGenerate implements I
         }
 
         for (int x = 0; x < 16; x++) {
-            for (int z = 0; z < 16; z++){
-                for (int y = height; y >= 0; y--){
+            for (int z = 0; z < 16; z++) {
+                for (int y = height; y >= 0; y--) {
                     int var17 = (z * 16 + x) * 256 + y;
                     if (y <= 0) {
                         blocks[var17] = Blocks.bedrock;

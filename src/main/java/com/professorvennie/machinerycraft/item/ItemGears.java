@@ -1,8 +1,8 @@
 package com.professorvennie.machinerycraft.item;
 
+import com.professorvennie.lib.base.items.ItemBase;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,9 +15,10 @@ import java.util.List;
 
 public class ItemGears extends ItemBase {
 
+    @SideOnly(Side.CLIENT)
     public IIcon[] textures;
 
-    public ItemGears(){
+    public ItemGears() {
         super("gear");
         setHasSubtypes(true);
     }
@@ -26,7 +27,7 @@ public class ItemGears extends ItemBase {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
         textures = new IIcon[Names.Items.GEARS.length];
-        for(int i = 0; i < Names.Items.GEARS.length; i++){
+        for (int i = 0; i < Names.Items.GEARS.length; i++) {
             textures[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Items.GEARS[i]);
         }
     }
@@ -44,7 +45,7 @@ public class ItemGears extends ItemBase {
 
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list) {
-        for(int i = 0; i < Names.Items.GEARS.length; i++)
+        for (int i = 0; i < Names.Items.GEARS.length; i++)
             list.add(new ItemStack(this, 1, i));
     }
 }

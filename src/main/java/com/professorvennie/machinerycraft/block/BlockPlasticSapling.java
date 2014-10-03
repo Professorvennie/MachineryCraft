@@ -9,10 +9,9 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
-
 import com.professorvennie.machinerycraft.world.tree.WorldGenPlasticTree;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,9 +30,9 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import java.util.List;
 import java.util.Random;
 
-public class BlockPlasticSapling extends BlockSapling{
+public class BlockPlasticSapling extends BlockSapling {
 
-    public static final String[] typesSapling = new String[] { "PlasticSapling" };
+    public static final String[] typesSapling = new String[]{"PlasticSapling"};
     private static final IIcon[] textures = new IIcon[typesSapling.length];
 
     public BlockPlasticSapling() {
@@ -46,7 +45,12 @@ public class BlockPlasticSapling extends BlockSapling{
         this.setBlockName(Names.Blocks.BLOCK_SAPLING);
     }
 
-    protected boolean canPlaceBlockOn(Block block){
+    @Override
+    public String getUnlocalizedName() {
+        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
+    }
+
+    protected boolean canPlaceBlockOn(Block block) {
         return block == ModBlocks.plasticDirt || block == ModBlocks.plasticGrass || block == Blocks.dirt || block == Blocks.glass;
     }
 
@@ -83,7 +87,7 @@ public class BlockPlasticSapling extends BlockSapling{
 
         world.setBlock(x, y, z, Blocks.air, 0, 4);
 
-        if (!((WorldGenerator) object).generate(world, random, x + i1, y, z	+ j1)) {
+        if (!((WorldGenerator) object).generate(world, random, x + i1, y, z + j1)) {
             world.setBlock(x, y, z, this, l, 4);
         }
     }

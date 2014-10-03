@@ -11,12 +11,12 @@ package com.professorvennie.machinerycraft.block;
 
 
 import com.professorvennie.machinerycraft.api.book.BookEntry;
-import com.professorvennie.machinerycraft.block.machines.BlockBasicMachine;
-import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.tileEntity.TileEntityGoldOxideAlloy;
 import com.professorvennie.machinerycraft.lib.BookData;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
+import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
+import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
+import com.professorvennie.machinerycraft.tileEntity.TileEntityGoldOxideAlloy;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

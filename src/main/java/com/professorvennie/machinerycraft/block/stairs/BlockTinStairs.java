@@ -1,6 +1,7 @@
 package com.professorvennie.machinerycraft.block.stairs;
 
 
+import com.professorvennie.lib.base.blocks.BlockModStair;
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -10,7 +11,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
  */
 public class BlockTinStairs extends BlockModStair {
 
-    public BlockTinStairs(Block block , String tinStairs) {
+    public BlockTinStairs(Block block, String tinStairs) {
         super(block, tinStairs);
     }
 

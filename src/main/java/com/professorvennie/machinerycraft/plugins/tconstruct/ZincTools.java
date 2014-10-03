@@ -1,6 +1,6 @@
 package com.professorvennie.machinerycraft.plugins.tconstruct;
 
-import com.professorvennie.machinerycraft.core.utils.RegistryUtils;
+import com.professorvennie.lib.utils.RegistryUtils;
 import net.minecraft.item.Item;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -32,7 +32,7 @@ public class ZincTools {
     public static ZincPart tough_binding;
     public static ZincPart tough_rod;
 
-    public static void preInit(){
+    public static void preInit() {
 //        arrowhead = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
 //        axe_Head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
 //        battle_Sign_Head = (SaltPart) new SaltPart().setUnlocalizedName("zinc.arrow.head");
@@ -59,13 +59,13 @@ public class ZincTools {
 //        registerItems(new Item[] {arrowhead, axe_Head, battle_Sign_Head, binding, broad_axe_head, chisel_head, chunk, excavator_head, frypan_head, full_gaurd, hammer_head, hand_guard, knife_blade, large_guard, large_sword_blade, large_plate, pickaxe_head, scthe_head, shovel_head, sword_blade, tool_rod, tough_binding, tough_rod});
     }
 
-    public static void registerItems(Item[] items){
-        for(Item item : items){
+    public static void registerItems(Item[] items) {
+        for (Item item : items) {
             RegistryUtils.registerItem(item);
         }
     }
 
-    public static void postInit(){
+    public static void postInit() {
         //addCastings(SALT_ID, new FluidStack(ModFuilds.saltFluid, 100), 80);
 
         //addTools();
@@ -76,7 +76,7 @@ public class ZincTools {
 //        TConstructRegistry.addArrowMaterial(SALT_ID, 2.3F, 1.0F, 80.0F);
     }
 
-    public static void addCastings(int id, FluidStack fluid, int delay){
+    public static void addCastings(int id, FluidStack fluid, int delay) {
 //        PluginTConstruct.addPartCasting(new ItemStack(tool_rod, 1, id), TConstructRegistry.getItemStack("toolRodCast"), fluid, delay);
 //        PluginTConstruct.addPartCasting(new ItemStack(pickaxe_head, 1, id), TConstructRegistry.getItemStack("pickaxeHeadCast"), fluid, delay);
 //        PluginTConstruct.addPartCasting(new ItemStack(shovel_head, 1, id), TConstructRegistry.getItemStack("shovelHeadCast"), fluid, delay);
@@ -102,7 +102,7 @@ public class ZincTools {
 //        PluginTConstruct.addPartCasting(new ItemStack(arrowhead, 1, id), new ItemStack(TConstructRegistry.getItem("metalPattern"), 1, 25), fluid, delay);
     }
 
-    public static void addTools(){
+    public static void addTools() {
 //        TConstructRegistry.addToolRecipe((ToolCore) TConstructRegistry.getItem("arrow"), new Item[] { arrowhead, tool_rod, TConstructRegistry.getItem("fletching") });
 //        TConstructRegistry.addToolRecipe((ToolCore) TConstructRegistry.getItem("battleaxe"), new Item[] { broad_axe_head, tough_rod, broad_axe_head, tough_binding });
 //        TConstructRegistry.addToolRecipe((ToolCore) TConstructRegistry.getItem("battlesign"), new Item[] { battle_Sign_Head, tool_rod });

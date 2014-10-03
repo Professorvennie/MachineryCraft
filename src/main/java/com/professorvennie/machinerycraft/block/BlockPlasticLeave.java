@@ -9,10 +9,10 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.item.ModItems;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -32,8 +32,8 @@ import java.util.Random;
 
 public class BlockPlasticLeave extends BlockLeaves {
 
-    public static final String[] textureNames = new String[] {Reference.MOD_ID + ":PlasticLeaf" , Reference.MOD_ID + ":PlasticLeaf_Opaque"};
-    public static final String[] trees = new String[] {"plastic"};
+    public static final String[] textureNames = new String[]{Reference.MOD_ID + ":PlasticLeaf", Reference.MOD_ID + ":PlasticLeaf_Opaque"};
+    public static final String[] trees = new String[]{"plastic"};
     @SideOnly(Side.CLIENT)
     protected IIcon[] textures = new IIcon[2];
 
@@ -48,16 +48,21 @@ public class BlockPlasticLeave extends BlockLeaves {
     }
 
     @Override
+    public String getUnlocalizedName() {
+        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
+    }
+
+    @Override
     public boolean isFlammable(IBlockAccess world, int x, int y, int z, net.minecraftforge.common.util.ForgeDirection face) {
         return true;
-}
+    }
 
-    public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face){
+    public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face) {
         return 40;
     }
 
 
-    public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face){
+    public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face) {
         return 10;
     }
 
@@ -90,7 +95,7 @@ public class BlockPlasticLeave extends BlockLeaves {
 
     protected void func_150124_c(World world, int x, int y, int z, int meta, int par1) {
         if ((meta & 3) == 0 && world.rand.nextInt(par1) == 0) {
-            this.dropBlockAsItem(world, x, y, z, new ItemStack(ModItems.itemPlasticApple,1, 0));
+            this.dropBlockAsItem(world, x, y, z, new ItemStack(ModItems.itemPlasticApple, 1, 0));
         }
     }
 
@@ -113,7 +118,7 @@ public class BlockPlasticLeave extends BlockLeaves {
         textures[1] = iconReg.registerIcon(textureNames[1]);
     }
 
-    public void dropBlockAsItemWithChance(World world, int x, int y, int z,	int meta, float par1, int par2) {
+    public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float par1, int par2) {
         if (!world.isRemote) {
             int j1 = this.func_150123_b(meta);
 

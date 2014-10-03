@@ -38,7 +38,8 @@ public class GuiBookIndex extends GuiBook {
     }
 
     @Override
-    void drawHeader() {}
+    void drawHeader() {
+    }
 
     @Override
     String getTitle() {

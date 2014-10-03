@@ -24,7 +24,7 @@ public class BiomePlastic extends BiomeGenBase {
     public BiomePlastic(int id) {
         super(id);
         setDisableRain();
-        for(int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++){
+        for (int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++) {
             addFlower(ModBlocks.plasticFlower, i, 20);
         }
         topBlock = ModBlocks.plasticGrass;
@@ -36,15 +36,15 @@ public class BiomePlastic extends BiomeGenBase {
 
     @Override
     public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_) {
-        return 0xFFFFFF;
+        return 16777215;
     }
 
     @Override
     public int getModdedBiomeGrassColor(int original) {
-        return 0xFFFFFF;
+        return 16777215;
     }
 
-    public WorldGenAbstractTree func_150567_a(Random random){
+    public WorldGenAbstractTree func_150567_a(Random random) {
         return new WorldGenPlasticTree(false);
     }
 
@@ -55,7 +55,7 @@ public class BiomePlastic extends BiomeGenBase {
         int z = chunkZ + random.nextInt(16);
         int y = world.getHeightValue(chunkX, chunkZ);
         WorldGenFlowersWithMeta worldGenFlowers;
-        for(int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++) {
+        for (int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++) {
             worldGenFlowers = new WorldGenFlowersWithMeta(ModBlocks.plasticFlower, i);
             worldGenFlowers.generate(world, random, x, y, z);
         }

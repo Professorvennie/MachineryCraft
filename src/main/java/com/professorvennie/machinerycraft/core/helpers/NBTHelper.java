@@ -20,31 +20,44 @@ import java.util.UUID;
  */
 public class NBTHelper {
 
-    public static boolean hasTag(ItemStack itemStack, String keyName){
+    public static boolean hasTag(ItemStack itemStack, String keyName) {
         return itemStack != null && itemStack.stackTagCompound != null && itemStack.stackTagCompound.hasKey(keyName);
     }
 
-    public static boolean hasUUID(ItemStack itemStack){
+    public static boolean hasUUID(ItemStack itemStack) {
         return hasTag(itemStack, Names.NBT.UUID_MOST_SIG) && hasTag(itemStack, Names.NBT.UUID_LEAST_SIG);
     }
 
-    public static void setUUID(ItemStack itemStack){
+    public static void setUUID(ItemStack itemStack) {
         initNBT(itemStack);
 
-        if(!hasTag(itemStack, Names.NBT.UUID_MOST_SIG) && !hasTag(itemStack, Names.NBT.UUID_LEAST_SIG)){
+        if (!hasTag(itemStack, Names.NBT.UUID_MOST_SIG) && !hasTag(itemStack, Names.NBT.UUID_LEAST_SIG)) {
             UUID uuid = UUID.randomUUID();
             setLong(itemStack, Names.NBT.UUID_MOST_SIG, uuid.getMostSignificantBits());
             setLong(itemStack, Names.NBT.UUID_LEAST_SIG, uuid.getLeastSignificantBits());
         }
     }
 
-    public static void initNBT(ItemStack itemStack){
-        if(itemStack.stackTagCompound == null){
+    public static void initNBT(ItemStack itemStack) {
+        if (itemStack.stackTagCompound == null) {
             itemStack.setTagCompound(new NBTTagCompound());
         }
     }
 
-    public static void setLong(ItemStack itemStack, String keyName, long keyValue){
+    public static void initPower(ItemStack itemStack) {
+        initNBT(itemStack);
+        //if(!itemStack.getTagCompound().hasKey("power"))
+        itemStack.getTagCompound().setInteger("Power", 0);
+    }
+
+    public static void initPower(ItemStack itemStack, int power) {
+        initNBT(itemStack);
+        //if(!itemStack.getTagCompound().hasKey("power"))
+        itemStack.getTagCompound().setInteger("Power", power);
+    }
+
+
+    public static void setLong(ItemStack itemStack, String keyName, long keyValue) {
         initNBT(itemStack);
 
         itemStack.stackTagCompound.setLong(keyName, keyValue);

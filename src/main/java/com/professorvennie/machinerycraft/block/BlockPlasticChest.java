@@ -9,18 +9,22 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.lib.base.blocks.BlockModContainer;
+import com.professorvennie.machinerycraft.MachineryCraft;
+import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
+import com.professorvennie.machinerycraft.tileEntity.TileEntityMod;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
-import com.professorvennie.machinerycraft.lib.LibGuiIds;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -28,8 +32,8 @@ import java.util.Random;
 
 public class BlockPlasticChest extends BlockModContainer {
 
-    private Random rand = new Random();
     public static boolean keepInventory;
+    private Random rand = new Random();
 
     protected BlockPlasticChest() {
         super(Material.wood, Names.Blocks.BLOCK_PLASTIC_CHEST);
@@ -39,6 +43,32 @@ public class BlockPlasticChest extends BlockModContainer {
         setHardness(2.0F);
         setHarvestLevel("axe", 0);
         setStepSound(Block.soundTypeWood);
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemStack) {
+        int l = MathHelper.floor_double((double) (player.rotationYaw * 4.0f / 360.0f) + 0.5D) & 3;
+        TileEntityMod tile = (TileEntityMod)world.getTileEntity(x, y, z);
+
+        if (l == 0) {
+            tile.setOrientation(ForgeDirection.NORTH);
+        }
+
+        if (l == 1) {
+            tile.setOrientation(ForgeDirection.EAST);
+        }
+
+        if (l == 2) {
+            tile.setOrientation(ForgeDirection.SOUTH);
+        }
+
+        if (l == 3) {
+            tile.setOrientation(ForgeDirection.WEST);
+        }
+
+        if (itemStack.hasDisplayName()) {
+            ((TileEntityMod) world.getTileEntity(x, y, z)).setCustomName(itemStack.getDisplayName());
+        }
     }
 
     @Override
@@ -58,16 +88,16 @@ public class BlockPlasticChest extends BlockModContainer {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
-        if(!player.isSneaking() && !world.isSideSolid(x, y + 1, z, ForgeDirection.SOUTH)) {
+        if (!player.isSneaking() && !world.isSideSolid(x, y + 1, z, ForgeDirection.SOUTH)) {
             if (!world.isRemote) {
                 player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_PLASTIC_CHEST, world, x, y, z);
             }
         }
-            return true;
+        return true;
     }
 
     @Override
-    public boolean onBlockEventReceived(World world, int x, int y, int z, int eventId, int eventData){
+    public boolean onBlockEventReceived(World world, int x, int y, int z, int eventId, int eventData) {
         super.onBlockEventReceived(world, x, y, z, eventId, eventData);
         TileEntity tileentity = world.getTileEntity(x, y, z);
         return tileentity != null && tileentity.receiveClientEvent(eventId, eventData);
@@ -78,8 +108,8 @@ public class BlockPlasticChest extends BlockModContainer {
         return new TileEntityPlasticChest();
     }
 
-    public void breakBlock(World world, int x, int y, int z, Block block, int side){
-        if(!keepInventory) {
+    public void breakBlock(World world, int x, int y, int z, Block block, int side) {
+        if (!keepInventory) {
             TileEntityPlasticChest tileEntityPlasticChest = (TileEntityPlasticChest) world.getTileEntity(x, y, z);
             if (tileEntityPlasticChest != null) {
                 for (int i = 0; i < tileEntityPlasticChest.getSizeInventory(); i++) {

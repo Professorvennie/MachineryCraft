@@ -1,7 +1,7 @@
 package com.professorvennie.machinerycraft.client.renderer.tileentity;
 
-import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
 import com.professorvennie.machinerycraft.lib.Reference;
+import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -17,37 +17,34 @@ public class TileEntityRendererPlasticChest extends TileEntitySpecialRenderer {
 
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float tick) {
-        if (tileEntity instanceof TileEntityPlasticChest){
+        if (tileEntity instanceof TileEntityPlasticChest) {
             TileEntityPlasticChest tileEntityPlasticChest = (TileEntityPlasticChest) tileEntity;
             ForgeDirection direction = null;
 
-            if (tileEntityPlasticChest.getWorldObj() != null){
+            if (tileEntityPlasticChest.getWorldObj() != null) {
                 direction = tileEntityPlasticChest.getOrientation();
                 //System.out.println(tileEntityPlasticChest.getOrientation());
             }
-                this.bindTexture(texture);
+            this.bindTexture(texture);
 
 
             GL11.glPushMatrix();
             GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+            GL11.glEnable(GL11.GL_LIGHTING);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glTranslatef((float) x, (float) y + 1.0F, (float) z + 1.0F);
             GL11.glScalef(1.0F, -1.0F, -1.0F);
             GL11.glTranslatef(0.5F, 0.5F, 0.5F);
             short angle = 0;
 
-            if (direction != null){
-                //System.out.println("Renderer " + direction);
-                if (direction == ForgeDirection.NORTH){
+            if (direction != null) {
+                if (direction == ForgeDirection.NORTH) {
                     angle = 180;
-                }
-                else if (direction == ForgeDirection.SOUTH){
+                } else if (direction == ForgeDirection.SOUTH) {
                     angle = 0;
-                }
-                else if (direction == ForgeDirection.WEST){
+                } else if (direction == ForgeDirection.WEST) {
                     angle = 90;
-                }
-                else if (direction == ForgeDirection.EAST){
+                } else if (direction == ForgeDirection.EAST) {
                     angle = -90;
                 }
             }
@@ -60,6 +57,7 @@ public class TileEntityRendererPlasticChest extends TileEntitySpecialRenderer {
             modelChest.chestLid.rotateAngleX = -(adjustedLidAngle * (float) Math.PI / 2.0F);
             modelChest.renderAll();
             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+            GL11.glDisable(GL11.GL_LIGHTING);
             GL11.glPopMatrix();
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         }

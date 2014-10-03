@@ -1,6 +1,6 @@
 package com.professorvennie.machinerycraft.world.biome;
 
-import com.professorvennie.machinerycraft.core.handlers.ConfigHandler;
+import com.professorvennie.machinerycraft.core.config.ConfigHandler;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
@@ -12,8 +12,8 @@ public class ModBiomes {
 
     public static BiomeGenBase biomePlastic = new BiomePlastic(150).setBiomeName("plastic");
 
-    public static void init(){
-        if(ConfigHandler.spawnPlasticBiome) {
+    public static void init() {
+        if (ConfigHandler.spawnPlasticBiome) {
             BiomeDictionary.registerBiomeType(biomePlastic, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.DRY);
             BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(biomePlastic, ConfigHandler.plasticBiomeWeight));
         }

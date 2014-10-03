@@ -9,11 +9,12 @@
  * */
 package com.professorvennie.machinerycraft.item;
 
+import com.professorvennie.lib.base.items.ItemBase;
+import com.professorvennie.machinerycraft.MachineryCraft;
+import com.professorvennie.machinerycraft.core.helpers.NBTHelper;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
-import com.professorvennie.machinerycraft.core.helpers.NBTHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -34,7 +35,7 @@ public class ItemBags extends ItemBase {
     @SideOnly(Side.CLIENT)
     public IIcon[] icons;
 
-    public ItemBags(){
+    public ItemBags() {
         super("bag");
         setHasSubtypes(true);
         setMaxStackSize(1);
@@ -42,7 +43,7 @@ public class ItemBags extends ItemBase {
 
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list) {
-        for(int i = 0; i < Names.Items.BAGS.length; i++){
+        for (int i = 0; i < Names.Items.BAGS.length; i++) {
             list.add(new ItemStack(item, 1, i));
         }
     }
@@ -51,7 +52,7 @@ public class ItemBags extends ItemBase {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
         icons = new IIcon[Names.Items.BAGS.length];
-        for(int i = 0; i < Names.Items.BAGS.length; i++){
+        for (int i = 0; i < Names.Items.BAGS.length; i++) {
             icons[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Items.BAGS[i]);
         }
     }
@@ -69,10 +70,10 @@ public class ItemBags extends ItemBase {
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
-        if(!world.isRemote){
-            if(!player.isSneaking()){
+        if (!world.isRemote) {
+            if (!player.isSneaking()) {
                 NBTHelper.setUUID(itemStack);
-                player.openGui(MachineryCraft.instance, LibGuiIds.BAGS, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+                player.openGui(MachineryCraft.instance, LibGuiIds.BAGS, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
             }
         }
         return itemStack;

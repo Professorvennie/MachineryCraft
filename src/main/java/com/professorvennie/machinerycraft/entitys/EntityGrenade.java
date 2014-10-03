@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 /**
  * Created by ProfessorVennie on 8/4/2014 at 10:54 AM.
  */
-public class EntityGrenade extends EntityThrowable{
+public class EntityGrenade extends EntityThrowable {
 
     int meta;
 
@@ -17,7 +17,7 @@ public class EntityGrenade extends EntityThrowable{
         super(world);
     }
 
-    public EntityGrenade(World world, EntityLivingBase entity, int meta){
+    public EntityGrenade(World world, EntityLivingBase entity, int meta) {
         super(world, entity);
         this.meta = meta;
     }
@@ -25,7 +25,7 @@ public class EntityGrenade extends EntityThrowable{
     @Override
     protected void onImpact(MovingObjectPosition mop) {
 
-        switch (meta){
+        switch (meta) {
             case 0: {
                 if (!worldObj.isRemote) {
                     setDead();

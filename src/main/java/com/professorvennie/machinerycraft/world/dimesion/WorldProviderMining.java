@@ -10,7 +10,7 @@ import net.minecraft.world.chunk.IChunkProvider;
  */
 public class WorldProviderMining extends WorldProvider {
 
-    public WorldProviderMining(){
+    public WorldProviderMining() {
         this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.desert, 0);
         dimensionId = 12;
     }

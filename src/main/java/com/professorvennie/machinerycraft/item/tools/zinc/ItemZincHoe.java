@@ -11,11 +11,11 @@ package com.professorvennie.machinerycraft.item.tools.zinc;
 
 import net.minecraft.item.ItemHoe;
 
-public class ItemZincHoe extends ItemHoe{
+public class ItemZincHoe extends ItemHoe {
 
-	public ItemZincHoe(ToolMaterial p_i45343_1_) {
-		super(p_i45343_1_);
-		// TODO Auto-generated constructor stub
-	}
+    public ItemZincHoe(ToolMaterial p_i45343_1_) {
+        super(p_i45343_1_);
+        // TODO Auto-generated constructor stub
+    }
 
 }

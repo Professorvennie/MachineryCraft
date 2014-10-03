@@ -31,7 +31,7 @@ public class ItemBlockWalls extends ItemBlock {
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs tab, List list) {
-        for(int i = 0; i < Names.Blocks.METAL_WALLS.length; i++){
+        for (int i = 0; i < Names.Blocks.METAL_WALLS.length; i++) {
             list.add(new ItemStack(this, 1, i));
         }
     }

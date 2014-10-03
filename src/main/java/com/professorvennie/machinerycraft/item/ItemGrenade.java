@@ -1,9 +1,9 @@
 package com.professorvennie.machinerycraft.item;
 
+import com.professorvennie.lib.base.items.ItemBase;
 import com.professorvennie.machinerycraft.entitys.EntityGrenade;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -24,14 +24,14 @@ public class ItemGrenade extends ItemBase {
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
 
-    public ItemGrenade(){
+    public ItemGrenade() {
         super("grenade");
         setHasSubtypes(true);
     }
 
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list) {
-        for(int i = 0; i < Names.Items.GERNADES.length; i++){
+        for (int i = 0; i < Names.Items.GERNADES.length; i++) {
             list.add(new ItemStack(item, 1, i));
         }
     }
@@ -45,7 +45,7 @@ public class ItemGrenade extends ItemBase {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
         icons = new IIcon[Names.Items.GERNADES.length];
-        for(int i = 0; i < Names.Items.GERNADES.length; i++){
+        for (int i = 0; i < Names.Items.GERNADES.length; i++) {
             icons[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Items.GERNADES[i]);
         }
     }
@@ -61,7 +61,7 @@ public class ItemGrenade extends ItemBase {
 
         world.playSoundAtEntity(player, "random.fizz", 0.7f, 0.8f);
 
-        if(!world.isRemote)
+        if (!world.isRemote)
             world.spawnEntityInWorld(new EntityGrenade(world, player, itemStack.getItemDamage()));
 
         return itemStack;

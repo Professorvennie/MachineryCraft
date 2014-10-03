@@ -10,7 +10,8 @@ public class ModEntities {
 
     private static int id = 1;
 
-    public static void init(){
+    public static void init() {
         EntityRegistry.registerModEntity(EntityGrenade.class, "Grenade", id, MachineryCraft.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityMCFishHook.class, "FishHoot", 2, MachineryCraft.instance, 80, 3, true);
     }
 }

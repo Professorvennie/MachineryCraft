@@ -19,12 +19,12 @@ import net.minecraftforge.common.MinecraftForge;
 
 
 public class ModEvents {
-	
-	public static void registerEvents(){
-		FMLCommonHandler.instance().bus().register(new EventOnCrafted());
+
+    public static void registerEvents() {
+        FMLCommonHandler.instance().bus().register(new EventOnCrafted());
         BucketHandler.INSTANCE.buckets.put(ModFuilds.blockSteam, ModItems.steamBucket);
         MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
         FMLCommonHandler.instance().bus().register(new EventHandlerClient());
         MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
-	}
+    }
 }

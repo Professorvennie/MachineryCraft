@@ -12,8 +12,8 @@ package com.professorvennie.machinerycraft.achievements;
 
 public class ModAchievements {
 
-	public static void registerAchievements(){
-		
-	}
+    public static void registerAchievements() {
+
+    }
 
 }

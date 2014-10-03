@@ -11,7 +11,7 @@ package com.professorvennie.machinerycraft.plugins.tconstruct;
 
 //import tconstruct.library.util.IToolPart;
 
-public class BrassPart /*extends Item implements IToolPart */{
+public class BrassPart /*extends Item implements IToolPart */ {
 
 //    @Override
 //    public int getMaterialID(ItemStack stack) {

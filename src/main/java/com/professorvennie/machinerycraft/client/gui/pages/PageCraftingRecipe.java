@@ -11,8 +11,8 @@ package com.professorvennie.machinerycraft.client.gui.pages;
 
 import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IGuiBookEntry;
-import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.core.helpers.RenderHelper;
+import com.professorvennie.machinerycraft.lib.Reference;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

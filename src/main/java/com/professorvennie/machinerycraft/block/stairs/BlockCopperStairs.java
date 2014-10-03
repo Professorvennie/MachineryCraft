@@ -1,5 +1,6 @@
 package com.professorvennie.machinerycraft.block.stairs;
 
+import com.professorvennie.lib.base.blocks.BlockModStair;
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -9,7 +10,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
  */
 public class BlockCopperStairs extends BlockModStair {
 
-    public BlockCopperStairs(Block block , String copperStairs) {
+    public BlockCopperStairs(Block block, String copperStairs) {
         super(block, copperStairs);
     }
 

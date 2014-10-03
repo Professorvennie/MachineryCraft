@@ -11,10 +11,10 @@ package com.professorvennie.machinerycraft.item.tools.brass;
 
 import net.minecraft.item.ItemPickaxe;
 
-public class ItemBrassPickaxe extends ItemPickaxe{
+public class ItemBrassPickaxe extends ItemPickaxe {
 
-	public ItemBrassPickaxe(ToolMaterial p_i45347_1_) {
-		super(p_i45347_1_);
-	}
+    public ItemBrassPickaxe(ToolMaterial p_i45347_1_) {
+        super(p_i45347_1_);
+    }
 
 }

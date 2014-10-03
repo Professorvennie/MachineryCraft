@@ -9,45 +9,44 @@
  * */
 package com.professorvennie.machinerycraft.item;
 
-import java.util.List;
-
+import com.professorvennie.lib.base.items.ItemBase;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.util.IIcon;
+
+import java.util.List;
 
 public class ItemDusts extends ItemBase {
 
     @SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 
-	public ItemDusts(){
+    public ItemDusts() {
         super("dust");
-		setHasSubtypes(true);
-	}
-	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List list) {
-		for (int i = 0; i < Names.Items.DUSTS.length; i++) {
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
-	
-	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack){
-		return super.getUnlocalizedName() + "." + par1ItemStack.getItemDamage();
-	}
+        setHasSubtypes(true);
+    }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister register){
+    @Override
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List list) {
+        for (int i = 0; i < Names.Items.DUSTS.length; i++) {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
+
+    @Override
+    public String getUnlocalizedName(ItemStack par1ItemStack) {
+        return super.getUnlocalizedName() + "." + par1ItemStack.getItemDamage();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister register) {
         iconArray = new IIcon[Names.Items.DUSTS.length];
         for (int i = 0; i < iconArray.length; i++) {
             iconArray[i] = register.registerIcon(Reference.MOD_ID + ":" + Names.Items.DUSTS[i]);

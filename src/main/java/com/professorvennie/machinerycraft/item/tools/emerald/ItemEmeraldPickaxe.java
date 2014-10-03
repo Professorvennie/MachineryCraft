@@ -8,14 +8,15 @@
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  * */
 package com.professorvennie.machinerycraft.item.tools.emerald;
+
 import net.minecraft.item.ItemPickaxe;
 
-public class ItemEmeraldPickaxe extends ItemPickaxe{
+public class ItemEmeraldPickaxe extends ItemPickaxe {
 
-    
-	 public ItemEmeraldPickaxe(ToolMaterial p_i45347_1_) {
-			super(p_i45347_1_);
-			// TODO Auto-generated constructor stub
-		}
-	
+
+    public ItemEmeraldPickaxe(ToolMaterial p_i45347_1_) {
+        super(p_i45347_1_);
+        // TODO Auto-generated constructor stub
+    }
+
 }

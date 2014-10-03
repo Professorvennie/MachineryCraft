@@ -11,8 +11,8 @@ package com.professorvennie.machinerycraft.item.armor.zinc;
 
 public class ItemZincArmorBoots extends ZincArmor {
 
-	public ItemZincArmorBoots() {
-		super(3, "zincBoots");
-	}
+    public ItemZincArmorBoots() {
+        super(3, "zincBoots");
+    }
 
 }

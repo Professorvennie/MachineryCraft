@@ -19,7 +19,7 @@ import net.minecraft.block.Block;
  */
 public class MultiPartHandler {
 
-    public MultiPartHandler(){
+    public MultiPartHandler() {
         registerMultiPartMetadataLine(ModBlocks.BlockMetals, 7);
         registerMultiPartMetadataLine(ModBlocks.BlockOres, 5);
         registerMultiPart(ModBlocks.plasticLog, 0);
@@ -29,8 +29,8 @@ public class MultiPartHandler {
         registerMultiPart(ModBlocks.plasticLeaf, 0);
     }
 
-    private static void registerMultiPartMetadataLine(Block block, int maxMeta){
-        for(int i = 0; i < maxMeta; i++)
+    private static void registerMultiPartMetadataLine(Block block, int maxMeta) {
+        for (int i = 0; i < maxMeta; i++)
             registerMultiPart(block, i);
     }
 

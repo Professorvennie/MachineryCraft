@@ -12,8 +12,8 @@ package com.professorvennie.machinerycraft.item.armor.brass;
 
 public class ItemBrassArmorBoots extends BrassArmor {
 
-	public ItemBrassArmorBoots() {
-		super(3, "brassBoots");
-	}
+    public ItemBrassArmorBoots() {
+        super(3, "brassBoots");
+    }
 
 }

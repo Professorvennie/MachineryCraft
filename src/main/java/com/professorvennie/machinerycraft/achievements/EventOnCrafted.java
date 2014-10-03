@@ -13,10 +13,10 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 
 public class EventOnCrafted {
-	
-	@SubscribeEvent
-	public void whenCrafted(PlayerEvent.ItemCraftedEvent e){
-		
-	}
+
+    @SubscribeEvent
+    public void whenCrafted(PlayerEvent.ItemCraftedEvent e) {
+
+    }
 
 }

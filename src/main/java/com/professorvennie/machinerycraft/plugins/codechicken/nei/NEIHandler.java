@@ -12,7 +12,7 @@ package com.professorvennie.machinerycraft.plugins.codechicken.nei;
 import codechicken.nei.api.API;
 import codechicken.nei.recipe.DefaultOverlayHandler;
 import com.professorvennie.machinerycraft.block.ModBlocks;
-import com.professorvennie.machinerycraft.client.gui.GuiCopperFurnace;
+import com.professorvennie.machinerycraft.machines.copper.furnace.GuiCopperFurnace;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -26,6 +26,9 @@ public class NEIHandler {
 
         API.registerRecipeHandler(new CopperGrinderHandler());
         API.registerUsageHandler(new CopperGrinderHandler());
+
+        API.registerRecipeHandler(new CopperFurnaceHandler());
+        API.registerUsageHandler(new CopperFurnaceHandler());
 
         API.hideItem(new ItemStack(ModBlocks.copperFurnaceActive));
         API.hideItem(new ItemStack(ModBlocks.copperGrinderActive));

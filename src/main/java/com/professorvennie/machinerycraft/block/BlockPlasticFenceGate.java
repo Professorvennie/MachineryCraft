@@ -1,8 +1,8 @@
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.util.IIcon;
 
@@ -11,10 +11,15 @@ import net.minecraft.util.IIcon;
  */
 public class BlockPlasticFenceGate extends BlockFenceGate {
 
-    public BlockPlasticFenceGate(){
+    public BlockPlasticFenceGate() {
         setBlockName(Names.Blocks.PLASTIC_FENCE_GATE);
         setBlockTextureName(Reference.MOD_ID + ":plasticPlanks");
         setCreativeTab(MachineryCraft.tabMachineryCraft);
+    }
+
+    @Override
+    public String getUnlocalizedName() {
+        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
     }
 
     @Override

@@ -10,5 +10,5 @@
 package com.professorvennie.machinerycraft.api.recipes;
 
 public class AlloyRecipes {
-	
+
 }

@@ -1,8 +1,8 @@
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
@@ -19,8 +19,13 @@ public class BlockPlasticFence extends BlockFence {
         setCreativeTab(MachineryCraft.tabMachineryCraft);
     }
 
-    public boolean canConnectFenceTo(IBlockAccess p_149826_1_, int p_149826_2_, int p_149826_3_, int p_149826_4_){
-        Block block = p_149826_1_.getBlock(p_149826_2_, p_149826_3_, p_149826_4_);
+    @Override
+    public String getUnlocalizedName() {
+        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
+    }
+
+    public boolean canConnectFenceTo(IBlockAccess iBlockAccess, int x, int y, int z) {
+        Block block = iBlockAccess.getBlock(x, y, z);
         return block != this && block != ModBlocks.plasticFenceGate ? (block.isOpaqueCube() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false) : true;
     }
 }

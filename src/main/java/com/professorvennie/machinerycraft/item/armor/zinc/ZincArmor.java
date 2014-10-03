@@ -9,29 +9,28 @@
  * */
 package com.professorvennie.machinerycraft.item.armor.zinc;
 
+import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
+import com.professorvennie.machinerycraft.item.ModItems;
 import com.professorvennie.machinerycraft.item.armor.brass.BrassArmor;
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 
-import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
-import com.professorvennie.machinerycraft.item.ModItems;
-
 public class ZincArmor extends BrassArmor {
-	
-	private static ItemStack saltIngot = new ItemStack(ModItems.Ingots, 1, 4);
+
+    private static ItemStack saltIngot = new ItemStack(ModItems.Ingots, 1, 4);
 
 
-	public ZincArmor(int type, String name) {
-		super(type, name, MachineryCraftAPI.zincArmorMaterial);
-	}
+    public ZincArmor(int type, String name) {
+        super(type, name, MachineryCraftAPI.zincArmorMaterial);
+    }
 
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		return slot == 2 ? Reference.MOD_ID + ":textures/armor/zinc_Armor2.png" : Reference.MOD_ID + ":textures/armor/zinc_Armor1.png";
-	}
-	
-	public boolean getIsRepairable(ItemStack itemstack, ItemStack itemstack1){
-		return itemstack1.getItem() == saltIngot.getItem() ? true : super.getIsRepairable(itemstack, itemstack);
-	}
-	
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+        return slot == 2 ? Reference.MOD_ID + ":textures/armor/zinc_Armor2.png" : Reference.MOD_ID + ":textures/armor/zinc_Armor1.png";
+    }
+
+    public boolean getIsRepairable(ItemStack itemstack, ItemStack itemstack1) {
+        return itemstack1.getItem() == saltIngot.getItem() ? true : super.getIsRepairable(itemstack, itemstack);
+    }
+
 }

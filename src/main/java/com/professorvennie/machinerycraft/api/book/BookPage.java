@@ -13,36 +13,37 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BookPage {
-	
-	public String unlocalizedName;
 
-	public BookPage(String unlocalizedName) {
-		this.unlocalizedName = unlocalizedName;
-	}
+    public String unlocalizedName;
 
-	/**
-	 * Does the rendering for this page.
-	 * @param gui The active GuiScreen
-	 * @param mx The mouse's relative X position.
-	 * @param my The mouse's relative Y position.
-	 */
-	@SideOnly(Side.CLIENT)
-	public abstract void renderScreen(IGuiBookEntry gui, int mx, int my);
+    public BookPage(String unlocalizedName) {
+        this.unlocalizedName = unlocalizedName;
+    }
 
-	/**
-	 * Called per update tick.
-	 */
-	@SideOnly(Side.CLIENT)
-	public void updateScreen() {
-		// NO-OP
-	}
+    /**
+     * Does the rendering for this page.
+     *
+     * @param gui The active GuiScreen
+     * @param mx  The mouse's relative X position.
+     * @param my  The mouse's relative Y position.
+     */
+    @SideOnly(Side.CLIENT)
+    public abstract void renderScreen(IGuiBookEntry gui, int mx, int my);
 
-	public void onPageAdded(BookEntry entry, int index) {
-		// NO-OP
-	}
+    /**
+     * Called per update tick.
+     */
+    @SideOnly(Side.CLIENT)
+    public void updateScreen() {
+        // NO-OP
+    }
 
-	public String getUnlocalizedName() {
-		return unlocalizedName;
-	}
+    public void onPageAdded(BookEntry entry, int index) {
+        // NO-OP
+    }
+
+    public String getUnlocalizedName() {
+        return unlocalizedName;
+    }
 
 }

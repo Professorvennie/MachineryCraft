@@ -11,36 +11,35 @@ package com.professorvennie.machinerycraft.client.renderer.item;
 
 import com.professorvennie.machinerycraft.client.renderer.tileentity.TileEntityRendererCable;
 import com.professorvennie.machinerycraft.lib.Reference;
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.common.util.ForgeDirection;
+import org.lwjgl.opengl.GL11;
 
-public class ItemRenderCable implements IItemRenderer{
-	
-	private final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/model/cable.png");
+public class ItemRenderCable implements IItemRenderer {
 
-	@Override
-	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-		return true;
-	}
+    private final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/model/cable.png");
 
-	@Override
-	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-		return true;
-	}
+    @Override
+    public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+        return true;
+    }
 
-	@Override
-	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-		GL11.glDisable(GL11.GL_LIGHTING);
-		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-		new TileEntityRendererCable().drawStriaght(ForgeDirection.NORTH);
-		GL11.glEnable(GL11.GL_LIGHTING);
+    @Override
+    public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+        return true;
+    }
 
-	}
+    @Override
+    public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+        GL11.glDisable(GL11.GL_LIGHTING);
+        Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+        new TileEntityRendererCable().drawStriaght(ForgeDirection.NORTH);
+        GL11.glEnable(GL11.GL_LIGHTING);
+
+    }
 
 
 }

@@ -21,11 +21,11 @@ public class FuelHandler implements IFuelHandler {
 
     @Override
     public int getBurnTime(ItemStack fuel) {
-        if(fuel == null)
+        if (fuel == null)
             return 0;
-        else{
+        else {
             Item item = fuel.getItem();
-            if(item == Item.getItemFromBlock(ModBlocks.plasticSlabHalf)){
+            if (item == Item.getItemFromBlock(ModBlocks.plasticSlabHalf)) {
                 return 100;
             }
         }

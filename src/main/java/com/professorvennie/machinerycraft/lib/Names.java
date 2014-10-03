@@ -46,6 +46,8 @@ public class Names {
         public static final String BRONZE_EXTRACTOR = "bronzeExtractor";
         public static final String PLASTIC_FENCE = "plasticFence";
         public static final String PLASTIC_FENCE_GATE = "plasticFenceGate";
+        public static final String BRASS_CHARGER = "brassCharger";
+        public static final String BRASS_BATTERY = "brassBattery";
 
         public static final String COPPER_STAIRS = "copperStair";
         public static final String BRONZE_STAIRS = "bronzeStair";
@@ -63,43 +65,53 @@ public class Names {
         public static final String ZINC_SLAB = "zincSlab";
         public static final String BRASS_SLAB = "brassSlab";
 
-        public static final String[] METAL_WALLS = new String[]{"copperWall" , "tinWall", "silverWall", "leadWall", "zincWall", "brassWall", "bronzeWall"};
+        public static final String[] METAL_WALLS = new String[]{"copperWall", "tinWall", "silverWall", "leadWall", "zincWall", "brassWall", "bronzeWall"};
+
+        public static final String WELL = "well";
+        public static final String WOODEN_WELL_PIPE = "woodenWellPipe";
+        public static final String CAMPFIRE = "campFire";
     }
 
 
-    public static final class Items{
+    public static final class Items {
         public static final String SPPED_UPGRADE = "speedUpgrade";
-        public static final String POWERBOOST ="powerBoost";
-        public static final String EFFICIENCY ="efficiency";
-        public static final String WINDMILL ="windmill";
+        public static final String POWERBOOST = "powerBoost";
+        public static final String EFFICIENCY = "efficiency";
+        public static final String WINDMILL = "windmill";
         public static final String[] DUSTS = new String[]{"dustIron", "dustGold", "dustTin", "dustSilver", "dustLead", "dustCopper", "dustZinc", "dustBrass", "dustBronze"};
-        public static final String[] INGOTS = new String[]{"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "ingotZinc", "ingotBrass","ingotBronze"};
+        public static final String[] INGOTS = new String[]{"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "ingotZinc", "ingotBrass", "ingotBronze"};
         public static final String BOOK = "ItemBook";
         public static final String PLASTIC_APPLE = "plasticApple";
-        public static final String[] GEARS = new String[]{"gearWood", "gearStone", "gearIron", "gearCopper", "gearTin", "gearBronze", "gearZinc", "gearSilver","gearLead", "gearBrass", "gearGold"};
-        public static final String[] NUGGETS = new String[]{"nuggetStone", "nuggetZinc", "nuggetIron", "nuggetCopper", "nuggetTin","nuggetSilver","nuggetLead", "nuggetBronze", "nuggetBrass"};
+        public static final String[] GEARS = new String[]{"gearWood", "gearStone", "gearIron", "gearCopper", "gearTin", "gearBronze", "gearZinc", "gearSilver", "gearLead", "gearBrass", "gearGold"};
+        public static final String[] NUGGETS = new String[]{"nuggetStone", "nuggetZinc", "nuggetIron", "nuggetCopper", "nuggetTin", "nuggetSilver", "nuggetLead", "nuggetBronze", "nuggetBrass"};
         public static final String STEAM_BUCKET = "steamBucket";
-        public static final String[] BAGS = new String[]{"woodBag", "tinBag", "copperBag", "ironBag", "goldBag", "silverBag", "leadBag", "diamondBag", "zincBag"};
+        public static final String[] BAGS = new String[]{"woodBag", "tinBag", "copperBag", "zincBag", "ironBag", "silverBag", "leadBag", "goldBag", "diamondBag"};
         public static final String[] GERNADES = new String[]{"normal", "fire", "water", "lava", "nuke"};
 
         //Tools
-        public static final String ZINC_PICKAXE ="zincPickaxe";
+        public static final String ZINC_PICKAXE = "zincPickaxe";
         public static final String ZINC_AXE = "zincAxe";
         public static final String ZINC_SWORD = "zincSword";
         public static final String ZINC_HOE = "zincHoe";
         public static final String ZINC_SPADE = "zincSpade";
+        public static final String ZINC_FISHINGROD = "zincFishingRod";
+        public static final String ZINC_BOW = "zincBow";
 
-        public static final String BRASS_PICKAXE ="brassPickaxe";
-        public static final String BRASS_AXE ="brassAxe";
-        public static final String BRASS_SWORD ="brassSword";
-        public static final String BRASS_HOE ="brassHoe";
-        public static final String BRASS_SPADE ="brassSpade";
+        public static final String BRASS_PICKAXE = "brassPickaxe";
+        public static final String BRASS_AXE = "brassAxe";
+        public static final String BRASS_SWORD = "brassSword";
+        public static final String BRASS_HOE = "brassHoe";
+        public static final String BRASS_SPADE = "brassSpade";
+        public static final String BRASS_FISHINGROD = "brassFishingRod";
+        public static final String BRASS_BOW = "brassBow";
 
-        public static final String EMEARALD_PICKAXE ="emeraldPickaxe";
-        public static final String EMEARALD_AXE ="emeraldAxe";
-        public static final String EMEARALD_SWORD ="emeraldSword";
-        public static final String EMEARALD_HOE ="emeraldHoe";
-        public static final String EMEARALD_SPADE="emeraldSpade";
+        public static final String EMEARALD_PICKAXE = "emeraldPickaxe";
+        public static final String EMEARALD_AXE = "emeraldAxe";
+        public static final String EMEARALD_SWORD = "emeraldSword";
+        public static final String EMEARALD_HOE = "emeraldHoe";
+        public static final String EMEARALD_SPADE = "emeraldSpade";
+        public static final String EMEARALD_FISHINGROD = "emeraldFishingRod";
+        public static final String EMEARALD_BOW = "emeraldBow";
 
         //Armor
         public static final String EMERALD_HELMENT = "emeraldHelment";
@@ -108,7 +120,7 @@ public class Names {
         public static final String EMERALD_BOOTS = "emeraldBoots";
     }
 
-    public static final class Containers{
+    public static final class Containers {
 
         public static final String CONTAINER_BASE = "container.";
         public static final String CONTAINER_INVENTORY = CONTAINER_BASE + "inventory";
@@ -130,9 +142,12 @@ public class Names {
         public static final String BRONZE_EXTRACTOR = CONTAINER_BASE + "bronzeExtractor";
         public static final String CONTAINER_BRASS_LAVA_GEN = CONTAINER_BASE + "brassLavaGen";
         public static final String CONTAINER_BRASS_GENERATOR = CONTAINER_BASE + "brassGenerator";
+        public static final String WELL = CONTAINER_BASE + "well";
+        public static final String CAMPFIRE = CONTAINER_BASE + "campFire";
+        public static final String BRASS_CHARGER = CONTAINER_BASE + "brassCharger";
     }
 
-    public static final class NBT{
+    public static final class NBT {
         public static final String UUID_MOST_SIG = "UUIDMostSig";
         public static final String UUID_LEAST_SIG = "UUIDLeastSig";
     }

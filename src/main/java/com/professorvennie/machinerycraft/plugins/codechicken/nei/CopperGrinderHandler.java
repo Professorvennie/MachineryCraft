@@ -13,13 +13,14 @@ import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.FurnaceRecipeHandler;
 import com.professorvennie.machinerycraft.api.recipes.GrinderRecipes;
-import com.professorvennie.machinerycraft.client.gui.GuiCopperGrinder;
 import com.professorvennie.machinerycraft.lib.Reference;
+import com.professorvennie.machinerycraft.machines.copper.grinder.GuiCopperGrinder;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 
 import java.awt.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Map;
 
 /**
  * Created by ProfessorVennie on 8/28/2014 at 12:07 PM.
@@ -83,7 +84,10 @@ public class CopperGrinderHandler extends FurnaceRecipeHandler {
             super.loadUsageRecipes(inputId, ingredients);
     }
 
-    public class SmeltingPair extends CachedRecipe{
+    public class SmeltingPair extends CachedRecipe {
+        PositionedStack ingred;
+        PositionedStack result;
+
         public SmeltingPair(ItemStack ingred, ItemStack result) {
             ingred.stackSize = 1;
             this.ingred = new PositionedStack(ingred, 51, 6);
@@ -101,8 +105,5 @@ public class CopperGrinderHandler extends FurnaceRecipeHandler {
         public PositionedStack getOtherStack() {
             return afuels.get((cycleticks / 48) % afuels.size()).stack;
         }
-
-        PositionedStack ingred;
-        PositionedStack result;
     }
 }

@@ -1,12 +1,13 @@
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.lib.base.blocks.BlockBase;
 import com.professorvennie.machinerycraft.lib.Names;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class BlockPlasticPlanks extends BlockMod {
+public class BlockPlasticPlanks extends BlockBase {
 
     public BlockPlasticPlanks() {
         super(Material.wood, Names.Blocks.BLOCK_PLASTIC_PLANKS);
@@ -20,11 +21,11 @@ public class BlockPlasticPlanks extends BlockMod {
         return true;
     }
 
-    public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face){
+    public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face) {
         return 20;
     }
 
-    public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face){
+    public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face) {
         return 5;
     }
 }

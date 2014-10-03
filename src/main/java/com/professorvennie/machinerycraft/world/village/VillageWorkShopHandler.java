@@ -15,10 +15,10 @@ import net.minecraft.world.gen.structure.StructureVillagePieces;
 import java.util.List;
 import java.util.Random;
 
-public class VillageWorkShopHandler  implements VillagerRegistry.IVillageCreationHandler{
+public class VillageWorkShopHandler implements VillagerRegistry.IVillageCreationHandler {
     @Override
     public StructureVillagePieces.PieceWeight getVillagePieceWeight(Random random, int i) {
-             return new StructureVillagePieces.PieceWeight(ComponentWorkShop.class, 30, i + random.nextInt(4));
+        return new StructureVillagePieces.PieceWeight(ComponentWorkShop.class, 30, i + random.nextInt(4));
     }
 
     @Override

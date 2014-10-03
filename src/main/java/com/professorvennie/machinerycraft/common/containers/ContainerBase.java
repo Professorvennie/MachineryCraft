@@ -1,9 +1,11 @@
 package com.professorvennie.machinerycraft.common.containers;
 
-import com.professorvennie.machinerycraft.tileEntity.TileEntityBasicSidedInventory;
+import com.professorvennie.lib.base.tileentitys.TileEntityBasicSidedInventory;
+import com.professorvennie.machinerycraft.common.containers.slots.SlotUpgrade;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 
 /**
@@ -30,5 +32,9 @@ public class ContainerBase extends Container {
     @Override
     public boolean canInteractWith(EntityPlayer player) {
         return tile.isUseableByPlayer(player);
+    }
+
+    public void addUpgradeSlot(IInventory iInventory, int id, int x, int y) {
+        this.addSlotToContainer(new SlotUpgrade(iInventory, id, x, y));
     }
 }

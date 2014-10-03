@@ -9,9 +9,9 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -40,8 +40,13 @@ public class BlockMetalWalls extends BlockWall {
     }
 
     @Override
+    public String getUnlocalizedName() {
+        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
+    }
+
+    @Override
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-        for(int i = 0; i < Names.Blocks.METAL_WALLS.length; i++){
+        for (int i = 0; i < Names.Blocks.METAL_WALLS.length; i++) {
             list.add(new ItemStack(this, 1, i));
         }
     }
@@ -61,7 +66,7 @@ public class BlockMetalWalls extends BlockWall {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister) {
         iconArray = new IIcon[Names.Blocks.METAL_WALLS.length];
-        for(int i = 0; i < Names.Blocks.METAL_WALLS.length; i++){
+        for (int i = 0; i < Names.Blocks.METAL_WALLS.length; i++) {
             iconArray[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + "ores/" + Names.Blocks.METAL_BLOCKS[i]);
         }
     }

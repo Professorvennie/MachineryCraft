@@ -9,10 +9,10 @@
  * */
 package com.professorvennie.machinerycraft.client.gui;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.common.containers.ContainerPlasticChest;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;

@@ -12,10 +12,10 @@ package com.professorvennie.machinerycraft.item.armor.emerald;
 
 import com.professorvennie.machinerycraft.lib.Names;
 
-public class ItemEmeraldArmorBoots extends EmeraldArmor{
+public class ItemEmeraldArmorBoots extends EmeraldArmor {
 
-	public ItemEmeraldArmorBoots() {
-		super(3, Names.Items.EMERALD_BOOTS);
-	}
+    public ItemEmeraldArmorBoots() {
+        super(3, Names.Items.EMERALD_BOOTS);
+    }
 
 }

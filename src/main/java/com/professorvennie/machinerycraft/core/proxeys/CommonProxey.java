@@ -12,16 +12,16 @@ package com.professorvennie.machinerycraft.core.proxeys;
 import com.professorvennie.machinerycraft.api.book.BookEntry;
 
 public class CommonProxey {
-	
-	public void registerRenderThings(){
-		
-	}
-	
-	public int addArmor(String armor){
-		return 0;
-	}
-	
-	public void setEntryToOpen(BookEntry entry) {
-		// NO-OP
-	}
+
+    public void registerRenderThings() {
+
+    }
+
+    public int addArmor(String armor) {
+        return 0;
+    }
+
+    public void setEntryToOpen(BookEntry entry) {
+        // NO-OP
+    }
 }

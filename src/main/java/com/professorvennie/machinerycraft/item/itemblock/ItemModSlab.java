@@ -1,6 +1,6 @@
 package com.professorvennie.machinerycraft.item.itemblock;
 
-import com.professorvennie.machinerycraft.block.slabs.BlockModSlab;
+import com.professorvennie.lib.base.blocks.BlockModSlab;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemSlab;
 
@@ -10,6 +10,6 @@ import net.minecraft.item.ItemSlab;
 public class ItemModSlab extends ItemSlab {
 
     public ItemModSlab(Block block) {
-        super(block, ((BlockModSlab)block).getBlockHalf(), ((BlockModSlab)block).getBlockDouble(), false);
+        super(block, ((BlockModSlab) block).getBlockHalf(), ((BlockModSlab) block).getBlockDouble(), false);
     }
 }

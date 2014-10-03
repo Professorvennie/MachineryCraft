@@ -9,9 +9,9 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
+import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import com.professorvennie.machinerycraft.MachineryCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BlockPlasticFlower extends BlockFlower{
+public class BlockPlasticFlower extends BlockFlower {
 
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
@@ -39,27 +39,32 @@ public class BlockPlasticFlower extends BlockFlower{
         setStepSound(Block.soundTypeGrass);
     }
 
+    @Override
+    public String getUnlocalizedName() {
+        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
+    }
+
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister){
+    public void registerBlockIcons(IIconRegister iconRegister) {
         icons = new IIcon[Names.Blocks.BLOCK_PLASTIC_FLOWERS.length];
-        for(int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++){
+        for (int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++) {
             icons[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Blocks.BLOCK_PLASTIC_FLOWERS[i]);
         }
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item item, CreativeTabs tab, List list){
-        for(int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++)
+    public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+        for (int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++)
             list.add(new ItemStack(item, 1, i));
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta){
+    public IIcon getIcon(int side, int meta) {
         return this.icons[meta % this.icons.length];
     }
 
     @Override
-    protected boolean canPlaceBlockOn(Block block){
+    protected boolean canPlaceBlockOn(Block block) {
         return block == ModBlocks.plasticDirt || block == ModBlocks.plasticGrass || block == Blocks.dirt || block == Blocks.glass;
     }
 
@@ -92,7 +97,7 @@ public class BlockPlasticFlower extends BlockFlower{
             return this.field_150939_a.getIcon(0, par1);
         }
 
-        @SuppressWarnings({ "unchecked", "rawtypes" })
+        @SuppressWarnings({"unchecked", "rawtypes"})
         @Override
         @SideOnly(Side.CLIENT)
         public void getSubItems(Item item, CreativeTabs tab, List list) {

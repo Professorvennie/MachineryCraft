@@ -1,10 +1,19 @@
 package com.professorvennie.machinerycraft.client.gui;
 
-import com.professorvennie.machinerycraft.lib.Names;
+import com.professorvennie.lib.base.tileentitys.TileEntityBasicSidedInventory;
 import com.professorvennie.machinerycraft.MachineryCraft;
-import com.professorvennie.machinerycraft.tileEntity.TileEntityBasicSidedInventory;
+import com.professorvennie.machinerycraft.client.gui.buttons.GuiButtonEjector;
+import com.professorvennie.machinerycraft.client.gui.buttons.GuiButtonRedStone;
+import com.professorvennie.machinerycraft.client.gui.buttons.enums.EjectorMode;
+import com.professorvennie.machinerycraft.client.gui.buttons.enums.RedStoneMode;
+import com.professorvennie.machinerycraft.core.network.MessageButton;
+import com.professorvennie.machinerycraft.core.network.PacketHandler;
+import com.professorvennie.machinerycraft.lib.Names;
+import com.professorvennie.machinerycraft.lib.Reference;
+import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.resources.I18n;
@@ -27,18 +36,50 @@ import java.util.List;
 public class GuiBase extends GuiContainer {
 
     public ResourceLocation backGround;
+    public ResourceLocation elements = new ResourceLocation(Reference.MOD_ID, "textures/gui/guiElements.png");
     protected int mouseX = 0, mouseY = 0;
     private TileEntityBasicSidedInventory tileEntity;
+    private TileEntityBasicMachine basicMachine;
 
     public GuiBase(Container container, TileEntityBasicSidedInventory tileEntity) {
         super(container);
         this.tileEntity = tileEntity;
     }
 
+    public GuiBase(Container container, TileEntityBasicMachine tile) {
+        super(container);
+        this.basicMachine = tile;
+    }
+
+    @Override
+    public void initGui() {
+        super.initGui();
+        if (basicMachine != null) {
+            buttonList.add(new GuiButtonRedStone(0, guiLeft + xSize + 1, guiTop + ySize - 73, basicMachine));
+
+            if(basicMachine.hasEjectorUpgrade)
+                buttonList.add(new GuiButtonEjector(0, guiLeft + xSize + 1, guiTop + ySize - (73 - 27), basicMachine));
+        }
+    }
+
     @Override
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-        GL11.glColor4f(1F, 1F, 1F, 1F);
+        GL11.glColor4f(0F, 0.30F, 0.97F, 1F);
 
+        Minecraft.getMinecraft().getTextureManager().bindTexture(elements);
+        drawTexturedModalRect(guiLeft + 176, guiTop + 3, 0, 0, 28, 89);
+
+        if (basicMachine != null) {
+            GL11.glColor4f(0.97F, 0.00F, 0F, 1F);
+            drawTexturedModalRect(guiLeft + 176, guiTop + 92, 0, 94, 28, 28);
+
+            if(basicMachine.hasEjectorUpgrade) {
+                GL11.glColor4f(0F, 1F, 1F, 1F);
+                drawTexturedModalRect(guiLeft + 176, guiTop + 119, 0, 94, 28, 28);
+            }
+        }
+
+        GL11.glColor4f(1F, 1F, 1F, 1F);
         if (backGround != null) {
             Minecraft.getMinecraft().getTextureManager().bindTexture(backGround);
             drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
@@ -48,7 +89,11 @@ public class GuiBase extends GuiContainer {
     @Override
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
         this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 8, this.ySize - 96 + 2, 4210752);
-        String name = StatCollector.translateToLocal(tileEntity.getInventoryName());
+        String name = "";
+        if (tileEntity != null)
+            name = StatCollector.translateToLocal(tileEntity.getInventoryName());
+        else if (basicMachine != null)
+            name = StatCollector.translateToLocal(basicMachine.getInventoryName());
 
         this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
     }
@@ -62,6 +107,80 @@ public class GuiBase extends GuiContainer {
         if (tank.getFluid() != null) {
             j = getValueScaled(tank.getFluidAmount(), tank.getCapacity(), scale);
             this.drawFluid(guiLeft + x, guiTop + y - j, tank.getFluid(), width, j);
+        }
+    }
+
+    @Override
+    protected void actionPerformed(GuiButton button) {
+        switch (button.id) {
+            case 0:
+                if (button instanceof GuiButtonRedStone) {
+                    if (basicMachine != null) {
+                        GuiButtonRedStone buttonRedStone = (GuiButtonRedStone) button;
+                        switch (basicMachine.getRedStoneMode()) {
+                            case low:
+                                buttonRedStone.setMode(RedStoneMode.high);
+                                basicMachine.setRedstoneMode(RedStoneMode.high);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 0));
+                                break;
+                            case high:
+                                buttonRedStone.setMode(RedStoneMode.disabled);
+                                basicMachine.setRedstoneMode(RedStoneMode.disabled);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 1));
+                                break;
+                            case disabled:
+                                buttonRedStone.setMode(RedStoneMode.low);
+                                basicMachine.setRedstoneMode(RedStoneMode.low);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 2));
+                                break;
+                        }
+                        break;
+                    }
+                }
+            case 1:
+                if (basicMachine != null) {
+                    if (button instanceof GuiButtonEjector) {
+                        GuiButtonEjector buttonEjector = (GuiButtonEjector) button;
+                        switch (basicMachine.getEjectorMode()) {
+                            case north:
+                                buttonEjector.setMode(EjectorMode.south);
+                                basicMachine.setEjectorMode(EjectorMode.south);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 3));
+                                break;
+                            case south:
+                                buttonEjector.setMode(EjectorMode.east);
+                                basicMachine.setEjectorMode(EjectorMode.east);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 4));
+                                break;
+                            case east:
+                                buttonEjector.setMode(EjectorMode.west);
+                                basicMachine.setEjectorMode(EjectorMode.west);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 5));
+                                break;
+                            case west:
+                                buttonEjector.setMode(EjectorMode.up);
+                                basicMachine.setEjectorMode(EjectorMode.up);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 6));
+                                break;
+                            case up:
+                                buttonEjector.setMode(EjectorMode.down);
+                                basicMachine.setEjectorMode(EjectorMode.down);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 7));
+                                break;
+                            case down:
+                                buttonEjector.setMode(EjectorMode.disabled);
+                                basicMachine.setEjectorMode(EjectorMode.disabled);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 8));
+                                break;
+                            case disabled:
+                                buttonEjector.setMode(EjectorMode.north);
+                                basicMachine.setEjectorMode(EjectorMode.north);
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 9));
+                                break;
+                        }
+                    }
+                }
+                break;
         }
     }
 

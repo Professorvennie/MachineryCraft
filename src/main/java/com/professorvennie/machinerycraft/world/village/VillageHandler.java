@@ -10,9 +10,10 @@ import net.minecraft.world.gen.structure.MapGenStructureIO;
  */
 public class VillageHandler {
 
-    private VillageHandler(){}
+    private VillageHandler() {
+    }
 
-    public static void init(){
+    public static void init() {
         VillagerRegistry.instance().registerVillagerId(78906);
         VillagerRegistry.instance().registerVillagerSkin(78906, new ResourceLocation(Reference.MOD_ID, "textures/entitys/machinerycraft_Villager.png"));
         VillagerRegistry.instance().registerVillageTradeHandler(78906, new VillageTrades());

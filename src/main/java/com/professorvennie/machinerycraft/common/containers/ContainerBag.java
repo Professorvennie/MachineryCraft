@@ -24,9 +24,9 @@ public class ContainerBag extends Container {
 
     public ContainerBag(EntityPlayer player, InventoryBag inventoryBag) {
         invBag = inventoryBag;
-        int invXOffset = 0, hotBarXOffset = 0, invYOffset = 0, hotBarYOffset = 0;
+        int invXOffset = 0, hotBarXOffset = 0, invYOffset = 0, hotBarYOffset = 0, metaData = player.getHeldItem().getItemDamage();
 
-        if (player.getHeldItem().getItemDamage() == 0) {
+        if (metaData == 0) {
             invXOffset = 86;
             hotBarXOffset = 144;
             invYOffset = 8;
@@ -36,7 +36,7 @@ public class ContainerBag extends Container {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 3, 8 + j * 18, 18 + i * 18));
                 }
             }
-        } else if (player.getHeldItem().getItemDamage() == 1) {
+        } else if (metaData == 1) {
             invXOffset = 86 + 18;
             hotBarXOffset = 144 + 18;
             invYOffset = 8;
@@ -46,7 +46,7 @@ public class ContainerBag extends Container {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 4, 8 + j * 18, 18 + i * 18));
                 }
             }
-        } else if (player.getHeldItem().getItemDamage() == 2) {
+        } else if (metaData == 2) {
             invXOffset = 86 + (54 - 18);
             hotBarXOffset = 144 + (54 - 18);
             invYOffset = 8;
@@ -56,7 +56,7 @@ public class ContainerBag extends Container {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 5, 8 + j * 18, 18 + i * 18));
                 }
             }
-        } else if (player.getHeldItem().getItemDamage() == 3) {
+        } else if (metaData == 3) {
             invXOffset = 86 + 54;
             hotBarXOffset = 144 + 54;
             invYOffset = 8;
@@ -66,7 +66,7 @@ public class ContainerBag extends Container {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 6, 8 + j * 18, 18 + i * 18));
                 }
             }
-        } else if (player.getHeldItem().getItemDamage() == 4) {
+        } else if (metaData == 4) {
             invXOffset = 86 + (54 + 18);
             hotBarXOffset = 144 + (54 + 18);
             invYOffset = 8;
@@ -76,7 +76,7 @@ public class ContainerBag extends Container {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 7, 8 + j * 18, 18 + i * 18));
                 }
             }
-        } else if (player.getHeldItem().getItemDamage() == 5) {
+        } else if (metaData == 5) {
             invXOffset = 86 + ((54 * 2) - 20);
             hotBarXOffset = 144 + ((54 * 2) - 20);
             invYOffset = 8;
@@ -86,7 +86,7 @@ public class ContainerBag extends Container {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 8, 8 + j * 18, 16 + i * 18));
                 }
             }
-        } else if (player.getHeldItem().getItemDamage() == 6) {
+        } else if (metaData == 6) {
             invXOffset = 86 + ((54 * 2) - 20);
             hotBarXOffset = 144 + ((54 * 2) - 20);
             invYOffset = 8;
@@ -96,7 +96,7 @@ public class ContainerBag extends Container {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 9, 8 + j * 18, 7 + i * 18));
                 }
             }
-        } else if (player.getHeldItem().getItemDamage() == 7) {
+        } else if (metaData == 7) {
             invXOffset = 86 + ((54 * 2) - 20);
             hotBarXOffset = 144 + ((54 * 2) - 20);
             invYOffset = 8 + 18;
@@ -106,7 +106,7 @@ public class ContainerBag extends Container {
                     this.addSlotToContainer(new Slot(inventoryBag, i + j * 9, 8 + j * 18, 7 + i * 18));
                 }
             }
-        } else if (player.getHeldItem().getItemDamage() == 8) {
+        } else if (metaData == 8) {
             invXOffset = 86 + ((54 * 2) - 20);
             hotBarXOffset = 144 + ((54 * 2) - 20);
             invYOffset = 8 + (18 * 2);

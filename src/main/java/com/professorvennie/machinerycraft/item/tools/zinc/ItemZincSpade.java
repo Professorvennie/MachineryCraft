@@ -11,11 +11,11 @@ package com.professorvennie.machinerycraft.item.tools.zinc;
 
 import net.minecraft.item.ItemSpade;
 
-public class ItemZincSpade extends ItemSpade{
+public class ItemZincSpade extends ItemSpade {
 
-	public ItemZincSpade(ToolMaterial p_i45353_1_) {
-		super(p_i45353_1_);
-		// TODO Auto-generated constructor stub
-	}
+    public ItemZincSpade(ToolMaterial p_i45353_1_) {
+        super(p_i45353_1_);
+        // TODO Auto-generated constructor stub
+    }
 
 }

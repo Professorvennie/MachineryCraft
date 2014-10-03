@@ -10,7 +10,6 @@
 package com.professorvennie.machinerycraft.fuilds;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -18,21 +17,21 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
 public class ModFuilds {
-	
-	public static Fluid fluidSteam;
-	public static Block blockSteam;
-		
-	public static void mainRegistry(){
-		init();
-	}
-	
-	private static void init() {
+
+    public static Fluid fluidSteam;
+    public static Block blockSteam;
+
+    public static void mainRegistry() {
+        init();
+    }
+
+    private static void init() {
         fluidSteam = new Fluid("steam");
-		FluidRegistry.registerFluid(fluidSteam);
+        FluidRegistry.registerFluid(fluidSteam);
 
         blockSteam = new FluidSteamBlock(fluidSteam, Material.water).setBlockName("steam").setCreativeTab(MachineryCraft.tabMachineryCraft);
-		GameRegistry.registerBlock(blockSteam, blockSteam.getUnlocalizedName());
+        GameRegistry.registerBlock(blockSteam, blockSteam.getUnlocalizedName());
         fluidSteam.setBlock(blockSteam).setGaseous(true).setTemperature(1000).setDensity(450).setUnlocalizedName(blockSteam.getUnlocalizedName());
         fluidSteam = FluidRegistry.getFluid("steam");
-	}
+    }
 }

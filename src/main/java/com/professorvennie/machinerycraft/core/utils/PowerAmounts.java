@@ -9,7 +9,6 @@
  * */
 package com.professorvennie.machinerycraft.core.utils;
 
-import com.professorvennie.machinerycraft.block.ModBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -18,19 +17,18 @@ import net.minecraft.item.ItemStack;
 public class PowerAmounts {
 
 
-    public static int getItemPower(ItemStack itemstack){
-        if(itemstack == null){
+    public static int getItemPower(ItemStack itemstack) {
+        if (itemstack == null) {
             return 0;
-        }else{
+        } else {
             Item item = itemstack.getItem();
-            if(item == new ItemStack(ModBlocks.BlockMetals, 1, 4).getItem()) return 910;
-            if(item == Items.redstone) return 150;
-            if(item == Item.getItemFromBlock(Blocks.redstone_block)) return 150 * 9 + 10;
+            if (item == Items.redstone) return 150;
+            if (item == Item.getItemFromBlock(Blocks.redstone_block)) return 150 * 9 + 10;
             return 0;
         }
     }
 
-    public static boolean isItemPower(ItemStack itemstack){
+    public static boolean isItemPower(ItemStack itemstack) {
         return getItemPower(itemstack) > 0;
     }
 

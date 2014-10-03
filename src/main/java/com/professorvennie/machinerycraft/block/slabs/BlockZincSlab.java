@@ -1,6 +1,7 @@
 package com.professorvennie.machinerycraft.block.slabs;
 
 
+import com.professorvennie.lib.base.blocks.BlockModSlab;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.block.BlockSlab;
@@ -22,6 +23,6 @@ public class BlockZincSlab extends BlockModSlab {
 
     @Override
     public BlockSlab getBlockDouble() {
-        return (BlockSlab)ModBlocks.zincSlabDouble;
+        return (BlockSlab) ModBlocks.zincSlabDouble;
     }
 }

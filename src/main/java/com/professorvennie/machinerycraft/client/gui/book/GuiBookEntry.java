@@ -66,7 +66,8 @@ public class GuiBookEntry extends GuiBook implements IGuiBookEntry {
     }
 
     @Override
-    void drawHeader() {}
+    void drawHeader() {
+    }
 
     @Override
     String getTitle() {

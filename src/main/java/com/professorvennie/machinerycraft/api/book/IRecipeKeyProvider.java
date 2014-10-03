@@ -12,7 +12,7 @@ package com.professorvennie.machinerycraft.api.book;
 import net.minecraft.item.ItemStack;
 
 public interface IRecipeKeyProvider {
-	
-	public String getKey(ItemStack stack);
+
+    public String getKey(ItemStack stack);
 
 }

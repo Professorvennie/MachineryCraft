@@ -9,68 +9,68 @@
  * */
 package com.professorvennie.machinerycraft.api.book;
 
+import net.minecraft.util.StatCollector;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.util.StatCollector;
-
 public class BookEntry implements Comparable<BookEntry> {
 
-	public final String unlocalizedName;
-	public final BookCategory category;
+    public final String unlocalizedName;
+    public final BookCategory category;
 
-	public List<BookPage> pages = new ArrayList<BookPage>();
-	private boolean priority = false;
+    public List<BookPage> pages = new ArrayList<BookPage>();
+    private boolean priority = false;
 
-	
-	public BookEntry(String unlocalizedName, BookCategory category) {
-		this.unlocalizedName = unlocalizedName;
-		this.category = category;
-	}
 
-	/**
-	 * Sets this page as prioritized, as in, will appear before others in the lexicon.
-	 */
-	public BookEntry setPriority() {
-		priority = true;
-		return this;
-	}
+    public BookEntry(String unlocalizedName, BookCategory category) {
+        this.unlocalizedName = unlocalizedName;
+        this.category = category;
+    }
 
-	public boolean isPriority() {
-		return priority;
-	}
+    /**
+     * Sets this page as prioritized, as in, will appear before others in the lexicon.
+     */
+    public BookEntry setPriority() {
+        priority = true;
+        return this;
+    }
 
-	public String getUnlocalizedName() {
-		return unlocalizedName;
-	}
+    public boolean isPriority() {
+        return priority;
+    }
 
-	/**
-	 * Sets what pages you want this entry to have.
-	 */
-	public BookEntry setBookPages(BookPage... pages) {
-		this.pages.addAll(Arrays.asList(pages));
+    public String getUnlocalizedName() {
+        return unlocalizedName;
+    }
 
-		for(int i = 0; i < this.pages.size(); i++)
-			this.pages.get(i).onPageAdded(this, i);
+    /**
+     * Sets what pages you want this entry to have.
+     */
+    public BookEntry setBookPages(BookPage... pages) {
+        this.pages.addAll(Arrays.asList(pages));
 
-		return this;
-	}
+        for (int i = 0; i < this.pages.size(); i++)
+            this.pages.get(i).onPageAdded(this, i);
 
-	/**
-	 * Adds a page to the list of pages.
-	 */
-	public void addPage(BookPage page) {
-		pages.add(page);
-	}
+        return this;
+    }
 
-	public final String getNameForSorting() {
-		return (priority ? 0 : 1) + StatCollector.translateToLocal(getUnlocalizedName());
-	}
+    /**
+     * Adds a page to the list of pages.
+     */
+    public void addPage(BookPage page) {
+        pages.add(page);
+    }
 
-	@Override
-	public int compareTo(BookEntry o) {
-		return getNameForSorting().compareTo(o.getNameForSorting());
-	}
+    public final String getNameForSorting() {
+        return (priority ? 0 : 1) + StatCollector.translateToLocal(getUnlocalizedName());
+    }
+
+    @Override
+    public int compareTo(BookEntry o) {
+        return getNameForSorting().compareTo(o.getNameForSorting());
+    }
 
 }

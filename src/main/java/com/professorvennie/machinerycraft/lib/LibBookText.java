@@ -11,38 +11,33 @@ package com.professorvennie.machinerycraft.lib;
 
 public class LibBookText {
 
-	public static final String BASE_CATEGORY = "mc.book.category.";
-	public static final String BASE = Reference.MOD_ID + ".book.";
-	public static final String CATEGORY_BASICS = BASE_CATEGORY + "basics";
-	public static final String CATEGORY_MACHINES = BASE_CATEGORY + "machines";
-	public static final String CATEGORY_TOOLS = BASE_CATEGORY + "tools";
-	public static final String CATEGORY_ARMOR = BASE_CATEGORY + "armor";
-	public static final String CATEGORY_WORLD_GEN = BASE_CATEGORY + "worldgen";
-	public static final String CATEGORY_MULTIBLOCKS = BASE_CATEGORY + "multiblocks";
-	
-	public static final String ENTRY_BASICS = "basics";
-	public static final String ENTRY_FIRST_TIER_MACHINES = "firsttiermachines";
-	public static final String ENTRY_SECOND_TIER_MACHINES = "secondtiermachines";
-	public static final String ENTRY_THRID_TIER_MACHINES = "thridtiermachines";
-	public static final String ENTRY_BASIC_MACHINES = "basicMachines";
-	
-	public static final String ENTRY_SALT_TOOLS = "saltTools";
-	public static final String ENTRY_IRONOXIDE_TOOLS = "ironoxideTools";
-	public static final String ENTRY_GOLDOXIDE_TOOLS = "goldoxideTools";
-	public static final String ENTRY_EMERALD_TOOLS = "emeraldTools";
+    public static final String BASE_CATEGORY = "mc.book.category.";
+    public static final String CATEGORY_BASICS = BASE_CATEGORY + "basics";
+    public static final String CATEGORY_MACHINES = BASE_CATEGORY + "machines";
+    public static final String CATEGORY_TOOLS = BASE_CATEGORY + "tools";
+    public static final String CATEGORY_ARMOR = BASE_CATEGORY + "armor";
+    public static final String CATEGORY_WORLD_GEN = BASE_CATEGORY + "worldgen";
+    public static final String CATEGORY_MULTIBLOCKS = BASE_CATEGORY + "multiblocks";
+    public static final String CATEGORY_CRAFTING_ITEMS = BASE_CATEGORY + "craftingItems";
 
-    public static final String ENTRY_SALT_ARMOR = "saltArmor";
-    public static final String ENTRY_IRONOXIDE_ARMOR = "ironoxideArmor";
-    public static final String ENTRY_GOLDOXIDE_ARMOR = "goldoxideArmor";
+    public static final String ENTRY_BASICS = "basics";
+    public static final String ENTRY_FIRST_TIER_MACHINES = "copperMachines";
+    public static final String ENTRY_SECOND_TIER_MACHINES = "steamMachines";
+    public static final String ENTRY_THRID_TIER_MACHINES = "brassMachines";
+    public static final String ENTRY_BASIC_MACHINES = "basicMachines";
+
+    public static final String ZINC_TOOLS = "zincTools";
+    public static final String BRASS_TOOLS = "brassTools";
+    public static final String ENTRY_EMERALD_TOOLS = "emeraldTools";
+
+    public static final String ZINC_ARMOR = "zincArmor";
+    public static final String BRASS_ARMOR = "brassArmor";
     public static final String ENTRY_EMERALD_ARMOR = "emeraldArmor";
 
     public static final String ENTRY_ORES = "ores";
     public static final String ENTRY_BIOME = "biome";
     public static final String ENTRY_VILLAGE = "village";
 
-	
-	public static final String INFO = BASE + "";
-	
-
-
+    public static final String NUGGETS = "nuggets";
+    public static final String GEARS = "gear";
 }

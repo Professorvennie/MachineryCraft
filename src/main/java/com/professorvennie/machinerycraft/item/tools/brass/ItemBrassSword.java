@@ -11,10 +11,10 @@ package com.professorvennie.machinerycraft.item.tools.brass;
 
 import net.minecraft.item.ItemSword;
 
-public class ItemBrassSword extends ItemSword{
+public class ItemBrassSword extends ItemSword {
 
-	public ItemBrassSword(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
-	}
+    public ItemBrassSword(ToolMaterial p_i45356_1_) {
+        super(p_i45356_1_);
+    }
 
 }

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by ProfessorVennie on 8/5/2014 at 4:04 PM.
  */
-public class ItemBlockMod extends ItemBlock{
+public class ItemBlockMod extends ItemBlock {
 
     public ItemBlockMod(Block block) {
         super(block);

@@ -9,16 +9,13 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
-import java.util.Random;
-
 import com.professorvennie.machinerycraft.api.book.BookEntry;
-import com.professorvennie.machinerycraft.block.machines.BlockBasicMachine;
-import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.tileEntity.TileEntityGoldOxideGrinder;
 import com.professorvennie.machinerycraft.lib.BookData;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
+import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-
+import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
+import com.professorvennie.machinerycraft.tileEntity.TileEntityGoldOxideGrinder;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -29,35 +26,37 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import java.util.Random;
+
 public class BlockGoldoxideGrinder extends BlockBasicMachine {
 
-	public BlockGoldoxideGrinder(boolean isActive) {
-		super(Names.Blocks.GOLDOXIDE_GRINDER,isActive);
+    public BlockGoldoxideGrinder(boolean isActive) {
+        super(Names.Blocks.GOLDOXIDE_GRINDER, isActive);
         setHardness(5.0F);
         setHarvestLevel("pickaxe", 3);
         setStepSound(Block.soundTypeMetal);
         guiId = LibGuiIds.GUIID_GOLDOXIDE_GRINDER;
-	}
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityGoldOxideGrinder();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World var1, int var2) {
+        return new TileEntityGoldOxideGrinder();
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerBlockIcons(IIconRegister iiconRegister) {
-		this.blockIcon = iiconRegister.registerIcon(Reference.MOD_ID + ":ores/" + "metal_5");
-		this.iconFront = iiconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "goldoxide_grinder_Active" : "goldoxide_grinder_idle"));
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void registerBlockIcons(IIconRegister iiconRegister) {
+        this.blockIcon = iiconRegister.registerIcon(Reference.MOD_ID + ":ores/" + "metal_5");
+        this.iconFront = iiconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "goldoxide_grinder_Active" : "goldoxide_grinder_idle"));
+    }
 
-	public Item getItemDropped(int par1, Random random, int par2) {
-		return Item.getItemFromBlock(ModBlocks.goldOxideGrinderIdle);
-	}
+    public Item getItemDropped(int par1, Random random, int par2) {
+        return Item.getItemFromBlock(ModBlocks.goldOxideGrinderIdle);
+    }
 
-	public Item getItem(World world, int x, int y, int z) {
-		return Item.getItemFromBlock(ModBlocks.goldOxideGrinderIdle);
-	}
+    public Item getItem(World world, int x, int y, int z) {
+        return Item.getItemFromBlock(ModBlocks.goldOxideGrinderIdle);
+    }
 
     @Override
     public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {

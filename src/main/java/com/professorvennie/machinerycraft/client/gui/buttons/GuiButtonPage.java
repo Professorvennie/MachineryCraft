@@ -41,5 +41,4 @@ public class GuiButtonPage extends GuiButton {
                 RenderHelper.renderTooltip(par2, par3, Arrays.asList(StatCollector.translateToLocal(right ? "mc.book.nextPage" : "mc.book.prevPage")));
         }
     }
-
 }
