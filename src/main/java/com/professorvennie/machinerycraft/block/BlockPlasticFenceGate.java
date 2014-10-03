@@ -18,11 +18,6 @@ public class BlockPlasticFenceGate extends BlockFenceGate {
     }
 
     @Override
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
-    }
-
-    @Override
     public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
         return ModBlocks.plasticPlanks.getBlockTextureFromSide(p_149691_1_);
     }

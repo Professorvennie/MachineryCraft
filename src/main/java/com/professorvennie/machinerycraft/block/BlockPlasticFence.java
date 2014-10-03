@@ -19,11 +19,6 @@ public class BlockPlasticFence extends BlockFence {
         setCreativeTab(MachineryCraft.tabMachineryCraft);
     }
 
-    @Override
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
-    }
-
     public boolean canConnectFenceTo(IBlockAccess iBlockAccess, int x, int y, int z) {
         Block block = iBlockAccess.getBlock(x, y, z);
         return block != this && block != ModBlocks.plasticFenceGate ? (block.isOpaqueCube() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false) : true;

@@ -66,7 +66,6 @@ public class ItemModFishingPole extends ItemFishingRod {
         if(player.inventory.getCurrentItem() == stack && player.fishEntity != null){
             return cast;
         }
-        System.out.println(player.fishEntity);
         return itemIcon;
     }
 

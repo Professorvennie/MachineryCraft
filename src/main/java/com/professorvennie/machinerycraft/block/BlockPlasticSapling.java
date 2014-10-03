@@ -45,11 +45,6 @@ public class BlockPlasticSapling extends BlockSapling {
         this.setBlockName(Names.Blocks.BLOCK_SAPLING);
     }
 
-    @Override
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
-    }
-
     protected boolean canPlaceBlockOn(Block block) {
         return block == ModBlocks.plasticDirt || block == ModBlocks.plasticGrass || block == Blocks.dirt || block == Blocks.glass;
     }

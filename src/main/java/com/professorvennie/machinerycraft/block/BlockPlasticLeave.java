@@ -48,11 +48,6 @@ public class BlockPlasticLeave extends BlockLeaves {
     }
 
     @Override
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
-    }
-
-    @Override
     public boolean isFlammable(IBlockAccess world, int x, int y, int z, net.minecraftforge.common.util.ForgeDirection face) {
         return true;
     }

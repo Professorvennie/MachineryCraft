@@ -89,11 +89,6 @@ public class BlockPlasticGrass extends BlockGrass {
         }
     }
 
-    @Override
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
-    }
-
     @SideOnly(Side.CLIENT)
     public int getBlockColor() {
         return 16777215;

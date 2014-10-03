@@ -37,11 +37,6 @@ public class BlockPlasticDirt extends BlockDirt {
         setHardness(1.0f);
     }
 
-    @Override
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
-    }
-
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister) {
         super.registerBlockIcons(iconRegister);

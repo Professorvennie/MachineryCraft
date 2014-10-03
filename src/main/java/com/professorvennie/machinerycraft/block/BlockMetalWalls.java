@@ -40,11 +40,6 @@ public class BlockMetalWalls extends BlockWall {
     }
 
     @Override
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
-    }
-
-    @Override
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
         for (int i = 0; i < Names.Blocks.METAL_WALLS.length; i++) {
             list.add(new ItemStack(this, 1, i));

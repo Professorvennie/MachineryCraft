@@ -39,11 +39,6 @@ public class BlockPlasticFlower extends BlockFlower {
         setStepSound(Block.soundTypeGrass);
     }
 
-    @Override
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().replaceAll("tile.", "tile.machineryCraft:");
-    }
-
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister) {
         icons = new IIcon[Names.Blocks.BLOCK_PLASTIC_FLOWERS.length];
