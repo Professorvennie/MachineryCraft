@@ -73,15 +73,20 @@ public class TileEntityBasicMachine extends TileEntityBasicSidedInventory implem
             int mod1, mod2, mod3;
             if((inventory[upgradeSlots[0]] != null && (inventory[upgradeSlots[0]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[0]].getItem()).getSpeedModifier() > 0))){
                 mod1 = ((IItemUpgrade)inventory[upgradeSlots[0]].getItem()).getSpeedModifier() * inventory[upgradeSlots[0]].stackSize;
-                System.out.println(mod1);
             }else
                 mod1 = 0;
 
             if((inventory[upgradeSlots[1]] != null && (inventory[upgradeSlots[1]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[1]].getItem()).getSpeedModifier() > 0))){
                 mod2 = ((IItemUpgrade)inventory[upgradeSlots[1]].getItem()).getSpeedModifier() * inventory[upgradeSlots[1]].stackSize;
-                System.out.println(mod2);
             }else
                 mod2 = 0;
+
+            if((inventory[upgradeSlots[2]] != null && (inventory[upgradeSlots[2]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[2]].getItem()).getSpeedModifier() > 0))){
+                mod3= ((IItemUpgrade)inventory[upgradeSlots[2]].getItem()).getSpeedModifier() * inventory[upgradeSlots[2]].stackSize;
+            }else
+                mod3 = 0;
+
+            speedModifier = (mod1 + mod2 + mod3);
         }
     }
 
