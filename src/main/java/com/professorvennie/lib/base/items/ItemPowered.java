@@ -47,8 +47,6 @@ public class ItemPowered extends ItemBase {
         if (full.stackTagCompound == null) {
             full.setTagCompound(new NBTTagCompound());
             full.stackTagCompound.setInteger("Power", capacity);
-
-
         }
         list.add(full);
     }

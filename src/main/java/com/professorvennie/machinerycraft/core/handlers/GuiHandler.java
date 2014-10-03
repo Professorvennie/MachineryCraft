@@ -10,9 +10,12 @@
 package com.professorvennie.machinerycraft.core.handlers;
 
 
-import com.professorvennie.machinerycraft.client.gui.*;
+import com.professorvennie.machinerycraft.client.gui.GuiBag;
+import com.professorvennie.machinerycraft.client.gui.GuiPlasticChest;
 import com.professorvennie.machinerycraft.client.gui.book.GuiBook;
-import com.professorvennie.machinerycraft.common.containers.*;
+import com.professorvennie.machinerycraft.common.containers.ContainerBag;
+import com.professorvennie.machinerycraft.common.containers.ContainerPlasticChest;
+import com.professorvennie.machinerycraft.common.containers.InventoryBag;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.machines.basic.campfire.ContainerCampFire;
 import com.professorvennie.machinerycraft.machines.basic.campfire.GuiCampFire;
@@ -23,7 +26,6 @@ import com.professorvennie.machinerycraft.machines.basic.portablecobblegen.TileE
 import com.professorvennie.machinerycraft.machines.basic.well.ContainerWell;
 import com.professorvennie.machinerycraft.machines.basic.well.GuiWell;
 import com.professorvennie.machinerycraft.machines.basic.well.TileEntityWell;
-import com.professorvennie.machinerycraft.machines.brass.alloy.ContainerBrassAlloy;
 import com.professorvennie.machinerycraft.machines.brass.alloy.GuiBrassAlloy;
 import com.professorvennie.machinerycraft.machines.brass.alloy.TileEntityBrassAlloy;
 import com.professorvennie.machinerycraft.machines.brass.charger.ContainerBrassCharger;
@@ -53,15 +55,11 @@ import com.professorvennie.machinerycraft.machines.copper.furnace.TileEntityCopp
 import com.professorvennie.machinerycraft.machines.copper.grinder.ContainerCopperGrinder;
 import com.professorvennie.machinerycraft.machines.copper.grinder.GuiCopperGrinder;
 import com.professorvennie.machinerycraft.machines.copper.grinder.TileEntityCopperGrinder;
-import com.professorvennie.machinerycraft.machines.washer.ContainerWasher;
 import com.professorvennie.machinerycraft.machines.washer.GuiWasher;
 import com.professorvennie.machinerycraft.machines.washer.TileEntityWasher;
 import com.professorvennie.machinerycraft.machines.windmill.ContainerWindmill;
 import com.professorvennie.machinerycraft.machines.windmill.GuiWindmilll;
 import com.professorvennie.machinerycraft.machines.windmill.TileEntityWindmill;
-import com.professorvennie.machinerycraft.tileEntity.TileEntityGoldOxideAlloy;
-import com.professorvennie.machinerycraft.tileEntity.TileEntityGoldOxideFurnace;
-import com.professorvennie.machinerycraft.tileEntity.TileEntityGoldOxideGrinder;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -99,31 +97,6 @@ public class GuiHandler implements IGuiHandler {
             case LibGuiIds.BRASS_FURNACE:
                 if (entity instanceof TileEntityBrassFurnace) {
                     return new ContainerBrassFurnace(player.inventory, (TileEntityBrassFurnace) entity);
-                }
-
-            case LibGuiIds.GUIID_GOLDOXIDE_FURNACE:
-                if (entity instanceof TileEntityGoldOxideFurnace) {
-                    return new ContainerGoldoxideFurnace(player.inventory, (TileEntityGoldOxideFurnace) entity);
-                }
-
-            case LibGuiIds.GUIID_GOLDOXIDE_GRINDER:
-                if (entity instanceof TileEntityGoldOxideGrinder) {
-                    return new ContainerGoldoxideGrinder(player.inventory, (TileEntityGoldOxideGrinder) entity);
-                }
-
-            case LibGuiIds.BRASS_ALLOYSMELTER:
-                if (entity instanceof TileEntityBrassAlloy) {
-                    return new ContainerBrassAlloy(player.inventory, (TileEntityBrassAlloy) entity);
-                }
-
-            case LibGuiIds.GUIID_WASHER:
-                if (entity instanceof TileEntityWasher) {
-                    return new ContainerWasher(player.inventory, (TileEntityWasher) entity);
-                }
-
-            case LibGuiIds.GUIID_GOLDOXIDE_ALLOY:
-                if (entity instanceof TileEntityGoldOxideAlloy) {
-                    return new ContainerGoldoxideAlloy(player.inventory, (TileEntityGoldOxideAlloy) entity);
                 }
 
             case LibGuiIds.GUIID_PLASTIC_CHEST:
@@ -208,16 +181,6 @@ public class GuiHandler implements IGuiHandler {
                     return new GuiBrassFurnace(player.inventory, (TileEntityBrassFurnace) entity);
                 }
 
-            case LibGuiIds.GUIID_GOLDOXIDE_FURNACE:
-                if (entity instanceof TileEntityGoldOxideFurnace) {
-                    return new GuiGoldoxideFurnace(player.inventory, (TileEntityGoldOxideFurnace) entity);
-                }
-
-            case LibGuiIds.GUIID_GOLDOXIDE_GRINDER:
-                if (entity instanceof TileEntityGoldOxideGrinder) {
-                    return new GuiGoldoxideGrinder(player.inventory, (TileEntityGoldOxideGrinder) entity);
-                }
-
             case LibGuiIds.BRASS_ALLOYSMELTER:
                 if (entity instanceof TileEntityBrassAlloy) {
                     return new GuiBrassAlloy(player.inventory, (TileEntityBrassAlloy) entity);
@@ -234,11 +197,6 @@ public class GuiHandler implements IGuiHandler {
                 if (GuiBook.stackUsed == null)
                     return null;
                 return Book;
-
-            case LibGuiIds.GUIID_GOLDOXIDE_ALLOY:
-                if (entity instanceof TileEntityGoldOxideAlloy) {
-                    return new GuiGoldoxideAlloy(player.inventory, (TileEntityGoldOxideAlloy) entity);
-                }
 
             case LibGuiIds.GUIID_PLASTIC_CHEST:
                 if (entity instanceof TileEntityPlasticChest) {

@@ -61,12 +61,6 @@ public class ModBlocks {
     public static Block brassSolarGenerator;
     public static Block brassGenerator;
     public static Block brassLavaGenerator;
-    public static Block goldOxideGrinderIdle;
-    public static Block goldOxideGrinderActive;
-    public static Block goldOxideFurnaceIdle;
-    public static Block goldOxideFurnaceActive;
-    public static Block goldOxideAlloyIdle;
-    public static Block goldOxideAlloyActive;
     public static Block washer;
     public static Block cable;
     public static Block plasticLog;
@@ -142,13 +136,6 @@ public class ModBlocks {
         brassCharger = new BlockBrassCharger();
         brassBattery = new BlockBrassBattery();
 
-        goldOxideGrinderIdle = new BlockGoldoxideGrinder(false);
-        goldOxideGrinderActive = new BlockGoldoxideGrinder(true);
-        goldOxideFurnaceIdle = new BlockGoldoxideFurnace(false);
-        goldOxideFurnaceActive = new BlockGoldoxideFurnace(true);
-        goldOxideAlloyIdle = new BlockGoldoxideAlloy(false);
-        goldOxideAlloyActive = new BlockGoldoxideAlloy(true);
-
         washer = new BlockWasher();
         cable = new BlockCable();
         plasticLog = new BlockPlasticLog();
@@ -219,12 +206,6 @@ public class ModBlocks {
         RegistryUtils.registerBlock(brassFurnaceActive);
         RegistryUtils.registerBlock(brassAlloyIdle);
         RegistryUtils.registerBlock(brassAlloyActive);
-        RegistryUtils.registerBlock(goldOxideGrinderIdle);
-        RegistryUtils.registerBlock(goldOxideGrinderActive);
-        RegistryUtils.registerBlock(goldOxideFurnaceIdle);
-        RegistryUtils.registerBlock(goldOxideFurnaceActive);
-        RegistryUtils.registerBlock(goldOxideAlloyIdle);
-        RegistryUtils.registerBlock(goldOxideAlloyActive);
         RegistryUtils.registerBlock(cable);
         RegistryUtils.registerBlock(washer, ItemBlockWasher.class);
         RegistryUtils.registerBlock(plasticLog);

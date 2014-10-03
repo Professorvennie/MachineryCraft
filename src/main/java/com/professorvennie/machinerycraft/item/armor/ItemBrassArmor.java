@@ -7,7 +7,7 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  * */
-package com.professorvennie.machinerycraft.item.armor.brass;
+package com.professorvennie.machinerycraft.item.armor;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
@@ -19,15 +19,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-public class BrassArmor extends ItemArmor {
+public class ItemBrassArmor extends ItemArmor {
 
     private static ItemStack brassIngot = new ItemStack(ModItems.Ingots, 1, 5);
 
-    public BrassArmor(int type, String name) {
+    public ItemBrassArmor(int type, String name) {
         this(type, name, MachineryCraftAPI.brassArmorMaterial);
     }
 
-    public BrassArmor(int type, String name, ArmorMaterial mat) {
+    public ItemBrassArmor(int type, String name, ArmorMaterial mat) {
         super(mat, 0, type);
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);

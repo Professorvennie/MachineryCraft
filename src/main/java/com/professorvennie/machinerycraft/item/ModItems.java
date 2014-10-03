@@ -12,7 +12,9 @@ package com.professorvennie.machinerycraft.item;
 import com.professorvennie.lib.base.items.ItemPowered;
 import com.professorvennie.lib.base.items.ItemUpgrade;
 import com.professorvennie.machinerycraft.MachineryCraft;
-import com.professorvennie.machinerycraft.item.armor.ModArmor;
+import com.professorvennie.machinerycraft.item.armor.ItemBrassArmor;
+import com.professorvennie.machinerycraft.item.armor.ItemEmeraldArmor;
+import com.professorvennie.machinerycraft.item.armor.ItemZincArmor;
 import com.professorvennie.machinerycraft.item.tools.ModTools;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
@@ -40,10 +42,22 @@ public class ModItems {
     public static Item batteryTier2;
     public static Item batteryTier3;
 
+    public static Item zincHemlent;
+    public static Item zincChest;
+    public static Item zincPants;
+    public static Item zincBoots;
+    public static Item brassHelment;
+    public static Item brassChest;
+    public static Item brassPants;
+    public static Item brassBoots;
+    public static Item emeraldhelment;
+    public static Item emeraldchest;
+    public static Item emeraldpants;
+    public static Item emeraldboots;
+
     public static void mainRegistry() {
         InitialiseItem();
         ModTools.mainRegistry();
-        ModArmor.mainRegistry();
     }
 
     public static void InitialiseItem() {
@@ -67,5 +81,20 @@ public class ModItems {
         batteryTier1 = new ItemPowered(Names.Items.BATTERY_TIER_1, 10000);
         batteryTier2 = new ItemPowered(Names.Items.BATTERY_TIER_2, 50000);
         batteryTier3 = new ItemPowered(Names.Items.BATTERY_TIER_3, 100000);
+
+        zincHemlent = new ItemZincArmor(0, "zincHelment");
+        zincChest = new ItemZincArmor(1, "zincChestPlate");
+        zincPants = new ItemZincArmor(2, "zincPants");
+        zincBoots = new ItemZincArmor(3, "zincBoots");
+
+        brassHelment = new ItemBrassArmor(0, "brassHelment");
+        brassChest = new ItemBrassArmor(1, "brassChest");
+        brassPants = new ItemBrassArmor(2, "brassPants");
+        brassBoots = new ItemBrassArmor(3, "brassBoots");
+
+        emeraldhelment = new ItemEmeraldArmor(0, Names.Items.EMERALD_HELMENT);
+        emeraldchest = new ItemEmeraldArmor(0, Names.Items.EMERALD_CHEST);
+        emeraldpants = new ItemEmeraldArmor(0, Names.Items.EMERALD_PANTS);
+        emeraldboots = new ItemEmeraldArmor(0, Names.Items.EMERALD_BOOTS);
     }
 }

@@ -13,7 +13,6 @@ import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.core.config.ConfigHandler;
 import com.professorvennie.machinerycraft.item.ModItems;
-import com.professorvennie.machinerycraft.item.armor.ModArmor;
 import com.professorvennie.machinerycraft.item.tools.ModTools;
 import com.professorvennie.machinerycraft.lib.Names;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -200,46 +199,46 @@ public class ModRecipes {
         //armor
         //zinc armor
         if (ConfigHandler.zincArmor) {
-            addOreDictRecipe(new ItemStack(ModArmor.zincHemlent), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 4));
+            addOreDictRecipe(new ItemStack(ModItems.zincHemlent), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 4));
             recipeZincHelm = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.zincChest), "s s", "sss", "sss", 's', new ItemStack(ModItems.Ingots, 1, 4));
+            addOreDictRecipe(new ItemStack(ModItems.zincChest), "s s", "sss", "sss", 's', new ItemStack(ModItems.Ingots, 1, 4));
             recipeZincChest = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.zincPants), "sss", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 4));
+            addOreDictRecipe(new ItemStack(ModItems.zincPants), "sss", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 4));
             recipeZincPants = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.zincBoots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 4));
+            addOreDictRecipe(new ItemStack(ModItems.zincBoots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 4));
             recipeZincBoots = MachineryCraftAPI.getLatestAddedRecipe();
         }
 
         //brass armor
         if (ConfigHandler.brassArmor) {
-            addOreDictRecipe(new ItemStack(ModArmor.brassHelment), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 6));
+            addOreDictRecipe(new ItemStack(ModItems.brassHelment), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 6));
             recipeBrassHelm = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.brassChest), "s s", "sss", "sss", 's', new ItemStack(ModItems.Ingots, 1, 6));
+            addOreDictRecipe(new ItemStack(ModItems.brassChest), "s s", "sss", "sss", 's', new ItemStack(ModItems.Ingots, 1, 6));
             recipeBrassChest = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.brassPants), "sss", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
+            addOreDictRecipe(new ItemStack(ModItems.brassPants), "sss", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
             recipeBrassPants = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.brassBoots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
+            addOreDictRecipe(new ItemStack(ModItems.brassBoots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
             recipeBrassBoots = MachineryCraftAPI.getLatestAddedRecipe();
         }
 
         //emerald armor
         if (ConfigHandler.emeraldArmor) {
-            addOreDictRecipe(new ItemStack(ModArmor.emeraldhelment), "sss", "s s", "   ", 's', Items.emerald);
+            addOreDictRecipe(new ItemStack(ModItems.emeraldhelment), "sss", "s s", "   ", 's', Items.emerald);
             recipeEmeraldHelm = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.emeraldchest), "s s", "sss", "sss", 's', Items.emerald);
+            addOreDictRecipe(new ItemStack(ModItems.emeraldchest), "s s", "sss", "sss", 's', Items.emerald);
             recipeEmeraldChest = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.emeraldpants), "sss", "s s", "s s", 's', Items.emerald);
+            addOreDictRecipe(new ItemStack(ModItems.emeraldpants), "sss", "s s", "s s", 's', Items.emerald);
             recipeEmeraldPants = MachineryCraftAPI.getLatestAddedRecipe();
 
-            addOreDictRecipe(new ItemStack(ModArmor.emeraldboots), "   ", "s s", "s s", 's', Items.emerald);
+            addOreDictRecipe(new ItemStack(ModItems.emeraldboots), "   ", "s s", "s s", 's', Items.emerald);
             recipeEmeraldBoots = MachineryCraftAPI.getLatestAddedRecipe();
         }
         //misc

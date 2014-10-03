@@ -41,8 +41,6 @@ public class RegisterTileEntitys {
         GameRegistry.registerTileEntity(TileEntityWindmill.class, Reference.MOD_ID + "_tileEntityWindmill");
         GameRegistry.registerTileEntity(TileEntityBrassGrinder.class, Reference.MOD_ID + "_tileEntityIronxideGrinder");
         GameRegistry.registerTileEntity(TileEntityBrassFurnace.class, Reference.MOD_ID + "_tileEntityIronxideFurnace");
-        GameRegistry.registerTileEntity(TileEntityGoldOxideGrinder.class, Reference.MOD_ID + "_tileEntityGoldOxideGrinder");
-        GameRegistry.registerTileEntity(TileEntityGoldOxideFurnace.class, Reference.MOD_ID + "_tileEntityGoldOxideFurnace");
         GameRegistry.registerTileEntity(TileEntityWasher.class, Reference.MOD_ID + "_tileEntityWasher");
         GameRegistry.registerTileEntity(TileEntityCable.class, Reference.MOD_ID + "_tileEntityCable");
         GameRegistry.registerTileEntity(TileEntityBrassAlloy.class, Reference.MOD_ID + "_tileEntityIronxideAlloy");

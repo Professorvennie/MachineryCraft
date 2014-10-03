@@ -16,5 +16,4 @@ public class ItemBrassSpade extends ItemSpade {
     public ItemBrassSpade(ToolMaterial p_i45353_1_) {
         super(p_i45353_1_);
     }
-
 }

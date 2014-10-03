@@ -7,21 +7,20 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  * */
-package com.professorvennie.machinerycraft.item.armor.zinc;
+package com.professorvennie.machinerycraft.item.armor;
 
 import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
 import com.professorvennie.machinerycraft.item.ModItems;
-import com.professorvennie.machinerycraft.item.armor.brass.BrassArmor;
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 
-public class ZincArmor extends BrassArmor {
+public class ItemZincArmor extends ItemBrassArmor {
 
     private static ItemStack saltIngot = new ItemStack(ModItems.Ingots, 1, 4);
 
 
-    public ZincArmor(int type, String name) {
+    public ItemZincArmor(int type, String name) {
         super(type, name, MachineryCraftAPI.zincArmorMaterial);
     }
 

@@ -21,7 +21,7 @@ public class CreativeTabMachineryCraft extends CreativeTabs {
 
     @Override
     public Item getTabIconItem() {
-        return Item.getItemFromBlock(ModBlocks.goldOxideFurnaceActive);
+        return Item.getItemFromBlock(ModBlocks.bronzeFurnace);
     }
 
 }
