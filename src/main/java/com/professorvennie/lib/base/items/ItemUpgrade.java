@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
  */
 public class ItemUpgrade extends ItemBase implements IItemUpgrade {
 
-    private int speedModifier;
+    private int speedModifier, powerBoost, fuelEff;
     private boolean isEjectorUpgrade;
 
     public ItemUpgrade(String name) {
@@ -25,6 +25,16 @@ public class ItemUpgrade extends ItemBase implements IItemUpgrade {
         return isEjectorUpgrade;
     }
 
+    @Override
+    public int getPowerBoost() {
+        return powerBoost;
+    }
+
+    @Override
+    public int getFuelEfficiency() {
+        return fuelEff;
+    }
+
     public Item setEjectorUpgrade(boolean isEjectorUpgrade) {
         this.isEjectorUpgrade = isEjectorUpgrade;
         return this;
@@ -32,6 +42,16 @@ public class ItemUpgrade extends ItemBase implements IItemUpgrade {
 
     public Item setSpeedModifier(int speedModifier) {
         this.speedModifier = speedModifier;
+        return this;
+    }
+
+    public Item setPowerBoost(int powerBoost) {
+        this.powerBoost = powerBoost;
+        return this;
+    }
+
+    public Item setFuelEff(int fuelEff) {
+        this.fuelEff = fuelEff;
         return this;
     }
 }

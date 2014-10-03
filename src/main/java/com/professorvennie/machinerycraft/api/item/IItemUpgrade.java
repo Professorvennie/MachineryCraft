@@ -8,4 +8,8 @@ public interface IItemUpgrade {
     public int getSpeedModifier();
 
     public boolean isEjectorUpgrade();
+
+    public int getPowerBoost();
+
+    public int getFuelEfficiency();
 }

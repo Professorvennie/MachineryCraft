@@ -60,9 +60,9 @@ public class ModItems {
 
         //upgrades
         speedupgrade = new ItemUpgrade(Names.Items.SPPED_UPGRADE).setSpeedModifier(2);
-        powerboost = new ItemBase(Names.Items.POWERBOOST).setMaxStackSize(1);
-        efficiency = new ItemBase(Names.Items.EFFICIENCY).setMaxStackSize(2);
-        ejectorUpgrade = new ItemUpgrade("ejectorUpgrade").setEjectorUpgrade(true);
+        powerboost = new ItemUpgrade(Names.Items.POWERBOOST).setPowerBoost(2).setMaxStackSize(1);
+        efficiency = new ItemUpgrade(Names.Items.EFFICIENCY).setFuelEff(2).setMaxStackSize(2);
+        ejectorUpgrade = new ItemUpgrade("ejectorUpgrade").setEjectorUpgrade(true).setMaxStackSize(1);
 
         test = new ItemPowered("test", 10000);
     }
