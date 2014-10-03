@@ -6,7 +6,6 @@ import com.professorvennie.machinerycraft.api.tileentity.IHasButton;
 import com.professorvennie.machinerycraft.api.tileentity.IRedstoneControlable;
 import com.professorvennie.machinerycraft.client.gui.buttons.enums.EjectorMode;
 import com.professorvennie.machinerycraft.client.gui.buttons.enums.RedStoneMode;
-import com.professorvennie.machinerycraft.item.ModItems;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,12 +18,11 @@ public class TileEntityBasicMachine extends TileEntityBasicSidedInventory implem
 
     public boolean canWork;
     public int[] upgradeSlots;
-    private int machineSpeed;
-    private RedStoneMode redStoneMode;
-
     //upgrades
     public boolean hasEjectorUpgrade;
     public int speedModifier;
+    private int machineSpeed;
+    private RedStoneMode redStoneMode;
     private EjectorMode ejectorMode;
 
     public TileEntityBasicMachine(String name) {
@@ -60,30 +58,30 @@ public class TileEntityBasicMachine extends TileEntityBasicSidedInventory implem
         checkUpgrades();
     }
 
-    public void checkUpgrades(){
-        if(upgradeSlots !=  null){
-            if((inventory[upgradeSlots[0]] != null && (inventory[upgradeSlots[0]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[0]].getItem()).isEjectorUpgrade()))
-               || (inventory[upgradeSlots[1]] != null && (inventory[upgradeSlots[1]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[1]].getItem()).isEjectorUpgrade()))
-               || (inventory[upgradeSlots[2]] != null && (inventory[upgradeSlots[2]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[2]].getItem()).isEjectorUpgrade()))){
+    public void checkUpgrades() {
+        if (upgradeSlots != null) {
+            if ((inventory[upgradeSlots[0]] != null && (inventory[upgradeSlots[0]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[0]].getItem()).isEjectorUpgrade()))
+                    || (inventory[upgradeSlots[1]] != null && (inventory[upgradeSlots[1]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[1]].getItem()).isEjectorUpgrade()))
+                    || (inventory[upgradeSlots[2]] != null && (inventory[upgradeSlots[2]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[2]].getItem()).isEjectorUpgrade()))) {
 
                 hasEjectorUpgrade = true;
-            }else
+            } else
                 hasEjectorUpgrade = false;
 
             int mod1, mod2, mod3;
-            if((inventory[upgradeSlots[0]] != null && (inventory[upgradeSlots[0]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[0]].getItem()).getSpeedModifier() > 0))){
-                mod1 = ((IItemUpgrade)inventory[upgradeSlots[0]].getItem()).getSpeedModifier() * inventory[upgradeSlots[0]].stackSize;
-            }else
+            if ((inventory[upgradeSlots[0]] != null && (inventory[upgradeSlots[0]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[0]].getItem()).getSpeedModifier() > 0))) {
+                mod1 = ((IItemUpgrade) inventory[upgradeSlots[0]].getItem()).getSpeedModifier() * inventory[upgradeSlots[0]].stackSize;
+            } else
                 mod1 = 0;
 
-            if((inventory[upgradeSlots[1]] != null && (inventory[upgradeSlots[1]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[1]].getItem()).getSpeedModifier() > 0))){
-                mod2 = ((IItemUpgrade)inventory[upgradeSlots[1]].getItem()).getSpeedModifier() * inventory[upgradeSlots[1]].stackSize;
-            }else
+            if ((inventory[upgradeSlots[1]] != null && (inventory[upgradeSlots[1]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[1]].getItem()).getSpeedModifier() > 0))) {
+                mod2 = ((IItemUpgrade) inventory[upgradeSlots[1]].getItem()).getSpeedModifier() * inventory[upgradeSlots[1]].stackSize;
+            } else
                 mod2 = 0;
 
-            if((inventory[upgradeSlots[2]] != null && (inventory[upgradeSlots[2]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[2]].getItem()).getSpeedModifier() > 0))){
-                mod3= ((IItemUpgrade)inventory[upgradeSlots[2]].getItem()).getSpeedModifier() * inventory[upgradeSlots[2]].stackSize;
-            }else
+            if ((inventory[upgradeSlots[2]] != null && (inventory[upgradeSlots[2]].getItem() instanceof IItemUpgrade && ((IItemUpgrade) inventory[upgradeSlots[2]].getItem()).getSpeedModifier() > 0))) {
+                mod3 = ((IItemUpgrade) inventory[upgradeSlots[2]].getItem()).getSpeedModifier() * inventory[upgradeSlots[2]].stackSize;
+            } else
                 mod3 = 0;
 
             speedModifier = (mod1 + mod2 + mod3);

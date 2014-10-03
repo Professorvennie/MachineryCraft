@@ -9,24 +9,23 @@
  * */
 package com.professorvennie.lib.utils;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class RegistryUtils {
-	
-	public static void registerBlock(Block block){
-		GameRegistry.registerBlock(block, block.getUnlocalizedName());
-	}
-	
-	public static void registerItem(Item item){
-		GameRegistry.registerItem(item, item.getUnlocalizedName());
-	}
 
-	public static void registerBlock(Block block, Class<? extends ItemBlock> itemclass){
-		GameRegistry.registerBlock(block, itemclass,block.getUnlocalizedName());
-	}
+    public static void registerBlock(Block block) {
+        GameRegistry.registerBlock(block, block.getUnlocalizedName());
+    }
+
+    public static void registerItem(Item item) {
+        GameRegistry.registerItem(item, item.getUnlocalizedName());
+    }
+
+    public static void registerBlock(Block block, Class<? extends ItemBlock> itemclass) {
+        GameRegistry.registerBlock(block, itemclass, block.getUnlocalizedName());
+    }
 
 }

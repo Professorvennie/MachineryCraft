@@ -9,7 +9,6 @@
  * */
 package com.professorvennie.machinerycraft.item;
 
-import com.professorvennie.lib.base.items.ItemBase;
 import com.professorvennie.lib.base.items.ItemPowered;
 import com.professorvennie.lib.base.items.ItemUpgrade;
 import com.professorvennie.machinerycraft.MachineryCraft;
@@ -22,8 +21,6 @@ import net.minecraft.item.ItemFood;
 
 public class ModItems {
 
-
-    //misc.
     public static Item speedupgrade;
     public static Item powerboost;
     public static Item efficiency;
@@ -38,7 +35,10 @@ public class ModItems {
     public static Item steamBucket;
     public static Item gernades;
     public static Item bags;
-    public static Item test;
+
+    public static Item batteryTier1;
+    public static Item batteryTier2;
+    public static Item batteryTier3;
 
     public static void mainRegistry() {
         InitialiseItem();
@@ -59,11 +59,13 @@ public class ModItems {
         bags = new ItemBags();
 
         //upgrades
-        speedupgrade = new ItemUpgrade(Names.Items.SPPED_UPGRADE).setSpeedModifier(2);
-        powerboost = new ItemUpgrade(Names.Items.POWERBOOST).setPowerBoost(2).setMaxStackSize(1);
-        efficiency = new ItemUpgrade(Names.Items.EFFICIENCY).setFuelEff(2).setMaxStackSize(2);
-        ejectorUpgrade = new ItemUpgrade("ejectorUpgrade").setEjectorUpgrade(true).setMaxStackSize(1);
+        speedupgrade = new ItemUpgrade(Names.Items.SPPED_UPGRADE, 2).setSpeedModifier(2);
+        powerboost = new ItemUpgrade(Names.Items.POWERBOOST, 1).setPowerBoost(2);
+        efficiency = new ItemUpgrade(Names.Items.EFFICIENCY, 2).setFuelEff(2);
+        ejectorUpgrade = new ItemUpgrade(Names.Items.EJECTOR, 1).setEjectorUpgrade(true);
 
-        test = new ItemPowered("test", 10000);
+        batteryTier1 = new ItemPowered(Names.Items.BATTERY_TIER_1, 10000);
+        batteryTier2 = new ItemPowered(Names.Items.BATTERY_TIER_2, 50000);
+        batteryTier3 = new ItemPowered(Names.Items.BATTERY_TIER_3, 100000);
     }
 }

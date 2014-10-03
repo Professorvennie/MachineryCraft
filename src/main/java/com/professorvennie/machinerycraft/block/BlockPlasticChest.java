@@ -48,7 +48,7 @@ public class BlockPlasticChest extends BlockModContainer {
     @Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemStack) {
         int l = MathHelper.floor_double((double) (player.rotationYaw * 4.0f / 360.0f) + 0.5D) & 3;
-        TileEntityMod tile = (TileEntityMod)world.getTileEntity(x, y, z);
+        TileEntityMod tile = (TileEntityMod) world.getTileEntity(x, y, z);
 
         if (l == 0) {
             tile.setOrientation(ForgeDirection.NORTH);

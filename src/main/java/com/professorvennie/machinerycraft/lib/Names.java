@@ -77,6 +77,7 @@ public class Names {
         public static final String SPPED_UPGRADE = "speedUpgrade";
         public static final String POWERBOOST = "powerBoost";
         public static final String EFFICIENCY = "efficiency";
+        public static final String EJECTOR = "ejectorUpgrade";
         public static final String WINDMILL = "windmill";
         public static final String[] DUSTS = new String[]{"dustIron", "dustGold", "dustTin", "dustSilver", "dustLead", "dustCopper", "dustZinc", "dustBrass", "dustBronze"};
         public static final String[] INGOTS = new String[]{"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "ingotZinc", "ingotBrass", "ingotBronze"};
@@ -87,6 +88,9 @@ public class Names {
         public static final String STEAM_BUCKET = "steamBucket";
         public static final String[] BAGS = new String[]{"woodBag", "tinBag", "copperBag", "zincBag", "ironBag", "silverBag", "leadBag", "goldBag", "diamondBag"};
         public static final String[] GERNADES = new String[]{"normal", "fire", "water", "lava", "nuke"};
+        public static final String BATTERY_TIER_1 = "batteryTier1";
+        public static final String BATTERY_TIER_2 = "batteryTier2";
+        public static final String BATTERY_TIER_3 = "batteryTier3";
 
         //Tools
         public static final String ZINC_PICKAXE = "zincPickaxe";

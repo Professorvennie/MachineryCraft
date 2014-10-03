@@ -57,7 +57,7 @@ public class GuiBase extends GuiContainer {
         if (basicMachine != null) {
             buttonList.add(new GuiButtonRedStone(0, guiLeft + xSize + 1, guiTop + ySize - 73, basicMachine));
 
-            if(basicMachine.hasEjectorUpgrade)
+            if (basicMachine.hasEjectorUpgrade)
                 buttonList.add(new GuiButtonEjector(0, guiLeft + xSize + 1, guiTop + ySize - (73 - 27), basicMachine));
         }
     }
@@ -73,7 +73,7 @@ public class GuiBase extends GuiContainer {
             GL11.glColor4f(0.97F, 0.00F, 0F, 1F);
             drawTexturedModalRect(guiLeft + 176, guiTop + 92, 0, 94, 28, 28);
 
-            if(basicMachine.hasEjectorUpgrade) {
+            if (basicMachine.hasEjectorUpgrade) {
                 GL11.glColor4f(0F, 1F, 1F, 1F);
                 drawTexturedModalRect(guiLeft + 176, guiTop + 119, 0, 94, 28, 28);
             }

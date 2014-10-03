@@ -29,17 +29,17 @@ public class ItemModBow extends ItemBow {
     private Item customArrow;
     private String name;
 
-    public ItemModBow(ToolMaterial toolMaterial, String name){
+    public ItemModBow(ToolMaterial toolMaterial, String name) {
         this.toolMaterial = toolMaterial;
         this.name = name;
         setMaxStackSize(toolMaterial.getMaxUses());
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
         setMaxStackSize(1);
-        if(customArrow == null) customArrow = Items.arrow;
+        if (customArrow == null) customArrow = Items.arrow;
     }
 
-    public ItemModBow(ToolMaterial toolMaterial, String name, Item customArrow){
+    public ItemModBow(ToolMaterial toolMaterial, String name, Item customArrow) {
         this(toolMaterial, name);
         this.customArrow = customArrow;
     }
@@ -49,11 +49,11 @@ public class ItemModBow extends ItemBow {
 
         ArrowNockEvent event = new ArrowNockEvent(player, itemStack);
         MinecraftForge.EVENT_BUS.post(event);
-        if (event.isCanceled()){
+        if (event.isCanceled()) {
             return event.result;
         }
 
-        if (player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, itemStack) > 0 ||  player.inventory.hasItem(customArrow)){
+        if (player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, itemStack) > 0 || player.inventory.hasItem(customArrow)) {
             player.setItemInUse(itemStack, this.getMaxItemUseDuration(itemStack));
         }
 
@@ -72,14 +72,22 @@ public class ItemModBow extends ItemBow {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getItemIconForUseDuration(int i) {
-        return icons[i];
+    public IIcon getIcon(ItemStack stack, int pass) {
+        return itemIcon;
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(ItemStack stack, int pass) {
-        return icons[pass];
+    public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
+        if(useRemaining > 0){
+            int draw = stack.getMaxItemUseDuration() - useRemaining;
+            if(draw > 17)
+                return icons[2];
+            else if(draw > 13)
+                return icons[1];
+            else if(draw > 0)
+                return icons[0];
+        }
+        return itemIcon;
     }
 
     @Override

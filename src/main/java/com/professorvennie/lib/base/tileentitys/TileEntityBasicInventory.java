@@ -16,7 +16,7 @@ public class TileEntityBasicInventory extends TileEntityMod implements IInventor
     public ItemStack[] inventory = new ItemStack[getSizeInventory()];
     private String name;
 
-    public TileEntityBasicInventory(String name){
+    public TileEntityBasicInventory(String name) {
         this.name = name;
     }
 
@@ -123,10 +123,12 @@ public class TileEntityBasicInventory extends TileEntityMod implements IInventor
     }
 
     @Override
-    public void openInventory() {}
+    public void openInventory() {
+    }
 
     @Override
-    public void closeInventory() {}
+    public void closeInventory() {
+    }
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack itemStack) {

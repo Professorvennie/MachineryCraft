@@ -20,7 +20,7 @@ public class BlockModContainer extends BlockBase implements ITileEntityProvider 
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-        if(guiId != -1) {
+        if (guiId != -1) {
             if (!world.isRemote) {
                 player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
             }

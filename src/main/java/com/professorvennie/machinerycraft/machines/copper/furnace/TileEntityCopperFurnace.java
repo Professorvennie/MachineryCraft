@@ -9,7 +9,6 @@
  * */
 package com.professorvennie.machinerycraft.machines.copper.furnace;
 
-import com.professorvennie.machinerycraft.api.item.IItemUpgrade;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;

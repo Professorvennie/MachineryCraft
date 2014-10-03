@@ -1,7 +1,5 @@
 package com.professorvennie.lib.base.items;
 
-import com.professorvennie.machinerycraft.core.helpers.NBTHelper;
-import com.professorvennie.lib.base.items.ItemBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -30,23 +28,23 @@ public class ItemPowered extends ItemBase {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean b) {
-        if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)){
+        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             list.add(itemStack.stackTagCompound.getInteger("Power") + "/" + capacity + " Jewels");
-        }else
+        } else
             list.add("Hold " + EnumChatFormatting.BLUE + "Shift" + EnumChatFormatting.GRAY + " for more information");
     }
 
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list) {
         ItemStack zero = new ItemStack(item, 1, 1);
-        if(zero.stackTagCompound == null){
+        if (zero.stackTagCompound == null) {
             zero.setTagCompound(new NBTTagCompound());
             zero.stackTagCompound.setInteger("Power", 0);
         }
         list.add(zero);
 
         ItemStack full = new ItemStack(item, 1, capacity);
-        if(full.stackTagCompound == null){
+        if (full.stackTagCompound == null) {
             full.setTagCompound(new NBTTagCompound());
             full.stackTagCompound.setInteger("Power", capacity);
         }
@@ -60,7 +58,7 @@ public class ItemPowered extends ItemBase {
 
     @Override
     public int getDisplayDamage(ItemStack stack) {
-        if(stack.stackTagCompound == null) return 1 + capacity;
+        if (stack.stackTagCompound == null) return 1 + capacity;
 
         return 1 + capacity - stack.stackTagCompound.getInteger("Power");
     }

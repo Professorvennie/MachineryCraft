@@ -11,8 +11,10 @@ public class ItemUpgrade extends ItemBase implements IItemUpgrade {
     private int speedModifier, powerBoost, fuelEff;
     private boolean isEjectorUpgrade;
 
-    public ItemUpgrade(String name) {
+    public ItemUpgrade(String name, int maxStackSize) {
         super(name);
+        if (maxStackSize > 0)
+            setMaxStackSize(maxStackSize);
     }
 
     @Override
