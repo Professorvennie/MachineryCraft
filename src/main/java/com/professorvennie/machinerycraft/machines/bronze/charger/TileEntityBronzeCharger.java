@@ -10,8 +10,10 @@
 package com.professorvennie.machinerycraft.machines.bronze.charger;
 
 import com.professorvennie.machinerycraft.api.steam.ISteamPoweredItem;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.bronze.TileEntityBasicSteamMachine;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -21,6 +23,9 @@ public class TileEntityBronzeCharger extends TileEntityBasicSteamMachine {
 
     public TileEntityBronzeCharger() {
         super(Names.Containers.BRONZE_CHARGER);
+        slots_bottom = new int[]{1, 3};
+        slots_sides = new int[]{0};
+        slots_top = new int[]{2};
     }
 
     @Override
@@ -48,5 +53,24 @@ public class TileEntityBronzeCharger extends TileEntityBasicSteamMachine {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
+        if (slot == 2 && itemStack.getItem() instanceof ISteamPoweredItem)
+            return true;
+        else if (slot == 0 && itemStack.getItem() == ModItems.steamBucket)
+            return true;
+        else if (slot == 1 && itemStack.getItem() == Items.bucket)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public boolean canExtractItem(int slot, ItemStack itemStack, int i2) {
+        if (slot == 3 || slot == 1)
+            return true;
+        return false;
     }
 }
