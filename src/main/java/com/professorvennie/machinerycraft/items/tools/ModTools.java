@@ -77,7 +77,6 @@ public class ModTools {
         brassSpade = new ItemBrassSpade(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_SPADE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":brassSpade");
         brassFishingRod = new ItemModFishingPole(MachineryCraftAPI.brassToolMaterial, Names.Items.BRASS_FISHINGROD);
         brassBow = new ItemModBow(MachineryCraftAPI.brassToolMaterial, Names.Items.BRASS_BOW);
-
     }
 
     private static void registry() {

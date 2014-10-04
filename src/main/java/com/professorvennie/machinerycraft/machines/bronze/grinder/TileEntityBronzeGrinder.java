@@ -50,11 +50,17 @@ public class TileEntityBronzeGrinder extends TileEntityBasicSteamMachine {
                     cookTime = 0;
             }
         }
-        BlockBronzeGrinder block = (BlockBronzeGrinder) worldObj.getBlock(xCoord, yCoord, zCoord);
-        if (cookTime > 0)
-            block.isActive = true;
-        else
-            block.isActive = false;
+        BlockBronzeGrinder block = null;
+        if (worldObj.getBlock(xCoord, yCoord, zCoord) instanceof BlockBronzeGrinder) {
+            block = (BlockBronzeGrinder) worldObj.getBlock(xCoord, yCoord, zCoord);
+        }
+        if (cookTime > 0) {
+            if (block != null)
+                block.isActive = true;
+        } else {
+            if (block != null)
+                block.isActive = false;
+        }
 
         if (flag1) this.markDirty();
     }

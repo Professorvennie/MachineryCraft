@@ -33,11 +33,18 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
     public void updateEntity() {
         super.updateEntity();
 
-        BlockBronzeFurnace block = (BlockBronzeFurnace) worldObj.getBlock(xCoord, yCoord, zCoord);
-        if (cookTime > 0)
-            block.isActive = true;
-        else
-            block.isActive = false;
+        //attempt to fix wried crash
+        BlockBronzeFurnace block = null;
+        if (worldObj.getBlock(xCoord, yCoord, zCoord) instanceof BlockBronzeFurnace) {
+            block = (BlockBronzeFurnace) worldObj.getBlock(xCoord, yCoord, zCoord);
+        }
+        if (cookTime > 0) {
+            if (block != null)
+                block.isActive = true;
+        } else {
+            if (block != null)
+                block.isActive = false;
+        }
 
         boolean flag1 = false;
 
