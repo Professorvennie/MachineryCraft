@@ -11,6 +11,7 @@ package com.professorvennie.machinerycraft.items.tools;
 
 import com.professorvennie.lib.base.items.ItemModBow;
 import com.professorvennie.lib.base.items.ItemModFishingPole;
+import com.professorvennie.lib.base.items.tools.*;
 import com.professorvennie.lib.utils.RegistryUtils;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
@@ -32,6 +33,7 @@ public class ModTools {
     public static Item zincSpade;
     public static Item zincFishingRod;
     public static Item zincBow;
+
     public static Item brassPickaxe;
     public static Item brassAxe;
     public static Item brassSword;
@@ -39,6 +41,7 @@ public class ModTools {
     public static Item brassSpade;
     public static Item brassFishingRod;
     public static Item brassBow;
+
     public static Item emeraldpickaxe;
     public static Item emeraldaxe;
     public static Item emeraldsword;
@@ -46,6 +49,12 @@ public class ModTools {
     public static Item emeraldspade;
     public static Item emeraldFishingRod;
     public static Item emeraldBow;
+
+    public static Item steamPickaxe;
+    public static Item steamAxe;
+    public static Item steamSword;
+    public static Item steamShovel;
+    public static Item steamHoe;
 
     public static void mainRegistry() {
         init();
@@ -77,6 +86,12 @@ public class ModTools {
         brassSpade = new ItemBrassSpade(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_SPADE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":brassSpade");
         brassFishingRod = new ItemModFishingPole(MachineryCraftAPI.brassToolMaterial, Names.Items.BRASS_FISHINGROD);
         brassBow = new ItemModBow(MachineryCraftAPI.brassToolMaterial, Names.Items.BRASS_BOW);
+
+        steamAxe = new ItemSteamAxe("steamAxe", 10000, 200);
+        steamPickaxe = new ItemSteamPick("steamPickaxe", 10000, 200);
+        steamShovel = new ItemSteamShovel("steamShovel", 10000, 200);
+        steamSword = new ItemSteamSword("steamSword", 10000, 200);
+        steamHoe = new ItemSteamHoe("steamHoe", 10000, 200);
     }
 
     private static void registry() {
@@ -109,5 +124,11 @@ public class ModTools {
             RegistryUtils.registerItem(brassFishingRod);
             RegistryUtils.registerItem(brassBow);
         }
+
+        RegistryUtils.registerItem(steamPickaxe);
+        RegistryUtils.registerItem(steamAxe);
+        RegistryUtils.registerItem(steamShovel);
+        RegistryUtils.registerItem(steamSword);
+        RegistryUtils.registerItem(steamHoe);
     }
 }

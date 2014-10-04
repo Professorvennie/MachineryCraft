@@ -31,7 +31,7 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
     private int capacity, steamPerUse;
 
     public ItemSteamHoe(String name, int capacity, int steamPerUse) {
-        super(EnumHelper.addToolMaterial("Steam", 3, 2, 14.0f, 4.0f, 10));
+        super(EnumHelper.addToolMaterial("SteamHoe", 3, 2, 14.0f, -1.0f, 10));
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
         this.capacity = capacity;
@@ -40,14 +40,7 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
 
     @Override
     public boolean hitEntity(ItemStack itemStack, EntityLivingBase entityLivingBase, EntityLivingBase entityLivingBase1) {
-        if (itemStack.stackTagCompound != null) {
-            if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
-                return true;
-            } else
-                return false;
-        } else
-            return false;
+        return true;
     }
 
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int i, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
@@ -86,35 +79,6 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
                     }
                 }
             }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean onBlockStartBreak(ItemStack itemStack, int X, int Y, int Z, EntityPlayer player) {
-        if (itemStack.stackTagCompound != null) {
-            if (itemStack.stackTagCompound.getInteger("Steam") > 0) {
-                if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                    return false;
-                } else
-                    return true;
-            } else
-                return true;
-        } else
-            return true;
-    }
-
-    @Override
-    public boolean onBlockDestroyed(ItemStack itemStack, World world, Block block, int x, int y, int z, EntityLivingBase entityLivingBase) {
-        if ((double) block.getBlockHardness(world, x, y, z) != 0.0D) {
-            if (itemStack.stackTagCompound != null) {
-                if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                    itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
-                    return true;
-                } else
-                    return false;
-            } else
-                return false;
         }
         return false;
     }

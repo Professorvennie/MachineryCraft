@@ -27,7 +27,15 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
     private int capacity, steamPerUse;
 
     public ItemSteamShovel(String name, int capacity, int steamPerUse) {
-        super(EnumHelper.addToolMaterial("Steam", 3, 2, 14.0f, 4.0f, 10));
+        super(EnumHelper.addToolMaterial("SteamSpade", 3, 2, 14.0f, -1.0f, 10));
+        setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        setUnlocalizedName(name);
+        this.capacity = capacity;
+        this.steamPerUse = steamPerUse;
+    }
+
+    public ItemSteamShovel(ToolMaterial material, String name, int capacity, int steamPerUse) {
+        super(material);
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
         this.capacity = capacity;
@@ -36,14 +44,7 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
 
     @Override
     public boolean hitEntity(ItemStack itemStack, EntityLivingBase entityLivingBase, EntityLivingBase entityLivingBase1) {
-        if (itemStack.stackTagCompound != null) {
-            if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
-                return true;
-            } else
-                return false;
-        } else
-            return false;
+        return true;
     }
 
     @Override
