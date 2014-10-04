@@ -14,7 +14,7 @@ import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IBookable;
 import com.professorvennie.machinerycraft.block.ModBlocks;
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;

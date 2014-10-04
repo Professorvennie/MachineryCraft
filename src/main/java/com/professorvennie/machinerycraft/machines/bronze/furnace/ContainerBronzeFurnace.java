@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.machinerycraft.machines.bronze.furnace;
 
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;

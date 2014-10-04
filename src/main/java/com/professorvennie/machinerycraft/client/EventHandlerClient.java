@@ -1,6 +1,6 @@
 package com.professorvennie.machinerycraft.client;
 
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Reference;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;

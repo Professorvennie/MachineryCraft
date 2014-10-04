@@ -1,6 +1,6 @@
 package com.professorvennie.machinerycraft.machines.bronze.extractor;
 
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.machines.bronze.grinder.TileEntityBronzeGrinder;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

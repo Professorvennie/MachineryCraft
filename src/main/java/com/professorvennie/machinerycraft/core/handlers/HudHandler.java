@@ -11,7 +11,7 @@ package com.professorvennie.machinerycraft.core.handlers;
 
 import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IBookable;
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;

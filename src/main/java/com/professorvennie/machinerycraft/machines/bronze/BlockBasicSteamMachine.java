@@ -12,7 +12,7 @@ package com.professorvennie.machinerycraft.machines.bronze;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.steam.ISteamBoiler;
 import com.professorvennie.machinerycraft.api.steam.ISteamTank;
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
 import cpw.mods.fml.relauncher.Side;

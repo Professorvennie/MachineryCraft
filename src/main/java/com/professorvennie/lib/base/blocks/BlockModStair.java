@@ -1,7 +1,7 @@
 package com.professorvennie.lib.base.blocks;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
-import com.professorvennie.machinerycraft.item.itemblock.ItemBlockMod;
+import com.professorvennie.machinerycraft.items.itemblock.ItemBlockMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -9,7 +9,7 @@
  * */
 package com.professorvennie.machinerycraft.common.containers;
 
-import com.professorvennie.machinerycraft.item.ItemBags;
+import com.professorvennie.machinerycraft.items.ItemBags;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;

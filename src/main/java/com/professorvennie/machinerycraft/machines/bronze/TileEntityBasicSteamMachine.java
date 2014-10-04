@@ -5,7 +5,7 @@ import com.professorvennie.machinerycraft.api.recipes.GrinderRecipes;
 import com.professorvennie.machinerycraft.api.steam.ISteamBoiler;
 import com.professorvennie.machinerycraft.api.steam.ISteamTank;
 import com.professorvennie.machinerycraft.fuilds.ModFuilds;
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

@@ -36,6 +36,7 @@ public class BlockMetals extends BlockBase {
         super(Material.iron, "metal");
         this.setHardness(3.5f);
         this.setHarvestLevel("pickAxe", 2);
+        this.setResistance(3.0F);
         this.setStepSound(Block.soundTypeMetal);
     }
 

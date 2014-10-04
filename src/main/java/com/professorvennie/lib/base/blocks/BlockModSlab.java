@@ -1,7 +1,7 @@
 package com.professorvennie.lib.base.blocks;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
-import com.professorvennie.machinerycraft.item.itemblock.ItemModSlab;
+import com.professorvennie.machinerycraft.items.itemblock.ItemModSlab;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;

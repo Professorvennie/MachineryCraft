@@ -20,7 +20,7 @@ import com.professorvennie.machinerycraft.client.renderer.tileentity.TileEntityR
 import com.professorvennie.machinerycraft.client.renderer.tileentity.TileEntityRendererPlasticChest;
 import com.professorvennie.machinerycraft.entitys.EntityGrenade;
 import com.professorvennie.machinerycraft.entitys.EntityMCFishHook;
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.machines.basic.campfire.ItemRenderCampFire;
 import com.professorvennie.machinerycraft.machines.basic.campfire.TileEntityCampFire;
 import com.professorvennie.machinerycraft.machines.basic.campfire.TileEntityRendererCampFire;

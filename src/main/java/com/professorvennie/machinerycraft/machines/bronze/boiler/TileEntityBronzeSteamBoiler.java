@@ -12,7 +12,7 @@ package com.professorvennie.machinerycraft.machines.bronze.boiler;
 import com.professorvennie.machinerycraft.api.steam.ISteamBoiler;
 import com.professorvennie.machinerycraft.api.steam.ISteamTank;
 import com.professorvennie.machinerycraft.fuilds.ModFuilds;
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
 import cpw.mods.fml.common.registry.GameRegistry;

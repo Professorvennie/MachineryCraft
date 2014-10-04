@@ -11,7 +11,7 @@ package com.professorvennie.machinerycraft.machines.brass.alloy;
 
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.core.utils.PowerAmounts;
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
 import net.minecraft.init.Items;

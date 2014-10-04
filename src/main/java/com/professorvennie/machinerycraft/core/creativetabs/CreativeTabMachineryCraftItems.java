@@ -1,6 +1,6 @@
 package com.professorvennie.machinerycraft.core.creativetabs;
 
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 

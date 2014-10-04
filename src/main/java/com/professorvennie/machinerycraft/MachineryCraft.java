@@ -23,7 +23,7 @@ import com.professorvennie.machinerycraft.core.network.PacketHandler;
 import com.professorvennie.machinerycraft.core.proxeys.CommonProxey;
 import com.professorvennie.machinerycraft.entitys.ModEntities;
 import com.professorvennie.machinerycraft.fuilds.ModFuilds;
-import com.professorvennie.machinerycraft.item.ModItems;
+import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.BookData;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.plugins.PluginHandler;
