@@ -40,7 +40,7 @@ import com.professorvennie.machinerycraft.machines.brass.grinder.TileEntityBrass
 import com.professorvennie.machinerycraft.machines.bronze.boiler.ContainerBronzeSteamBoiler;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.GuiBronzeSteamBoiler;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.TileEntityBronzeSteamBoiler;
-import com.professorvennie.machinerycraft.machines.bronze.charger.ContainerBronzeCharger;
+import com.professorvennie.machinerycraft.machines.bronze.charger.ContainerCharger;
 import com.professorvennie.machinerycraft.machines.bronze.charger.GuiBronzeCharger;
 import com.professorvennie.machinerycraft.machines.bronze.charger.TileEntityBronzeCharger;
 import com.professorvennie.machinerycraft.machines.bronze.extractor.ContainerBronzeExtractor;
@@ -152,7 +152,7 @@ public class GuiHandler implements IGuiHandler {
 
             case LibGuiIds.BRONZE_CHARGER:
                 if (entity instanceof TileEntityBronzeCharger) {
-                    return new ContainerBronzeCharger(player.inventory, (TileEntityBronzeCharger) entity);
+                    return new ContainerCharger(player.inventory, (TileEntityBronzeCharger) entity);
                 }
         }
         return null;
