@@ -22,6 +22,7 @@ import com.professorvennie.machinerycraft.machines.brass.generators.lava.TileEnt
 import com.professorvennie.machinerycraft.machines.brass.generators.solar.TileEntityBrassSolarGenerator;
 import com.professorvennie.machinerycraft.machines.brass.grinder.TileEntityBrassGrinder;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.TileEntityBronzeSteamBoiler;
+import com.professorvennie.machinerycraft.machines.bronze.charger.TileEntityBronzeCharger;
 import com.professorvennie.machinerycraft.machines.bronze.extractor.TileEntityBronzeExtractor;
 import com.professorvennie.machinerycraft.machines.bronze.furnace.TileEntityBronzeFurnace;
 import com.professorvennie.machinerycraft.machines.bronze.grinder.TileEntityBronzeGrinder;
@@ -57,5 +58,6 @@ public class RegisterTileEntitys {
         GameRegistry.registerTileEntity(TileEntityWoodenWellPipe.class, Reference.MOD_ID + "_tileEntityWoodenWellPipe");
         GameRegistry.registerTileEntity(TileEntityCampFire.class, Reference.MOD_ID + "_tileEntityCampFire");
         GameRegistry.registerTileEntity(TileEntityBrassCharger.class, Reference.MOD_ID + "_tileEntityBrassCharger");
+        GameRegistry.registerTileEntity(TileEntityBronzeCharger.class, Reference.MOD_ID + "_tileEntityBraonzeCharger");
     }
 }

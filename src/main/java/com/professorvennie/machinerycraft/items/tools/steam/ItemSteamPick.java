@@ -1,4 +1,4 @@
-package com.professorvennie.lib.base.items.tools;
+package com.professorvennie.machinerycraft.items.tools.steam;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.steam.ISteamPoweredItem;
@@ -9,8 +9,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
@@ -20,14 +20,22 @@ import org.lwjgl.input.Keyboard;
 import java.util.List;
 
 /**
- * Created by ProfessorVennie on 10/4/2014 at 12:29 PM.
+ * Created by ProfessorVennie on 10/4/2014 at 11:33 AM.
  */
-public class ItemSteamSword extends ItemSword implements ISteamPoweredItem {
+public class ItemSteamPick extends ItemPickaxe implements ISteamPoweredItem {
 
     private int capacity, steamPerUse;
 
-    public ItemSteamSword(String name, int capacity, int steamPerUse) {
-        super(EnumHelper.addToolMaterial("Steam", 3, 2, 14.0f, 4.0f, 10));
+    public ItemSteamPick(String name, int capacity, int steamPerUse) {
+        super(EnumHelper.addToolMaterial("SteamPick", 3, 2, 14.0f, -1.0f, 10));
+        setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        setUnlocalizedName(name);
+        this.capacity = capacity;
+        this.steamPerUse = steamPerUse;
+    }
+
+    public ItemSteamPick(ToolMaterial material, String name, int capacity, int steamPerUse) {
+        super(material);
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
         this.capacity = capacity;
@@ -36,14 +44,7 @@ public class ItemSteamSword extends ItemSword implements ISteamPoweredItem {
 
     @Override
     public boolean hitEntity(ItemStack itemStack, EntityLivingBase entityLivingBase, EntityLivingBase entityLivingBase1) {
-        if (itemStack.stackTagCompound != null) {
-            if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
-                return true;
-            } else
-                return false;
-        } else
-            return false;
+        return true;
     }
 
     @Override

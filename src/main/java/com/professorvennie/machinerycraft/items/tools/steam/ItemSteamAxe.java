@@ -1,4 +1,4 @@
-package com.professorvennie.lib.base.items.tools;
+package com.professorvennie.machinerycraft.items.tools.steam;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.steam.ISteamPoweredItem;

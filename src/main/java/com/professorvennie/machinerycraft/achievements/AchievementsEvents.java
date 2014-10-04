@@ -12,11 +12,10 @@ package com.professorvennie.machinerycraft.achievements;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 
-public class EventOnCrafted {
+public class AchievementsEvents {
 
     @SubscribeEvent
     public void whenCrafted(PlayerEvent.ItemCraftedEvent e) {
 
     }
-
 }

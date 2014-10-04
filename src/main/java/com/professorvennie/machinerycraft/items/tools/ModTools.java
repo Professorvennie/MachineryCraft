@@ -11,13 +11,13 @@ package com.professorvennie.machinerycraft.items.tools;
 
 import com.professorvennie.lib.base.items.ItemModBow;
 import com.professorvennie.lib.base.items.ItemModFishingPole;
-import com.professorvennie.lib.base.items.tools.*;
 import com.professorvennie.lib.utils.RegistryUtils;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.MachineryCraftAPI;
 import com.professorvennie.machinerycraft.core.config.ConfigHandler;
 import com.professorvennie.machinerycraft.items.tools.brass.*;
 import com.professorvennie.machinerycraft.items.tools.emerald.*;
+import com.professorvennie.machinerycraft.items.tools.steam.*;
 import com.professorvennie.machinerycraft.items.tools.zinc.*;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;

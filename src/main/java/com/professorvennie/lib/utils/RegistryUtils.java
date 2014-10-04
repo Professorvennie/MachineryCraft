@@ -27,5 +27,4 @@ public class RegistryUtils {
     public static void registerBlock(Block block, Class<? extends ItemBlock> itemclass) {
         GameRegistry.registerBlock(block, itemclass, block.getUnlocalizedName());
     }
-
 }

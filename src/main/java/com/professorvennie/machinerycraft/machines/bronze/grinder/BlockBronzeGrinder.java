@@ -23,8 +23,8 @@ import net.minecraft.world.World;
 
 public class BlockBronzeGrinder extends BlockBasicSteamMachine {
 
-    public BlockBronzeGrinder(boolean isActive) {
-        super(Names.Blocks.BRONZE_GRINDER, isActive);
+    public BlockBronzeGrinder() {
+        super(Names.Blocks.BRONZE_GRINDER, false);
         guiId = LibGuiIds.BRONZE_GRINDER;
     }
 

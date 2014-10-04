@@ -44,6 +44,7 @@ public class Names {
         public static final String BRONZE_GRINDER = "bronzeGrinder";
         public static final String BRONZE_STEAM_BOILER = "bronzeSteamBoiler";
         public static final String BRONZE_EXTRACTOR = "bronzeExtractor";
+        public static final String BRONZE_CHARGER = "bronzeCharger";
         public static final String PLASTIC_FENCE = "plasticFence";
         public static final String PLASTIC_FENCE_GATE = "plasticFenceGate";
         public static final String BRASS_CHARGER = "brassCharger";
@@ -133,9 +134,6 @@ public class Names {
         public static final String CONTAINER_BRASS_FURNACE = CONTAINER_BASE + "brassFurnace";
         public static final String CONTAINER_BRASS_GRINDER = CONTAINER_BASE + "brassGrinder";
         public static final String CONTAINER_BRASS_ALLOY = CONTAINER_BASE + "brassAlloy";
-        public static final String CONTAINER_GOLDOXIDE_FURNACE = CONTAINER_BASE + "goldoxideFurnace";
-        public static final String CONTAINER_GOLDOXIDE_GRINDER = CONTAINER_BASE + "goldoxideGrinder";
-        public static final String CONTAINER_GOLDOXIDE_ALLOY = CONTAINER_BASE + "goldoxideAlloy";
         public static final String CONTAINER_WINDMILL = CONTAINER_BASE + "windmill";
         public static final String CONTAINER_WASHER = CONTAINER_BASE + "washer";
         public static final String CONTAINER_PLASTIC_CHEST = CONTAINER_BASE + "plasticChest";
@@ -144,6 +142,7 @@ public class Names {
         public static final String BRONZE_STEAMBOILER = CONTAINER_BASE + "bronzeSteamBoiler";
         public static final String BRONZE_GRINDER = CONTAINER_BASE + "bronzeGrinder";
         public static final String BRONZE_EXTRACTOR = CONTAINER_BASE + "bronzeExtractor";
+        public static final String BRONZE_CHARGER = CONTAINER_BASE + "bronzeCharger";
         public static final String CONTAINER_BRASS_LAVA_GEN = CONTAINER_BASE + "brassLavaGen";
         public static final String CONTAINER_BRASS_GENERATOR = CONTAINER_BASE + "brassGenerator";
         public static final String WELL = CONTAINER_BASE + "well";

@@ -121,6 +121,7 @@ container.bronzeFurnace=Bronze Furnace
 container.bronzeGrinder=Bronze Grinder
 container.bronzeSteamBoiler=Steam Boiler
 container.bronzeExtractor=Bronze Extractor
+container.bronzeCharger=Bronze Charger
 
 container.brassGrinder=Brass Grinder
 container.brassFurnace=Brass Grinder
@@ -145,6 +146,7 @@ tile.bronzeFurnaceIdle.name=Bronze Furnace
 tile.bronzeGrinderIdle.name=Bronze Grinder
 tile.bronzeSteamBoilerIdle.name=Bronze Steam Boiler
 tile.bronzeExtractorIdle.name=Bronze Extractor
+tile.bronzeChargerIdle.name=Bronze Charger
 
 tile.brassFurnaceIdle.name=Brass Furnace
 tile.brassGrinderIdle.name=Brass Grinder

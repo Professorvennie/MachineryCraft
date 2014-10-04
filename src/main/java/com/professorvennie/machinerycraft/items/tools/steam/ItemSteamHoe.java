@@ -1,41 +1,37 @@
-package com.professorvennie.lib.base.items.tools;
+package com.professorvennie.machinerycraft.items.tools.steam;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.steam.ISteamPoweredItem;
+import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.entity.player.UseHoeEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.util.List;
 
 /**
- * Created by ProfessorVennie on 10/4/2014 at 12:28 PM.
+ * Created by ProfessorVennie on 10/4/2014 at 12:29 PM.
  */
-public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
+public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
 
     private int capacity, steamPerUse;
 
-    public ItemSteamShovel(String name, int capacity, int steamPerUse) {
-        super(EnumHelper.addToolMaterial("SteamSpade", 3, 2, 14.0f, -1.0f, 10));
-        setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
-        setUnlocalizedName(name);
-        this.capacity = capacity;
-        this.steamPerUse = steamPerUse;
-    }
-
-    public ItemSteamShovel(ToolMaterial material, String name, int capacity, int steamPerUse) {
-        super(material);
+    public ItemSteamHoe(String name, int capacity, int steamPerUse) {
+        super(EnumHelper.addToolMaterial("SteamHoe", 3, 2, 14.0f, -1.0f, 10));
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
         this.capacity = capacity;
@@ -47,31 +43,42 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
         return true;
     }
 
-    @Override
-    public boolean onBlockStartBreak(ItemStack itemStack, int X, int Y, int Z, EntityPlayer player) {
-        if (itemStack.stackTagCompound != null) {
-            if (itemStack.stackTagCompound.getInteger("Steam") > 0) {
-                if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                    return false;
-                } else
-                    return true;
-            } else
-                return true;
-        } else
-            return true;
-    }
-
-    @Override
-    public boolean onBlockDestroyed(ItemStack itemStack, World world, Block block, int x, int y, int z, EntityLivingBase entityLivingBase) {
-        if ((double) block.getBlockHardness(world, x, y, z) != 0.0D) {
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int i, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+        if (!player.canPlayerEdit(x, y, z, i, itemStack)) {
+            return false;
+        } else {
             if (itemStack.stackTagCompound != null) {
-                if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                    itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
-                    return true;
-                } else
-                    return false;
-            } else
-                return false;
+                if (itemStack.stackTagCompound.getInteger("Steam") > 0) {
+                    if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
+                        UseHoeEvent event = new UseHoeEvent(player, itemStack, world, x, y, z);
+                        if (MinecraftForge.EVENT_BUS.post(event)) {
+                            return false;
+                        }
+
+                        if (event.getResult() == Event.Result.ALLOW) {
+                            itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
+                            return true;
+                        }
+
+                        Block block = world.getBlock(x, y, z);
+
+                        if (i != 0 && world.getBlock(x, y + 1, z).isAir(world, x, y + 1, z) && (block == Blocks.grass || block == Blocks.dirt)) {
+                            Block block1 = Blocks.farmland;
+                            world.playSoundEffect((double) ((float) x + 0.5F), (double) ((float) y + 0.5F), (double) ((float) z + 0.5F), block1.stepSound.getStepResourcePath(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
+
+                            if (world.isRemote) {
+                                return true;
+                            } else {
+                                world.setBlock(x, y, z, block1);
+                                itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
+                                return true;
+                            }
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            }
         }
         return false;
     }

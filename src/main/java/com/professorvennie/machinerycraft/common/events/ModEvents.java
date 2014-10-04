@@ -10,7 +10,7 @@
 package com.professorvennie.machinerycraft.common.events;
 
 
-import com.professorvennie.machinerycraft.achievements.EventOnCrafted;
+import com.professorvennie.machinerycraft.achievements.AchievementsEvents;
 import com.professorvennie.machinerycraft.client.EventHandlerClient;
 import com.professorvennie.machinerycraft.fuilds.ModFuilds;
 import com.professorvennie.machinerycraft.items.ModItems;
@@ -21,7 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class ModEvents {
 
     public static void registerEvents() {
-        FMLCommonHandler.instance().bus().register(new EventOnCrafted());
+        FMLCommonHandler.instance().bus().register(new AchievementsEvents());
         BucketHandler.INSTANCE.buckets.put(ModFuilds.blockSteam, ModItems.steamBucket);
         MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
         FMLCommonHandler.instance().bus().register(new EventHandlerClient());

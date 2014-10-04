@@ -22,8 +22,8 @@ import net.minecraft.world.World;
 
 public class BlockBronzeFurnace extends BlockBasicSteamMachine {
 
-    public BlockBronzeFurnace(boolean isActive) {
-        super(Names.Blocks.BRONZE_FURNACE, isActive);
+    public BlockBronzeFurnace() {
+        super(Names.Blocks.BRONZE_FURNACE, false);
         guiId = LibGuiIds.BRONZE_FURNACE;
     }
 

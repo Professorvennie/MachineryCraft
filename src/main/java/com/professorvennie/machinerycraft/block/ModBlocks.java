@@ -29,6 +29,7 @@ import com.professorvennie.machinerycraft.machines.brass.generators.lava.BlockBr
 import com.professorvennie.machinerycraft.machines.brass.generators.solar.BlockBrassSolarGenerator;
 import com.professorvennie.machinerycraft.machines.brass.grinder.BlockBrassGrinder;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.BlockBronzeSteamBoiler;
+import com.professorvennie.machinerycraft.machines.bronze.charger.BlockBronzeCharger;
 import com.professorvennie.machinerycraft.machines.bronze.extractor.BlockBronzeExtractor;
 import com.professorvennie.machinerycraft.machines.bronze.furnace.BlockBronzeFurnace;
 import com.professorvennie.machinerycraft.machines.bronze.grinder.BlockBronzeGrinder;
@@ -46,10 +47,12 @@ public class ModBlocks {
     public static Block BlockMetals;
     public static Block windmill;
     public static Block windmillground;
+
     public static Block copperFurnaceIdle;
     public static Block copperFurnaceActive;
     public static Block copperGrinderIdle;
     public static Block copperGrinderActive;
+
     public static Block brassGrinderIdle;
     public static Block brassGrinderActive;
     public static Block brassFurnaceIdle;
@@ -58,11 +61,14 @@ public class ModBlocks {
     public static Block brassAlloyActive;
     public static Block brassCharger;
     public static Block brassBattery;
+
     public static Block brassSolarGenerator;
     public static Block brassGenerator;
     public static Block brassLavaGenerator;
+
     public static Block washer;
     public static Block cable;
+
     public static Block plasticLog;
     public static Block plasticLeaf;
     public static Block plasticSapling;
@@ -75,13 +81,18 @@ public class ModBlocks {
     public static Block plasticSlabDouble;
     public static Block plasticChest;
     public static Block plasticFence;
+
     public static Block plasticFenceGate;
     public static Block portableCobbleGen;
+
     public static Block bronzeSteamBoiler;
     public static Block bronzeFurnace;
     public static Block bronzeGrinderIdle;
     public static Block bronzeExtractor;
+    public static Block bronzeCharger;
+
     public static Block metalWalls;
+
     public static Block copperStairs;
     public static Block bronzeStairs;
     public static Block tinStairs;
@@ -89,6 +100,7 @@ public class ModBlocks {
     public static Block leadStairs;
     public static Block zincStairs;
     public static Block brassStairs;
+
     public static Block copperSlabHalf;
     public static Block copperSlabDouble;
     public static Block bronzeSlabHalf;
@@ -103,9 +115,12 @@ public class ModBlocks {
     public static Block zincSlabDouble;
     public static Block brassSlabHalf;
     public static Block brassSlabDouble;
+
     public static Block mineingPortal;
+
     public static Block well;
     public static Block woodenWellPipe;
+
     public static Block campFire;
 
     public static void mainRegistry() {
@@ -155,9 +170,10 @@ public class ModBlocks {
         portableCobbleGen = new BlockPortableCobbleGen();
 
         bronzeSteamBoiler = new BlockBronzeSteamBoiler();
-        bronzeFurnace = new BlockBronzeFurnace(false);
-        bronzeGrinderIdle = new BlockBronzeGrinder(false);
+        bronzeFurnace = new BlockBronzeFurnace();
+        bronzeGrinderIdle = new BlockBronzeGrinder();
         bronzeExtractor = new BlockBronzeExtractor();
+        bronzeCharger = new BlockBronzeCharger();
 
         //stairs
         copperStairs = new BlockCopperStairs(BlockMetals, Names.Blocks.COPPER_STAIRS);
@@ -233,6 +249,7 @@ public class ModBlocks {
         RegistryUtils.registerBlock(campFire);
         RegistryUtils.registerBlock(brassCharger);
         RegistryUtils.registerBlock(brassBattery);
+        RegistryUtils.registerBlock(bronzeCharger);
 
         ((BlockModSlab) copperSlabHalf).register();
         ((BlockModSlab) copperSlabDouble).register();
