@@ -16,5 +16,4 @@ public class LibResources {
     private static final String PREFIX_ENTRIES = PREFIX_GUI + "entries/";
 
     public static final String ENTRY_MACHINES = PREFIX_ENTRIES + "Machines.png";
-
 }

@@ -22,9 +22,6 @@ public class Names {
         public static final String BRASS_SOLAR_GEN = "brassSolarGenerator";
         public static final String BRASS_GENERATOR = "brassGenerator";
         public static final String BRASS_LAVA_GEN = "brassLavaGenerator";
-        public static final String GOLDOXIDE_GRINDER = "goldOxideGrinder";
-        public static final String GOLDOXIDE_FURNACE = "goldOxideFurnace";
-        public static final String GOLDOXIDE_ALLOY = "goldOxideAlloy";
         public static final String WASHER = "Washer";
         public static final String CABLE = "cable";
         public static final String[] ORES = new String[]{"oreCopper", "oreTin", "oreSilver", "oreLead", "oreZinc"};
