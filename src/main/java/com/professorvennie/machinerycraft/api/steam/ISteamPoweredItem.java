@@ -9,9 +9,11 @@ public interface ISteamPoweredItem {
 
     public int getSteamCapacity();
 
-    public void setCapacity(int capacity);
-
     public void receiveSteam(ItemStack itemStack, int amount);
 
     public void extractSteam(ItemStack itemStack, int amount);
+
+    public boolean canExtract();
+
+    public boolean canReceive();
 }

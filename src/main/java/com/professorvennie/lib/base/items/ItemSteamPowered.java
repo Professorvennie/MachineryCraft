@@ -1,6 +1,6 @@
 package com.professorvennie.lib.base.items;
 
-import com.professorvennie.machinerycraft.api.item.IPowerdItem;
+import com.professorvennie.machinerycraft.api.steam.ISteamPoweredItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,26 +14,22 @@ import org.lwjgl.input.Keyboard;
 import java.util.List;
 
 /**
- * Created by ProfessorVennie on 9/23/2014 at 4:45 PM.
+ * Created by ProfessorVennie on 10/3/2014 at 9:53 PM.
  */
-public class ItemPowered extends ItemBase implements IPowerdItem {
+public class ItemSteamPowered extends ItemBase implements ISteamPoweredItem {
 
     private int capacity;
-    private boolean canExtract = true, canReceive = true;
+    private boolean canExtract = true, canReceive;
 
-    public ItemPowered(String name, int capacity) {
+    public ItemSteamPowered(String name, int capacity) {
         super(name);
+        this.hasSubtypes = true;
         this.capacity = capacity;
-        hasSubtypes = true;
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean b) {
-        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-            list.add(itemStack.stackTagCompound.getInteger("Power") + "/" + capacity + " Jewels");
-        } else
-            list.add("Hold " + EnumChatFormatting.BLUE + "Shift" + EnumChatFormatting.GRAY + " for more information");
+    public int getSteamCapacity() {
+        return capacity;
     }
 
     @Override
@@ -41,16 +37,30 @@ public class ItemPowered extends ItemBase implements IPowerdItem {
         ItemStack zero = new ItemStack(item, 1, 1);
         if (zero.stackTagCompound == null) {
             zero.setTagCompound(new NBTTagCompound());
-            zero.stackTagCompound.setInteger("Power", 0);
+            zero.stackTagCompound.setInteger("Steam", 0);
         }
         list.add(zero);
 
         ItemStack full = new ItemStack(item, 1, capacity);
         if (full.stackTagCompound == null) {
             full.setTagCompound(new NBTTagCompound());
-            full.stackTagCompound.setInteger("Power", capacity);
+            full.stackTagCompound.setInteger("Steam", capacity);
         }
         list.add(full);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean b) {
+        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+            list.add(itemStack.stackTagCompound.getInteger("Steam") + "/" + capacity + " mb");
+        } else
+            list.add("Hold " + EnumChatFormatting.BLUE + "Shift" + EnumChatFormatting.GRAY + " for more information");
+    }
+
+    public Item setCapacity(int capacity) {
+        this.capacity = capacity;
+        return this;
     }
 
     @Override
@@ -62,7 +72,7 @@ public class ItemPowered extends ItemBase implements IPowerdItem {
     public int getDisplayDamage(ItemStack stack) {
         if (stack.stackTagCompound == null) return 1 + capacity;
 
-        return 1 + capacity - stack.stackTagCompound.getInteger("Power");
+        return 1 + capacity - stack.stackTagCompound.getInteger("Steam");
     }
 
     @Override
@@ -71,8 +81,13 @@ public class ItemPowered extends ItemBase implements IPowerdItem {
     }
 
     @Override
-    public int getCapacity() {
-        return capacity;
+    public void receiveSteam(ItemStack itemStack, int amount) {
+
+    }
+
+    @Override
+    public void extractSteam(ItemStack itemStack, int amount) {
+
     }
 
     @Override
@@ -85,18 +100,13 @@ public class ItemPowered extends ItemBase implements IPowerdItem {
         return canReceive;
     }
 
-    @Override
-    public void transferPower() {
-
+    public Item setCanReceive(boolean canReceive) {
+        this.canReceive = canReceive;
+        return this;
     }
 
     public Item setCanExtract(boolean canExtract) {
         this.canExtract = canExtract;
-        return this;
-    }
-
-    public Item setCanReceive(boolean canReceive) {
-        this.canReceive = canReceive;
         return this;
     }
 }

@@ -6,4 +6,10 @@ package com.professorvennie.machinerycraft.api.item;
 public interface IPowerdItem {
 
     public int getCapacity();
+
+    public boolean canExtract();
+
+    public boolean canReceive();
+
+    public void transferPower();
 }

@@ -10,6 +10,7 @@
 package com.professorvennie.machinerycraft.items;
 
 import com.professorvennie.lib.base.items.ItemPowered;
+import com.professorvennie.lib.base.items.ItemSteamPowered;
 import com.professorvennie.lib.base.items.ItemUpgrade;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.items.armor.ItemBrassArmor;
@@ -55,6 +56,8 @@ public class ModItems {
     public static Item emeraldpants;
     public static Item emeraldboots;
 
+    public static Item test;
+
     public static void mainRegistry() {
         InitialiseItem();
         ModTools.mainRegistry();
@@ -77,6 +80,8 @@ public class ModItems {
         powerboost = new ItemUpgrade(Names.Items.POWERBOOST, 1).setPowerBoost(2);
         efficiency = new ItemUpgrade(Names.Items.EFFICIENCY, 2).setFuelEff(2);
         ejectorUpgrade = new ItemUpgrade(Names.Items.EJECTOR, 1).setEjectorUpgrade(true);
+
+        test = new ItemSteamPowered("test", 10000);
 
         batteryTier1 = new ItemPowered(Names.Items.BATTERY_TIER_1, 10000);
         batteryTier2 = new ItemPowered(Names.Items.BATTERY_TIER_2, 50000);
