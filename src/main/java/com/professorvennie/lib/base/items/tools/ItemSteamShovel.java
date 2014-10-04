@@ -9,7 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
@@ -20,13 +20,13 @@ import org.lwjgl.input.Keyboard;
 import java.util.List;
 
 /**
- * Created by ProfessorVennie on 10/4/2014 at 11:33 AM.
+ * Created by ProfessorVennie on 10/4/2014 at 12:28 PM.
  */
-public class ItemSteamPick extends ItemPickaxe implements ISteamPoweredItem {
+public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
 
     private int capacity, steamPerUse;
 
-    public ItemSteamPick(String name, int capacity, int steamPerUse) {
+    public ItemSteamShovel(String name, int capacity, int steamPerUse) {
         super(EnumHelper.addToolMaterial("Steam", 3, 2, 14.0f, 4.0f, 10));
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
