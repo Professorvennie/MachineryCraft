@@ -11,12 +11,12 @@ import net.minecraft.inventory.Slot;
 /**
  * Created by ProfessorVennie on 10/4/2014 at 5:47 PM.
  */
-public class ContainerCharger extends Container {
+public class ContainerBronzeCharger extends Container {
 
     public int lastTankAmount;
     private TileEntityBronzeCharger tile;
 
-    public ContainerCharger(InventoryPlayer inventory, TileEntityBronzeCharger tile) {
+    public ContainerBronzeCharger(InventoryPlayer inventory, TileEntityBronzeCharger tile) {
         this.tile = tile;
 
         addSlotToContainer(new Slot(tile, 0, 33, 9));
