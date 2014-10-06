@@ -219,6 +219,14 @@ zincSlab.name=Zinc Slab
 brassSlab.name=Brass Slab
 bronzeSlab.name=Bronze Slab
 
+#-Achievements Localizations
+achievement.copperFurnace=Even Hotter Topic
+achievement.copperFurnace.desc=Craft a Copper Furnace
+achievement.copperGrinder=Double Madness
+achievement.copperGrinder.desc=Craft a Copper Grinder
+achievement.bronzeSteamBoiler=Steam!!!
+achievement.bronzeSteamBoiler.desc=Craft a Bronze SteamBoiler
+
 #-Manual Localizations
 mc.book.header=
 mc.book.shiftToRead=Shift-right click to read more

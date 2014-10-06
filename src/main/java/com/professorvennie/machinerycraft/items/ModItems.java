@@ -78,9 +78,9 @@ public class ModItems {
         efficiency = new ItemUpgrade(Names.Items.EFFICIENCY, 2).setFuelEff(2);
         ejectorUpgrade = new ItemUpgrade(Names.Items.EJECTOR, 1).setEjectorUpgrade(true);
 
-        batteryTier1 = new ItemPowered(Names.Items.BATTERY_TIER_1, 10000);
-        batteryTier2 = new ItemPowered(Names.Items.BATTERY_TIER_2, 50000);
-        batteryTier3 = new ItemPowered(Names.Items.BATTERY_TIER_3, 100000);
+        batteryTier1 = new ItemPowered(Names.Items.BATTERY_TIER_1, 10000).setMaxStackSize(1);
+        batteryTier2 = new ItemPowered(Names.Items.BATTERY_TIER_2, 50000).setMaxStackSize(1);
+        batteryTier3 = new ItemPowered(Names.Items.BATTERY_TIER_3, 100000).setMaxStackSize(1);
 
         zincHemlent = new ItemZincArmor(0, "zincHelment");
         zincChest = new ItemZincArmor(1, "zincChestPlate");

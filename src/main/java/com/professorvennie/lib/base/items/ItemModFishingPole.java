@@ -63,17 +63,11 @@ public class ItemModFishingPole extends ItemFishingRod {
     public IIcon getIcon(ItemStack stack, int pass) {
         EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 
-        if(player.inventory.getCurrentItem() == stack && player.fishEntity != null){
+        if (player.inventory.getCurrentItem() == stack && player.fishEntity != null) {
             return cast;
         }
         return itemIcon;
     }
-
-/*    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon func_94597_g() {
-        return cast;
-    }*/
 
     @Override
     public int getItemEnchantability() {

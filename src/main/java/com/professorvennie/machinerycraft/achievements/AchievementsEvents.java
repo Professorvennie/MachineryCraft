@@ -9,13 +9,22 @@
  * */
 package com.professorvennie.machinerycraft.achievements;
 
+import com.professorvennie.machinerycraft.block.ModBlocks;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
+import net.minecraft.item.Item;
 
 public class AchievementsEvents {
 
     @SubscribeEvent
     public void whenCrafted(PlayerEvent.ItemCraftedEvent e) {
-
+        if (e.crafting.getItem() != null) {
+            if (e.crafting.getItem() == Item.getItemFromBlock(ModBlocks.copperFurnaceIdle))
+                e.player.addStat(ModAchievements.copperFurnace, 1);
+            if (e.crafting.getItem() == Item.getItemFromBlock(ModBlocks.copperGrinderIdle))
+                e.player.addStat(ModAchievements.copperGrinder, 1);
+            if (e.crafting.getItem() == Item.getItemFromBlock(ModBlocks.bronzeSteamBoiler))
+                e.player.addStat(ModAchievements.bronzeSteamBoiler, 1);
+        }
     }
 }
