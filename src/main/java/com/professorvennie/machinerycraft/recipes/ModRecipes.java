@@ -33,6 +33,7 @@ public class ModRecipes {
     public static IRecipe recipeCopperFurnace;
     public static IRecipe recipeCopperGrinder;
     public static IRecipe recipePortableCobbleGen;
+    public static IRecipe bronzeSteamBoiler;
     //tools
     public static IRecipe recipeZincPickaxe;
     public static IRecipe recipeZincAxe;
@@ -112,6 +113,9 @@ public class ModRecipes {
 
         addOreDictRecipe(new ItemStack(ModBlocks.portableCobbleGen), "CCC", "CSC", "CGC", 'C', Blocks.cobblestone, 'S', new ItemStack(ModItems.gears, 1, 1), 'G', new ItemStack(ModItems.gears, 1, 0));
         recipePortableCobbleGen = MachineryCraftAPI.getLatestAddedRecipe();
+
+        addOreDictRecipe(new ItemStack(ModBlocks.bronzeSteamBoiler), "III", "BFB", "IGI", 'I', "ingotBronze", 'B', Items.bucket, 'F', Blocks.furnace, 'G', new ItemStack(ModItems.gears, 1, 5));
+        bronzeSteamBoiler = MachineryCraftAPI.getLatestAddedRecipe();
 
         //bags
         addOreDictRecipe(new ItemStack(ModItems.bags, 1, 0), " W ", "WCW", "WGW", 'W', Blocks.planks, 'C', Blocks.chest, 'G', new ItemStack(ModItems.gears, 1, 0));

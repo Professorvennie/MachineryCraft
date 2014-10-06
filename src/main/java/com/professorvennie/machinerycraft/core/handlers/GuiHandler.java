@@ -37,6 +37,9 @@ import com.professorvennie.machinerycraft.machines.brass.furnace.TileEntityBrass
 import com.professorvennie.machinerycraft.machines.brass.grinder.ContainerBrassGrinder;
 import com.professorvennie.machinerycraft.machines.brass.grinder.GuiBrassGrinder;
 import com.professorvennie.machinerycraft.machines.brass.grinder.TileEntityBrassGrinder;
+import com.professorvennie.machinerycraft.machines.bronze.alloy.ContainerBronzeAlloy;
+import com.professorvennie.machinerycraft.machines.bronze.alloy.GuiBronzeAlloy;
+import com.professorvennie.machinerycraft.machines.bronze.alloy.TileEntityBronzeAlloy;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.ContainerBronzeSteamBoiler;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.GuiBronzeSteamBoiler;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.TileEntityBronzeSteamBoiler;
@@ -154,6 +157,11 @@ public class GuiHandler implements IGuiHandler {
                 if (entity instanceof TileEntityBronzeCharger) {
                     return new ContainerBronzeCharger(player.inventory, (TileEntityBronzeCharger) entity);
                 }
+
+            case LibGuiIds.BRONZE_ALLOY:
+                if (entity instanceof TileEntityBronzeAlloy) {
+                    return new ContainerBronzeAlloy(player.inventory, (TileEntityBronzeAlloy) entity);
+                }
         }
         return null;
     }
@@ -261,6 +269,11 @@ public class GuiHandler implements IGuiHandler {
             case LibGuiIds.BRONZE_CHARGER:
                 if (entity instanceof TileEntityBronzeCharger) {
                     return new GuiBronzeCharger(player.inventory, (TileEntityBronzeCharger) entity);
+                }
+
+            case LibGuiIds.BRONZE_ALLOY:
+                if (entity instanceof TileEntityBronzeAlloy) {
+                    return new GuiBronzeAlloy(player.inventory, (TileEntityBronzeAlloy) entity);
                 }
         }
         return null;

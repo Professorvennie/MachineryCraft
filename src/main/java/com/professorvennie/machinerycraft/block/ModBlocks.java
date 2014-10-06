@@ -28,6 +28,7 @@ import com.professorvennie.machinerycraft.machines.brass.generators.combustion.B
 import com.professorvennie.machinerycraft.machines.brass.generators.lava.BlockBrassLavaGenerator;
 import com.professorvennie.machinerycraft.machines.brass.generators.solar.BlockBrassSolarGenerator;
 import com.professorvennie.machinerycraft.machines.brass.grinder.BlockBrassGrinder;
+import com.professorvennie.machinerycraft.machines.bronze.alloy.BlockBronzeAlloy;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.BlockBronzeSteamBoiler;
 import com.professorvennie.machinerycraft.machines.bronze.charger.BlockBronzeCharger;
 import com.professorvennie.machinerycraft.machines.bronze.extractor.BlockBronzeExtractor;
@@ -90,6 +91,7 @@ public class ModBlocks {
     public static Block bronzeGrinderIdle;
     public static Block bronzeExtractor;
     public static Block bronzeCharger;
+    public static Block bronzeAlloy;
 
     public static Block metalWalls;
 
@@ -174,6 +176,7 @@ public class ModBlocks {
         bronzeGrinderIdle = new BlockBronzeGrinder();
         bronzeExtractor = new BlockBronzeExtractor();
         bronzeCharger = new BlockBronzeCharger();
+        bronzeAlloy = new BlockBronzeAlloy();
 
         //stairs
         copperStairs = new BlockCopperStairs(BlockMetals, Names.Blocks.COPPER_STAIRS);
@@ -250,6 +253,7 @@ public class ModBlocks {
         RegistryUtils.registerBlock(brassCharger);
         RegistryUtils.registerBlock(brassBattery);
         RegistryUtils.registerBlock(bronzeCharger);
+        RegistryUtils.registerBlock(bronzeAlloy);
 
         ((BlockModSlab) copperSlabHalf).register();
         ((BlockModSlab) copperSlabDouble).register();

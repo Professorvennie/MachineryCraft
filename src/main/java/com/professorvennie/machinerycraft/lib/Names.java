@@ -42,6 +42,7 @@ public class Names {
         public static final String BRONZE_STEAM_BOILER = "bronzeSteamBoiler";
         public static final String BRONZE_EXTRACTOR = "bronzeExtractor";
         public static final String BRONZE_CHARGER = "bronzeCharger";
+        public static final String BRONZE_ALLOY = "bronzeAlloy";
         public static final String PLASTIC_FENCE = "plasticFence";
         public static final String PLASTIC_FENCE_GATE = "plasticFenceGate";
         public static final String BRASS_CHARGER = "brassCharger";
@@ -140,6 +141,7 @@ public class Names {
         public static final String BRONZE_GRINDER = CONTAINER_BASE + "bronzeGrinder";
         public static final String BRONZE_EXTRACTOR = CONTAINER_BASE + "bronzeExtractor";
         public static final String BRONZE_CHARGER = CONTAINER_BASE + "bronzeCharger";
+        public static final String BRONZE_ALLOY = CONTAINER_BASE + "bronzeAlloy";
         public static final String CONTAINER_BRASS_LAVA_GEN = CONTAINER_BASE + "brassLavaGen";
         public static final String CONTAINER_BRASS_GENERATOR = CONTAINER_BASE + "brassGenerator";
         public static final String WELL = CONTAINER_BASE + "well";

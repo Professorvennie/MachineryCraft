@@ -32,4 +32,5 @@ public class LibGuiIds {
     public static final int CAMPFIRE = 18;
     public static final int BRASS_CHARGER = 19;
     public static final int BRONZE_CHARGER = 20;
+    public static final int BRONZE_ALLOY = 21;
 }
