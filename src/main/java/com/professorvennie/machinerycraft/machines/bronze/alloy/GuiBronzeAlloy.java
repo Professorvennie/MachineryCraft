@@ -16,6 +16,6 @@ public class GuiBronzeAlloy extends GuiBase {
         super(new ContainerBronzeAlloy(inventory, tile), tile);
         this.tile = tile;
 
-        backGround = new ResourceLocation(Reference.MOD_ID, "textures/gui/BronzeAlloy");
+        backGround = new ResourceLocation(Reference.MOD_ID, "textures/gui/BronzeAlloy.png");
     }
 }

@@ -8,12 +8,23 @@ import com.professorvennie.machinerycraft.machines.bronze.TileEntityBasicSteamMa
  */
 public class TileEntityBronzeAlloy extends TileEntityBasicSteamMachine {
 
+    public int cookTime;
+
     public TileEntityBronzeAlloy() {
         super(Names.Containers.BRONZE_ALLOY);
+        setMachineSpeed(50);
+    }
+
+    @Override
+    public int getSizeInventory() {
+        return 5;
     }
 
     @Override
     public void updateEntity() {
         super.updateEntity();
+        if (!worldObj.isRemote) {
+
+        }
     }
 }

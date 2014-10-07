@@ -9,6 +9,24 @@
  * */
 package com.professorvennie.machinerycraft.api.recipes;
 
+import net.minecraft.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class AlloyRecipes {
 
+    public static List<AlloyRecipe> recipes = new ArrayList<AlloyRecipe>();
+
+    public static void addRecipe(ItemStack[] recipe, ItemStack output) {
+        recipes.add(new AlloyRecipe(recipe, output));
+    }
+
+    public static ItemStack getresoult(ItemStack[] recipe) {
+        for (AlloyRecipe r : recipes) {
+            if (r.doesRecipeMatch(recipe))
+                return (r.getOutput());
+        }
+        return null;
+    }
 }
