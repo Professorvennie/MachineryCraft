@@ -10,17 +10,13 @@
 package com.professorvennie.lib.base.items.armor;
 
 import com.professorvennie.machinerycraft.api.steam.ISteamPoweredItem;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.ISpecialArmor;
 
 /**
  * Created by ProfessorVennie on 10/4/2014 at 11:30 AM.
  */
-public class ItemSteamArmor extends ItemArmor implements ISpecialArmor, ISteamPoweredItem {
+public class ItemSteamArmor extends ItemArmor implements /*ISpecialArmor, */ISteamPoweredItem {
 
     private int capacity;
 
@@ -29,7 +25,7 @@ public class ItemSteamArmor extends ItemArmor implements ISpecialArmor, ISteamPo
         this.capacity = capacity;
     }
 
-    @Override
+    /*@Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
         return null;
     }
@@ -42,7 +38,7 @@ public class ItemSteamArmor extends ItemArmor implements ISpecialArmor, ISteamPo
     @Override
     public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 
-    }
+    }*/
 
     @Override
     public int getSteamCapacity() {

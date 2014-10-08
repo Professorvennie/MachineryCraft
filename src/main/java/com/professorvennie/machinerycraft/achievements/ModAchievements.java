@@ -13,7 +13,6 @@ package com.professorvennie.machinerycraft.achievements;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
-import net.minecraftforge.common.AchievementPage;
 
 public class ModAchievements {
 
@@ -26,12 +25,14 @@ public class ModAchievements {
 
     public static void registerAchievements() {
 
-        copperFurnace = new Achievement("achievement.copperFurnace", "copperFurnace", 0, 0, ModBlocks.copperFurnaceActive, AchievementList.buildFurnace).registerStat();
-        copperGrinder = new Achievement("achievement.copperGrinder", "copperGrinder", 1, 1, ModBlocks.copperGrinderActive, copperFurnace).registerStat();
+        copperFurnace = new Achievement("achievement.copperFurnace", "copperFurnace", 0, 0, ModBlocks.copperFurnaceActive, AchievementList.buildFurnace);
+        copperFurnace.registerStat();
+        copperGrinder = new Achievement("achievement.copperGrinder", "copperGrinder", 1, 1, ModBlocks.copperGrinderActive, copperFurnace);
+        copperGrinder.registerStat();
 
-        bronzeSteamBoiler = new Achievement("achievement.bronzeSteamBoiler", "bronzeSteamBoiler", 2, 2, ModBlocks.bronzeSteamBoiler, copperGrinder).registerStat();
-
+        bronzeSteamBoiler = new Achievement("achievement.bronzeSteamBoiler", "bronzeSteamBoiler", 2, 2, ModBlocks.bronzeSteamBoiler, copperGrinder);
+        bronzeSteamBoiler.registerStat();
         //page = new AchievementPage("MachineryCraft", copperFurnace, copperGrinder, bronzeSteamBoiler);
-        AchievementPage.registerAchievementPage(new AchievementPage("MachineryCraft", new Achievement[]{copperFurnace, copperGrinder, bronzeSteamBoiler}));
+        //AchievementPage.registerAchievementPage(new AchievementPage("MachineryCraft", new Achievement[]{copperFurnace, copperGrinder, bronzeSteamBoiler}));
     }
 }

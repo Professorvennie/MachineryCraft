@@ -14,27 +14,27 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityMod extends TileEntity {
 
-    protected ForgeDirection orientation;
+    protected EnumFacing orientation;
     protected String customName;
 
     public TileEntityMod() {
-        orientation = ForgeDirection.SOUTH;
+        orientation = EnumFacing.SOUTH;
         customName = "";
     }
 
-    public ForgeDirection getOrientation() {
+    public EnumFacing getOrientation() {
         return orientation;
     }
 
-    public void setOrientation(int orientation) {
+    /*public void setOrientation(int orientation) {
         this.orientation = ForgeDirection.getOrientation(orientation);
-    }
+    }*/
 
-    public void setOrientation(ForgeDirection orientation) {
+    public void setOrientation(EnumFacing orientation) {
         this.orientation = orientation;
     }
 
@@ -50,9 +50,9 @@ public class TileEntityMod extends TileEntity {
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
 
-        if (nbtTagCompound.hasKey("direction")) {
-            this.orientation = ForgeDirection.getOrientation(nbtTagCompound.getByte("direction"));
-        }
+        /*if (nbtTagCompound.hasKey("direction")) {
+            this.orientation = EnumFacing.getOrientation(nbtTagCompound.getByte("direction"));
+        }*/
 
         if (nbtTagCompound.hasKey("customName")) {
             this.customName = nbtTagCompound.getString("customName");
@@ -65,25 +65,19 @@ public class TileEntityMod extends TileEntity {
 
         nbtTagCompound.setByte("direction", (byte) orientation.ordinal());
 
-        if (this.hasCustomName()) {
+        if (this.hasCustomInvName()) {
             nbtTagCompound.setString("customName", customName);
         }
     }
 
-    public boolean hasCustomName() {
+    public boolean hasCustomInvName() {
         return customName != null && customName.length() > 0;
     }
-
 
     @Override
     public Packet getDescriptionPacket() {
         NBTTagCompound tileTag = new NBTTagCompound();
         this.writeToNBT(tileTag);
-        return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 0, tileTag);
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-        this.readFromNBT(pkt.func_148857_g());
+        return new S35PacketUpdateTileEntity(pos, 0, tileTag);
     }
 }

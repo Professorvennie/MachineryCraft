@@ -15,12 +15,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.ISpecialArmor;
 
 /**
  * Created by ProfessorVennie on 10/4/2014 at 11:32 AM.
  */
-public class ItemPoweredArmor extends ItemArmor implements ISpecialArmor, IPowerdItem {
+public class ItemPoweredArmor extends ItemArmor implements /*ISpecialArmor, */IPowerdItem {
 
     private int capacity;
 
@@ -49,7 +48,7 @@ public class ItemPoweredArmor extends ItemArmor implements ISpecialArmor, IPower
 
     }
 
-    @Override
+    /*@Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
         return null;
     }
@@ -62,5 +61,5 @@ public class ItemPoweredArmor extends ItemArmor implements ISpecialArmor, IPower
     @Override
     public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 
-    }
+    }*/
 }

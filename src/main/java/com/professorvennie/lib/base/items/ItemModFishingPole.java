@@ -3,14 +3,10 @@ package com.professorvennie.lib.base.items;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.entitys.EntityMCFishHook;
 import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 /**
@@ -20,9 +16,6 @@ public class ItemModFishingPole extends ItemFishingRod {
 
     private ToolMaterial toolMaterial;
     private String name;
-
-    @SideOnly(Side.CLIENT)
-    private IIcon cast;
 
     public ItemModFishingPole(ToolMaterial toolMaterial, String name) {
         this.toolMaterial = toolMaterial;
@@ -36,7 +29,7 @@ public class ItemModFishingPole extends ItemFishingRod {
     @Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
         if (player.fishEntity != null) {
-            int i = player.fishEntity.func_146034_e();
+            int i = player.fishEntity.handleHookRetraction();
             itemStack.damageItem(i, player);
             player.swingItem();
         } else {
@@ -49,24 +42,6 @@ public class ItemModFishingPole extends ItemFishingRod {
         }
 
         return itemStack;
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister) {
-        itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + name + "_cast");
-        cast = iconRegister.registerIcon(Reference.MOD_ID + ":" + name + "_unCast");
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(ItemStack stack, int pass) {
-        EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-
-        if (player.inventory.getCurrentItem() == stack && player.fishEntity != null) {
-            return cast;
-        }
-        return itemIcon;
     }
 
     @Override

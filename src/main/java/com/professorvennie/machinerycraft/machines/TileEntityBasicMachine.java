@@ -55,8 +55,7 @@ public class TileEntityBasicMachine extends TileEntityBasicSidedInventory implem
                 break;
         }
 
-        if (getSizeInventory() > 0)
-            checkUpgrades();
+        checkUpgrades();
     }
 
     public void checkUpgrades() {

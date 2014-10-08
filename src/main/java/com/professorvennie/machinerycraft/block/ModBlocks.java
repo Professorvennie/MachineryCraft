@@ -28,8 +28,6 @@ import com.professorvennie.machinerycraft.machines.brass.generators.combustion.B
 import com.professorvennie.machinerycraft.machines.brass.generators.lava.BlockBrassLavaGenerator;
 import com.professorvennie.machinerycraft.machines.brass.generators.solar.BlockBrassSolarGenerator;
 import com.professorvennie.machinerycraft.machines.brass.grinder.BlockBrassGrinder;
-import com.professorvennie.machinerycraft.machines.brass.power.BlockPowerReceiver;
-import com.professorvennie.machinerycraft.machines.brass.power.BlockPowerTransmitter;
 import com.professorvennie.machinerycraft.machines.bronze.alloy.BlockBronzeAlloy;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.BlockBronzeSteamBoiler;
 import com.professorvennie.machinerycraft.machines.bronze.charger.BlockBronzeCharger;
@@ -64,8 +62,6 @@ public class ModBlocks {
     public static Block brassAlloyActive;
     public static Block brassCharger;
     public static Block brassBattery;
-    public static Block powerTansmitter;
-    public static Block powerReciever;
 
     public static Block brassSolarGenerator;
     public static Block brassGenerator;
@@ -156,8 +152,6 @@ public class ModBlocks {
         brassLavaGenerator = new BlockBrassLavaGenerator();
         brassCharger = new BlockBrassCharger();
         brassBattery = new BlockBrassBattery();
-        powerTansmitter = new BlockPowerTransmitter();
-        powerReciever = new BlockPowerReceiver();
 
         washer = new BlockWasher();
         cable = new BlockCable();
@@ -260,8 +254,6 @@ public class ModBlocks {
         RegistryUtils.registerBlock(brassBattery);
         RegistryUtils.registerBlock(bronzeCharger);
         RegistryUtils.registerBlock(bronzeAlloy);
-        RegistryUtils.registerBlock(powerTansmitter);
-        RegistryUtils.registerBlock(powerReciever);
 
         ((BlockModSlab) copperSlabHalf).register();
         ((BlockModSlab) copperSlabDouble).register();

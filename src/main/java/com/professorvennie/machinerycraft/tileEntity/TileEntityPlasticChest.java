@@ -119,12 +119,12 @@ public class TileEntityPlasticChest extends TileEntityMod implements IInventory 
 
     @Override
     public String getInventoryName() {
-        return this.hasCustomName() ? this.getCustomName() : Names.Containers.CONTAINER_PLASTIC_CHEST;
+        return this.hasCustomInvName() ? this.getCustomName() : Names.Containers.CONTAINER_PLASTIC_CHEST;
     }
 
     @Override
     public boolean hasCustomInventoryName() {
-        return hasCustomName();
+        return hasCustomInvName();
     }
 
     @Override

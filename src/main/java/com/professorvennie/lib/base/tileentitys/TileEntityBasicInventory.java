@@ -6,7 +6,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.common.util.Constants;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 
 /**
  * Created by ProfessorVennie on 9/7/2014 at 12:32 PM.
@@ -53,7 +54,7 @@ public class TileEntityBasicInventory extends TileEntityMod implements IInventor
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
 
-        NBTTagList list = nbtTagCompound.getTagList("items", Constants.NBT.TAG_COMPOUND);
+        NBTTagList list = nbtTagCompound.getTagList("items", 10);
         this.inventory = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < list.tagCount(); i++) {
@@ -103,13 +104,18 @@ public class TileEntityBasicInventory extends TileEntityMod implements IInventor
     }
 
     @Override
-    public String getInventoryName() {
-        return this.hasCustomName() ? this.getCustomName() : name;
+    public String getName() {
+        return this.hasCustomInvName() ? this.getCustomName() : name;
     }
 
     @Override
-    public boolean hasCustomInventoryName() {
-        return hasCustomName();
+    public boolean hasCustomName() {
+        return hasCustomInvName();
+    }
+
+    @Override
+    public IChatComponent getDisplayName() {
+        return new ChatComponentText(name);
     }
 
     @Override
@@ -119,19 +125,41 @@ public class TileEntityBasicInventory extends TileEntityMod implements IInventor
 
     @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
-        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64D;
+        return this.worldObj.getTileEntity(pos) != this ? false : player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64D;
     }
 
     @Override
-    public void openInventory() {
+    public void openInventory(EntityPlayer player) {
     }
 
     @Override
-    public void closeInventory() {
+    public void closeInventory(EntityPlayer playerIn) {
+
     }
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
         return false;
+    }
+
+    @Override
+    public int getField(int id) {
+        return 0;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+
+    }
+
+    @Override
+    public int getFieldCount() {
+        return 0;
+    }
+
+    @Override
+    public void clearInventory() {
+        for(int i = 0; i < getSizeInventory(); i++)
+            inventory[i] = null;
     }
 }

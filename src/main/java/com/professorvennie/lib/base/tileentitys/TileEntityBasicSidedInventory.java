@@ -6,7 +6,9 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.common.util.Constants;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
 
 /**
  * Created by ProfessorVennie on 9/5/2014 at 4:26 PM.
@@ -24,17 +26,17 @@ public class TileEntityBasicSidedInventory extends TileEntityMod implements ISid
     }
 
     @Override
-    public int[] getAccessibleSlotsFromSide(int side) {
-        return side == 0 ? slots_bottom : (side == 1 ? slots_top : slots_sides);
+    public int[] getSlotsForFace(EnumFacing side) {
+        return side == EnumFacing.DOWN ? slots_bottom : (side == EnumFacing.UP ? slots_top : slots_sides);
     }
 
     @Override
-    public boolean canInsertItem(int var1, ItemStack itemStack, int i2) {
+    public boolean canInsertItem(int var1, ItemStack itemStack, EnumFacing direction) {
         return isItemValidForSlot(var1, itemStack);
     }
 
     @Override
-    public boolean canExtractItem(int i, ItemStack itemStack, int i2) {
+    public boolean canExtractItem(int slotId, ItemStack stack, EnumFacing direction) {
         return false;
     }
 
@@ -71,7 +73,7 @@ public class TileEntityBasicSidedInventory extends TileEntityMod implements ISid
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
 
-        NBTTagList list = nbtTagCompound.getTagList("items", Constants.NBT.TAG_COMPOUND);
+        NBTTagList list = nbtTagCompound.getTagList("items", 10);
         this.inventory = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < list.tagCount(); i++) {
@@ -121,13 +123,18 @@ public class TileEntityBasicSidedInventory extends TileEntityMod implements ISid
     }
 
     @Override
-    public String getInventoryName() {
-        return this.hasCustomName() ? this.getCustomName() : name;
+    public String getName() {
+        return this.hasCustomInvName() ? this.getCustomName() : name;
     }
 
     @Override
-    public boolean hasCustomInventoryName() {
-        return hasCustomName();
+    public boolean hasCustomName() {
+        return hasCustomInvName();
+    }
+
+    @Override
+    public IChatComponent getDisplayName() {
+        return new ChatComponentText(name);
     }
 
     @Override
@@ -137,19 +144,40 @@ public class TileEntityBasicSidedInventory extends TileEntityMod implements ISid
 
     @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
-        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64D;
+        return this.worldObj.getTileEntity(pos) != this ? false : player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64D;
     }
 
     @Override
-    public void openInventory() {
+    public void openInventory(EntityPlayer player) {
     }
 
     @Override
-    public void closeInventory() {
+    public void closeInventory(EntityPlayer player) {
     }
 
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemStack) {
         return true;
+    }
+
+    @Override
+    public int getField(int id) {
+        return 0;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+
+    }
+
+    @Override
+    public int getFieldCount() {
+        return 0;
+    }
+
+    @Override
+    public void clearInventory() {
+        for(int i = 0; i < getSizeInventory(); i++)
+            inventory[i] = null;
     }
 }

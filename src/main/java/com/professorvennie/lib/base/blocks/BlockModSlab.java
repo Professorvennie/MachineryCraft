@@ -2,11 +2,13 @@ package com.professorvennie.lib.base.blocks;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.items.itemblock.ItemModSlab;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
@@ -19,15 +21,15 @@ public abstract class BlockModSlab extends BlockSlab {
     private String name;
 
     public BlockModSlab(String name, boolean isFull) {
-        super(isFull, Material.gourd);
+        super(Material.gourd);
         this.isFull = isFull;
         this.name = name;
         useNeighborBrightness = true;
         if (!isFull) {
-            setBlockName(name + "Half");
+            setUnlocalizedName(name + "Half");
             setCreativeTab(MachineryCraft.tabMachineryCraft);
         } else
-            setBlockName(name + "Double");
+            setUnlocalizedName(name + "Double");
     }
 
     public void register() {
@@ -35,17 +37,12 @@ public abstract class BlockModSlab extends BlockSlab {
     }
 
     @Override
-    public String func_150002_b(int p_150002_1_) {
-        return name;
-    }
-
-    @Override
-    public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
+    public Item getItem(World worldIn, BlockPos pos) {
         return Item.getItemFromBlock(getBlockHalf());
     }
 
     @Override
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(getBlockHalf());
     }
 

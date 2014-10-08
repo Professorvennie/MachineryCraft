@@ -10,9 +10,9 @@
 package com.professorvennie.machinerycraft.achievements;
 
 import com.professorvennie.machinerycraft.block.ModBlocks;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 public class AchievementsEvents {
 

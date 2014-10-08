@@ -1,14 +1,14 @@
 package com.professorvennie.lib.base.items;
 
 import com.professorvennie.machinerycraft.api.item.IPowerdItem;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class ItemPowered extends ItemBase implements IPowerdItem {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean b) {
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-            list.add(itemStack.stackTagCompound.getInteger("Power") + "/" + capacity + " Jewels");
+            list.add(itemStack.getTagCompound().getInteger("Power") + "/" + capacity + " Jewels");
         } else
             list.add("Hold " + EnumChatFormatting.BLUE + "Shift" + EnumChatFormatting.GRAY + " for more information");
     }
@@ -39,34 +39,34 @@ public class ItemPowered extends ItemBase implements IPowerdItem {
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list) {
         ItemStack zero = new ItemStack(item, 1, 1);
-        if (zero.stackTagCompound == null) {
+        if (zero.getTagCompound() == null) {
             zero.setTagCompound(new NBTTagCompound());
-            zero.stackTagCompound.setInteger("Power", 0);
+            zero.getTagCompound().setInteger("Power", 0);
         }
         list.add(zero);
 
         ItemStack full = new ItemStack(item, 1, capacity);
-        if (full.stackTagCompound == null) {
+        if (full.getTagCompound() == null) {
             full.setTagCompound(new NBTTagCompound());
-            full.stackTagCompound.setInteger("Power", capacity);
+            full.getTagCompound().setInteger("Power", capacity);
         }
         list.add(full);
     }
 
     @Override
-    public int getMaxDamage(ItemStack stack) {
+    public int getMaxDamage() {
         return 1 + capacity;
     }
 
-    @Override
+   /* @Override
     public int getDisplayDamage(ItemStack stack) {
-        if (stack.stackTagCompound == null) return 1 + capacity;
+        if (stack.getTagCompound() == null) return 1 + capacity;
 
-        return 1 + capacity - stack.stackTagCompound.getInteger("Power");
-    }
+        return 1 + capacity - stack.getTagCompound().getInteger("Power");
+    }*/
 
     @Override
-    public boolean isDamaged(ItemStack stack) {
+    public boolean isDamageable() {
         return true;
     }
 

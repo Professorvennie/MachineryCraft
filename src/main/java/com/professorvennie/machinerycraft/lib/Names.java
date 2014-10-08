@@ -47,8 +47,6 @@ public class Names {
         public static final String PLASTIC_FENCE_GATE = "plasticFenceGate";
         public static final String BRASS_CHARGER = "brassCharger";
         public static final String BRASS_BATTERY = "brassBattery";
-        public static final String POWER_TRANSMITTER = "powerTransmitter";
-        public static final String POWER_RECEIVER = "powerReceiver";
 
         public static final String COPPER_STAIRS = "copperStair";
         public static final String BRONZE_STAIRS = "bronzeStair";
