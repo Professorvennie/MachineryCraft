@@ -11,12 +11,11 @@ package com.professorvennie.machinerycraft.client;
 
 import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
 /**
@@ -24,7 +23,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class EventHandlerClient {
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public void renderCustomArmor(RenderPlayerEvent.Specials.Post event) {
         for (ItemStack itemStack : event.entityPlayer.inventory.armorInventory) {
             if (itemStack != null) {
@@ -48,5 +47,5 @@ public class EventHandlerClient {
                 }
             }
         }
-    }
+    }*/
 }

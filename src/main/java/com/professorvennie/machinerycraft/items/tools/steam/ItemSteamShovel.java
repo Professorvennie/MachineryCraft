@@ -11,8 +11,6 @@ package com.professorvennie.machinerycraft.items.tools.steam;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.steam.ISteamPoweredItem;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,9 +19,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
     private int capacity, steamPerUse;
 
     public ItemSteamShovel(String name, int capacity, int steamPerUse) {
-        super(EnumHelper.addToolMaterial("SteamSpade", 3, 2, 14.0f, -1.0f, 10));
+        super(/*EnumHelper.addToolMaterial("SteamSpade", 3, 2, 14.0f, -1.0f, 10)*/ToolMaterial.EMERALD);
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
         this.capacity = capacity;
@@ -56,11 +56,11 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onBlockStartBreak(ItemStack itemStack, int X, int Y, int Z, EntityPlayer player) {
-        if (itemStack.stackTagCompound != null) {
-            if (itemStack.stackTagCompound.getInteger("Steam") > 0) {
-                if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
+        if (itemStack.getTagCompound() != null) {
+            if (itemStack.getTagCompound().getInteger("Steam") > 0) {
+                if (itemStack.getTagCompound().getInteger("Steam") - steamPerUse >= 0) {
                     return false;
                 } else
                     return true;
@@ -68,14 +68,14 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
                 return true;
         } else
             return true;
-    }
+    }*/
 
     @Override
-    public boolean onBlockDestroyed(ItemStack itemStack, World world, Block block, int x, int y, int z, EntityLivingBase entityLivingBase) {
-        if ((double) block.getBlockHardness(world, x, y, z) != 0.0D) {
-            if (itemStack.stackTagCompound != null) {
-                if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                    itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
+    public boolean onBlockDestroyed(ItemStack itemStack, World world, Block block, BlockPos pos, EntityLivingBase entityLivingBase) {
+        if ((double) block.getBlockHardness(world, pos) != 0.0D) {
+            if (itemStack.getTagCompound() != null) {
+                if (itemStack.getTagCompound().getInteger("Steam") - steamPerUse >= 0) {
+                    itemStack.getTagCompound().setInteger("Steam", itemStack.getTagCompound().getInteger("Steam") - steamPerUse);
                     return true;
                 } else
                     return false;
@@ -86,7 +86,7 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
     }
 
     @Override
-    public boolean isRepairable() {
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return false;
     }
 
@@ -95,7 +95,7 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
     public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean b) {
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             list.add("Steam per use: " + steamPerUse + " mb");
-            list.add(itemStack.stackTagCompound.getInteger("Steam") + "/" + capacity + " mb");
+            list.add(itemStack.getTagCompound().getInteger("Steam") + "/" + capacity + " mb");
         } else
             list.add("Hold " + EnumChatFormatting.BLUE + "Shift" + EnumChatFormatting.GRAY + " for more information");
     }
@@ -103,34 +103,34 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list) {
         ItemStack zero = new ItemStack(item, 1, 1);
-        if (zero.stackTagCompound == null) {
+        if (zero.getTagCompound() == null) {
             zero.setTagCompound(new NBTTagCompound());
-            zero.stackTagCompound.setInteger("Steam", 0);
+            zero.getTagCompound().setInteger("Steam", 0);
         }
         list.add(zero);
 
         ItemStack full = new ItemStack(item, 1, capacity);
-        if (full.stackTagCompound == null) {
+        if (full.getTagCompound() == null) {
             full.setTagCompound(new NBTTagCompound());
-            full.stackTagCompound.setInteger("Steam", capacity);
+            full.getTagCompound().setInteger("Steam", capacity);
         }
         list.add(full);
     }
 
     @Override
-    public int getMaxDamage(ItemStack stack) {
+    public int getMaxDamage() {
         return 1 + capacity;
     }
 
-    @Override
+    /*@Override
     public int getDisplayDamage(ItemStack stack) {
         if (stack.stackTagCompound == null) return 1 + capacity;
 
         return 1 + capacity - stack.stackTagCompound.getInteger("Steam");
-    }
+    }*/
 
     @Override
-    public boolean isDamaged(ItemStack stack) {
+    public boolean isDamageable() {
         return true;
     }
 
@@ -141,9 +141,9 @@ public class ItemSteamShovel extends ItemSpade implements ISteamPoweredItem {
 
     @Override
     public void receiveSteam(ItemStack itemStack, int amount) {
-        if (itemStack.stackTagCompound != null) {
-            if (itemStack.stackTagCompound.getInteger("Steam") + amount <= capacity) {
-                itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") + amount);
+        if (itemStack.getTagCompound() != null) {
+            if (itemStack.getTagCompound().getInteger("Steam") + amount <= capacity) {
+                itemStack.getTagCompound().setInteger("Steam", itemStack.getTagCompound().getInteger("Steam") + amount);
             }
         }
     }

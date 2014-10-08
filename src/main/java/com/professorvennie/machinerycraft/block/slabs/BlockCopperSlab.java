@@ -13,6 +13,8 @@ import com.professorvennie.lib.base.blocks.BlockModSlab;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.block.BlockSlab;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.item.ItemStack;
 
 /**
  * Created by ProfessorVennie on 8/5/2014 at 5:10 PM.
@@ -21,7 +23,6 @@ public class BlockCopperSlab extends BlockModSlab {
 
     public BlockCopperSlab(String name, boolean isFull) {
         super(name, isFull);
-        setBlockTextureName(Reference.MOD_ID + ":" + "ores/" + "blockCopper");
     }
 
     @Override
@@ -32,5 +33,15 @@ public class BlockCopperSlab extends BlockModSlab {
     @Override
     public BlockSlab getBlockDouble() {
         return (BlockSlab) ModBlocks.copperSlabDouble;
+    }
+
+    @Override
+    public IProperty func_176551_l() {
+        return null;
+    }
+
+    @Override
+    public Object func_176553_a(ItemStack p_176553_1_) {
+        return null;
     }
 }

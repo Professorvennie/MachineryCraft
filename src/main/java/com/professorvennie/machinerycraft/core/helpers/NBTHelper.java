@@ -21,7 +21,7 @@ import java.util.UUID;
 public class NBTHelper {
 
     public static boolean hasTag(ItemStack itemStack, String keyName) {
-        return itemStack != null && itemStack.stackTagCompound != null && itemStack.stackTagCompound.hasKey(keyName);
+        return itemStack != null && itemStack.getTagCompound() != null && itemStack.getTagCompound().hasKey(keyName);
     }
 
     public static boolean hasUUID(ItemStack itemStack) {
@@ -39,7 +39,7 @@ public class NBTHelper {
     }
 
     public static void initNBT(ItemStack itemStack) {
-        if (itemStack.stackTagCompound == null) {
+        if (itemStack.getTagCompound() == null) {
             itemStack.setTagCompound(new NBTTagCompound());
         }
     }
@@ -60,6 +60,6 @@ public class NBTHelper {
     public static void setLong(ItemStack itemStack, String keyName, long keyValue) {
         initNBT(itemStack);
 
-        itemStack.stackTagCompound.setLong(keyName, keyValue);
+        itemStack.getTagCompound().setLong(keyName, keyValue);
     }
 }

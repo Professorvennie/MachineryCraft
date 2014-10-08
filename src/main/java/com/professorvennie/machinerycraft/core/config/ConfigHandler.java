@@ -10,15 +10,12 @@
 package com.professorvennie.machinerycraft.core.config;
 
 import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.client.event.ConfigChangedEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
 
 public class ConfigHandler {
 
-    public static Configuration configuration;
+    /*public static Configuration configuration;
 
     public static boolean spawnCopper = true;
     public static boolean spawnTin = true;
@@ -98,5 +95,5 @@ public class ConfigHandler {
         if (event.modID.equalsIgnoreCase(Reference.MOD_ID)) {
             loadConfiguration();
         }
-    }
+    }*/
 }

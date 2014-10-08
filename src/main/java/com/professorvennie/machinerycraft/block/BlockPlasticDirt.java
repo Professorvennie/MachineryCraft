@@ -12,17 +12,15 @@ package com.professorvennie.machinerycraft.block;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -30,40 +28,11 @@ public class BlockPlasticDirt extends BlockDirt {
 
     public BlockPlasticDirt() {
         super();
-        setBlockName(Names.Blocks.BLOCK_PLASTIC_DIRT);
+        setUnlocalizedName(Names.Blocks.BLOCK_PLASTIC_DIRT);
         setCreativeTab(MachineryCraft.tabMachineryCraft);
         setStepSound(Block.soundTypeGravel);
-        setHarvestLevel("shovel", 0);
+        //setHarvestLevel("shovel", 0);
         setHardness(1.0f);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        super.registerBlockIcons(iconRegister);
-        this.blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":plasticDirt");
-    }
-
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta) {
-        return this.blockIcon;
-
-    }
-
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(IBlockAccess iBlockAccess, int x, int y, int z, int meta) {
-        Material material = iBlockAccess.getBlock(x, y + 1, z).getMaterial();
-
-        if (material == Material.snow || material == Material.craftedSnow) {
-            return ModBlocks.plasticGrass.getIcon(iBlockAccess, x, y, z, meta);
-        }
-
-        Block block = iBlockAccess.getBlock(x, y + 1, z);
-
-        if (block != ModBlocks.plasticDirt && block != ModBlocks.plasticGrass) {
-            return this.blockIcon;
-        }
-
-        return this.blockIcon;
     }
 
     @SideOnly(Side.CLIENT)

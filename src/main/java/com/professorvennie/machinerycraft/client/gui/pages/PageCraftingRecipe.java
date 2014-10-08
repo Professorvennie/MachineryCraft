@@ -13,9 +13,6 @@ import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IGuiBookEntry;
 import com.professorvennie.machinerycraft.core.helpers.RenderHelper;
 import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -25,8 +22,9 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
@@ -119,23 +117,23 @@ public class PageCraftingRecipe extends PageRecipe {
         if (recipe instanceof ShapedRecipes) {
             ShapedRecipes shaped = (ShapedRecipes) recipe;
 
-            for (int y = 0; y < shaped.recipeHeight; y++)
-                for (int x = 0; x < shaped.recipeWidth; x++)
-                    renderItemAtGridPos(gui, 1 + x, 1 + y, shaped.recipeItems[y * shaped.recipeWidth + x], true);
-        } else if (recipe instanceof ShapedOreRecipe) {
-            ShapedOreRecipe shaped = (ShapedOreRecipe) recipe;
-            int width = ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 4);
-            int height = ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 5);
+            //for (int y = 0; y < shaped.getRecipeSize(); y++)
+                //for (int x = 0; x < shaped.getRecipeSize(); x++)
+                    //renderItemAtGridPos(gui, 1 + x, 1 + y, shaped.recipeItems[y * shaped.recipeWidth + x], true);
+        } //else if (recipe instanceof ShapedOreRecipe) {
+            //ShapedOreRecipe shaped = (ShapedOreRecipe) recipe;
+            //int width = ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 4);
+            //int height = ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 5);
 
-            for (int y = 0; y < height; y++)
-                for (int x = 0; x < width; x++) {
-                    Object input = shaped.getInput()[y * width + x];
-                    if (input != null)
-                        renderItemAtGridPos(gui, 1 + x, 1 + y, input instanceof ItemStack ? (ItemStack) input : ((ArrayList<ItemStack>) input).get(0), true);
-                }
+           // for (int y = 0; y < height; y++)
+               // for (int x = 0; x < width; x++) {
+                   // Object input = shaped.getInput()[y * width + x];
+                    //if (input != null)
+                        //renderItemAtGridPos(gui, 1 + x, 1 + y, input instanceof ItemStack ? (ItemStack) input : ((ArrayList<ItemStack>) input).get(0), true);
+                //}
 
             oreDictRecipe = true;
-        } else if (recipe instanceof ShapelessRecipes) {
+        /*} else if (recipe instanceof ShapelessRecipes) {
             ShapelessRecipes shapeless = (ShapelessRecipes) recipe;
 
             drawGrid:
@@ -172,9 +170,8 @@ public class PageCraftingRecipe extends PageRecipe {
 
             shapelessRecipe = true;
             oreDictRecipe = true;
-        }
+        }*/
 
-        renderItemAtGridPos(gui, 2, 0, recipe.getRecipeOutput(), false);
+        //renderItemAtGridPos(gui, 2, 0, recipe.getRecipeOutput(), false);
     }
-
 }

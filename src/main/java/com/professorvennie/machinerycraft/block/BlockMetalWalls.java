@@ -12,16 +12,18 @@ package com.professorvennie.machinerycraft.block;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWall;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -30,49 +32,40 @@ import java.util.List;
  */
 public class BlockMetalWalls extends BlockWall {
 
-    @SideOnly(Side.CLIENT)
-    private IIcon[] iconArray;
+    public static final PropertyEnum METALS = PropertyEnum.create("metal", BlockMetals.EnumMetals.class);
 
     public BlockMetalWalls() {
         super(ModBlocks.BlockMetals);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(METALS, BlockMetals.EnumMetals.COPPER));
         setCreativeTab(MachineryCraft.tabMachineryCraft);
-        setBlockName("wall");
+        setUnlocalizedName("wall");
     }
 
-    @Override
+    @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-        for (int i = 0; i < Names.Blocks.METAL_WALLS.length; i++) {
-            list.add(new ItemStack(this, 1, i));
+        BlockMetals.EnumMetals[] enumMetalses = BlockMetals.EnumMetals.values();
+        int i = enumMetalses.length;
+
+        for (int j = 0; j < i; ++j){
+            BlockMetals.EnumMetals enumdyecolor = enumMetalses[j];
+            list.add(new ItemStack(item, 1, enumdyecolor.getMeta()));
         }
     }
 
-    @Override
-    public Block setBlockName(String name) {
-        return super.setBlockName(name);
+    public IBlockState getStateFromMeta(int meta){
+        return this.getDefaultState().withProperty(METALS, BlockMetals.EnumMetals.getEnumFromMeta(meta));
+    }
+
+    public int getMetaFromState(IBlockState state){
+        return ((BlockMetals.EnumMetals)state.getValue(METALS)).getMeta();
+    }
+
+    protected BlockState createBlockState(){
+        return new BlockState(this, new IProperty[] {METALS});
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta) {
-        return this.iconArray[meta % this.iconArray.length];
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        iconArray = new IIcon[Names.Blocks.METAL_WALLS.length];
-        for (int i = 0; i < Names.Blocks.METAL_WALLS.length; i++) {
-            iconArray[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + "ores/" + Names.Blocks.METAL_BLOCKS[i]);
-        }
-    }
-
-    @Override
-    public int damageDropped(int meta) {
-        return super.damageDropped(meta);
-    }
-
-    @Override
-    public int getDamageValue(World world, int x, int y, int z) {
-        return super.getDamageValue(world, x, y, z);
+    public int damageDropped(IBlockState state) {
+        return ((BlockMetals.EnumMetals)state.getValue(METALS)).getMeta();
     }
 }

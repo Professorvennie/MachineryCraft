@@ -10,9 +10,9 @@
 package com.professorvennie.machinerycraft.core.handlers;
 
 import com.professorvennie.machinerycraft.block.ModBlocks;
-import cpw.mods.fml.common.IFuelHandler;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.IFuelHandler;
 
 /**
  * Created by ProfessorVennie on 9/5/2014 at 11:40 PM.

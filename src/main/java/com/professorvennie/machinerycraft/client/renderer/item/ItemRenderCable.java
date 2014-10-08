@@ -14,13 +14,11 @@ import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 
-public class ItemRenderCable implements IItemRenderer {
+public class ItemRenderCable/* implements IItemRenderer */{
 
-    private final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/model/cable.png");
+    /*private final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/model/cable.png");
 
     @Override
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -39,7 +37,5 @@ public class ItemRenderCable implements IItemRenderer {
         new TileEntityRendererCable().drawStriaght(ForgeDirection.NORTH);
         GL11.glEnable(GL11.GL_LIGHTING);
 
-    }
-
-
+    }*/
 }

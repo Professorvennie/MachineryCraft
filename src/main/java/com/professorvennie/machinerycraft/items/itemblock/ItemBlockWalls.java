@@ -10,14 +10,13 @@
 package com.professorvennie.machinerycraft.items.itemblock;
 
 import com.professorvennie.machinerycraft.lib.Names;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -43,12 +42,6 @@ public class ItemBlockWalls extends ItemBlock {
         for (int i = 0; i < Names.Blocks.METAL_WALLS.length; i++) {
             list.add(new ItemStack(this, 1, i));
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int par1) {
-        return this.field_150939_a.getIcon(0, par1);
     }
 
     @Override

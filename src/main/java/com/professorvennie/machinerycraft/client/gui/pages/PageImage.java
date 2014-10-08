@@ -11,12 +11,12 @@ package com.professorvennie.machinerycraft.client.gui.pages;
 
 import com.professorvennie.machinerycraft.api.book.BookPage;
 import com.professorvennie.machinerycraft.api.book.IGuiBookEntry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 public class PageImage extends BookPage {

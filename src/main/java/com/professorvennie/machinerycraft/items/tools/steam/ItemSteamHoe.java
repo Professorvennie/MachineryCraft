@@ -11,10 +11,10 @@ package com.professorvennie.machinerycraft.items.tools.steam;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.api.steam.ISteamPoweredItem;
-import cpw.mods.fml.common.eventhandler.Event;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirt;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,11 +23,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.entity.player.UseHoeEvent;
+
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 import java.util.List;
@@ -40,7 +42,7 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
     private int capacity, steamPerUse;
 
     public ItemSteamHoe(String name, int capacity, int steamPerUse) {
-        super(EnumHelper.addToolMaterial("SteamHoe", 3, 2, 14.0f, -1.0f, 10));
+        super(/*EnumHelper.addToolMaterial("SteamHoe", 3, 2, 14.0f, -1.0f, 10)*/ToolMaterial.EMERALD);
         setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         setUnlocalizedName(name);
         this.capacity = capacity;
@@ -52,48 +54,56 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
         return true;
     }
 
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int i, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-        if (!player.canPlayerEdit(x, y, z, i, itemStack)) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
+        if (!playerIn.func_175151_a(pos.offset(side), side, stack)){
             return false;
-        } else {
-            if (itemStack.stackTagCompound != null) {
-                if (itemStack.stackTagCompound.getInteger("Steam") > 0) {
-                    if (itemStack.stackTagCompound.getInteger("Steam") - steamPerUse >= 0) {
-                        UseHoeEvent event = new UseHoeEvent(player, itemStack, world, x, y, z);
-                        if (MinecraftForge.EVENT_BUS.post(event)) {
-                            return false;
+        }
+        else {
+            if (stack.getTagCompound().getInteger("Steam") > 0) {
+                if (stack.getTagCompound().getInteger("Steam") - steamPerUse >= 0) {
+                    IBlockState iblockstate = worldIn.getBlockState(pos);
+                    Block block = iblockstate.getBlock();
+
+                    if (side != EnumFacing.DOWN && worldIn.getBlockState(pos.offsetUp()).getBlock().getMaterial() == Material.air) {
+                        if (block == Blocks.grass) {
+                            return this.func_179232_a(stack, playerIn, worldIn, pos, Blocks.farmland.getDefaultState());
                         }
 
-                        if (event.getResult() == Event.Result.ALLOW) {
-                            itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
-                            return true;
-                        }
-
-                        Block block = world.getBlock(x, y, z);
-
-                        if (i != 0 && world.getBlock(x, y + 1, z).isAir(world, x, y + 1, z) && (block == Blocks.grass || block == Blocks.dirt)) {
-                            Block block1 = Blocks.farmland;
-                            world.playSoundEffect((double) ((float) x + 0.5F), (double) ((float) y + 0.5F), (double) ((float) z + 0.5F), block1.stepSound.getStepResourcePath(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
-
-                            if (world.isRemote) {
-                                return true;
-                            } else {
-                                world.setBlock(x, y, z, block1);
-                                itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") - steamPerUse);
-                                return true;
+                        if (block == Blocks.dirt) {
+                            switch (SwitchDirtType.field_179590_a[((BlockDirt.DirtType) iblockstate.getValue(BlockDirt.VARIANT)).ordinal()]) {
+                                case 1:
+                                    return this.func_179232_a(stack, playerIn, worldIn, pos, Blocks.farmland.getDefaultState());
+                                case 2:
+                                    return this.func_179232_a(stack, playerIn, worldIn, pos, Blocks.dirt.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT));
                             }
-                        } else {
-                            return false;
                         }
                     }
+
+                    return false;
                 }
             }
         }
         return false;
     }
 
+    protected boolean func_179232_a(ItemStack itemStack, EntityPlayer player, World worldIn, BlockPos pos, IBlockState state)
+    {
+        worldIn.playSoundEffect((double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), state.getBlock().stepSound.getStepSound(), (state.getBlock().stepSound.getVolume() + 1.0F) / 2.0F, state.getBlock().stepSound.getFrequency() * 0.8F);
+
+        if (worldIn.isRemote)
+        {
+            return true;
+        }
+        else
+        {
+            worldIn.setBlockState(pos, state);
+            itemStack.getTagCompound().setInteger("Steam", itemStack.getTagCompound().getInteger("Steam") - steamPerUse);
+            return true;
+        }
+    }
+
     @Override
-    public boolean isRepairable() {
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return false;
     }
 
@@ -102,7 +112,7 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
     public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean b) {
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             list.add("Steam per use: " + steamPerUse + " mb");
-            list.add(itemStack.stackTagCompound.getInteger("Steam") + "/" + capacity + " mb");
+            list.add(itemStack.getTagCompound().getInteger("Steam") + "/" + capacity + " mb");
         } else
             list.add("Hold " + EnumChatFormatting.BLUE + "Shift" + EnumChatFormatting.GRAY + " for more information");
     }
@@ -110,34 +120,34 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list) {
         ItemStack zero = new ItemStack(item, 1, 1);
-        if (zero.stackTagCompound == null) {
+        if (zero.getTagCompound() == null) {
             zero.setTagCompound(new NBTTagCompound());
-            zero.stackTagCompound.setInteger("Steam", 0);
+            zero.getTagCompound().setInteger("Steam", 0);
         }
         list.add(zero);
 
         ItemStack full = new ItemStack(item, 1, capacity);
-        if (full.stackTagCompound == null) {
+        if (full.getTagCompound() == null) {
             full.setTagCompound(new NBTTagCompound());
-            full.stackTagCompound.setInteger("Steam", capacity);
+            full.getTagCompound().setInteger("Steam", capacity);
         }
         list.add(full);
     }
 
     @Override
-    public int getMaxDamage(ItemStack stack) {
+    public int getMaxDamage() {
         return 1 + capacity;
     }
 
-    @Override
+    /*@Override
     public int getDisplayDamage(ItemStack stack) {
-        if (stack.stackTagCompound == null) return 1 + capacity;
+        if (stack.getTagCompound() == null) return 1 + capacity;
 
-        return 1 + capacity - stack.stackTagCompound.getInteger("Steam");
-    }
+        return 1 + capacity - stack.getTagCompound().getInteger("Steam");
+    }*/
 
     @Override
-    public boolean isDamaged(ItemStack stack) {
+    public boolean isDamageable() {
         return true;
     }
 
@@ -148,9 +158,9 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
 
     @Override
     public void receiveSteam(ItemStack itemStack, int amount) {
-        if (itemStack.stackTagCompound != null) {
-            if (itemStack.stackTagCompound.getInteger("Steam") + amount <= capacity) {
-                itemStack.stackTagCompound.setInteger("Steam", itemStack.stackTagCompound.getInteger("Steam") + amount);
+        if (itemStack.getTagCompound() != null) {
+            if (itemStack.getTagCompound().getInteger("Steam") + amount <= capacity) {
+                itemStack.getTagCompound().setInteger("Steam", itemStack.getTagCompound().getInteger("Steam") + amount);
             }
         }
     }
@@ -167,5 +177,31 @@ public class ItemSteamHoe extends ItemHoe implements ISteamPoweredItem {
     @Override
     public boolean canReceive() {
         return true;
+    }
+
+    static final class SwitchDirtType{
+        static final int[] field_179590_a = new int[BlockDirt.DirtType.values().length];
+        private static final String __OBFID = "CL_00002179";
+
+        static
+        {
+            try
+            {
+                field_179590_a[BlockDirt.DirtType.DIRT.ordinal()] = 1;
+            }
+            catch (NoSuchFieldError var2)
+            {
+                ;
+            }
+
+            try
+            {
+                field_179590_a[BlockDirt.DirtType.COARSE_DIRT.ordinal()] = 2;
+            }
+            catch (NoSuchFieldError var1)
+            {
+                ;
+            }
+        }
     }
 }

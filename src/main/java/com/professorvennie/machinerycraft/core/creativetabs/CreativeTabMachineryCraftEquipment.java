@@ -16,7 +16,7 @@ import net.minecraft.item.Item;
 public class CreativeTabMachineryCraftEquipment extends CreativeTabs {
 
     public CreativeTabMachineryCraftEquipment(String TabLabel) {
-        super(TabLabel);
+        super(9, TabLabel);
     }
 
     @Override

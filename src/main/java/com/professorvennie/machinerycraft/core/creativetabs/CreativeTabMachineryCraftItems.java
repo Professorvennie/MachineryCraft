@@ -19,7 +19,7 @@ import net.minecraft.item.Item;
 public class CreativeTabMachineryCraftItems extends CreativeTabs {
 
     public CreativeTabMachineryCraftItems(String lable) {
-        super(lable);
+        super(8, lable);
     }
 
     @Override

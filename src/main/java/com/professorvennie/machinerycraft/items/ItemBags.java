@@ -15,15 +15,13 @@ import com.professorvennie.machinerycraft.core.helpers.NBTHelper;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -32,9 +30,6 @@ import java.util.List;
  */
 public class ItemBags extends ItemBase {
 
-    @SideOnly(Side.CLIENT)
-    public IIcon[] icons;
-
     public ItemBags() {
         super("bag");
         setHasSubtypes(true);
@@ -42,25 +37,11 @@ public class ItemBags extends ItemBase {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs tab, List list) {
         for (int i = 0; i < Names.Items.BAGS.length; i++) {
             list.add(new ItemStack(item, 1, i));
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister) {
-        icons = new IIcon[Names.Items.BAGS.length];
-        for (int i = 0; i < Names.Items.BAGS.length; i++) {
-            icons[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Items.BAGS[i]);
-        }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int par1) {
-        return par1 < icons.length ? icons[par1] : icons[0];
     }
 
     @Override

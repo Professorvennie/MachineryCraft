@@ -13,68 +13,62 @@ import com.professorvennie.lib.base.blocks.BlockBase;
 import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IBookable;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
 public class BlockOres extends BlockBase implements IBookable {
 
-    @SideOnly(Side.CLIENT)
-    private IIcon[] iconArray;
+    public static final PropertyEnum ORES = PropertyEnum.create("ore", EnumOres.class);
 
     protected BlockOres() {
         super(Material.rock, "ore");
         this.setHardness(3.5f);
-        this.setHarvestLevel("pickAxe", 2);
+        //this.setHarvestLevel("pickAxe", 2);
         setStepSound(Block.soundTypeStone);
     }
 
-//	@Override
-//    public Block setBlockName(String string) {
-//        return super.setBlockName(string);
-//    }
-
-    @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister register) {
-        iconArray = new IIcon[Names.Blocks.ORES.length];
-        for (int i = 0; i < iconArray.length; i++) {
-            iconArray[i] = register.registerIcon(Reference.MOD_ID + ":ores/" + Names.Blocks.ORES[i]);
-        }
-    }
-
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-        for (int i = 0; i < 4; i++) {
-            list.add(new ItemStack(item, 1, i));
+        EnumOres[] enumOreses = EnumOres.values();
+        int i = enumOreses.length;
+
+        for (int j = 0; j < i; ++j){
+            EnumOres enumdyecolor = enumOreses[j];
+            list.add(new ItemStack(item, 1, enumdyecolor.getMeta()));
         }
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta) {
-        return this.iconArray[meta % this.iconArray.length];
+    public IBlockState getStateFromMeta(int meta){
+        return this.getDefaultState().withProperty(ORES, EnumOres.getEnumFromMeta(meta));
+    }
+
+    public int getMetaFromState(IBlockState state){
+        return ((EnumOres)state.getValue(ORES)).getMeta();
+    }
+
+    protected BlockState createBlockState(){
+        return new BlockState(this, new IProperty[] {ORES});
     }
 
     @Override
-    public int damageDropped(int meta) {
-        return meta;
-    }
-
-    @Override
-    public int getDamageValue(World world, int x, int y, int z) {
-        return this.damageDropped(world.getBlockMetadata(x, y, z));
+    public int damageDropped(IBlockState state) {
+        return ((EnumOres)state.getValue(ORES)).getMeta();
     }
 
     @Override
@@ -96,11 +90,6 @@ public class BlockOres extends BlockBase implements IBookable {
             return par1;
         }
 
-        @Override
-        @SideOnly(Side.CLIENT)
-        public IIcon getIconFromDamage(int par1) {
-            return this.field_150939_a.getIcon(0, par1);
-        }
 
         @SuppressWarnings({"unchecked", "rawtypes"})
         @Override
@@ -114,6 +103,50 @@ public class BlockOres extends BlockBase implements IBookable {
         @Override
         public String getUnlocalizedName(ItemStack stack) {
             return this.getUnlocalizedName() + "." + stack.getItemDamage();
+        }
+    }
+
+    public static enum EnumOres implements IStringSerializable {
+
+        COPPER(0, "copper"),
+        TIN(1, "tin"),
+        SILVER(2, "silver"),
+        LEAD(3, "lead"),
+        ZINC(4, "zinc");
+
+        private int meta;
+        private String name;
+        private static EnumOres[] ORES = new EnumOres[values().length];
+
+        private EnumOres(int meta, String name){
+            this.meta = meta;
+            this.name = name;
+        }
+
+        public int getMeta() {
+            return meta;
+        }
+
+        @Override
+        public String getName() {
+            return name;
+        }
+
+        public static EnumOres getEnumFromMeta(int meta){
+            if (meta < 0 || meta >= ORES.length)
+                meta = 0;
+
+            return ORES[meta];
+        }
+
+        static{
+            EnumOres[] var0 = values();
+            int var1 = var0.length;
+
+            for (int var2 = 0; var2 < var1; ++var2) {
+                EnumOres var3 = var0[var2];
+                ORES[var3.getMeta()] = var3;
+            }
         }
     }
 }

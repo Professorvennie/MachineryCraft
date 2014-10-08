@@ -10,15 +10,12 @@
 package com.professorvennie.machinerycraft.fuilds;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public class ModFuilds {
 
-    public static Fluid fluidSteam;
+    //public static Fluid fluidSteam;
     public static Block blockSteam;
 
     public static void mainRegistry() {
@@ -26,12 +23,12 @@ public class ModFuilds {
     }
 
     private static void init() {
-        fluidSteam = new Fluid("steam");
-        FluidRegistry.registerFluid(fluidSteam);
+        //fluidSteam = new Fluid("steam");
+        //FluidRegistry.registerFluid(fluidSteam);
 
-        blockSteam = new FluidSteamBlock(fluidSteam, Material.water).setBlockName("steam").setCreativeTab(MachineryCraft.tabMachineryCraft);
-        GameRegistry.registerBlock(blockSteam, blockSteam.getUnlocalizedName());
-        fluidSteam.setBlock(blockSteam).setGaseous(true).setTemperature(1000).setDensity(450).setUnlocalizedName(blockSteam.getUnlocalizedName());
-        fluidSteam = FluidRegistry.getFluid("steam");
+        //blockSteam = new FluidSteamBlock(fluidSteam, Material.water).setBlockName("steam").setCreativeTab(MachineryCraft.tabMachineryCraft);
+        //GameRegistry.registerBlock(blockSteam, blockSteam.getUnlocalizedName());
+        //fluidSteam.setBlock(blockSteam).setGaseous(true).setTemperature(1000).setDensity(450).setUnlocalizedName(blockSteam.getUnlocalizedName());
+        //fluidSteam = FluidRegistry.getFluid("steam");
     }
 }

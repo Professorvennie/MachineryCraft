@@ -67,16 +67,17 @@ import com.professorvennie.machinerycraft.machines.windmill.ContainerWindmill;
 import com.professorvennie.machinerycraft.machines.windmill.GuiWindmilll;
 import com.professorvennie.machinerycraft.machines.windmill.TileEntityWindmill;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
-import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler {
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity entity = world.getTileEntity(x, y, z);
+        TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
 
         switch (ID) {
             case LibGuiIds.CCOPPER_FURNACE:
@@ -95,10 +96,10 @@ public class GuiHandler implements IGuiHandler {
                 }
 
             case LibGuiIds.GUIID_WINDMILL:
-                while (entity instanceof TileEntityWindmill && world.getBlockMetadata(x, y, z) < 8) {
+                while (entity instanceof TileEntityWindmill)/* && world.getBlockMetadata(x, y, z) < 8)*/ {
                     y++;
                 }
-                return new ContainerWindmill(player.inventory, (TileEntityWindmill) world.getTileEntity(x, y, z));
+                return new ContainerWindmill(player.inventory, (TileEntityWindmill) world.getTileEntity(new BlockPos(x, y, z)));
 
             case LibGuiIds.BRASS_FURNACE:
                 if (entity instanceof TileEntityBrassFurnace) {
@@ -168,7 +169,7 @@ public class GuiHandler implements IGuiHandler {
 
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity entity = world.getTileEntity(x, y, z);
+        TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
 
         switch (ID) {
             case LibGuiIds.CCOPPER_FURNACE:
@@ -187,10 +188,10 @@ public class GuiHandler implements IGuiHandler {
                 }
 
             case LibGuiIds.GUIID_WINDMILL:
-                while (entity instanceof TileEntityWindmill && world.getBlockMetadata(x, y, z) < 8) {
+                while (entity instanceof TileEntityWindmill)/* && world.getBlockMetadata(x, y, z) < 8)*/ {
                     y++;
                 }
-                return new GuiWindmilll(player.inventory, (TileEntityWindmill) world.getTileEntity(x, y, z));
+                return new GuiWindmilll(player.inventory, (TileEntityWindmill) world.getTileEntity(new BlockPos(x, y, z)));
 
             case LibGuiIds.BRASS_FURNACE:
                 if (entity instanceof TileEntityBrassFurnace) {
@@ -216,25 +217,25 @@ public class GuiHandler implements IGuiHandler {
 
             case LibGuiIds.GUIID_PLASTIC_CHEST:
                 if (entity instanceof TileEntityPlasticChest) {
-                    TileEntityPlasticChest entityPlasticChest = (TileEntityPlasticChest) world.getTileEntity(x, y, z);
+                    TileEntityPlasticChest entityPlasticChest = (TileEntityPlasticChest) world.getTileEntity(new BlockPos(x, y, z));
                     return new GuiPlasticChest(player.inventory, entityPlasticChest);
                 }
 
             case LibGuiIds.GUIID_PORTABLE_COBBLEGEN:
                 if (entity instanceof TileEntityPortableCobbleGen) {
-                    TileEntityPortableCobbleGen entityPortableCobbleGen = (TileEntityPortableCobbleGen) world.getTileEntity(x, y, z);
+                    TileEntityPortableCobbleGen entityPortableCobbleGen = (TileEntityPortableCobbleGen) world.getTileEntity(new BlockPos(x, y, z));
                     return new GuiPortableCobbleGen(player.inventory, entityPortableCobbleGen);
                 }
 
             case LibGuiIds.BRONZE_FURNACE:
                 if (entity instanceof TileEntityBronzeFurnace) {
-                    TileEntityBronzeFurnace tileEntityBronzeFurnace = (TileEntityBronzeFurnace) world.getTileEntity(x, y, z);
+                    TileEntityBronzeFurnace tileEntityBronzeFurnace = (TileEntityBronzeFurnace) world.getTileEntity(new BlockPos(x, y, z));
                     return new GuiBronzeFurnace(player.inventory, tileEntityBronzeFurnace);
                 }
 
             case LibGuiIds.BRONZE_STEAM_BOILER:
                 if (entity instanceof TileEntityBronzeSteamBoiler) {
-                    TileEntityBronzeSteamBoiler tileEntityBronzeSteamBoiler = (TileEntityBronzeSteamBoiler) world.getTileEntity(x, y, z);
+                    TileEntityBronzeSteamBoiler tileEntityBronzeSteamBoiler = (TileEntityBronzeSteamBoiler) world.getTileEntity(new BlockPos(x, y, z));
                     return new GuiBronzeSteamBoiler(player.inventory, tileEntityBronzeSteamBoiler);
                 }
 

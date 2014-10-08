@@ -65,7 +65,7 @@ public class ModItems {
         Dusts = new ItemDusts();
         Ingots = new ItemIngots();
         book = new ItemBook();
-        itemPlasticApple = new ItemFood(5, 0.5F, false).setUnlocalizedName(Names.Items.PLASTIC_APPLE).setCreativeTab(MachineryCraft.tabMachineryCraftItems).setTextureName(Reference.MOD_ID + ":plasticApple");
+        itemPlasticApple = new ItemFood(5, 0.5F, false).setUnlocalizedName(Names.Items.PLASTIC_APPLE).setCreativeTab(MachineryCraft.tabMachineryCraftItems);
         gears = new ItemGears();
         nuggets = new ItemNuggets();
         steamBucket = new ItemSteamBucket();

@@ -12,12 +12,12 @@ package com.professorvennie.machinerycraft.client.gui.pages;
 import com.professorvennie.machinerycraft.api.book.BookPage;
 import com.professorvennie.machinerycraft.api.book.IGuiBookEntry;
 import com.professorvennie.machinerycraft.core.helpers.FontHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class PageText extends BookPage {
 
     @SideOnly(Side.CLIENT)
     public static void renderText(int x, int y, int width, int height, String unlocalizedText) {
-        FontRenderer renderer = Minecraft.getMinecraft().fontRenderer;
+        FontRenderer renderer = Minecraft.getMinecraft().fontRendererObj;
         boolean unicode = renderer.getUnicodeFlag();
         renderer.setUnicodeFlag(true);
         String text = StatCollector.translateToLocal(unlocalizedText).replaceAll("&", "\u00a7");
@@ -59,8 +59,8 @@ public class PageText extends BookPage {
                     pendingFormat = "";
                 }
 
-                if (MathHelper.stringNullOrLengthZero(format))
-                    format = lastFormat;
+                /*if (MathHelper.stringNullOrLengthZero(format))
+                    format = lastFormat;*/
 
                 if (renderer.getStringWidth(workingOn + " " + s1) >= width) {
                     wrappedLines.add(workingOn);

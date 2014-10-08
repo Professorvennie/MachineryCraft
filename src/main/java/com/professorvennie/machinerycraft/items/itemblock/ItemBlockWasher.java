@@ -13,6 +13,8 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class ItemBlockWasher extends ItemBlock {
         super(block);
     }
 
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean par1) {
         list.add("3x3x3 MultiBlock");
     }

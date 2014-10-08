@@ -27,15 +27,13 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.Container;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -100,9 +98,9 @@ public class GuiBase extends GuiContainer {
         this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 8, this.ySize - 96 + 2, 4210752);
         String name = "";
         if (tileEntity != null)
-            name = StatCollector.translateToLocal(tileEntity.getInventoryName());
+            name = StatCollector.translateToLocal(tileEntity.getName());
         else if (basicMachine != null)
-            name = StatCollector.translateToLocal(basicMachine.getInventoryName());
+            name = StatCollector.translateToLocal(basicMachine.getName());
 
         this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
     }
@@ -111,13 +109,13 @@ public class GuiBase extends GuiContainer {
         this.drawTexturedModalRect(guiLeft + x, guiTop + y, u, v, width, height);
     }
 
-    public void drawTanks(FluidTank tank, int scale, int x, int y, int width) {
+    /*public void drawTanks(FluidTank tank, int scale, int x, int y, int width) {
         int j;
         if (tank.getFluid() != null) {
             j = getValueScaled(tank.getFluidAmount(), tank.getCapacity(), scale);
             this.drawFluid(guiLeft + x, guiTop + y - j, tank.getFluid(), width, j);
         }
-    }
+    }*/
 
     @Override
     protected void actionPerformed(GuiButton button) {
@@ -130,17 +128,17 @@ public class GuiBase extends GuiContainer {
                             case low:
                                 buttonRedStone.setMode(RedStoneMode.high);
                                 basicMachine.setRedstoneMode(RedStoneMode.high);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 0));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 0));
                                 break;
                             case high:
                                 buttonRedStone.setMode(RedStoneMode.disabled);
                                 basicMachine.setRedstoneMode(RedStoneMode.disabled);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 1));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 1));
                                 break;
                             case disabled:
                                 buttonRedStone.setMode(RedStoneMode.low);
                                 basicMachine.setRedstoneMode(RedStoneMode.low);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 2));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 2));
                                 break;
                         }
                         break;
@@ -154,37 +152,37 @@ public class GuiBase extends GuiContainer {
                             case north:
                                 buttonEjector.setMode(EjectorMode.south);
                                 basicMachine.setEjectorMode(EjectorMode.south);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 3));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 3));
                                 break;
                             case south:
                                 buttonEjector.setMode(EjectorMode.east);
                                 basicMachine.setEjectorMode(EjectorMode.east);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 4));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 4));
                                 break;
                             case east:
                                 buttonEjector.setMode(EjectorMode.west);
                                 basicMachine.setEjectorMode(EjectorMode.west);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 5));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 5));
                                 break;
                             case west:
                                 buttonEjector.setMode(EjectorMode.up);
                                 basicMachine.setEjectorMode(EjectorMode.up);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 6));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 6));
                                 break;
                             case up:
                                 buttonEjector.setMode(EjectorMode.down);
                                 basicMachine.setEjectorMode(EjectorMode.down);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 7));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 7));
                                 break;
                             case down:
                                 buttonEjector.setMode(EjectorMode.disabled);
                                 basicMachine.setEjectorMode(EjectorMode.disabled);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 8));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 8));
                                 break;
                             case disabled:
                                 buttonEjector.setMode(EjectorMode.north);
                                 basicMachine.setEjectorMode(EjectorMode.north);
-                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.xCoord, basicMachine.yCoord, basicMachine.zCoord, 9));
+                                PacketHandler.INSTANCE.sendToServer(new MessageButton(basicMachine.getPos().getX(), basicMachine.getPos().getY(), basicMachine.getPos().getZ(), 9));
                                 break;
                         }
                     }
@@ -194,7 +192,7 @@ public class GuiBase extends GuiContainer {
     }
 
     @Override
-    public void handleMouseInput() {
+    public void handleMouseInput() throws IOException {
         super.handleMouseInput();
         int x = Mouse.getEventX() * this.width / this.mc.displayWidth;
         int y = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
@@ -210,7 +208,7 @@ public class GuiBase extends GuiContainer {
     public void drawToolTipOverArea(int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, List<String> list, FontRenderer font) {
         if (list != null && font != null) {
             if ((mouseX >= minX && mouseX <= maxX) && (mouseY >= minY && mouseY <= maxY))
-                drawHoveringText(list, mouseX, mouseY, font);
+                drawHoveringText(list, mouseX, mouseY);
         }
     }
 
@@ -263,7 +261,7 @@ public class GuiBase extends GuiContainer {
 
         for (int k2 = 0; k2 < list.size(); ++k2) {
             String s1 = (String) list.get(k2);
-            font.drawStringWithShadow(s1, i1, j1, -1);
+            font.drawString(s1, i1, j1, -1);
 
             if (k2 == 0)
                 j1 += 2;
@@ -277,15 +275,15 @@ public class GuiBase extends GuiContainer {
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
     }
 
-    public void drawFluid(int x, int y, FluidStack fluid, int width, int height) {
+   /* public void drawFluid(int x, int y, FluidStack fluid, int width, int height) {
         if (fluid == null || fluid.getFluid() == null)
             return;
         mc.renderEngine.bindTexture(new ResourceLocation("textures/atlas/blocks.png"));
         GL11.glColor3ub((byte) (fluid.getFluid().getColor() >> 16 & 0xFF), (byte) (fluid.getFluid().getColor() >> 8 & 0xFF), (byte) (fluid.getFluid().getColor() & 0xFF));
         drawTiledTexture(x, y, fluid.getFluid().getIcon(fluid), width, height);
-    }
+    }*/
 
-    public void drawTiledTexture(int x, int y, IIcon icon, int width, int height) {
+    /*public void drawTiledTexture(int x, int y, IIcon icon, int width, int height) {
         int i = 0;
         int j = 0;
 
@@ -318,5 +316,5 @@ public class GuiBase extends GuiContainer {
         tessellator.addVertexWithUV(x + width, y, this.zLevel, minU + (maxU - minU) * width / 16F, minV);
         tessellator.addVertexWithUV(x, y, this.zLevel, minU, minV);
         tessellator.draw();
-    }
+    }*/
 }

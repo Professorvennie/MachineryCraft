@@ -15,29 +15,29 @@ import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IBookable;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBook extends ItemBase {
 
     public ItemBook() {
         super(Names.Items.BOOK);
-        setTextureName(Reference.MOD_ID + ":manual");
         setMaxStackSize(1);
     }
 
     @Override
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float par8, float par9, float par10) {
         if (player.isSneaking()) {
-            Block block = world.getBlock(par4, par5, par6);
+            Block block = world.getBlockState(pos).getBlock();
             if (block != null && block instanceof IBookable) {
-                BookEntry entry = ((IBookable) block).getEntry(world, par4, par5, par6, player, itemStack);
+                BookEntry entry = ((IBookable) block).getEntry(world, pos.getX(), pos.getY(), pos.getZ(), player, itemStack);
                 if (entry != null) {
                     MachineryCraft.proxy.setEntryToOpen(entry);
                     player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_BOOK, world, 0, 0, 0);
@@ -56,12 +56,12 @@ public class ItemBook extends ItemBase {
     }
 
     public EnumRarity getRarity(ItemStack itemstack) {
-        return EnumRarity.uncommon;
+        return EnumRarity.UNCOMMON;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+    public boolean hasEffect(ItemStack stack) {
         return true;
     }
 }

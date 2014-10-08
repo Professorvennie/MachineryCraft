@@ -12,39 +12,19 @@ package com.professorvennie.machinerycraft.items;
 import com.professorvennie.lib.base.items.ItemBase;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
 public class ItemGears extends ItemBase {
 
-    @SideOnly(Side.CLIENT)
-    public IIcon[] textures;
-
     public ItemGears() {
         super("gear");
         setHasSubtypes(true);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister) {
-        textures = new IIcon[Names.Items.GEARS.length];
-        for (int i = 0; i < Names.Items.GEARS.length; i++) {
-            textures[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Items.GEARS[i]);
-        }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int par1) {
-        return par1 < textures.length ? textures[par1] : textures[0];
     }
 
     @Override
@@ -53,6 +33,7 @@ public class ItemGears extends ItemBase {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs tab, List list) {
         for (int i = 0; i < Names.Items.GEARS.length; i++)
             list.add(new ItemStack(this, 1, i));

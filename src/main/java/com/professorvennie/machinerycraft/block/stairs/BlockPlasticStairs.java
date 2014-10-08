@@ -13,16 +13,10 @@ import com.professorvennie.lib.base.blocks.BlockModStair;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
 
 public class BlockPlasticStairs extends BlockModStair {
 
     public BlockPlasticStairs(Block block) {
         super(block, Names.Blocks.BLOCK_PLASTIC_STAIRS);
-    }
-
-    @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        iIcon = iconRegister.registerIcon(Reference.MOD_ID + ":plasticPlanks");
     }
 }

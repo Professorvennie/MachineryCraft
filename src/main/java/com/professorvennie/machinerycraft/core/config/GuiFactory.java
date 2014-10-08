@@ -10,9 +10,9 @@
 package com.professorvennie.machinerycraft.core.config;
 
 
-import cpw.mods.fml.client.IModGuiFactory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraftforge.fml.client.IModGuiFactory;
 
 import java.util.Set;
 
@@ -25,7 +25,8 @@ public class GuiFactory implements IModGuiFactory {
 
     @Override
     public Class<? extends GuiScreen> mainConfigGuiClass() {
-        return ModGuiConfig.class;
+        return null;
+        //return ModGuiConfig.class;
     }
 
     @Override

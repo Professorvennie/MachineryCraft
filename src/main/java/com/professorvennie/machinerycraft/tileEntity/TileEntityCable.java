@@ -11,11 +11,11 @@ package com.professorvennie.machinerycraft.tileEntity;
 
 import com.professorvennie.machinerycraft.api.blocks.IMachine;
 import com.professorvennie.machinerycraft.machines.windmill.TileEntityWindmill;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityCable extends TileEntityMod {
 
-    public ForgeDirection[] connections = new ForgeDirection[6];
+    public EnumFacing[] connections = new EnumFacing[6];
 
     public TileEntityCable() {
 
@@ -26,40 +26,40 @@ public class TileEntityCable extends TileEntityMod {
     }
 
     public void updateConnections() {
-        if (isCable(xCoord, yCoord + 1, zCoord) || isMachine(xCoord, yCoord + 1, zCoord))
-            connections[0] = ForgeDirection.UP;
+        if (isCable(pos.getX(), pos.getY() + 1, pos.getZ()) || isMachine(pos.getX(),  pos.getY() + 1, pos.getZ()))
+            connections[0] = EnumFacing.UP;
         else connections[0] = null;
-        if (isCable(xCoord, yCoord - 1, zCoord)) connections[1] = ForgeDirection.DOWN;
+        if (isCable(pos.getX(),  pos.getY() - 1, pos.getZ())) connections[1] = EnumFacing.DOWN;
         else connections[1] = null;
-        if (isCable(xCoord, yCoord, zCoord - 1) || isWindmill(xCoord, yCoord, zCoord - 1) || isMachine(xCoord, yCoord, zCoord - 1))
-            connections[2] = ForgeDirection.NORTH;
+        if (isCable(pos.getX(),  pos.getY(), pos.getZ() - 1) || isWindmill(pos.getX(),  pos.getY(), pos.getZ() - 1) || isMachine(pos.getX(),  pos.getY(), pos.getZ() - 1))
+            connections[2] = EnumFacing.NORTH;
         else connections[2] = null;
-        if (isCable(xCoord + 1, yCoord, zCoord) || isWindmill(xCoord + 1, yCoord, zCoord) || isMachine(xCoord + 1, yCoord, zCoord))
-            connections[3] = ForgeDirection.EAST;
+        if (isCable(pos.getX() + 1,  pos.getY(), pos.getZ()) || isWindmill(pos.getX() + 1,  pos.getY(), pos.getZ()) || isMachine(pos.getX() + 1,  pos.getY(), pos.getZ()))
+            connections[3] = EnumFacing.EAST;
         else connections[3] = null;
-        if (isCable(xCoord, yCoord, zCoord + 1) || isWindmill(xCoord, yCoord, zCoord + 1) || isMachine(xCoord, yCoord, zCoord + 1))
-            connections[4] = ForgeDirection.SOUTH;
+        if (isCable(pos.getX(),  pos.getY(), pos.getZ() + 1) || isWindmill(pos.getX(),  pos.getY(), pos.getZ() + 1) || isMachine(pos.getX(),  pos.getY(), pos.getZ() + 1))
+            connections[4] = EnumFacing.SOUTH;
         else connections[4] = null;
-        if (isCable(xCoord - 1, yCoord, zCoord) || isWindmill(xCoord - 1, yCoord, zCoord) || isMachine(xCoord - 1, yCoord, zCoord))
-            connections[5] = ForgeDirection.WEST;
+        if (isCable(pos.getX() - 1,  pos.getY(), pos.getZ()) || isWindmill(pos.getX() - 1,  pos.getY(), pos.getZ()) || isMachine(pos.getX() - 1,  pos.getY(), pos.getZ()))
+            connections[5] = EnumFacing.WEST;
         else connections[5] = null;
     }
 
     public boolean isCable(int x, int y, int z) {
-        return this.worldObj.getTileEntity(x, y, z) instanceof TileEntityCable;
+        return this.worldObj.getTileEntity(pos) instanceof TileEntityCable;
     }
 
     public boolean isMachine(int x, int y, int z) {
-        return this.worldObj.getTileEntity(x, y, z) instanceof IMachine;
+        return this.worldObj.getTileEntity(pos) instanceof IMachine;
     }
 
-    public boolean isWindmill(int x, int y, int z) {
-        return (this.worldObj.getTileEntity(x, y, z) instanceof TileEntityWindmill) && worldObj.getBlockMetadata(x, y, z) == 1;
+    public boolean isWindmill(int x, int y, int z) {                            //todo when windmill has blockstates
+        return (this.worldObj.getTileEntity(pos) instanceof TileEntityWindmill)/* && worldObj.getBlockMetadata(x, y, z) == 1*/;
     }
 
 
-    public boolean onlyOneOppsoite(ForgeDirection[] directions) {
-        ForgeDirection mainDirection = null;
+    public boolean onlyOneOppsoite(EnumFacing[] directions) {
+        EnumFacing mainDirection = null;
         boolean isOppsoite = false;
 
         for (int i = 0; i < directions.length; i++) {
@@ -73,12 +73,12 @@ public class TileEntityCable extends TileEntityMod {
         return isOppsoite;
     }
 
-    public boolean isOppsoite(ForgeDirection first, ForgeDirection second) {
-        if (first.equals(ForgeDirection.NORTH) && second.equals(ForgeDirection.SOUTH) || (first.equals(ForgeDirection.SOUTH) && second.equals(ForgeDirection.NORTH)))
+    public boolean isOppsoite(EnumFacing first, EnumFacing second) {
+        if (first.equals(EnumFacing.NORTH) && second.equals(EnumFacing.SOUTH) || (first.equals(EnumFacing.SOUTH) && second.equals(EnumFacing.NORTH)))
             return true;
-        if (first.equals(ForgeDirection.EAST) && second.equals(ForgeDirection.WEST) || (first.equals(ForgeDirection.WEST) && second.equals(ForgeDirection.EAST)))
+        if (first.equals(EnumFacing.EAST) && second.equals(EnumFacing.WEST) || (first.equals(EnumFacing.WEST) && second.equals(EnumFacing.EAST)))
             return true;
-        if (first.equals(ForgeDirection.UP) && second.equals(ForgeDirection.DOWN) || (first.equals(ForgeDirection.DOWN) && second.equals(ForgeDirection.UP)))
+        if (first.equals(EnumFacing.UP) && second.equals(EnumFacing.DOWN) || (first.equals(EnumFacing.DOWN) && second.equals(EnumFacing.UP)))
             return true;
 
         return false;

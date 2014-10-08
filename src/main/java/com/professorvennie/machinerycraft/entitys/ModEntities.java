@@ -10,7 +10,7 @@
 package com.professorvennie.machinerycraft.entitys;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
-import cpw.mods.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 /**
  * Created by ProfessorVennie on 8/4/2014 at 10:54 AM.

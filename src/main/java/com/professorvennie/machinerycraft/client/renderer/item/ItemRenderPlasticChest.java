@@ -9,18 +9,11 @@
  * */
 package com.professorvennie.machinerycraft.client.renderer.item;
 
-import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.client.FMLClientHandler;
-import net.minecraft.client.model.ModelChest;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.IItemRenderer;
-import org.lwjgl.opengl.GL11;
 
-public class ItemRenderPlasticChest implements IItemRenderer {
-    private final ModelChest modelChest;
+public class ItemRenderPlasticChest/* implements IItemRenderer*/ {
+   // private final ModelChest modelChest;
 
-    public ItemRenderPlasticChest() {
+    /*public ItemRenderPlasticChest() {
         modelChest = new ModelChest();
     }
 
@@ -67,5 +60,5 @@ public class ItemRenderPlasticChest implements IItemRenderer {
         GL11.glRotatef(-90, 0, 1, 0);
         modelChest.renderAll();
         GL11.glPopMatrix(); //end
-    }
+    }*/
 }

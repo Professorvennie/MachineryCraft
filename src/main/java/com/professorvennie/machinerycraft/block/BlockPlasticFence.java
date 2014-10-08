@@ -23,13 +23,13 @@ import net.minecraft.world.IBlockAccess;
 public class BlockPlasticFence extends BlockFence {
 
     public BlockPlasticFence() {
-        super(Reference.MOD_ID + ":plasticPlanks", Material.wood);
-        setBlockName(Names.Blocks.PLASTIC_FENCE);
+        super(Material.wood);
+        setUnlocalizedName(Names.Blocks.PLASTIC_FENCE);
         setCreativeTab(MachineryCraft.tabMachineryCraft);
     }
 
-    public boolean canConnectFenceTo(IBlockAccess iBlockAccess, int x, int y, int z) {
+/*    public boolean canConnectFenceTo(IBlockAccess iBlockAccess, int x, int y, int z) {
         Block block = iBlockAccess.getBlock(x, y, z);
         return block != this && block != ModBlocks.plasticFenceGate ? (block.isOpaqueCube() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false) : true;
-    }
+    }*/
 }

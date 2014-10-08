@@ -66,22 +66,27 @@ public class GrinderRecipes {
         return itemstack2.getItem() == itemstack.getItem() && (itemstack2.getItemDamage() == 32767 || itemstack2.getItemDamage() == itemstack.getItemDamage());
     }
 
-    public float giveExp(ItemStack itemstack) {
+    private boolean func_151397_a(ItemStack itemStack, ItemStack itemStack1)
+    {
+        return itemStack1.getItem() == itemStack.getItem() && (itemStack1.getMetadata() == 32767 || itemStack1.getMetadata() == itemStack.getMetadata());
+    }
+
+    public float getSmeltingExperience(ItemStack itemStack)
+    {
         Iterator iterator = this.expList.entrySet().iterator();
-        Entry entry;
+        Map.Entry entry;
 
-        do {
-            if (!iterator.hasNext()) {
-                return 0;
+        do
+        {
+            if (!iterator.hasNext())
+            {
+                return 0.0F;
             }
-            entry = (Entry) iterator.next();
-        }
-        while (!canBeGrinded(itemstack, (ItemStack) entry.getKey()));
 
-        if (itemstack.getItem().getSmeltingExperience(itemstack) != -1) {
-            return itemstack.getItem().getSmeltingExperience(itemstack);
+            entry = (Map.Entry)iterator.next();
         }
+        while (!this.func_151397_a(itemStack, (ItemStack) entry.getKey()));
 
-        return ((Float) entry.getValue()).floatValue();
+        return ((Float)entry.getValue()).floatValue();
     }
 }

@@ -9,7 +9,6 @@
  * */
 package com.professorvennie.machinerycraft.api;
 
-
 import com.professorvennie.machinerycraft.api.book.BookCategory;
 import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.recipes.ExtractorRecipes;
@@ -19,22 +18,22 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MachineryCraftAPI {
 
+    //temp until forge gets updated
     //Armor Materials
-    public static ArmorMaterial zincArmorMaterial = EnumHelper.addArmorMaterial("zincArmorMaterial", 16, new int[]{3, 7, 5, 3}, 10);
-    public static ArmorMaterial brassArmorMaterial = EnumHelper.addArmorMaterial("brassArmorMaterial", 20, new int[]{3, 6, 3, 3}, 15);
-    public static ArmorMaterial emeraldArmorMaterial = EnumHelper.addArmorMaterial("emeraldArmorMaterial", 66, new int[]{6, 16, 14, 6}, 20);
+    public static ArmorMaterial zincArmorMaterial = ArmorMaterial.DIAMOND;/*EnumHelper.addArmorMaterial("zincArmorMaterial", 16, new int[]{3, 7, 5, 3}, 10);*/
+    public static ArmorMaterial brassArmorMaterial = ArmorMaterial.CHAIN;/*EnumHelper.addArmorMaterial("brassArmorMaterial", 20, new int[]{3, 6, 3, 3}, 15);*/
+    public static ArmorMaterial emeraldArmorMaterial = ArmorMaterial.GOLD;/*EnumHelper.addArmorMaterial("emeraldArmorMaterial", 66, new int[]{6, 16, 14, 6}, 20);*/
 
     //Tool Materials
-    public static ToolMaterial zincToolMaterial = EnumHelper.addToolMaterial("zincToolMaterial", 2, 100, 14.0f, 3.0f, 14);
-    public static ToolMaterial brassToolMaterial = EnumHelper.addToolMaterial("brassToolMaterial", 3, 350, 12.0f, 5.0f, 16);
-    public static ToolMaterial emeraldToolMaterial = EnumHelper.addToolMaterial("emeraldToolMaterial", 4, 2500, 16.0F, 6.0F, 18);
+    public static ToolMaterial zincToolMaterial = ToolMaterial.EMERALD;/*EnumHelper.addToolMaterial("zincToolMaterial", 2, 100, 14.0f, 3.0f, 14);*/
+    public static ToolMaterial brassToolMaterial = ToolMaterial.GOLD;/*EnumHelper.addToolMaterial("brassToolMaterial", 3, 350, 12.0f, 5.0f, 16);*/
+    public static ToolMaterial emeraldToolMaterial = ToolMaterial.IRON;/*EnumHelper.addToolMaterial("emeraldToolMaterial", 4, 2500, 16.0F, 6.0F, 18);*/
 
     private static List<BookCategory> categories = new ArrayList<BookCategory>();
     private static List<BookEntry> allEntries = new ArrayList<BookEntry>();

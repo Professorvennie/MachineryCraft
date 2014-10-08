@@ -17,8 +17,8 @@ import java.util.Random;
  */
 public abstract class BlockModSlab extends BlockSlab {
 
-    private boolean isFull;
-    private String name;
+    public boolean isFull;
+    public String name;
 
     public BlockModSlab(String name, boolean isFull) {
         super(Material.gourd);
@@ -44,6 +44,16 @@ public abstract class BlockModSlab extends BlockSlab {
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(getBlockHalf());
+    }
+
+    @Override
+    public String getFullSlabName(int p_150002_1_) {
+        return name;
+    }
+
+    @Override
+    public boolean isDouble() {
+        return isFull;
     }
 
     public abstract BlockSlab getBlockHalf();

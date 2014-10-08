@@ -108,36 +108,36 @@ public class BookData {
                 new PageCraftingRecipe("11", ModRecipes.recipeGoldGear));
 
         //tools
-        if (ConfigHandler.zincTools) {
+        //if (ConfigHandler.zincTools) {
             zincTools = new BookEntry(LibBookText.ZINC_TOOLS, categoryTools);
             zincTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeZincPickaxe), new PageCraftingRecipe("2", ModRecipes.recipeZincAxe), new PageCraftingRecipe("3", ModRecipes.recipeZincSword), new PageCraftingRecipe("4", ModRecipes.recipeZincSpade), new PageCraftingRecipe("5", ModRecipes.recipeZincHoe));
-        }
+        //}
 
-        if (ConfigHandler.brassTools) {
+        //if (ConfigHandler.brassTools) {
             brassTools = new BookEntry(LibBookText.BRASS_TOOLS, categoryTools);
             brassTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeBrassPickaxe), new PageCraftingRecipe("2", ModRecipes.recipeBrassAxe), new PageCraftingRecipe("3", ModRecipes.recipeBrassSword), new PageCraftingRecipe("4", ModRecipes.recipeBrassSpade), new PageCraftingRecipe("5", ModRecipes.recipeBrassHoe));
-        }
+        //}
 
-        if (ConfigHandler.emeraldTools) {
+        //if (ConfigHandler.emeraldTools) {
             emeraldTools = new BookEntry(LibBookText.ENTRY_EMERALD_TOOLS, categoryTools);
             emeraldTools.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeEmeraldPickaxe), new PageCraftingRecipe("2", ModRecipes.recipeEmeraldAxe), new PageCraftingRecipe("3", ModRecipes.recipeEmeraldSword), new PageCraftingRecipe("4", ModRecipes.recipeEmeraldSpade), new PageCraftingRecipe("5", ModRecipes.recipeEmeraldHoe));
-        }
+        //}
 
         //armor
-        if (ConfigHandler.zincArmor) {
+        //if (ConfigHandler.zincArmor) {
             zincArmor = new BookEntry(LibBookText.ZINC_ARMOR, categoryArmor);
             zincArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeZincHelm), new PageCraftingRecipe("2", ModRecipes.recipeZincChest), new PageCraftingRecipe("3", ModRecipes.recipeZincPants), new PageCraftingRecipe("4", ModRecipes.recipeZincBoots));
-        }
+        //}
 
-        if (ConfigHandler.brassArmor) {
+       // if (ConfigHandler.brassArmor) {
             brassArmor = new BookEntry(LibBookText.BRASS_ARMOR, categoryArmor);
             brassArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeBrassHelm), new PageCraftingRecipe("2", ModRecipes.recipeBrassChest), new PageCraftingRecipe("3", ModRecipes.recipeBrassPants), new PageCraftingRecipe("4", ModRecipes.recipeBrassBoots));
-        }
+        //}
 
-        if (ConfigHandler.emeraldArmor) {
+        //if (ConfigHandler.emeraldArmor) {
             emeraldArmor = new BookEntry(LibBookText.ENTRY_EMERALD_ARMOR, categoryArmor);
             emeraldArmor.setPriority().setBookPages(new PageText("0"), new PageCraftingRecipe("1", ModRecipes.recipeEmeraldHelm), new PageCraftingRecipe("2", ModRecipes.recipeEmeraldChest), new PageCraftingRecipe("3", ModRecipes.recipeEmeraldPants), new PageCraftingRecipe("4", ModRecipes.recipeEmeraldBoots));
-        }
+        //}
 
         //crafting Items
 

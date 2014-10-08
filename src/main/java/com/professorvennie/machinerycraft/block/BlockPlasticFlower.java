@@ -11,66 +11,71 @@ package com.professorvennie.machinerycraft.block;
 
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import net.minecraft.util.IStringSerializable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
 public class BlockPlasticFlower extends BlockFlower {
 
-    @SideOnly(Side.CLIENT)
-    private IIcon[] icons;
+    public static final PropertyEnum FLOWERS = PropertyEnum.create("metal", EnumFlowers.class);
 
     public BlockPlasticFlower() {
-        super(0);
-        setBlockName("plasticFlower");
+        super();
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FLOWERS, EnumFlowers.ROSE));
+        setUnlocalizedName("plasticFlower");
         setCreativeTab(MachineryCraft.tabMachineryCraft);
         setStepSound(Block.soundTypeGrass);
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        icons = new IIcon[Names.Blocks.BLOCK_PLASTIC_FLOWERS.length];
-        for (int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++) {
-            icons[i] = iconRegister.registerIcon(Reference.MOD_ID + ":" + Names.Blocks.BLOCK_PLASTIC_FLOWERS[i]);
+    public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+        EnumFlowers[] enumMetalses = EnumFlowers.values();
+        int i = enumMetalses.length;
+
+        for (int j = 0; j < i; ++j){
+            EnumFlowers enumdyecolor = enumMetalses[j];
+            list.add(new ItemStack(item, 1, enumdyecolor.getMeta()));
         }
     }
 
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-        for (int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++)
-            list.add(new ItemStack(item, 1, i));
+    public IBlockState getStateFromMeta(int meta){
+        return this.getDefaultState().withProperty(FLOWERS, EnumFlowers.getEnumFromMeta(meta));
     }
 
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta) {
-        return this.icons[meta % this.icons.length];
+    public int getMetaFromState(IBlockState state){
+        return ((EnumFlowers)state.getValue(FLOWERS)).getMeta();
+    }
+
+    protected BlockState createBlockState(){
+        return new BlockState(this, new IProperty[] {FLOWERS});
+    }
+
+    @Override
+    public int damageDropped(IBlockState state) {
+        return ((EnumFlowers)state.getValue(FLOWERS)).getMeta();
+    }
+
+    @Override
+    public EnumFlowerColor func_176495_j() {
+        return null;
     }
 
     @Override
     protected boolean canPlaceBlockOn(Block block) {
         return block == ModBlocks.plasticDirt || block == ModBlocks.plasticGrass || block == Blocks.dirt || block == Blocks.glass;
-    }
-
-    @Override
-    public int damageDropped(int meta) {
-        return meta;
-    }
-
-    @Override
-    public int getDamageValue(World world, int x, int y, int z) {
-        return this.damageDropped(world.getBlockMetadata(x, y, z));
     }
 
     public static class ItemBlockFlowers extends ItemBlock {
@@ -86,12 +91,6 @@ public class BlockPlasticFlower extends BlockFlower {
             return par1;
         }
 
-        @Override
-        @SideOnly(Side.CLIENT)
-        public IIcon getIconFromDamage(int par1) {
-            return this.field_150939_a.getIcon(0, par1);
-        }
-
         @SuppressWarnings({"unchecked", "rawtypes"})
         @Override
         @SideOnly(Side.CLIENT)
@@ -104,6 +103,53 @@ public class BlockPlasticFlower extends BlockFlower {
         @Override
         public String getUnlocalizedName(ItemStack stack) {
             return this.getUnlocalizedName() + "." + stack.getItemDamage();
+        }
+    }
+
+    public static enum EnumFlowers implements IStringSerializable {
+
+        ROSE(0, "rose"),
+        DANDELION(1, "dandelion"),
+        REDTULIP(2, "redTulip"),
+        ORANGETULIP(3, "orangeTulip"),
+        WHILTTULIP(4, "whiteTulip"),
+        BLUEORCHID(5, "blueOrchid"),
+        ALLIUM(6, "allium"),
+        DAISY(7, "daisy");
+
+        private int meta;
+        private String name;
+        private static EnumFlowers[] flowerses = new EnumFlowers[values().length];
+
+        private EnumFlowers(int meta, String name){
+            this.meta = meta;
+            this.name = name;
+        }
+
+        public int getMeta() {
+            return meta;
+        }
+
+        @Override
+        public String getName() {
+            return name;
+        }
+
+        public static EnumFlowers getEnumFromMeta(int meta){
+            if (meta < 0 || meta >= flowerses.length)
+                meta = 0;
+
+            return flowerses[meta];
+        }
+
+        static{
+            EnumFlowers[] var0 = values();
+            int var1 = var0.length;
+
+            for (int var2 = 0; var2 < var1; ++var2) {
+                EnumFlowers var3 = var0[var2];
+                flowerses[var3.getMeta()] = var3;
+            }
         }
     }
 }

@@ -35,13 +35,15 @@ import com.professorvennie.machinerycraft.plugins.codechicken.fmp.FMPPlugin;
 import com.professorvennie.machinerycraft.plugins.codechicken.fmp.ItemSawRender;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityCable;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.Loader;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderFish;
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraft.client.resources.model.ModelManager;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Loader;
 
 public class ClientProxey extends CommonProxey {
 
@@ -54,30 +56,30 @@ public class ClientProxey extends CommonProxey {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodenWellPipe.class, new TileEntityRendererWoodenWellPipe());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCampFire.class, new TileEntityRendererCampFire());
 
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.washer), new ItemRenderWasher());
+       /* MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.washer), new ItemRenderWasher());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.cable), new ItemRenderCable());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.windmillground), new ItemRenderWindmillGround());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.plasticChest), new ItemRenderPlasticChest());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.woodenWellPipe), new ItemRenderWoodenWellPipe());
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.campFire), new ItemRenderCampFire());
+        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.campFire), new ItemRenderCampFire());*/
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityGrenade.class, new RenderSnowball(ModItems.gernades));
-        RenderingRegistry.registerEntityRenderingHandler(EntityMCFishHook.class, new RenderFish());
+        RenderingRegistry.registerEntityRenderingHandler(EntityGrenade.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), ModItems.gernades, new RenderItem(Minecraft.getMinecraft().getTextureManager(), new ModelManager(Minecraft.getMinecraft().getTextureMapBlocks()))));
+        RenderingRegistry.registerEntityRenderingHandler(EntityMCFishHook.class, new RenderFish(Minecraft.getMinecraft().getRenderManager()));
 
         if (Loader.isModLoaded("ForgeMultipart")) {
-            MinecraftForgeClient.registerItemRenderer(FMPPlugin.copperSaw, new ItemSawRender());
+            /*MinecraftForgeClient.registerItemRenderer(FMPPlugin.copperSaw, new ItemSawRender());
             MinecraftForgeClient.registerItemRenderer(FMPPlugin.tinSaw, new ItemSawRender());
             MinecraftForgeClient.registerItemRenderer(FMPPlugin.silverSaw, new ItemSawRender());
             MinecraftForgeClient.registerItemRenderer(FMPPlugin.leadSaw, new ItemSawRender());
             MinecraftForgeClient.registerItemRenderer(FMPPlugin.zincSaw, new ItemSawRender());
             MinecraftForgeClient.registerItemRenderer(FMPPlugin.bronzeSaw, new ItemSawRender());
-            MinecraftForgeClient.registerItemRenderer(FMPPlugin.brassSaw, new ItemSawRender());
+            MinecraftForgeClient.registerItemRenderer(FMPPlugin.brassSaw, new ItemSawRender());*/
         }
     }
 
-    public int addArmor(String armor) {
+    /*public int addArmor(String armor) {
         return RenderingRegistry.addNewArmourRendererPrefix(armor);
-    }
+    }*/
 
     @Override
     public void setEntryToOpen(BookEntry entry) {

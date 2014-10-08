@@ -63,27 +63,27 @@ public class ModTools {
 
     private static void init() {
         //tools
-        zincPickaxe = new ItemZincPickaxe(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_PICKAXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":zincPickaxe");
-        zincAxe = new ItemZincAxe(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_AXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":zincAxe");
-        zincSword = new ItemZincSword(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_SWORD).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":zincSword");
-        zincHoe = new ItemZincHoe(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_HOE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":zincHoe");
-        zincSpade = new ItemZincSpade(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_SPADE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":zincSpade");
+        zincPickaxe = new ItemZincPickaxe(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_PICKAXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        zincAxe = new ItemZincAxe(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_AXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        zincSword = new ItemZincSword(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_SWORD).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        zincHoe = new ItemZincHoe(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_HOE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        zincSpade = new ItemZincSpade(MachineryCraftAPI.zincToolMaterial).setUnlocalizedName(Names.Items.ZINC_SPADE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         zincFishingRod = new ItemModFishingPole(MachineryCraftAPI.zincToolMaterial, Names.Items.ZINC_FISHINGROD);
         zincBow = new ItemModBow(MachineryCraftAPI.zincToolMaterial, Names.Items.ZINC_BOW);
 
-        emeraldpickaxe = new ItemEmeraldPickaxe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_PICKAXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":emerald_pickaxe");
-        emeraldaxe = new ItemEmeraldAxe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_AXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":emerald_axe");
-        emeraldsword = new ItemEmeraldSword(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_SWORD).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":emerald_sword");
-        emeraldhoe = new ItemEmeraldHoe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_HOE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":emerald_hoe");
-        emeraldspade = new ItemEmeraldShovel(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_SPADE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":emerald_shovel");
+        emeraldpickaxe = new ItemEmeraldPickaxe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_PICKAXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        emeraldaxe = new ItemEmeraldAxe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_AXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        emeraldsword = new ItemEmeraldSword(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_SWORD).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        emeraldhoe = new ItemEmeraldHoe(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_HOE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        emeraldspade = new ItemEmeraldShovel(MachineryCraftAPI.emeraldToolMaterial).setUnlocalizedName(Names.Items.EMEARALD_SPADE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         emeraldFishingRod = new ItemModFishingPole(MachineryCraftAPI.emeraldToolMaterial, Names.Items.EMEARALD_FISHINGROD);
         emeraldBow = new ItemModBow(MachineryCraftAPI.emeraldToolMaterial, Names.Items.EMEARALD_BOW);
 
-        brassPickaxe = new ItemBrassPickaxe(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_PICKAXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":brassPickaxe");
-        brassAxe = new ItemBrassAxe(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_AXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":brassAxe");
-        brassSword = new ItemBrassSword(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_SWORD).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":brassSword");
-        brassHoe = new ItemBrassHoe(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_HOE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":brassHoe");
-        brassSpade = new ItemBrassSpade(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_SPADE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment).setTextureName(Reference.MOD_ID + ":brassSpade");
+        brassPickaxe = new ItemBrassPickaxe(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_PICKAXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        brassAxe = new ItemBrassAxe(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_AXE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        brassSword = new ItemBrassSword(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_SWORD).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        brassHoe = new ItemBrassHoe(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_HOE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
+        brassSpade = new ItemBrassSpade(MachineryCraftAPI.brassToolMaterial).setUnlocalizedName(Names.Items.BRASS_SPADE).setCreativeTab(MachineryCraft.tabMachineryCraftEquipment);
         brassFishingRod = new ItemModFishingPole(MachineryCraftAPI.brassToolMaterial, Names.Items.BRASS_FISHINGROD);
         brassBow = new ItemModBow(MachineryCraftAPI.brassToolMaterial, Names.Items.BRASS_BOW);
 
@@ -95,7 +95,7 @@ public class ModTools {
     }
 
     private static void registry() {
-        if (ConfigHandler.emeraldTools) {
+        //if (ConfigHandler.emeraldTools) {
             RegistryUtils.registerItem(emeraldpickaxe);
             RegistryUtils.registerItem(emeraldaxe);
             RegistryUtils.registerItem(emeraldsword);
@@ -103,9 +103,9 @@ public class ModTools {
             RegistryUtils.registerItem(emeraldspade);
             RegistryUtils.registerItem(emeraldFishingRod);
             RegistryUtils.registerItem(emeraldBow);
-        }
+        //}
 
-        if (ConfigHandler.zincTools) {
+        //if (ConfigHandler.zincTools) {
             RegistryUtils.registerItem(zincHoe);
             RegistryUtils.registerItem(zincPickaxe);
             RegistryUtils.registerItem(zincAxe);
@@ -113,9 +113,9 @@ public class ModTools {
             RegistryUtils.registerItem(zincSpade);
             RegistryUtils.registerItem(zincFishingRod);
             RegistryUtils.registerItem(zincBow);
-        }
+       // }
 
-        if (ConfigHandler.brassArmor) {
+        //if (ConfigHandler.brassArmor) {
             RegistryUtils.registerItem(brassPickaxe);
             RegistryUtils.registerItem(brassAxe);
             RegistryUtils.registerItem(brassSword);
@@ -123,7 +123,7 @@ public class ModTools {
             RegistryUtils.registerItem(brassSpade);
             RegistryUtils.registerItem(brassFishingRod);
             RegistryUtils.registerItem(brassBow);
-        }
+        //}
 
         RegistryUtils.registerItem(steamPickaxe);
         RegistryUtils.registerItem(steamAxe);

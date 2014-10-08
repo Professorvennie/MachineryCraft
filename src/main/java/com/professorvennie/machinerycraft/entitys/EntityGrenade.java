@@ -12,6 +12,7 @@ package com.professorvennie.machinerycraft.entitys;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -53,8 +54,9 @@ public class EntityGrenade extends EntityThrowable {
                                 int x2 = (int) posX + x;
                                 int y2 = (int) posY + y;
                                 int z2 = (int) posZ + z;
-                                if (worldObj.getBlock(x2, y2, z2) == Blocks.air)
-                                    worldObj.setBlock(x2, y2, z2, Blocks.fire);
+                                BlockPos pos = new BlockPos(x2, y2, z2);
+                                if (worldObj.getBlockState(pos) == Blocks.air)
+                                    worldObj.setBlockState(pos, Blocks.fire.getDefaultState());
                             }
                         }
                     }
@@ -70,8 +72,9 @@ public class EntityGrenade extends EntityThrowable {
                                 int x2 = (int) posX + x;
                                 int y2 = (int) posY + y;
                                 int z2 = (int) posZ + z;
-                                if (worldObj.getBlock(x2, y2, z2) == Blocks.air)
-                                    worldObj.setBlock(x2, y2, z2, Blocks.flowing_water);
+                                BlockPos pos = new BlockPos(x2, y2, z2);
+                                if (worldObj.getBlockState(pos) == Blocks.air)
+                                    worldObj.setBlockState(pos, Blocks.flowing_water.getDefaultState());
                             }
                         }
                     }
@@ -87,8 +90,9 @@ public class EntityGrenade extends EntityThrowable {
                                 int x2 = (int) posX + x;
                                 int y2 = (int) posY + y;
                                 int z2 = (int) posZ + z;
-                                if (worldObj.getBlock(x2, y2, z2) == Blocks.air)
-                                    worldObj.setBlock(x2, y2, z2, Blocks.flowing_lava);
+                                BlockPos pos = new BlockPos(x2, y2, z2);
+                                if (worldObj.getBlockState(pos) == Blocks.air)
+                                    worldObj.setBlockState(pos, Blocks.flowing_lava.getDefaultState());
                             }
                         }
                     }

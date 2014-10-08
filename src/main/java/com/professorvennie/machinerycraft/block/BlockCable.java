@@ -17,11 +17,13 @@ import com.professorvennie.machinerycraft.tileEntity.TileEntityCable;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockCable extends BlockBase implements IBookable, ITileEntityProvider {
@@ -32,12 +34,12 @@ public class BlockCable extends BlockBase implements IBookable, ITileEntityProvi
         this.setBlockBounds(11 * pixel / 2, 11 * pixel / 2, 11 * pixel / 2, 1 - 11 * pixel / 2, 1 - 11 * pixel / 2, 1 - 11 * pixel / 2);
         this.useNeighborBrightness = true;
         setStepSound(Block.soundTypeMetal);
-        setHarvestLevel("pickAxe", 2);
+        //setHarvestLevel("pickAxe", 2);
         setHardness(5.0f);
     }
 
-    public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z) {
-        TileEntityCable cable = (TileEntityCable) world.getTileEntity(x, y, z);
+    public AxisAlignedBB getSelectedBoundingBox(World world, BlockPos pos) {
+        TileEntityCable cable = (TileEntityCable) world.getTileEntity(pos);
 
         if (cable != null) {
             float pixel = 1F / 16F;
@@ -51,11 +53,11 @@ public class BlockCable extends BlockBase implements IBookable, ITileEntityProvi
             this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 
         }
-        return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + this.maxY, z + this.maxZ);
+        return AxisAlignedBB.fromBounds(pos.getX() + this.minX, pos.getY() + this.minY, pos.getZ() + this.minZ, pos.getX() + this.maxX, pos.getY() + this.maxY, pos.getZ() + this.maxZ);
     }
 
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
-        TileEntityCable cable = (TileEntityCable) world.getTileEntity(x, y, z);
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state) {
+        TileEntityCable cable = (TileEntityCable) world.getTileEntity(pos);
 
         if (cable != null) {
             float pixel = 1F / 16F;
@@ -69,8 +71,7 @@ public class BlockCable extends BlockBase implements IBookable, ITileEntityProvi
             this.setBlockBounds(minX, minY, minZ, maxX, maxY, maxZ);
 
         }
-        return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + this.maxY, z + this.maxZ);
-    }
+        return AxisAlignedBB.fromBounds(pos.getX() + this.minX, pos.getY() + this.minY, pos.getZ() + this.minZ, pos.getX() + this.maxX, pos.getY() + this.maxY, pos.getZ() + this.maxZ);    }
 
     public int getRenderType() {
         return -1;
@@ -85,7 +86,7 @@ public class BlockCable extends BlockBase implements IBookable, ITileEntityProvi
     }
 
     @Override
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack) {
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 
     }
 

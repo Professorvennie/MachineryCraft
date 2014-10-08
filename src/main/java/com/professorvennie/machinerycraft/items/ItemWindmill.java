@@ -14,15 +14,15 @@ import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.lib.Names;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 
 public class ItemWindmill extends ItemBase {
 
     public ItemWindmill() {
         super(Names.Items.WINDMILL);
-        setTextureName("diamond");
     }
 
     @Override
@@ -30,14 +30,14 @@ public class ItemWindmill extends ItemBase {
         return true;
     }
 
-    public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float x2, float y2, float z2) {
+    public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float x2, float y2, float z2) {
         if (!world.isRemote) {
-            if (side == 1 && world.getBlock(x, y, z).equals(ModBlocks.windmillground) && world.getBlockMetadata(x, y, z) == 5) {
+            if (side == EnumFacing.UP && world.getBlockState(pos).equals(ModBlocks.windmillground)/* && world.getBlockMetadata(x, y, z) == 5*/) {
                 boolean notEnoughspace = false;
                 for (int x1 = -1; x1 < 1; x1++) {
                     for (int z1 = -1; z1 < 1; z1++) {
                         for (int y1 = 0; y1 < 7; y1++) {
-                            if (!world.isAirBlock(x + x1, y + y1 + 1, z + z1)) notEnoughspace = true;
+                            if (!world.isAirBlock(new BlockPos(pos.getX() + x1, pos.getY() + y1 + 1, pos.getZ() + z1))) notEnoughspace = true;
                         }
 
                     }
@@ -45,14 +45,14 @@ public class ItemWindmill extends ItemBase {
                 if (!notEnoughspace) {
                     int direction = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
                     int meta = 0;
-                    if (direction == 0) meta = ForgeDirection.WEST.ordinal();
-                    if (direction == 1) meta = ForgeDirection.SOUTH.ordinal();
-                    if (direction == 2) meta = ForgeDirection.NORTH.ordinal();
-                    if (direction == 3) meta = ForgeDirection.EAST.ordinal();
+                    if (direction == 0) meta = EnumFacing.WEST.ordinal();
+                    if (direction == 1) meta = EnumFacing.SOUTH.ordinal();
+                    if (direction == 2) meta = EnumFacing.NORTH.ordinal();
+                    if (direction == 3) meta = EnumFacing.EAST.ordinal();
                     if (itemstack.stackSize > 0)
                         itemstack.stackSize -= 1;
                     for (int y1 = 0; y1 < 7; y1++) {
-                        world.setBlock(x, y + y1 + 1, z, ModBlocks.windmill, (y1 + 1) == 7 ? (y1 + 1 + meta) : (y1 + 1), 2);
+                        world.setBlockState(new BlockPos(pos.getX(), pos.getY() + y1 + 1, pos.getZ()), ModBlocks.windmill.getDefaultState(), (y1 + 1) == 7 ? (y1 + 1 + meta) : (y1 + 1));
                     }
                     return true;
                 }

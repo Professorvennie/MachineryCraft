@@ -9,8 +9,8 @@
  * */
 package com.professorvennie.machinerycraft.core.network;
 
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import io.netty.buffer.ByteBuf;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 /**
  * Created by ProfessorVennie on 9/27/2014 at 1:54 PM.

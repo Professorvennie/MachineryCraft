@@ -17,16 +17,21 @@ import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityMod;
 import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.Random;
 
@@ -39,35 +44,34 @@ public class BlockPlasticChest extends BlockModContainer {
         super(Material.wood, Names.Blocks.BLOCK_PLASTIC_CHEST);
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
         keepInventory = false;
-        setBlockTextureName(Reference.MOD_ID + ":plastic_Chest");
         setHardness(2.0F);
-        setHarvestLevel("axe", 0);
+        //setHarvestLevel("axe", 0);
         setStepSound(Block.soundTypeWood);
     }
 
     @Override
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemStack) {
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase player, ItemStack itemStack) {
         int l = MathHelper.floor_double((double) (player.rotationYaw * 4.0f / 360.0f) + 0.5D) & 3;
-        TileEntityMod tile = (TileEntityMod) world.getTileEntity(x, y, z);
+        TileEntityMod tile = (TileEntityMod) world.getTileEntity(pos);
 
         if (l == 0) {
-            tile.setOrientation(ForgeDirection.NORTH);
+            tile.setOrientation(EnumFacing.NORTH);
         }
 
         if (l == 1) {
-            tile.setOrientation(ForgeDirection.EAST);
+            tile.setOrientation(EnumFacing.EAST);
         }
 
         if (l == 2) {
-            tile.setOrientation(ForgeDirection.SOUTH);
+            tile.setOrientation(EnumFacing.SOUTH);
         }
 
         if (l == 3) {
-            tile.setOrientation(ForgeDirection.WEST);
+            tile.setOrientation(EnumFacing.WEST);
         }
 
         if (itemStack.hasDisplayName()) {
-            ((TileEntityMod) world.getTileEntity(x, y, z)).setCustomName(itemStack.getDisplayName());
+            ((TileEntityMod) world.getTileEntity(pos)).setCustomName(itemStack.getDisplayName());
         }
     }
 
@@ -82,24 +86,24 @@ public class BlockPlasticChest extends BlockModContainer {
     }
 
     @Override
-    public boolean renderAsNormalBlock() {
+    public boolean isFullCube() {
         return false;
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
-        if (!player.isSneaking() && !world.isSideSolid(x, y + 1, z, ForgeDirection.SOUTH)) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+        if (!player.isSneaking()/* && !world.isSideSolid(x, y + 1, z, EnumFacing.SOUTH)*/) {
             if (!world.isRemote) {
-                player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_PLASTIC_CHEST, world, x, y, z);
+                player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_PLASTIC_CHEST, world, pos.getX(), pos.getY(), pos.getZ());
             }
         }
         return true;
     }
 
     @Override
-    public boolean onBlockEventReceived(World world, int x, int y, int z, int eventId, int eventData) {
-        super.onBlockEventReceived(world, x, y, z, eventId, eventData);
-        TileEntity tileentity = world.getTileEntity(x, y, z);
+    public boolean onBlockEventReceived(World world, BlockPos pos, IBlockState state, int eventId, int eventData) {
+        super.onBlockEventReceived(world, pos, state, eventId, eventData);
+        TileEntity tileentity = world.getTileEntity(pos);
         return tileentity != null && tileentity.receiveClientEvent(eventId, eventData);
     }
 
@@ -108,9 +112,15 @@ public class BlockPlasticChest extends BlockModContainer {
         return new TileEntityPlasticChest();
     }
 
-    public void breakBlock(World world, int x, int y, int z, Block block, int side) {
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
         if (!keepInventory) {
-            TileEntityPlasticChest tileEntityPlasticChest = (TileEntityPlasticChest) world.getTileEntity(x, y, z);
+            TileEntity tileentity = world.getTileEntity(pos);
+
+            if (tileentity instanceof IInventory){
+                InventoryHelper.dropInventoryItems(world, pos, (IInventory) tileentity);
+                world.updateComparatorOutputLevel(pos, this);
+            }
+            /*TileEntityPlasticChest tileEntityPlasticChest = (TileEntityPlasticChest) world.getTileEntity(pos);
             if (tileEntityPlasticChest != null) {
                 for (int i = 0; i < tileEntityPlasticChest.getSizeInventory(); i++) {
                     ItemStack itemStack = tileEntityPlasticChest.getStackInSlot(i);
@@ -127,7 +137,7 @@ public class BlockPlasticChest extends BlockModContainer {
                                 j = itemStack.stackSize;
 
                             itemStack.stackSize -= j;
-                            EntityItem entityItem = new EntityItem(world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), new ItemStack(itemStack.getItem(), j, itemStack.getItemDamage()));
+                            EntityItem entityItem = new EntityItem(world, (double) ((float) pos.getX() + f), (double) ((float) pos.getY() + f1), (double) ((float) pos.getZ() + f2), new ItemStack(itemStack.getItem(), j, itemStack.getItemDamage()));
 
                             if (itemStack.hasTagCompound()) {
                                 entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
@@ -143,8 +153,8 @@ public class BlockPlasticChest extends BlockModContainer {
                     }
                 }
                 world.func_147453_f(x, y, z, block);
-            }
+            }*/
         }
-        super.breakBlock(world, x, y, z, block, side);
+        super.breakBlock(world, pos, state);
     }
 }

@@ -14,8 +14,8 @@ import com.professorvennie.machinerycraft.tileEntity.TileEntityPlasticChest;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -25,12 +25,12 @@ public class TileEntityRendererPlasticChest extends TileEntitySpecialRenderer {
     private ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/model/plastic_chest.png");
 
     @Override
-    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float tick) {
+    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float tick, int i) {
         if (tileEntity instanceof TileEntityPlasticChest) {
             TileEntityPlasticChest tileEntityPlasticChest = (TileEntityPlasticChest) tileEntity;
-            ForgeDirection direction = null;
+            EnumFacing direction = null;
 
-            if (tileEntityPlasticChest.getWorldObj() != null) {
+            if (tileEntityPlasticChest.getWorld() != null) {
                 direction = tileEntityPlasticChest.getOrientation();
                 //System.out.println(tileEntityPlasticChest.getOrientation());
             }
@@ -47,13 +47,13 @@ public class TileEntityRendererPlasticChest extends TileEntitySpecialRenderer {
             short angle = 0;
 
             if (direction != null) {
-                if (direction == ForgeDirection.NORTH) {
+                if (direction == EnumFacing.NORTH) {
                     angle = 180;
-                } else if (direction == ForgeDirection.SOUTH) {
+                } else if (direction == EnumFacing.SOUTH) {
                     angle = 0;
-                } else if (direction == ForgeDirection.WEST) {
+                } else if (direction == EnumFacing.WEST) {
                     angle = 90;
-                } else if (direction == ForgeDirection.EAST) {
+                } else if (direction == EnumFacing.EAST) {
                     angle = -90;
                 }
             }

@@ -39,8 +39,8 @@ public class GuiButtonRedStone extends GuiButton {
     public void drawButton(Minecraft minecraft, int x, int y) {
         minecraft.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/guiElements.png"));
 
-        this.field_146123_n = x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height;
-        int k = getHoverState(field_146123_n);
+        this.hovered = x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height;
+        int k = getHoverState(hovered);
         List<String> tooltip = new ArrayList<String>();
         //int tooltipY = (tooltip.size() - 1) * 10;
 

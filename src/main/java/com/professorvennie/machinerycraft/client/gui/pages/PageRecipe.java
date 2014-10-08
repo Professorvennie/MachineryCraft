@@ -13,15 +13,16 @@ import com.professorvennie.machinerycraft.api.book.BookPage;
 import com.professorvennie.machinerycraft.api.book.IGuiBookEntry;
 import com.professorvennie.machinerycraft.client.gui.book.GuiBookEntry;
 import com.professorvennie.machinerycraft.client.gui.pages.BookRecipeMappings.EntryData;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.resources.model.ModelManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -130,7 +131,7 @@ public class PageRecipe extends BookPage {
 
     @SideOnly(Side.CLIENT)
     public void renderItem(IGuiBookEntry gui, int xPos, int yPos, ItemStack stack, boolean accountForContainer) {
-        RenderItem render = new RenderItem();
+        RenderItem render = new RenderItem(Minecraft.getMinecraft().getTextureManager(), new ModelManager(Minecraft.getMinecraft().getTextureMapBlocks()));
         boolean mouseDown = Mouse.isButtonDown(0);
 
         GL11.glPushMatrix();
@@ -139,8 +140,8 @@ public class PageRecipe extends BookPage {
         RenderHelper.enableGUIStandardItemLighting();
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
-        render.renderItemAndEffectIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), stack, xPos, yPos);
-        render.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), stack, xPos, yPos);
+        render.func_175043_b(stack);
+        render.func_175043_b(stack);
         RenderHelper.disableStandardItemLighting();
         GL11.glPopMatrix();
 
@@ -159,7 +160,7 @@ public class PageRecipe extends BookPage {
             }
 
             if (accountForContainer) {
-                ItemStack containerStack = stack.getItem().getContainerItem(stack);
+                ItemStack containerStack = new ItemStack(stack.getItem().getContainerItem());
                 if (containerStack != null && containerStack.getItem() != null)
                     tooltipContainerStack = containerStack;
             }
@@ -167,5 +168,4 @@ public class PageRecipe extends BookPage {
 
         GL11.glDisable(GL11.GL_LIGHTING);
     }
-
 }

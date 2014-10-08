@@ -12,7 +12,6 @@ package com.professorvennie.machinerycraft.core.handlers;
 import com.professorvennie.machinerycraft.api.book.BookEntry;
 import com.professorvennie.machinerycraft.api.book.IBookable;
 import com.professorvennie.machinerycraft.items.ModItems;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -20,15 +19,13 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import org.lwjgl.opengl.GL11;
 
 public class HudHandler {
 
-    private static final RenderItem itemRender = new RenderItem();
+    //private static final RenderItem itemRender = new RenderItem();
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public void onDrawScreen(RenderGameOverlayEvent.Post event) {
         if (event.type == ElementType.ALL) {
             Minecraft mc = Minecraft.getMinecraft();
@@ -42,7 +39,7 @@ public class HudHandler {
                 }
             }
         }
-    }
+    }*/
 
     private void drawBookGUI(BookEntry entry, ScaledResolution res) {
         GL11.glEnable(GL11.GL_BLEND);
@@ -54,10 +51,10 @@ public class HudHandler {
         int color = 0xFF5A28;
 
         String info = StatCollector.translateToLocal("mc.book.shiftToRead");
-        int itemX = x - (mc.fontRenderer.getStringWidth(new ItemStack(ModItems.book).getDisplayName()) / 2);
-        mc.fontRenderer.drawStringWithShadow(StatCollector.translateToLocal(entry.getUnlocalizedName()), itemX, y + 6, color);
-        mc.fontRenderer.drawStringWithShadow(info, x - (mc.fontRenderer.getStringWidth(info) / 2), y + 18, color);
-        itemRender.renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.book), itemX - 20, y + 2);
+        int itemX = x - (mc.fontRendererObj.getStringWidth(new ItemStack(ModItems.book).getDisplayName()) / 2);
+        mc.fontRendererObj.drawString(StatCollector.translateToLocal(entry.getUnlocalizedName()), itemX, y + 6, color);
+        mc.fontRendererObj.drawString(info, x - (mc.fontRendererObj.getStringWidth(info) / 2), y + 18, color);
+        //itemRender.renderItemIntoGUI(mc.fontRendererObj, mc.renderEngine, new ItemStack(ModItems.book), itemX - 20, y + 2);
         GL11.glDisable(GL11.GL_LIGHTING);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glColor4f(1F, 1F, 1F, 1F);
