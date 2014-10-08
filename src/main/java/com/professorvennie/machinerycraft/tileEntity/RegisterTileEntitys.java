@@ -21,6 +21,8 @@ import com.professorvennie.machinerycraft.machines.brass.generators.combustion.T
 import com.professorvennie.machinerycraft.machines.brass.generators.lava.TileEntityBrassLavaGenerator;
 import com.professorvennie.machinerycraft.machines.brass.generators.solar.TileEntityBrassSolarGenerator;
 import com.professorvennie.machinerycraft.machines.brass.grinder.TileEntityBrassGrinder;
+import com.professorvennie.machinerycraft.machines.brass.power.TileEntityPowerReceiver;
+import com.professorvennie.machinerycraft.machines.brass.power.TileEntityPowerTransmitter;
 import com.professorvennie.machinerycraft.machines.bronze.alloy.TileEntityBronzeAlloy;
 import com.professorvennie.machinerycraft.machines.bronze.boiler.TileEntityBronzeSteamBoiler;
 import com.professorvennie.machinerycraft.machines.bronze.charger.TileEntityBronzeCharger;
@@ -61,5 +63,7 @@ public class RegisterTileEntitys {
         GameRegistry.registerTileEntity(TileEntityBrassCharger.class, Reference.MOD_ID + "_tileEntityBrassCharger");
         GameRegistry.registerTileEntity(TileEntityBronzeCharger.class, Reference.MOD_ID + "_tileEntityBronzeCharger");
         GameRegistry.registerTileEntity(TileEntityBronzeAlloy.class, Reference.MOD_ID + "_tileEntityBronzeAlloy");
+        GameRegistry.registerTileEntity(TileEntityPowerTransmitter.class, Reference.MOD_ID + "_tileEntityPowerTransmitter");
+        GameRegistry.registerTileEntity(TileEntityPowerReceiver.class, Reference.MOD_ID + "_tileEntityPowerReceiver");
     }
 }
