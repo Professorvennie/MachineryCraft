@@ -21,13 +21,11 @@ import com.professorvennie.machinerycraft.client.renderer.tileentity.TileEntityR
 import com.professorvennie.machinerycraft.entitys.EntityGrenade;
 import com.professorvennie.machinerycraft.entitys.EntityMCFishHook;
 import com.professorvennie.machinerycraft.items.ModItems;
-import com.professorvennie.machinerycraft.machines.basic.campfire.ItemRenderCampFire;
 import com.professorvennie.machinerycraft.machines.basic.campfire.TileEntityCampFire;
 import com.professorvennie.machinerycraft.machines.basic.campfire.TileEntityRendererCampFire;
 import com.professorvennie.machinerycraft.machines.basic.well.ItemRenderWoodenWellPipe;
 import com.professorvennie.machinerycraft.machines.basic.well.TileEntityRendererWoodenWellPipe;
 import com.professorvennie.machinerycraft.machines.basic.well.TileEntityWoodenWellPipe;
-import com.professorvennie.machinerycraft.machines.washer.ItemRenderWasher;
 import com.professorvennie.machinerycraft.machines.washer.TileEntityRendererWasher;
 import com.professorvennie.machinerycraft.machines.washer.TileEntityWasher;
 import com.professorvennie.machinerycraft.machines.windmill.*;

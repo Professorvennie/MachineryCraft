@@ -15,15 +15,12 @@ import com.professorvennie.machinerycraft.core.config.ConfigHandler;
 import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.items.tools.ModTools;
 import com.professorvennie.machinerycraft.lib.Names;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
@@ -147,7 +144,7 @@ public class ModRecipes {
 
         //tools
         //zinc tools
-        if (ConfigHandler.zincTools) {
+        //if (ConfigHandler.zincTools) {
             addOreDictRecipe(new ItemStack(ModTools.zincPickaxe), "SSS", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 4), 's', Items.stick);
             recipeZincPickaxe = MachineryCraftAPI.getLatestAddedRecipe();
 
@@ -162,10 +159,10 @@ public class ModRecipes {
 
             addOreDictRecipe(new ItemStack(ModTools.zincHoe), "SS ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 4), 's', Items.stick);
             recipeZincHoe = MachineryCraftAPI.getLatestAddedRecipe();
-        }
+        //}
 
         //brass tools
-        if (ConfigHandler.brassTools) {
+        //if (ConfigHandler.brassTools) {
             addOreDictRecipe(new ItemStack(ModTools.brassPickaxe), "SSS", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
             recipeBrassPickaxe = MachineryCraftAPI.getLatestAddedRecipe();
 
@@ -180,10 +177,10 @@ public class ModRecipes {
 
             addOreDictRecipe(new ItemStack(ModTools.brassHoe), "SS ", " s ", " s ", 'S', new ItemStack(ModItems.Ingots, 1, 6), 's', Items.stick);
             recipeBrassHoe = MachineryCraftAPI.getLatestAddedRecipe();
-        }
+        //}
 
         //emerald tools
-        if (ConfigHandler.emeraldTools) {
+       // if (ConfigHandler.emeraldTools) {
             addOreDictRecipe(new ItemStack(ModTools.emeraldpickaxe), "SSS", " s ", " s ", 'S', Items.emerald, 's', Items.stick);
             recipeEmeraldPickaxe = MachineryCraftAPI.getLatestAddedRecipe();
 
@@ -198,11 +195,11 @@ public class ModRecipes {
 
             addOreDictRecipe(new ItemStack(ModTools.emeraldhoe), "SS ", " s ", " s ", 'S', Items.emerald, 's', Items.stick);
             recipeEmeraldHoe = MachineryCraftAPI.getLatestAddedRecipe();
-        }
+        //}
 
         //armor
         //zinc armor
-        if (ConfigHandler.zincArmor) {
+        //if (ConfigHandler.zincArmor) {
             addOreDictRecipe(new ItemStack(ModItems.zincHemlent), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 4));
             recipeZincHelm = MachineryCraftAPI.getLatestAddedRecipe();
 
@@ -214,10 +211,10 @@ public class ModRecipes {
 
             addOreDictRecipe(new ItemStack(ModItems.zincBoots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 4));
             recipeZincBoots = MachineryCraftAPI.getLatestAddedRecipe();
-        }
+        //}
 
         //brass armor
-        if (ConfigHandler.brassArmor) {
+        //if (ConfigHandler.brassArmor) {
             addOreDictRecipe(new ItemStack(ModItems.brassHelment), "sss", "s s", "   ", 's', new ItemStack(ModItems.Ingots, 1, 6));
             recipeBrassHelm = MachineryCraftAPI.getLatestAddedRecipe();
 
@@ -229,10 +226,10 @@ public class ModRecipes {
 
             addOreDictRecipe(new ItemStack(ModItems.brassBoots), "   ", "s s", "s s", 's', new ItemStack(ModItems.Ingots, 1, 6));
             recipeBrassBoots = MachineryCraftAPI.getLatestAddedRecipe();
-        }
+        //}
 
         //emerald armor
-        if (ConfigHandler.emeraldArmor) {
+        //if (ConfigHandler.emeraldArmor) {
             addOreDictRecipe(new ItemStack(ModItems.emeraldhelment), "sss", "s s", "   ", 's', Items.emerald);
             recipeEmeraldHelm = MachineryCraftAPI.getLatestAddedRecipe();
 
@@ -244,7 +241,7 @@ public class ModRecipes {
 
             addOreDictRecipe(new ItemStack(ModItems.emeraldboots), "   ", "s s", "s s", 's', Items.emerald);
             recipeEmeraldBoots = MachineryCraftAPI.getLatestAddedRecipe();
-        }
+        //}
         //misc
         addShapelessOreDictRecipe(new ItemStack(ModBlocks.plasticPlanks, 4), ModBlocks.plasticLog);
         recipePlasticPlanks = MachineryCraftAPI.getLatestAddedRecipe();
@@ -328,28 +325,30 @@ public class ModRecipes {
     }
 
     private static void addOreDictRecipe(ItemStack output, Object... recipe) {
-        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(output, recipe));
+        //CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(output, recipe));
+        GameRegistry.addRecipe(output, recipe);
     }
 
     private static void addShapelessOreDictRecipe(ItemStack output, Object... recipe) {
-        CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(output, recipe));
+        //CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(output, recipe));
+        GameRegistry.addShapelessRecipe(output, recipe);
     }
 
     public static void oreDict() {
         for (int i = 0; i < Names.Items.INGOTS.length; i++) {
-            OreDictionary.registerOre(Names.Items.INGOTS[i], new ItemStack(ModItems.Ingots, 1, i));
+            //OreDictionary.registerOre(Names.Items.INGOTS[i], new ItemStack(ModItems.Ingots, 1, i));
         }
 
         for (int i = 0; i < Names.Blocks.ORES.length; i++) {
-            OreDictionary.registerOre(Names.Blocks.ORES[i], new ItemStack(ModBlocks.BlockOres, 1, i));
+            //OreDictionary.registerOre(Names.Blocks.ORES[i], new ItemStack(ModBlocks.BlockOres, 1, i));
         }
 
         for (int i = 0; i < Names.Items.NUGGETS.length; i++) {
-            OreDictionary.registerOre(Names.Items.NUGGETS[i], new ItemStack(ModItems.nuggets, 1, i));
+            //OreDictionary.registerOre(Names.Items.NUGGETS[i], new ItemStack(ModItems.nuggets, 1, i));
         }
 
         for (int i = 0; i < Names.Items.DUSTS.length; i++) {
-            OreDictionary.registerOre(Names.Items.DUSTS[i], new ItemStack(ModItems.Dusts, 1, i));
+            //OreDictionary.registerOre(Names.Items.DUSTS[i], new ItemStack(ModItems.Dusts, 1, i));
         }
     }
 

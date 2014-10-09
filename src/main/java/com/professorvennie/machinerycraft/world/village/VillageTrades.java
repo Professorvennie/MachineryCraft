@@ -10,23 +10,23 @@
 package com.professorvennie.machinerycraft.world.village;
 
 import com.professorvennie.machinerycraft.block.ModBlocks;
-import cpw.mods.fml.common.registry.VillagerRegistry;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 import java.util.Random;
 
-public class VillageTrades implements VillagerRegistry.IVillageTradeHandler {
+public class VillageTrades/* implements VillagerRegistry.IVillageTradeHandler */{
 
-    @Override
+    //@Override
     public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
-        if (villager.getProfession() == 78906) {
+        /*if (villager.getProfession() == 78906) {
             recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 0, 4), null, new ItemStack(ModBlocks.copperFurnaceIdle)));
             recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(ModBlocks.copperGrinderIdle), null, new ItemStack(Items.emerald, 0, 5)));
             recipeList.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 0, 5), null, new ItemStack(ModBlocks.copperGrinderIdle)));
-        }
+        }*/
     }
 }

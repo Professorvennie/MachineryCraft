@@ -26,8 +26,8 @@ public class TileEntityWindmill extends TileEntityBasicSidedInventory {
     }
 
     public void updateEntity() {
-        int height = yCoord;
-        if (this.getWorldObj().getBlockMetadata(this.xCoord, this.yCoord, this.zCoord) > 6) {
+        int height = pos.getY();
+        if (this.getBlockMetadata() > 6) {
             //todo proper values and heights
             if (height < 100) {
                 power += powerPerRoation;

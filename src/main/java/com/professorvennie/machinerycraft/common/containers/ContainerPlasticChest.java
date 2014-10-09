@@ -22,7 +22,7 @@ public class ContainerPlasticChest extends Container {
 
     public ContainerPlasticChest(InventoryPlayer inventory, TileEntityPlasticChest entity) {
         this.entity = entity;
-        entity.openInventory();
+        entity.openInventory(inventory.player);
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 9; j++) {
@@ -76,6 +76,6 @@ public class ContainerPlasticChest extends Container {
     @Override
     public void onContainerClosed(EntityPlayer entityPlayer) {
         super.onContainerClosed(entityPlayer);
-        entity.closeInventory();
+        entity.closeInventory(entityPlayer);
     }
 }

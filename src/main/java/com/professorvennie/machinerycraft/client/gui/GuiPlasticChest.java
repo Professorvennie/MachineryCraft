@@ -35,7 +35,7 @@ public class GuiPlasticChest extends GuiContainer {
     }
 
     public void drawGuiContainerForegroundLayer(int par1, int par2) {
-        String name = this.entity.hasCustomInvName() ? this.entity.getCustomName() : I18n.format(this.entity.getInventoryName(), MachineryCraft.instance);
+        String name = this.entity.hasCustomInvName() ? this.entity.getCustomName() : I18n.format(this.entity.getName(), MachineryCraft.instance);
 
         this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
         this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 8, this.ySize - 96 + 2, 4210752);

@@ -30,12 +30,12 @@ public class WorldProviderMining extends WorldProvider {
     }
 
     @Override
-    public IChunkProvider createChunkGenerator() {
-        return new ChunkProviderMiningWorld(worldObj, worldObj.getSeed(), true, "");
+    public String getInternalNameSuffix() {
+        return "Welcome To The Mining World.";
     }
 
     @Override
-    public String getWelcomeMessage() {
-        return "Welcome To The Mining World.";
+    public IChunkProvider createChunkGenerator() {
+        return new ChunkProviderMiningWorld(worldObj, worldObj.getSeed(), true, "");
     }
 }

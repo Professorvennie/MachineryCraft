@@ -126,7 +126,7 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory /*implements
                     TileEntity tile = worldObj.getTileEntity(new BlockPos(x, y, z));
                     if (tile != null && (tile instanceof TileEntityWasher)) {
                         ((TileEntityWasher) tile).reset();
-                        //worldObj.setBlockMetadataWithNotify(x, y, z, 0, 2);
+                        ///worldObj.setBlockMetadataWithNotify(x, y, z, 0, 2);
                     }
                 }
     }

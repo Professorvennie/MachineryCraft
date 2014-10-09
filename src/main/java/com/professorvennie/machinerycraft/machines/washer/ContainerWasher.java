@@ -55,8 +55,8 @@ public class ContainerWasher extends Container {
         for (int i = 0; i < this.crafters.size(); ++i) {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
-            if (lastTank1 != washer.getTank1Amount())
-                icrafting.sendProgressBarUpdate(this, 2, washer.getTank1Amount());
+            //if (lastTank1 != washer.getTank1Amount())
+                //icrafting.sendProgressBarUpdate(this, 2, washer.getTank1Amount());
             if (lastmasterX != washer.getMasterX())
                 icrafting.sendProgressBarUpdate(this, 3, washer.getMasterX());
             if (lastmasterY != washer.getMasterY())
@@ -65,7 +65,7 @@ public class ContainerWasher extends Container {
                 icrafting.sendProgressBarUpdate(this, 5, washer.getMasterZ());
         }
 
-        lastTank1 = washer.getTank1Amount();
+        //lastTank1 = washer.getTank1Amount();
         lastmasterX = washer.getMasterX();
         lastmasterY = washer.getMasterY();
         lastmasterZ = washer.getMasterZ();

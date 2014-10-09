@@ -9,8 +9,9 @@
  * */
 package com.professorvennie.machinerycraft.world.village;
 
-import cpw.mods.fml.common.registry.VillagerRegistry;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 import java.util.List;
 import java.util.Random;
@@ -27,7 +28,7 @@ public class VillageWorkShopHandler implements VillagerRegistry.IVillageCreation
     }
 
     @Override
-    public Object buildComponent(StructureVillagePieces.PieceWeight villagePiece, StructureVillagePieces.Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5) {
-        return ComponentWorkShop.buildComponet(startPiece, pieces, random, p1, p2, p3, p4, p5);
+    public Object buildComponent(StructureVillagePieces.PieceWeight villagePiece, StructureVillagePieces.Start startPiece, List pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
+        return ComponentWorkShop.buildComponet(startPiece, pieces, random, p1, p2, p3, facing.ordinal(), p5);
     }
 }

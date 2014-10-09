@@ -9,7 +9,10 @@
  * */
 package com.professorvennie.machinerycraft.world;
 
+import com.professorvennie.machinerycraft.block.BlockPlasticFlower;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
@@ -20,23 +23,23 @@ import java.util.Random;
  */
 public class WorldGenFlowersWithMeta extends WorldGenerator {
 
-    private Block block;
-    private int metaData;
+    private BlockPlasticFlower block;
+    private IBlockState state;
 
-    public WorldGenFlowersWithMeta(Block block, int meta) {
+    public WorldGenFlowersWithMeta(BlockPlasticFlower block, BlockPlasticFlower.EnumFlowers flowers) {
         this.block = block;
-        this.metaData = meta;
+        this.state = block.getDefaultState().withProperty(block.func_176494_l(), flowers);
     }
 
     @Override
-    public boolean generate(World world, Random random, int x, int y, int z) {
+    public boolean generate(World world, Random random, BlockPos pos) {
         for (int l = 0; l < 64; ++l) {
-            int i1 = x + random.nextInt(16) - random.nextInt(16);
-            int j1 = y + random.nextInt(8) - random.nextInt(8);
-            int k1 = z + random.nextInt(16) - random.nextInt(16);
+            int i1 = pos.getX() + random.nextInt(16) - random.nextInt(16);
+            int j1 = pos.getY() + random.nextInt(8) - random.nextInt(8);
+            int k1 = pos.getZ() + random.nextInt(16) - random.nextInt(16);
 
-            if (world.isAirBlock(i1, j1, k1) && (!world.provider.hasNoSky || j1 < 255) && this.block.canBlockStay(world, i1, j1, k1)) {
-                world.setBlock(i1, j1, k1, this.block, this.metaData, 2);
+            if (world.isAirBlock(new BlockPos(i1, j1, k1)) && (!world.provider.getHasNoSky() || j1 < 255) && this.block.canBlockStay(world, new BlockPos(i1, j1, k1), state)) {
+                world.setBlockState(new BlockPos(i1, j1, k1), this.state, 2);
             }
         }
 

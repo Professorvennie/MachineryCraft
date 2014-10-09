@@ -10,15 +10,12 @@
 package com.professorvennie.machinerycraft.world.dimesion;
 
 import com.professorvennie.machinerycraft.world.OreGen;
-import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 
 import java.util.Random;
 
@@ -32,7 +29,7 @@ public class ChunkProviderMiningWorld extends ChunkProviderGenerate implements I
     private int height = 100;
 
     public ChunkProviderMiningWorld(World world, long p_i2004_2_, boolean p_i2004_4_, String p_i2004_5_) {
-        super(world, p_i2004_2_, p_i2004_4_);
+        super(world, p_i2004_2_, p_i2004_4_, p_i2004_5_);
         this.world = world;
     }
 
@@ -51,7 +48,8 @@ public class ChunkProviderMiningWorld extends ChunkProviderGenerate implements I
         }
     }
 
-    public void replaceBlocksForBiome(int chunkX, int chunkZ, Block[] blocks, byte[] p_147422_4_, BiomeGenBase[] biomes) {
+
+    /*public void replaceBlocksForBiome(int chunkX, int chunkZ, Block[] blocks, byte[] p_147422_4_, BiomeGenBase[] biomes) {
         ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, chunkX, chunkZ, blocks, biomes);
 
         OreGen oreGen = new OreGen();
@@ -72,5 +70,5 @@ public class ChunkProviderMiningWorld extends ChunkProviderGenerate implements I
                 }
             }
         }
-    }
+    }*/
 }
