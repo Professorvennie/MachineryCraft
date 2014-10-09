@@ -2,7 +2,6 @@ package com.professorvennie.machinerycraft.plugins.tconstruct;
 
 import com.professorvennie.lib.utils.RegistryUtils;
 import net.minecraft.item.Item;
-import net.minecraftforge.fluids.FluidStack;
 
 public class ZincTools {
 
@@ -76,7 +75,7 @@ public class ZincTools {
 //        TConstructRegistry.addArrowMaterial(SALT_ID, 2.3F, 1.0F, 80.0F);
     }
 
-    public static void addCastings(int id, FluidStack fluid, int delay) {
+    public static void addCastings(int id, /*FluidStack fluid,*/ int delay) {
 //        PluginTConstruct.addPartCasting(new ItemStack(tool_rod, 1, id), TConstructRegistry.getItemStack("toolRodCast"), fluid, delay);
 //        PluginTConstruct.addPartCasting(new ItemStack(pickaxe_head, 1, id), TConstructRegistry.getItemStack("pickaxeHeadCast"), fluid, delay);
 //        PluginTConstruct.addPartCasting(new ItemStack(shovel_head, 1, id), TConstructRegistry.getItemStack("shovelHeadCast"), fluid, delay);

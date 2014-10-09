@@ -9,8 +9,6 @@
  * */
 package com.professorvennie.machinerycraft.machines.bronze.boiler;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -18,6 +16,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by ProfessorVennie on 7/24/2014 at 11:44 PM.
@@ -58,38 +58,36 @@ public class ContainerBronzeSteamBoiler extends Container {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
             if (this.lastBurnTime != this.entity.burnTime) {
-                icrafting.sendProgressBarUpdate(this, 0, this.entity.burnTime);
+                icrafting.sendProgressBarUpdate(this, 1, this.entity.getField(1));
             }
 
             if (this.lastItemBurnTime != this.entity.currentItemBurnTime) {
-                icrafting.sendProgressBarUpdate(this, 1, this.entity.currentItemBurnTime);
+                icrafting.sendProgressBarUpdate(this, 2, this.entity.getField(2));
             }
 
             if (lastTemp != entity.temp) {
-                icrafting.sendProgressBarUpdate(this, 2, entity.temp);
+                icrafting.sendProgressBarUpdate(this, 3, entity.getField(3));
             }
 
-            if (lastTank1 != entity.tanks[0].getFluidAmount()) {
+            /*if (lastTank1 != entity.tanks[0].getFluidAmount()) {
                 icrafting.sendProgressBarUpdate(this, 3, entity.tanks[0].getFluidAmount());
             }
 
             if (lastTank2 != entity.tanks[1].getFluidAmount()) {
                 icrafting.sendProgressBarUpdate(this, 4, entity.tanks[1].getFluidAmount());
-            }
+            }*/
         }
-        this.lastBurnTime = this.entity.burnTime;
-        this.lastItemBurnTime = this.entity.currentItemBurnTime;
-        this.lastTemp = this.entity.temp;
-        this.lastTank1 = this.entity.tanks[0].getFluidAmount();
-        this.lastTank2 = this.entity.tanks[1].getFluidAmount();
+        this.lastBurnTime = this.entity.getField(1);
+        this.lastItemBurnTime = this.entity.getField(2);
+        this.lastTemp = this.entity.getField(3);
+        /*this.lastTank1 = this.entity.tanks[0].getFluidAmount();
+        this.lastTank2 = this.entity.tanks[1].getFluidAmount();*/
     }
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
-        if (slot == 0) this.entity.burnTime = par2;
-        if (slot == 1) this.entity.currentItemBurnTime = par2;
-        if (slot == 2) this.entity.temp = par2;
-        if (slot == 3) {
+        entity.setField(slot, par2);
+        /*if (slot == 3) {
             if (entity.tanks[0].getFluid() != null)
                 entity.tanks[0].getFluid().amount = par2;
 
@@ -98,22 +96,12 @@ public class ContainerBronzeSteamBoiler extends Container {
             if (entity.tanks[1].getFluid() != null)
                 entity.tanks[1].getFluid().amount = par2;
 
-        }
+        }*/
     }
 
     @Override
     public boolean canInteractWith(EntityPlayer player) {
         return entity.isUseableByPlayer(player);
-    }
-
-    @Override
-    public void addCraftingToCrafters(ICrafting iCrafting) {
-        super.addCraftingToCrafters(iCrafting);
-        iCrafting.sendProgressBarUpdate(this, 0, this.entity.burnTime);
-        iCrafting.sendProgressBarUpdate(this, 1, this.entity.currentItemBurnTime);
-        iCrafting.sendProgressBarUpdate(this, 2, this.entity.temp);
-        iCrafting.sendProgressBarUpdate(this, 3, lastTank1);
-        iCrafting.sendProgressBarUpdate(this, 4, lastTank2);
     }
 
     @Override

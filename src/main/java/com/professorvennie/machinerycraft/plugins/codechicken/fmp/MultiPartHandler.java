@@ -9,8 +9,6 @@
  * */
 package com.professorvennie.machinerycraft.plugins.codechicken.fmp;
 
-import codechicken.microblock.BlockMicroMaterial;
-import codechicken.microblock.MicroMaterialRegistry;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import net.minecraft.block.Block;
 
@@ -35,6 +33,6 @@ public class MultiPartHandler {
     }
 
     private static void registerMultiPart(Block block, int meta) {
-        MicroMaterialRegistry.registerMaterial(new BlockMicroMaterial(block, meta), block.getUnlocalizedName() + (meta == 0 ? "" : "_" + meta));
+        //MicroMaterialRegistry.registerMaterial(new BlockMicroMaterial(block, meta), block.getUnlocalizedName() + (meta == 0 ? "" : "_" + meta));
     }
 }

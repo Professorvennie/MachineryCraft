@@ -9,16 +9,13 @@
  * */
 package com.professorvennie.machinerycraft.machines.copper.furnace;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
-import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerCopperFurnace extends Container {
 
@@ -29,9 +26,9 @@ public class ContainerCopperFurnace extends Container {
     public ContainerCopperFurnace(InventoryPlayer inventory, TileEntityCopperFurnace tileentity) {
         this.copperFurnace = tileentity;
 
-        this.addSlotToContainer(new Slot(tileentity, 0, 56, 17));
+        this.addSlotToContainer(new SlotFurnaceFuel(tileentity, 0, 56, 17));
         this.addSlotToContainer(new Slot(tileentity, 1, 56, 53));
-        this.addSlotToContainer(new SlotFurnace(inventory.player, tileentity, 2, 116, 35));
+        this.addSlotToContainer(new SlotFurnaceOutput(inventory.player, tileentity, 2, 116, 35));
 
         this.addSlotToContainer(new Slot(tileentity, 3, 179, 21));
         this.addSlotToContainer(new Slot(tileentity, 4, 179, 39));
@@ -48,41 +45,32 @@ public class ContainerCopperFurnace extends Container {
         }
     }
 
-    public void addCraftingToCrafters(ICrafting icrafting) {
-        super.addCraftingToCrafters(icrafting);
-        icrafting.sendProgressBarUpdate(this, 0, this.copperFurnace.cookTime);
-        icrafting.sendProgressBarUpdate(this, 1, this.copperFurnace.burnTime);
-        icrafting.sendProgressBarUpdate(this, 2, this.copperFurnace.currentItemBurnTime);
-    }
-
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
         for (int i = 0; i < this.crafters.size(); i++) {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
-            if (this.lastCookTime != this.copperFurnace.cookTime) {
-                icrafting.sendProgressBarUpdate(this, 0, this.copperFurnace.cookTime);
+            if (this.lastCookTime != this.copperFurnace.getField(1)) {
+                icrafting.sendProgressBarUpdate(this, 1, this.copperFurnace.getField(1));
             }
 
-            if (this.lastBurnTime != this.copperFurnace.burnTime) {
-                icrafting.sendProgressBarUpdate(this, 1, this.copperFurnace.burnTime);
+            if (this.lastBurnTime != this.copperFurnace.getField(2)) {
+                icrafting.sendProgressBarUpdate(this, 2, this.copperFurnace.getField(2));
             }
 
-            if (this.lastItemBurnTime != this.copperFurnace.currentItemBurnTime) {
-                icrafting.sendProgressBarUpdate(this, 2, this.copperFurnace.currentItemBurnTime);
+            if (this.lastItemBurnTime != this.copperFurnace.getField(3)) {
+                icrafting.sendProgressBarUpdate(this, 3, this.copperFurnace.getField(3));
             }
         }
-        this.lastCookTime = this.copperFurnace.cookTime;
-        this.lastBurnTime = this.copperFurnace.burnTime;
-        this.lastItemBurnTime = this.copperFurnace.currentItemBurnTime;
+        this.lastCookTime = this.copperFurnace.getField(1);
+        this.lastBurnTime = this.copperFurnace.getField(2);
+        this.lastItemBurnTime = this.copperFurnace.getField(3);
     }
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
-        if (slot == 0) this.copperFurnace.cookTime = par2;
-        if (slot == 1) this.copperFurnace.burnTime = par2;
-        if (slot == 2) this.copperFurnace.currentItemBurnTime = par2;
+        copperFurnace.setField(slot, par2);
     }
 
     @Override
@@ -103,7 +91,7 @@ public class ContainerCopperFurnace extends Container {
                 }
                 slot.onSlotChange(itemstack1, itemstack);
             } else if (slot0 != 1 && slot0 != 0) {
-                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null) {
+                if (FurnaceRecipes.instance().getSmeltingResult(itemstack1) != null) {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
                         return null;
                     }

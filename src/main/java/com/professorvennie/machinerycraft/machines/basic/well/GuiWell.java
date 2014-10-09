@@ -27,7 +27,7 @@ public class GuiWell extends GuiBase {
         super.drawGuiContainerForegroundLayer(p_146979_1_, p_146979_2_);
 
         List<String> text = new ArrayList<String>();
-        if (entity.tank.getFluidAmount() > 0 || (entity.tank.getFluid() != null && entity.tank.getFluid().getFluid() != null)) {
+        /*if (entity.tank.getFluidAmount() > 0 || (entity.tank.getFluid() != null && entity.tank.getFluid().getFluid() != null)) {
             text.clear();
             text.add(entity.tank.getFluid().getFluid().getLocalizedName(null));
             text.add(entity.tank.getFluidAmount() + "/" + entity.tank.getCapacity() + "mB");
@@ -36,13 +36,13 @@ public class GuiWell extends GuiBase {
             text.clear();
             text.add("Empty");
             drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text, fontRendererObj);
-        }
+        }*/
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
 
-        drawTanks(entity.tank, 66, 11, 74, 16);
+        //drawTanks(entity.tank, 66, 11, 74, 16);
     }
 }

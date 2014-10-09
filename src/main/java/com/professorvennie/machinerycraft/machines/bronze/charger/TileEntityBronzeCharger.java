@@ -15,6 +15,7 @@ import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.bronze.TileEntityBasicSteamMachine;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 
 /**
  * Created by ProfessorVennie on 10/4/2014 at 4:11 PM.
@@ -34,19 +35,19 @@ public class TileEntityBronzeCharger extends TileEntityBasicSteamMachine {
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
 
         if (!worldObj.isRemote) {
             if (inventory[2] != null && inventory[2].getItem() instanceof ISteamPoweredItem) {
                 ItemStack itemStack = inventory[2];
-                int steam = itemStack.stackTagCompound.getInteger("Steam");
+                int steam = itemStack.getTagCompound().getInteger("Steam");
                 int cap = ((ISteamPoweredItem) itemStack.getItem()).getSteamCapacity();
                 if (steam < cap && canWork) {
-                    if (this.tank.getFluidAmount() >= 10) {
-                        itemStack.stackTagCompound.setInteger("Steam", steam + 10);
+                   /* if (this.tank.getFluidAmount() >= 10) {
+                        itemStack.getTagCompound().setInteger("Steam", steam + 10);
                         tank.getFluid().amount -= 10;
-                    }
+                    }*/
                 } else if (steam == cap && canWork) {
                     inventory[3] = inventory[2].copy();
                     inventory[2] = null;
@@ -68,7 +69,7 @@ public class TileEntityBronzeCharger extends TileEntityBasicSteamMachine {
     }
 
     @Override
-    public boolean canExtractItem(int slot, ItemStack itemStack, int i2) {
+    public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
         if (slot == 3 || slot == 1)
             return true;
         return false;

@@ -18,7 +18,6 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
     public static final int INPUTSLOT = 2, WATERSLOT = 0;
     public int cookTime = 0, fuelEfficiency = 1;
 
-
     public TileEntityBronzeFurnace() {
         super(Names.Containers.BRONZE_FURNACE);
         setMachineSpeed(110);
@@ -30,13 +29,13 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
 
         //attempt to fix wried crash
         BlockBronzeFurnace block = null;
-        if (worldObj.getBlock(xCoord, yCoord, zCoord) instanceof BlockBronzeFurnace) {
-            block = (BlockBronzeFurnace) worldObj.getBlock(xCoord, yCoord, zCoord);
+        if (worldObj.getBlockState(pos) instanceof BlockBronzeFurnace) {
+            block = (BlockBronzeFurnace) worldObj.getBlockState(pos);
         }
         if (cookTime > 0) {
             if (block != null)
@@ -52,7 +51,7 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
             if (!canSmelt())
                 cookTime = 0;
 
-            if (tank.getFluid() != null) {
+            /*if (tank.getFluid() != null) {
                 if (tank.getFluid().amount >= fuelEfficiency && canSmelt() && canWork) {
                     cookTime++;
                     if (cookTime > 0)
@@ -65,7 +64,7 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
                     }
                 } else
                     cookTime = 0;
-            }
+            }*/
         }
         if (flag1) this.markDirty();
     }
@@ -73,7 +72,6 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
 
-        this.tank.readFromNBT(nbtTagCompound);
         this.cookTime = (int) nbtTagCompound.getShort("cookTime");
     }
 
@@ -81,11 +79,30 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
     public void writeToNBT(NBTTagCompound nbtTagCompound) {
         super.writeToNBT(nbtTagCompound);
 
-        this.tank.writeToNBT(nbtTagCompound);
         nbtTagCompound.setShort("cookTime", (short) this.cookTime);
     }
 
     public int getCookProgressScaled(int i) {
         return cookTime * i / getMachineSpeed();
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        if(id == 1)
+            return cookTime;
+        return 0;
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 1;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        if(id == 1)
+            cookTime = value;
     }
 }

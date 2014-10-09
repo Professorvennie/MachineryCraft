@@ -31,13 +31,13 @@ public class TileEntityBrassCharger extends TileEntityBasicMachine {
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
 
         if (!worldObj.isRemote) {
             if (inventory[0] != null && canWork) {
                 if (inventory[0].getItem() instanceof IPowerdItem) {
-                    int power = inventory[0].stackTagCompound.getInteger("Power");
+                    int power = inventory[0].getTagCompound().getInteger("Power");
                     int capacity = ((IPowerdItem) inventory[0].getItem()).getCapacity();
                     if (power < capacity) {
                         if (this.power > 0) {

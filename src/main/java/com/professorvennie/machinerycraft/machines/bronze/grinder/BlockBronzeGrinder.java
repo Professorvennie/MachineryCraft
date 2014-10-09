@@ -14,7 +14,6 @@ import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.bronze.BlockBasicSteamMachine;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -26,12 +25,6 @@ public class BlockBronzeGrinder extends BlockBasicSteamMachine {
     public BlockBronzeGrinder() {
         super(Names.Blocks.BRONZE_GRINDER, false);
         guiId = LibGuiIds.BRONZE_GRINDER;
-    }
-
-    @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        super.registerBlockIcons(iconRegister);
-        iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "bronzeGrinder_Front_Active" : "bronzeGrinder_Front_Idle"));
     }
 
     @Override

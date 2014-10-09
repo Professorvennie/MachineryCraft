@@ -40,7 +40,7 @@ public class GuiBronzeFurnace extends GuiBase {
         int k = this.entity.getCookProgressScaled(24);
         drawElement(83, 35, 176, 1, k + 1, 16);
 
-        drawTanks(entity.tank, 66, 11, 74, 16);
+       // drawTanks(entity.tank, 66, 11, 74, 16);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class GuiBronzeFurnace extends GuiBase {
         super.drawGuiContainerForegroundLayer(p_146979_1_, p_146979_2_);
 
         List<String> text = new ArrayList<String>();
-        if (entity.tank.getFluidAmount() > 0 || (entity.tank.getFluid() != null && entity.tank.getFluid().getFluid() != null)) {
+        /*if (entity.tank.getFluidAmount() > 0 || (entity.tank.getFluid() != null && entity.tank.getFluid().getFluid() != null)) {
             text.clear();
             text.add(entity.tank.getFluid().getFluid().getLocalizedName(null));
             text.add(entity.tank.getFluidAmount() + "/" + entity.tank.getCapacity() + "mB");
@@ -57,6 +57,6 @@ public class GuiBronzeFurnace extends GuiBase {
             text.clear();
             text.add("Empty");
             drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text, fontRendererObj);
-        }
+        }*/
     }
 }

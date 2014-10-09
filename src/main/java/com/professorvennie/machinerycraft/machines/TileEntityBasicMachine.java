@@ -10,6 +10,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 
 /**
  * Created by ProfessorVennie on 9/27/2014 at 1:25 PM.
@@ -32,17 +33,17 @@ public class TileEntityBasicMachine extends TileEntityBasicSidedInventory implem
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         switch (redStoneMode) {
             case low:
-                if (!worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
+                if (!worldObj.isBlockPowered(pos))
                     canWork = true;
                 else
                     canWork = false;
                 break;
             case high:
-                if (worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
+                if (worldObj.isBlockPowered(pos))
                     canWork = true;
                 else
                     canWork = false;
@@ -115,12 +116,12 @@ public class TileEntityBasicMachine extends TileEntityBasicSidedInventory implem
         }
 
         TileEntity[] tiles = new TileEntity[6];
-        tiles[0] = worldObj.getTileEntity(xCoord + 1, yCoord, zCoord);
-        tiles[1] = worldObj.getTileEntity(xCoord - 1, yCoord, zCoord);
-        tiles[2] = worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
-        tiles[3] = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-        tiles[4] = worldObj.getTileEntity(xCoord, yCoord, zCoord + 1);
-        tiles[5] = worldObj.getTileEntity(xCoord, yCoord, zCoord - 1);
+        tiles[0] = worldObj.getTileEntity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()));
+        tiles[1] = worldObj.getTileEntity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()));
+        tiles[2] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()));
+        tiles[3] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()));
+        tiles[4] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1));
+        tiles[5] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1));
 
         if (!worldObj.isRemote) {
             if (hasEjectorUpgrade) {
@@ -139,12 +140,12 @@ public class TileEntityBasicMachine extends TileEntityBasicSidedInventory implem
                             }
                         } else if (tiles[tile] instanceof ISidedInventory) {
                             ISidedInventory inventory = (ISidedInventory) tiles[tile];
-                            int side[] = inventory.getAccessibleSlotsFromSide(tile);
-                            for (int i = 0; i < side.length; i++) {
-                                if (inventory.getStackInSlot(i) == null) {
+                          //  int side[] = inventory.getSlotsForFace(tile);
+                            //for (int i = 0; i < side.length; i++) {
+                                //if (inventory.getStackInSlot(i) == null) {
 
-                                }
-                            }
+                               // }
+                            //}
                         }
                     }
                 }
@@ -238,5 +239,23 @@ public class TileEntityBasicMachine extends TileEntityBasicSidedInventory implem
                 //System.out.println(ejectorMode);
                 break;
         }
+    }
+
+    @Override
+    public int getFieldCount() {
+        return 1;
+    }
+
+    @Override
+    public int getField(int id) {
+        if(id == 0)
+            return machineSpeed;
+        return 0;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        if(id == 0)
+            machineSpeed = value;
     }
 }

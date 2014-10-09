@@ -7,6 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityPortableCobbleGen extends TileEntityBasicMachine {
 
@@ -18,8 +19,8 @@ public class TileEntityPortableCobbleGen extends TileEntityBasicMachine {
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         if (!worldObj.isRemote) {
             if (inventory[0] != null && inventory[1] != null && canWork) {
                 if (inventory[0].getItem() == Items.lava_bucket && inventory[1].getItem() == Items.water_bucket) {
@@ -51,12 +52,12 @@ public class TileEntityPortableCobbleGen extends TileEntityBasicMachine {
     }
 
     @Override
-    public boolean canInsertItem(int i, ItemStack itemStack, int i2) {
+    public boolean canInsertItem(int var1, ItemStack itemStack, EnumFacing direction) {
         return false;
     }
 
     @Override
-    public boolean canExtractItem(int var1, ItemStack itemStack, int var3) {
+    public boolean canExtractItem(int slotId, ItemStack itemStack, EnumFacing direction) {
         return itemStack.getItem() == Item.getItemFromBlock(Blocks.cobblestone);
     }
 
@@ -67,5 +68,25 @@ public class TileEntityPortableCobbleGen extends TileEntityBasicMachine {
 
     public int getCookProgressScaled(int i) {
         return this.cookTime * i / this.cookSpeed;
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        if(id == 1)
+            return cookTime;
+        return 0;
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 1;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        if(id == 1)
+            cookTime = value;
     }
 }

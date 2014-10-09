@@ -15,7 +15,6 @@ import com.professorvennie.machinerycraft.fuilds.ModFuilds;
 import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -24,20 +23,20 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.*;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implements IFluidHandler, ISteamBoiler {
+public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine /*implements IFluidHandler, ISteamBoiler*/ {
 
     public static final int FUELSLOT = 4, WATERSLOT = 2, STEAMEMPTYSLOT = 0;
-    public FluidTank[] tanks = new FluidTank[2];
+    //public FluidTank[] tanks = new FluidTank[2];
     public int burnTime, currentItemBurnTime, temp = 0, maxTemp = 500;
 
     public TileEntityBronzeSteamBoiler() {
         super(Names.Containers.BRONZE_STEAMBOILER);
-        tanks[0] = new FluidTank(FluidRegistry.WATER, 0, 10000);
-        tanks[1] = new FluidTank(ModFuilds.fluidSteam, 0, 10000);
+        //tanks[0] = new FluidTank(FluidRegistry.WATER, 0, 10000);
+        //tanks[1] = new FluidTank(ModFuilds.fluidSteam, 0, 10000);
     }
 
     public static int getItemBurnTime(ItemStack itemstack) {
@@ -62,7 +61,7 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
 
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
             if (item == Items.stick) return 100;
             if (item == Items.coal) return 1600;
             if (item == Items.lava_bucket) return 20000;
@@ -77,12 +76,12 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
     }
 
     @Override
-    public int[] getAccessibleSlotsFromSide(int side) {
-        if (side == 6 || side == 1)
+    public int[] getSlotsForFace(EnumFacing side) {
+        if (side == EnumFacing.UP || side == EnumFacing.DOWN)
             return new int[]{4};
-        if (side == 4 || side == 2 || side == 3 || side == 5)
+        if (side == EnumFacing.EAST || side == EnumFacing.WEST || side == EnumFacing.NORTH || side == EnumFacing.SOUTH)
             return new int[]{2};
-        if (side == 0)
+        if (side == EnumFacing.DOWN)
             return new int[]{1, 3};
         return new int[]{};
     }
@@ -97,9 +96,45 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
-        BlockBronzeSteamBoiler block = (BlockBronzeSteamBoiler) worldObj.getBlock(xCoord, yCoord, zCoord);
+    public int getField(int id) {
+        super.getField(id);
+        switch (id){
+            case 1:
+                return burnTime;
+            case 2:
+                return currentItemBurnTime;
+            case 3:
+                return temp;
+            default:
+                return 0;
+        }
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 3;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        switch (id){
+            case 1:
+                burnTime = value;
+                break;
+            case 2:
+                 currentItemBurnTime = value;
+                break;
+            case 3:
+                temp = value;
+                break;
+        }
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        BlockBronzeSteamBoiler block = (BlockBronzeSteamBoiler) worldObj.getBlockState(pos);
         if (burnTime > 0) {
             burnTime--;
             block.isActive = true;
@@ -108,14 +143,14 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
         }
 
         TileEntity[] tiles = new TileEntity[6];
-        tiles[0] = worldObj.getTileEntity(xCoord + 1, yCoord, zCoord);
-        tiles[1] = worldObj.getTileEntity(xCoord - 1, yCoord, zCoord);
-        tiles[2] = worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
-        tiles[3] = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-        tiles[4] = worldObj.getTileEntity(xCoord, yCoord, zCoord + 1);
-        tiles[5] = worldObj.getTileEntity(xCoord, yCoord, zCoord - 1);
+        tiles[0] = worldObj.getTileEntity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()));
+        tiles[1] = worldObj.getTileEntity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()));
+        tiles[2] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()));
+        tiles[3] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()));
+        tiles[4] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1));
+        tiles[5] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1));
 
-        if (!worldObj.isRemote) {
+       /* if (!worldObj.isRemote) {
             for (int i = 0; i < tiles.length; i++) {
                 if (tiles[i] != null) {
                     if (tiles[i] instanceof ISteamTank) {
@@ -130,9 +165,9 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
                     }
                 }
             }
-        }
+        }*/
 
-        if (!worldObj.isRemote) {
+        /*if (!worldObj.isRemote) {
             if (tanks[1].getFluidAmount() > tanks[1].getCapacity())
                 tanks[1].getFluid().amount = tanks[1].getCapacity();
 
@@ -273,7 +308,7 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
                     }
                 }
             }
-        }
+        }*/
     }
 
     @Override
@@ -284,13 +319,13 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
         currentItemBurnTime = nbt.getInteger("currentItemBurnTime");
         temp = nbt.getInteger("temp");
 
-        NBTTagList list = nbt.getTagList("water", Constants.NBT.TAG_COMPOUND);
+        NBTTagList list = nbt.getTagList("water", 10);
         for (int i = 0; i < list.tagCount(); i++) {
             NBTTagCompound nbtTagCompound = list.getCompoundTagAt(i);
-            tanks[0].readFromNBT(nbtTagCompound);
+            //tanks[0].readFromNBT(nbtTagCompound);
         }
 
-        tanks[1].readFromNBT(nbt);
+        //tanks[1].readFromNBT(nbt);
     }
 
     @Override
@@ -303,14 +338,14 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
 
         NBTTagList list = new NBTTagList();
         NBTTagCompound nbtTagCompound = new NBTTagCompound();
-        tanks[0].writeToNBT(nbtTagCompound);
+        //tanks[0].writeToNBT(nbtTagCompound);
         list.appendTag(nbtTagCompound);
         nbt.setTag("water", list);
 
-        tanks[1].writeToNBT(nbt);
+        //tanks[1].writeToNBT(nbt);
     }
 
-    @Override
+    /*@Override
     public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
         if (from.equals(ForgeDirection.UP) || from.equals(ForgeDirection.DOWN))
             tanks[0].fill(resource, doFill);
@@ -342,7 +377,7 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
     @Override
     public FluidTankInfo[] getTankInfo(ForgeDirection from) {
         return new FluidTankInfo[]{tanks[0].getInfo(), tanks[1].getInfo()};
-    }
+    }*/
 
     public int getBurnTimeReamingScaled(int i) {
         if (this.currentItemBurnTime == 0) {
@@ -351,7 +386,7 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
         return this.burnTime * i / this.currentItemBurnTime;
     }
 
-    @Override
+   /* @Override
     public FluidTank getWaterTank() {
         return tanks[0];
     }
@@ -389,5 +424,5 @@ public class TileEntityBronzeSteamBoiler extends TileEntityBasicMachine implemen
     @Override
     public void addSteamAmount(int amount) {
         tanks[1].getFluid().amount += amount;
-    }
+    }*/
 }

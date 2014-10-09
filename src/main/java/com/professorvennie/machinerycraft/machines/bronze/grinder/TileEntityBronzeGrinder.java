@@ -19,40 +19,41 @@ import net.minecraft.nbt.NBTTagCompound;
 public class TileEntityBronzeGrinder extends TileEntityBasicSteamMachine {
 
     public static final int INPUTSLOT = 2, WATERSLOT = 0;
-    public int cookTime, grindSpeed = 110;
+    public int cookTime;
 
     public TileEntityBronzeGrinder() {
         super(Names.Containers.BRONZE_GRINDER);
+        setMachineSpeed(110);
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         boolean flag1 = false;
 
         if (!worldObj.isRemote) {
             if (!canGrind())
                 cookTime = 0;
 
-            if (tank.getFluid() != null) {
+            /*if (tank.getFluid() != null) {
                 if (getSteamAmount() >= 1 && canGrind() && canWork) {
                     cookTime++;
                     if (cookTime > 0) {
                         if (canGrind())
                             tank.getFluid().amount--;
                     }
-                    if (cookTime == grindSpeed) {
+                    if (cookTime == getMachineSpeed()) {
                         cookTime = 0;
                         grindItem();
                         flag1 = true;
                     }
                 } else
                     cookTime = 0;
-            }
+            }*/
         }
         BlockBronzeGrinder block = null;
-        if (worldObj.getBlock(xCoord, yCoord, zCoord) instanceof BlockBronzeGrinder) {
-            block = (BlockBronzeGrinder) worldObj.getBlock(xCoord, yCoord, zCoord);
+        if (worldObj.getBlockState(pos) instanceof BlockBronzeGrinder) {
+            block = (BlockBronzeGrinder) worldObj.getBlockState(pos);
         }
         if (cookTime > 0) {
             if (block != null)
@@ -86,6 +87,26 @@ public class TileEntityBronzeGrinder extends TileEntityBasicSteamMachine {
     }
 
     public int getCookProgressScaled(int i) {
-        return cookTime * i / grindSpeed;
+        return cookTime * i / getMachineSpeed();
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        if(id == 1)
+            return cookTime;
+        return 0;
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 1;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        if(id == 1)
+            cookTime = value;
     }
 }

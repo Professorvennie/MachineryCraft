@@ -20,17 +20,18 @@ import net.minecraft.nbt.NBTTagCompound;
 public class TileEntityBronzeExtractor extends TileEntityBasicSteamMachine {
 
     public static final int INPUTSLOT = 2, WATERSLOT = 0;
-    public int cookTime = 0, furnaceSpeed = 110, fuelEfficiency = 1;
+    public int cookTime = 0, fuelEfficiency = 1;
 
     public TileEntityBronzeExtractor() {
         super(Names.Containers.BRONZE_EXTRACTOR);
+        setMachineSpeed(110);
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
 
-        BlockBronzeExtractor block = (BlockBronzeExtractor) worldObj.getBlock(xCoord, yCoord, zCoord);
+        BlockBronzeExtractor block = (BlockBronzeExtractor) worldObj.getBlockState(pos);
         if (cookTime > 0)
             block.isActive = true;
         else
@@ -42,7 +43,7 @@ public class TileEntityBronzeExtractor extends TileEntityBasicSteamMachine {
             if (!canSmelt())
                 cookTime = 0;
 
-            if (tank.getFluid() != null) {
+            /*if (tank.getFluid() != null) {
                 if (tank.getFluid().amount >= fuelEfficiency && canSmelt() && canWork) {
                     cookTime++;
                     if (cookTime > 0)
@@ -55,7 +56,7 @@ public class TileEntityBronzeExtractor extends TileEntityBasicSteamMachine {
                     }
                 } else
                     cookTime = 0;
-            }
+            }*/
         }
         if (flag1) this.markDirty();
     }
@@ -80,6 +81,26 @@ public class TileEntityBronzeExtractor extends TileEntityBasicSteamMachine {
     }
 
     public int getCookProgressScaled(int i) {
-        return cookTime * i / furnaceSpeed;
+        return cookTime * i / getMachineSpeed();
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        if(id == 1)
+            return cookTime;
+        return 0;
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 1;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        if(id == 1)
+            cookTime = value;
     }
 }

@@ -16,30 +16,29 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.*;
+import net.minecraft.util.BlockPos;
 
-public class TileEntityWasher extends TileEntityBasicSidedInventory implements IFluidHandler {
+public class TileEntityWasher extends TileEntityBasicSidedInventory /*implements IFluidHandler */{
 
-    public static FluidTank[] tanks;
+    //public static FluidTank[] tanks;
     public final int maxpower = 10000;
     public int power, currentItemBurnTime, cookTime, smeltItem, masterX, masterY, masterZ, furnaceSpeed;
     private boolean hasMaster, isMaster;
 
     public TileEntityWasher() {
         super(Names.Containers.CONTAINER_WASHER);
-        tanks = new FluidTank[1];
+        /*tanks = new FluidTank[1];
         for (int i = 0; i < tanks.length; i++) {
             tanks[i] = new FluidTank(10000);
-        }
+        }*/
         slots_top = new int[]{0};
         slots_bottom = new int[]{2, 1};
         slots_sides = new int[]{1};
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         if (!worldObj.isRemote) {
             if (hasMaster()) {
                 if (isMaster()) {
@@ -47,7 +46,7 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory implements I
                         resetMultiBlockStructure();
 
 
-                    for (int i = 0; i < 1; i++) {
+                   /* for (int i = 0; i < 1; i++) {
                         if (tanks[i].getFluid() != null && tanks[i].getFluid().getFluid() != null) {
                             if (tanks[i].getFluidAmount() <= 0)
                                 tanks[i].setFluid(null);
@@ -87,7 +86,7 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory implements I
                                 }
                             }
                         }
-                    }
+                    }*/
 
 
                 } else {
@@ -105,18 +104,18 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory implements I
 
     public boolean checkMultiBlockForm() {
         int i = 0;
-        for (int x = xCoord - 1; x < xCoord + 2; x++)
-            for (int y = yCoord; y < yCoord + 3; y++)
-                for (int z = zCoord - 1; z < zCoord + 2; z++) {
-                    TileEntity tile = worldObj.getTileEntity(x, y, z);
+        for (int x = pos.getX() - 1; x < pos.getX() + 2; x++)
+            for (int y = pos.getY(); y < pos.getY() + 3; y++)
+                for (int z = pos.getZ() - 1; z < pos.getZ() + 2; z++) {
+                    TileEntity tile = worldObj.getTileEntity(new BlockPos(x, y, z));
                     if (tile != null && (tile instanceof TileEntityWasher))
                         i++;
                 }
-        return i > 25 && worldObj.isAirBlock(xCoord, yCoord + 1, zCoord);
+        return i > 25 && worldObj.isAirBlock(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()));
     }
 
     public boolean checkForMaster() {
-        TileEntity tile = worldObj.getTileEntity(masterX, masterY, masterZ);
+        TileEntity tile = worldObj.getTileEntity(new BlockPos(masterX, masterY, masterZ));
         return (tile != null && (tile instanceof TileEntityWasher));
     }
 
@@ -124,32 +123,32 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory implements I
         for (int x = par1 - 1; x < par1 + 2; x++)
             for (int y = par2; y < par2 + 3; y++)
                 for (int z = par3 - 1; z < par3 + 2; z++) {
-                    TileEntity tile = worldObj.getTileEntity(x, y, z);
+                    TileEntity tile = worldObj.getTileEntity(new BlockPos(x, y, z));
                     if (tile != null && (tile instanceof TileEntityWasher)) {
                         ((TileEntityWasher) tile).reset();
-                        worldObj.setBlockMetadataWithNotify(x, y, z, 0, 2);
+                        //worldObj.setBlockMetadataWithNotify(x, y, z, 0, 2);
                     }
                 }
     }
 
     public void resetMultiBlockStructure() {
-        resetMultiBlockStructure(xCoord, yCoord, zCoord);
+        resetMultiBlockStructure(pos.getX(), pos.getY(), pos.getZ());
     }
 
     public void setupMultiBlockStructure() {
-        for (int x = xCoord - 1; x < xCoord + 2; x++)
-            for (int y = yCoord; y < yCoord + 3; y++)
-                for (int z = zCoord - 1; z < zCoord + 2; z++) {
-                    boolean master = (x == xCoord && y == yCoord && z == zCoord);
-                    TileEntity tile = worldObj.getTileEntity(x, y, z);
+        for (int x = pos.getX() - 1; x < pos.getX() + 2; x++)
+            for (int y = pos.getY(); y < pos.getY() + 3; y++)
+                for (int z = pos.getZ() - 1; z < pos.getZ() + 2; z++) {
+                    boolean master = (x == pos.getX() && y == pos.getY() && z == pos.getZ());
+                    TileEntity tile = worldObj.getTileEntity(new BlockPos(x, y, z));
                     if (tile != null && (tile instanceof TileEntityWasher))
-                        ((TileEntityWasher) tile).setMaster(xCoord, yCoord, zCoord, master);
+                        ((TileEntityWasher) tile).setMaster(pos.getX(), pos.getY(), pos.getZ(), master);
                 }
     }
 
     public void setMetaForBlocks() {
         // Master
-        worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 2, 2);
+        /*worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 2, 2);
 
         worldObj.setBlockMetadataWithNotify(xCoord, yCoord + 2, zCoord, 8, 2);
 
@@ -184,7 +183,7 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory implements I
         worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord + 2, zCoord - 1, 1, 2);
         worldObj.setBlockMetadataWithNotify(xCoord - 1, yCoord + 2, zCoord + 1, 1, 2);
         worldObj.setBlockMetadataWithNotify(xCoord + 1, yCoord + 2, zCoord - 1, 1, 2);
-        worldObj.setBlockMetadataWithNotify(xCoord + 1, yCoord + 2, zCoord + 1, 1, 2);
+        worldObj.setBlockMetadataWithNotify(xCoord + 1, yCoord + 2, zCoord + 1, 1, 2);*/
     }
 
     public boolean hasMaster() {
@@ -216,7 +215,7 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory implements I
     }
 
     public void setMaster(int x, int y, int z, boolean isMaster) {
-        TileEntity tile = worldObj.getTileEntity(x, y, z);
+        TileEntity tile = worldObj.getTileEntity(new BlockPos(x, y, z));
         if (tile != null && (tile instanceof TileEntityWasher)) {
             masterX = x;
             masterY = y;
@@ -262,7 +261,7 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory implements I
         return true;
     }
 
-    @Override
+    /*@Override
     public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
         if (hasMaster()) {
             if (!isMaster()) {
@@ -312,5 +311,5 @@ public class TileEntityWasher extends TileEntityBasicSidedInventory implements I
 
     public int getTank1Amount() {
         return tanks[0].getFluidAmount();
-    }
+    }*/
 }

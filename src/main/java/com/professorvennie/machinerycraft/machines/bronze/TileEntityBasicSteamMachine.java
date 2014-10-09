@@ -20,35 +20,35 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.*;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 
 /**
  * Created by ProfessorVennie on 9/5/2014 at 6:50 PM.
  */
-public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implements ISteamTank, IFluidHandler {
+public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implements ISteamTank/*, IFluidHandler*/ {
 
-    public FluidTank tank;
+    //public FluidTank tank;
 
     public TileEntityBasicSteamMachine(String name) {
         super(name);
-        tank = new FluidTank(ModFuilds.fluidSteam, 0, 10000);
+        //tank = new FluidTank(ModFuilds.fluidSteam, 0, 10000);
         slots_top = new int[]{2};
         slots_bottom = new int[]{3, 1};
         slots_sides = new int[]{0};
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
 
         TileEntity[] tiles = new TileEntity[6];
-        tiles[0] = worldObj.getTileEntity(xCoord + 1, yCoord, zCoord);
-        tiles[1] = worldObj.getTileEntity(xCoord - 1, yCoord, zCoord);
-        tiles[2] = worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
-        tiles[3] = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-        tiles[4] = worldObj.getTileEntity(xCoord, yCoord, zCoord + 1);
-        tiles[5] = worldObj.getTileEntity(xCoord, yCoord, zCoord - 1);
+        tiles[0] = worldObj.getTileEntity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()));
+        tiles[1] = worldObj.getTileEntity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()));
+        tiles[2] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()));
+        tiles[3] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()));
+        tiles[4] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1));
+        tiles[5] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1));
         for (TileEntity tile : tiles) {
             if (!worldObj.isRemote) {
                 if (tile != null) {
@@ -70,7 +70,7 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implemen
             }
         }
 
-        if (!worldObj.isRemote) {
+        /*if (!worldObj.isRemote) {
             if (tank.getFluidAmount() > tank.getCapacity())
                 tank.getFluid().amount = tank.getCapacity();
 
@@ -135,17 +135,17 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implemen
                     }
                 }
             }
-        }
+        }*/
     }
 
     @Override
-    public boolean canExtractItem(int slot, ItemStack itemStack, int i2) {
+    public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
         if (slot == 3 || slot == 1)
             return true;
         return false;
     }
 
-    @Override
+    /*@Override
     public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
         if (from.equals(ForgeDirection.UP) || from.equals(ForgeDirection.DOWN) || from.equals(ForgeDirection.NORTH) || from.equals(ForgeDirection.SOUTH) || from.equals(ForgeDirection.WEST) || from.equals(ForgeDirection.EAST))
             tank.fill(resource, doFill);
@@ -180,21 +180,23 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implemen
     @Override
     public FluidTank getSteamTank() {
         return tank;
-    }
+    }*/
 
     @Override
     public int getSteamAmount() {
-        return tank.getFluidAmount();
+        //return tank.getFluidAmount();
+        return 0;
     }
 
     @Override
     public int getSteamCapacity() {
-        return tank.getCapacity();
+        //return tank.getCapacity();
+        return 0;
     }
 
     @Override
     public void addSteamAmount(int amount) {
-        tank.getFluid().amount += amount;
+        //tank.getFluid().amount += amount;
     }
 
     protected boolean canGrind() {
@@ -238,7 +240,7 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implemen
         if (this.inventory[2] == null) {
             return false;
         } else {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.inventory[2]);
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.inventory[2]);
 
             if (itemstack == null) return false;
             if (this.inventory[3] == null) return true;
@@ -252,7 +254,7 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implemen
 
     protected void smeltItem() {
         if (this.canSmelt()) {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.inventory[2]);
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.inventory[2]);
 
             if (this.inventory[3] == null) {
                 this.inventory[3] = itemstack.copy();

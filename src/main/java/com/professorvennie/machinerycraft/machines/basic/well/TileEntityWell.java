@@ -7,37 +7,36 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.*;
+import net.minecraft.util.BlockPos;
 
 /**
  * Created by ProfessorVennie on 9/14/2014 at 5:08 PM.
  */
-public class TileEntityWell extends TileEntityBasicMachine implements IFluidHandler {
+public class TileEntityWell extends TileEntityBasicMachine /*implements IFluidHandler*/ {
 
-    public FluidTank tank;
+    //public FluidTank tank;
     private int bottom, amountOfPipes = 0;
 
     public TileEntityWell() {
         super(Names.Containers.WELL);
-        tank = new FluidTank(FluidRegistry.WATER, 0, 10000);
+        //tank = new FluidTank(FluidRegistry.WATER, 0, 10000);
         slots_sides = new int[]{0};
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         TileEntity[] tiles = new TileEntity[6];
-        tiles[0] = worldObj.getTileEntity(xCoord + 1, yCoord, zCoord);
-        tiles[1] = worldObj.getTileEntity(xCoord - 1, yCoord, zCoord);
-        tiles[2] = worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
-        tiles[3] = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-        tiles[4] = worldObj.getTileEntity(xCoord, yCoord, zCoord + 1);
-        tiles[5] = worldObj.getTileEntity(xCoord, yCoord, zCoord - 1);
+        tiles[0] = worldObj.getTileEntity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()));
+        tiles[1] = worldObj.getTileEntity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()));
+        tiles[2] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()));
+        tiles[3] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()));
+        tiles[4] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1));
+        tiles[5] = worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1));
 
         for (TileEntity tile : tiles) {
             if (!worldObj.isRemote) {
-                if (tile instanceof IFluidHandler) {
+                /*if (tile instanceof IFluidHandler) {
                     for (int i = 0; i < ((IFluidHandler) tile).getTankInfo(ForgeDirection.UP).length; i++) {
                         FluidTankInfo info = ((IFluidHandler) tile).getTankInfo(ForgeDirection.UP)[i];
                         int amount = info.fluid.amount;
@@ -51,7 +50,7 @@ public class TileEntityWell extends TileEntityBasicMachine implements IFluidHand
                             }
                         }
                     }
-                }
+                }*/
             }
         }
 
@@ -59,25 +58,25 @@ public class TileEntityWell extends TileEntityBasicMachine implements IFluidHand
             if (canWork) {
                 if (inventory[2] != null && inventory[2].getItem() == Item.getItemFromBlock(ModBlocks.woodenWellPipe)) {
                     bottom = inventory[2].stackSize;
-                    for (int i = 1; i < yCoord; i++) {
+                    for (int i = 1; i < pos.getY(); i++) {
                         if (inventory[2] != null) {
                             if (inventory[2].stackSize > 0) {
-                                if (worldObj.getBlock(xCoord, yCoord - i, zCoord) != ModBlocks.woodenWellPipe && worldObj.getBlock(xCoord, yCoord - i, zCoord) != Blocks.water) {
-                                    worldObj.setBlock(xCoord, yCoord - i, zCoord, ModBlocks.woodenWellPipe);
+                                if (worldObj.getBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ())) != ModBlocks.woodenWellPipe && worldObj.getBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ())) != Blocks.water) {
+                                    worldObj.setBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ()), ModBlocks.woodenWellPipe.getDefaultState());
                                     amountOfPipes++;
                                     decrStackSize(2, 1);
                                 }
                             } else {
-                                worldObj.setBlock(xCoord, yCoord - i, zCoord, Blocks.water);
+                                worldObj.setBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ()), Blocks.water.getDefaultState());
                             }
 
-                            if (worldObj.getBlock(xCoord, yCoord - i - 1, zCoord) == Blocks.bedrock) {
-                                worldObj.setBlock(xCoord, yCoord - i, zCoord, Blocks.water);
+                            if (worldObj.getBlockState(new BlockPos(pos.getX(), pos.getY() - i - 1, pos.getZ())) == Blocks.bedrock) {
+                                worldObj.setBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ()), Blocks.water.getDefaultState());
                             }
                         }
                     }
                 }
-                if (tank.getFluidAmount() < tank.getCapacity()) {
+                /*if (tank.getFluidAmount() < tank.getCapacity()) {
                     if (amountOfPipes > 0 && amountOfPipes <= 16) {
                         tank.getFluid().amount += amountOfPipes;
                     } else if (amountOfPipes > 16 && amountOfPipes <= 32) {
@@ -90,7 +89,7 @@ public class TileEntityWell extends TileEntityBasicMachine implements IFluidHand
                 }
 
                 if (tank.getFluidAmount() > tank.getCapacity())
-                    tank.getFluid().amount = tank.getCapacity();
+                    tank.getFluid().amount = tank.getCapacity();*/
             }
         }
     }
@@ -99,7 +98,7 @@ public class TileEntityWell extends TileEntityBasicMachine implements IFluidHand
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
 
-        tank.readFromNBT(nbtTagCompound);
+        //tank.readFromNBT(nbtTagCompound);
         bottom = nbtTagCompound.getInteger("bottom");
         amountOfPipes = nbtTagCompound.getInteger("numOfPipes");
     }
@@ -108,7 +107,7 @@ public class TileEntityWell extends TileEntityBasicMachine implements IFluidHand
     public void writeToNBT(NBTTagCompound nbtTagCompound) {
         super.writeToNBT(nbtTagCompound);
 
-        tank.writeToNBT(nbtTagCompound);
+        //tank.writeToNBT(nbtTagCompound);
         nbtTagCompound.setInteger("bottom", bottom);
         nbtTagCompound.setInteger("numOfPipes", amountOfPipes);
     }
@@ -118,7 +117,7 @@ public class TileEntityWell extends TileEntityBasicMachine implements IFluidHand
         return 3;
     }
 
-    @Override
+    /*@Override
     public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
         return 0;
     }
@@ -146,5 +145,5 @@ public class TileEntityWell extends TileEntityBasicMachine implements IFluidHand
     @Override
     public FluidTankInfo[] getTankInfo(ForgeDirection from) {
         return new FluidTankInfo[]{tank.getInfo()};
-    }
+    }*/
 }

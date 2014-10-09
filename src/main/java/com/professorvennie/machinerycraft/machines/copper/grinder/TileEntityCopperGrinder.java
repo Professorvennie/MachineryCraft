@@ -13,13 +13,14 @@ import com.professorvennie.machinerycraft.api.recipes.GrinderRecipes;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TileEntityCopperGrinder extends TileEntityBasicMachine {
 
@@ -57,7 +58,7 @@ public class TileEntityCopperGrinder extends TileEntityBasicMachine {
 
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
             if (item == Items.stick) return 100;
             if (item == Items.coal) return 1600;
             if (item == Items.lava_bucket) return 20000;
@@ -94,8 +95,8 @@ public class TileEntityCopperGrinder extends TileEntityBasicMachine {
         return this.burnTime > 0;
     }
 
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         boolean flag = this.burnTime > 0;
         boolean flag1 = false;
 
@@ -112,7 +113,7 @@ public class TileEntityCopperGrinder extends TileEntityBasicMachine {
                         this.inventory[1].stackSize--;
 
                         if (this.inventory[1].stackSize == 0) {
-                            this.inventory[1] = this.inventory[1].getItem().getContainerItem(this.inventory[1]);
+                            this.inventory[1] = new ItemStack(this.inventory[1].getItem().getContainerItem());
                         }
                     }
                 }
@@ -129,7 +130,7 @@ public class TileEntityCopperGrinder extends TileEntityBasicMachine {
 
             if (flag != this.isBurning()) {
                 flag1 = true;
-                BlockCopperGrinder.updateBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.copperGrinderActive, ModBlocks.copperGrinderIdle);
+                BlockCopperGrinder.updateBlockState(this.burnTime > 0, this.worldObj, pos, ModBlocks.copperGrinderActive, ModBlocks.copperGrinderIdle);
             }
 
         }
@@ -179,8 +180,8 @@ public class TileEntityCopperGrinder extends TileEntityBasicMachine {
     }
 
     @Override
-    public boolean canExtractItem(int var1, ItemStack var2, int var3) {
-        return var3 != 0 || var1 != 1 || var2.getItem() == Items.bucket;
+    public boolean canExtractItem(int slotId, ItemStack stack, EnumFacing direction) {
+        return direction != EnumFacing.DOWN || slotId != 1 || stack.getItem() == Items.bucket;
     }
 
     public int getBurnTimeReamingScaled(int i) {
@@ -193,5 +194,41 @@ public class TileEntityCopperGrinder extends TileEntityBasicMachine {
 
     public int getCookProgressSacled(int i) {
         return this.cookTime * i / this.getMachineSpeed();
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 3;
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        switch (id){
+            case 1:
+                return cookTime;
+            case 2:
+                return burnTime;
+            case 3:
+                return currentItemBurnTime;
+            default:
+                return 0;
+        }
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        switch (id){
+            case 1:
+                cookTime = value;
+                break;
+            case 2:
+                burnTime = value;
+                break;
+            case 3:
+                currentItemBurnTime = value;
+                break;
+        }
     }
 }

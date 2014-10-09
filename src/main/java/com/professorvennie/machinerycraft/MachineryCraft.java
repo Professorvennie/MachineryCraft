@@ -32,26 +32,23 @@ import com.professorvennie.machinerycraft.tileEntity.RegisterTileEntitys;
 import com.professorvennie.machinerycraft.world.OreGen;
 import com.professorvennie.machinerycraft.world.biome.ModBiomes;
 import com.professorvennie.machinerycraft.world.village.VillageHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY)
 public class MachineryCraft {
 
-    @Instance(Reference.MOD_ID)
+    @Mod.Instance(Reference.MOD_ID)
     public static MachineryCraft instance;
 
     public static CreativeTabs tabMachineryCraft = new CreativeTabMachineryCraft("MachineryCraft");
@@ -67,7 +64,7 @@ public class MachineryCraft {
         ModItems.mainRegistry();
         ModFuilds.mainRegistry();
         ModEntities.init();
-        ConfigHandler.init(event.getSuggestedConfigurationFile());
+        //ConfigHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigHandler());
 
         ModRecipes.init();
@@ -77,14 +74,14 @@ public class MachineryCraft {
 
         PacketHandler.init();
 
-        FluidContainerRegistry.registerFluidContainer(ModFuilds.fluidSteam, new ItemStack(ModItems.steamBucket), new ItemStack(Items.bucket));
+        //FluidContainerRegistry.registerFluidContainer(ModFuilds.fluidSteam, new ItemStack(ModItems.steamBucket), new ItemStack(Items.bucket));
     }
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
         GameRegistry.registerWorldGenerator(new OreGen(), 2);
         NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MOD_ID, new GuiHandler());
-        MinecraftForge.EVENT_BUS.register(new HudHandler());
+        //MinecraftForge.EVENT_BUS.register(new HudHandler());
         ModAchievements.registerAchievements();
         ModEvents.registerEvents();
         PluginHandler.Init();

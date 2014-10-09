@@ -11,7 +11,7 @@ package com.professorvennie.machinerycraft.plugins;
 
 import com.professorvennie.machinerycraft.plugins.codechicken.fmp.FMPPlugin;
 import com.professorvennie.machinerycraft.plugins.codechicken.nei.NEIHandler;
-import cpw.mods.fml.common.Loader;
+import net.minecraftforge.fml.common.Loader;
 
 /**
  * Created by ProfessorVennie on 8/10/2014 at 4:19 PM.

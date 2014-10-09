@@ -18,6 +18,7 @@ import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityBrassGrinder extends TileEntityBasicMachine {
 
@@ -61,8 +62,8 @@ public class TileEntityBrassGrinder extends TileEntityBasicMachine {
         return this.cookTime > 0;
     }
 
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         boolean flag = this.cookTime > 0;
         boolean flag1 = false;
 
@@ -83,7 +84,7 @@ public class TileEntityBrassGrinder extends TileEntityBasicMachine {
                         this.inventory[1].stackSize--;
 
                         if (this.inventory[1].stackSize == 0)
-                            this.inventory[1] = this.inventory[1].getItem().getContainerItem(inventory[1]);
+                            this.inventory[1] = new ItemStack(this.inventory[1].getItem().getContainerItem());
                     }
                 }
             }
@@ -99,7 +100,7 @@ public class TileEntityBrassGrinder extends TileEntityBasicMachine {
 
             if (flag != this.hasPower()) {
                 flag1 = true;
-                BlockBrassGrinder.updateBlockState(this.cookTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.brassGrinderActive, ModBlocks.brassGrinderIdle);
+                BlockBrassGrinder.updateBlockState(this.cookTime > 0, this.worldObj, pos, ModBlocks.brassGrinderActive, ModBlocks.brassGrinderIdle);
             }
 
         }
@@ -150,8 +151,8 @@ public class TileEntityBrassGrinder extends TileEntityBasicMachine {
     }
 
     @Override
-    public boolean canExtractItem(int var1, ItemStack itemStack, int var3) {
-        return var3 != 0 || var1 != 1 || itemStack.getItem() == Items.bucket;
+    public boolean canExtractItem(int slotId, ItemStack stack, EnumFacing direction) {
+        return direction != EnumFacing.DOWN || slotId != 1 || stack.getItem() == Items.bucket;
     }
 
     public int getCookProgressScaled(int par1) {
@@ -168,5 +169,29 @@ public class TileEntityBrassGrinder extends TileEntityBasicMachine {
 
     public int getChargeCapcity() {
         return this.maxPower;
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 2;
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        if(id == 1)
+            return cookTime;
+        else if (id == 2)
+            return power;
+        return 0;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        if(id == 1)
+            cookTime = value;
+        else if (id == 2)
+            power = value;
     }
 }

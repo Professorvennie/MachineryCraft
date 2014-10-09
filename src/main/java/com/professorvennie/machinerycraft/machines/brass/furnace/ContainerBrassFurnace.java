@@ -10,20 +10,20 @@
 package com.professorvennie.machinerycraft.machines.brass.furnace;
 
 import com.professorvennie.machinerycraft.core.utils.PowerAmounts;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerBrassFurnace extends Container {
 
-    public int lastBurnTime, lastItemBurnTime, lastCookTime;
+    public int lastBurnTime, lastCookTime;
 
     private TileEntityBrassFurnace furnace;
 
@@ -35,7 +35,7 @@ public class ContainerBrassFurnace extends Container {
         //power slot
         this.addSlotToContainer(new Slot(entity, 1, 11, 53));
         //OutPut Slot
-        this.addSlotToContainer(new SlotFurnace(inventory.player, entity, 2, 116, 35));
+        this.addSlotToContainer(new SlotFurnaceOutput(inventory.player, entity, 2, 116, 35));
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
@@ -48,13 +48,6 @@ public class ContainerBrassFurnace extends Container {
         }
     }
 
-    public void addCraftingToCrafters(ICrafting icrafting) {
-        super.addCraftingToCrafters(icrafting);
-        icrafting.sendProgressBarUpdate(this, 0, this.furnace.cookTime);
-        icrafting.sendProgressBarUpdate(this, 1, this.furnace.power);
-        icrafting.sendProgressBarUpdate(this, 2, this.furnace.currentItemBurnTime);
-    }
-
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
@@ -62,28 +55,21 @@ public class ContainerBrassFurnace extends Container {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
             if (this.lastCookTime != this.furnace.cookTime) {
-                icrafting.sendProgressBarUpdate(this, 0, this.furnace.cookTime);
+                icrafting.sendProgressBarUpdate(this, 1, this.furnace.getField(1));
             }
 
             if (this.lastBurnTime != this.furnace.power) {
-                icrafting.sendProgressBarUpdate(this, 1, this.furnace.power);
-            }
-
-            if (this.lastItemBurnTime != this.furnace.currentItemBurnTime) {
-                icrafting.sendProgressBarUpdate(this, 2, this.furnace.currentItemBurnTime);
+                icrafting.sendProgressBarUpdate(this, 2, this.furnace.getField(2));
             }
         }
-        this.lastCookTime = this.furnace.cookTime;
-        this.lastBurnTime = this.furnace.power;
-        this.lastItemBurnTime = this.furnace.currentItemBurnTime;
+        this.lastCookTime = this.furnace.getField(1);
+        this.lastBurnTime = this.furnace.getField(2);
     }
 
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
-        if (slot == 0) this.furnace.cookTime = par2;
-        if (slot == 1) this.furnace.power = par2;
-        if (slot == 2) this.furnace.currentItemBurnTime = par2;
+        furnace.setField(slot, par2);
     }
 
     @Override
@@ -104,7 +90,7 @@ public class ContainerBrassFurnace extends Container {
                 }
                 slot.onSlotChange(itemstack1, itemstack);
             } else if (slot0 != 1 && slot0 != 0) {
-                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null) {
+                if (FurnaceRecipes.instance().getSmeltingResult(itemstack1) != null) {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
                         return null;
                     }

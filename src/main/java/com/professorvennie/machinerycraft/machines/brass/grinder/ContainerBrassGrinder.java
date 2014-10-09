@@ -11,19 +11,19 @@ package com.professorvennie.machinerycraft.machines.brass.grinder;
 
 import com.professorvennie.machinerycraft.api.recipes.GrinderRecipes;
 import com.professorvennie.machinerycraft.core.utils.PowerAmounts;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerBrassGrinder extends Container {
 
-    public int lastBurnTime, lastItemBurnTime, lastCookTime;
+    public int lastBurnTime, lastCookTime;
 
     private TileEntityBrassGrinder Grinder;
 
@@ -32,7 +32,7 @@ public class ContainerBrassGrinder extends Container {
 
         this.addSlotToContainer(new Slot(entity, 0, 56, 35));
         this.addSlotToContainer(new Slot(entity, 1, 11, 53));
-        this.addSlotToContainer(new SlotFurnace(inventory.player, entity, 2, 116, 35));
+        this.addSlotToContainer(new SlotFurnaceOutput(inventory.player, entity, 2, 116, 35));
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
@@ -45,13 +45,6 @@ public class ContainerBrassGrinder extends Container {
         }
     }
 
-    public void addCraftingToCrafters(ICrafting icrafting) {
-        super.addCraftingToCrafters(icrafting);
-        icrafting.sendProgressBarUpdate(this, 0, this.Grinder.cookTime);
-        icrafting.sendProgressBarUpdate(this, 1, this.Grinder.power);
-        icrafting.sendProgressBarUpdate(this, 2, this.Grinder.currentItemBurnTime);
-    }
-
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
@@ -59,28 +52,21 @@ public class ContainerBrassGrinder extends Container {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
             if (this.lastCookTime != this.Grinder.cookTime) {
-                icrafting.sendProgressBarUpdate(this, 0, this.Grinder.cookTime);
+                icrafting.sendProgressBarUpdate(this, 1, this.Grinder.getField(1));
             }
 
             if (this.lastBurnTime != this.Grinder.power) {
-                icrafting.sendProgressBarUpdate(this, 1, this.Grinder.power);
-            }
-
-            if (this.lastItemBurnTime != this.Grinder.currentItemBurnTime) {
-                icrafting.sendProgressBarUpdate(this, 2, this.Grinder.currentItemBurnTime);
+                icrafting.sendProgressBarUpdate(this, 2, this.Grinder.getField(2));
             }
         }
-        this.lastCookTime = this.Grinder.cookTime;
-        this.lastBurnTime = this.Grinder.power;
-        this.lastItemBurnTime = this.Grinder.currentItemBurnTime;
+        this.lastCookTime = this.Grinder.getField(1);
+        this.lastBurnTime = this.Grinder.getField(2);
     }
 
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
-        if (slot == 0) this.Grinder.cookTime = par2;
-        if (slot == 1) this.Grinder.power = par2;
-        if (slot == 2) this.Grinder.currentItemBurnTime = par2;
+        Grinder.setField(slot, par2);
     }
 
     @Override

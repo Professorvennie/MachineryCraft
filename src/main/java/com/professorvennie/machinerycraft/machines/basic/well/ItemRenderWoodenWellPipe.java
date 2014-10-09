@@ -4,15 +4,14 @@ import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 /**
  * Created by ProfessorVennie on 9/14/2014 at 5:24 PM.
  */
-public class ItemRenderWoodenWellPipe implements IItemRenderer {
+public class ItemRenderWoodenWellPipe /*implements IItemRenderer*/ {
 
-    @Override
+   /* @Override
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {
         return true;
     }
@@ -30,5 +29,5 @@ public class ItemRenderWoodenWellPipe implements IItemRenderer {
         new TileEntityRendererWoodenWellPipe().renderInv();
         GL11.glScalef(-1.2F, -1.2F, -1.2F);
         GL11.glEnable(GL11.GL_LIGHTING);
-    }
+    }*/
 }

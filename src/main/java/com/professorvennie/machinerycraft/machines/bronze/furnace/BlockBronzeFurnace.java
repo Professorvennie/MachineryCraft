@@ -14,7 +14,6 @@ import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.bronze.BlockBasicSteamMachine;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -30,12 +29,6 @@ public class BlockBronzeFurnace extends BlockBasicSteamMachine {
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
         return new TileEntityBronzeFurnace();
-    }
-
-    @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        super.registerBlockIcons(iconRegister);
-        iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":" + "bronzeFurnace_Front_Idle");
     }
 
     @Override

@@ -1,23 +1,14 @@
 package com.professorvennie.machinerycraft.plugins.codechicken.fmp;
 
-import codechicken.lib.render.CCModel;
-import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.uv.UVTranslation;
-import codechicken.lib.vec.*;
-import com.professorvennie.machinerycraft.lib.Reference;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.IItemRenderer;
-import org.lwjgl.opengl.GL11;
 
 import java.util.Map;
 
 /**
  * Created by ProfessorVennie on 9/20/2014 at 3:41 PM.
  */
-public class ItemSawRender implements IItemRenderer {
+public class ItemSawRender /*implements IItemRenderer*/ {
 
-    Map<String, CCModel> models = CCModel.parseObjModels(new ResourceLocation("microblock", "models/saw.obj"), 7, new SwapYZ());
+    /*Map<String, CCModel> models = CCModel.parseObjModels(new ResourceLocation("microblock", "models/saw.obj"), 7, new SwapYZ());
     CCModel handle = models.get("Handle");
     CCModel holder = models.get("BladeSupport");
     CCModel blade = models.get("Blade");
@@ -86,5 +77,5 @@ public class ItemSawRender implements IItemRenderer {
         blade.render(t, new UVTranslation(0, tex * 4 / 64D));
         CCRenderState.draw();
         GL11.glEnable(GL11.GL_CULL_FACE);
-    }
+    }*/
 }

@@ -16,10 +16,7 @@ import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,7 +30,7 @@ public class BlockBrassAlloySmelter extends BlockBasicMachine {
     public BlockBrassAlloySmelter(boolean isActive) {
         super(Names.Blocks.BRASS_ALLOY, isActive);
         setHardness(4.5F);
-        setHarvestLevel("pickaxe", 2);
+        //setHarvestLevel("pickaxe", 2);
         setStepSound(Block.soundTypeMetal);
         guiId = LibGuiIds.BRASS_ALLOYSMELTER;
     }
@@ -41,13 +38,6 @@ public class BlockBrassAlloySmelter extends BlockBasicMachine {
     @Override
     public TileEntity createNewTileEntity(World var1, int var2) {
         return new TileEntityBrassAlloy();
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void registerBlockIcons(IIconRegister iiconRegister) {
-        this.blockIcon = iiconRegister.registerIcon(Reference.MOD_ID + ":ores/" + "blockBrass");
-        this.iconFront = iiconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "brassAlloySmelter_Active" : "brassAlloySmelter_Idle"));
     }
 
     public Item getItemDropped(int par1, Random random, int par2) {

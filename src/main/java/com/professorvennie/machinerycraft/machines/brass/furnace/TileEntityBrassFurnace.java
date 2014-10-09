@@ -21,7 +21,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IMachine {
 
     public final int maxPower = 10000;
-    public int furnaceSpeed = 70, power, currentItemBurnTime, cookTime;
+    public int furnaceSpeed = 70, power, cookTime;
 
     public TileEntityBrassFurnace() {
         super(Names.Containers.CONTAINER_BRASS_FURNACE);
@@ -40,7 +40,6 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
 
         this.power = (int) nbt.getShort("burnTime");
         this.cookTime = (int) nbt.getShort("cookTime");
-        this.currentItemBurnTime = (int) nbt.getShort("currentItemBurnTime");
     }
 
     public void writeToNBT(NBTTagCompound nbt) {
@@ -48,7 +47,6 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
 
         nbt.setShort("burnTime", (short) this.power);
         nbt.setShort("cookTime", (short) this.cookTime);
-        nbt.setShort("currentItemBurnTime", (short) this.currentItemBurnTime);
     }
 
     public boolean hasPower() {
@@ -60,7 +58,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
     }
 
     public void updateEntity() {
-        super.updateEntity();
+        super.update();
         boolean flag = this.cookTime > 0;
         boolean flag1 = false;
 
@@ -79,7 +77,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
                         this.inventory[1].stackSize--;
 
                         if (this.inventory[1].stackSize == 0) {
-                            this.inventory[1] = this.inventory[1].getItem().getContainerItem(inventory[1]);
+                            this.inventory[1] = new ItemStack(this.inventory[1].getItem().getContainerItem());
                         }
                     }
                 }
@@ -96,7 +94,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
 
             if (flag != this.hasPower()) {
                 flag1 = true;
-                BlockBrassFurnace.updateBlockState(this.cookTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.brassFurnaceActive, ModBlocks.brassFurnaceIdle);
+                BlockBrassFurnace.updateBlockState(this.cookTime > 0, this.worldObj, pos, ModBlocks.brassFurnaceActive, ModBlocks.brassFurnaceIdle);
             }
 
         }
@@ -107,7 +105,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
         if (this.inventory[0] == null) {
             return false;
         } else {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.inventory[0]);
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.inventory[0]);
 
             if (itemstack == null) return false;
             if (this.inventory[2] == null) return true;
@@ -121,7 +119,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
 
     public void smeltItem() {
         if (this.canSmelt()) {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.inventory[0]);
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.inventory[0]);
 
             if (this.inventory[2] == null) {
                 this.inventory[2] = itemstack.copy();
@@ -156,5 +154,29 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
 
     public int getChargeCapcity() {
         return this.maxPower;
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 2;
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        if(id == 1)
+            return cookTime;
+        else if (id == 2)
+            return power;
+        return 0;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        if(id == 1)
+            cookTime = value;
+        else if (id == 2)
+            power = value;
     }
 }

@@ -17,9 +17,12 @@ import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class BlockWasher extends BlockModContainer implements IBookable {
@@ -30,7 +33,7 @@ public class BlockWasher extends BlockModContainer implements IBookable {
         setResistance(10.0F);
         setStepSound(Block.soundTypeMetal);
         setHardness(2.5f);
-        setHarvestLevel("pickAxe", 2);
+        //setHarvestLevel("pickAxe", 2);
     }
 
     public int getRenderType() {
@@ -41,19 +44,20 @@ public class BlockWasher extends BlockModContainer implements IBookable {
         return false;
     }
 
-    public boolean renderAsNormalBlock() {
+    @Override
+    public boolean isFullCube() {
         return false;
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
             if (!player.isSneaking()) {
-                TileEntityWasher tile = (TileEntityWasher) world.getTileEntity(x, y, z);
+                TileEntityWasher tile = (TileEntityWasher) world.getTileEntity(pos);
                 if (tile != null) {
                     if (tile.hasMaster()) {
                         if (tile.isMaster())
-                            player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_WASHER, world, x, y, z);
+                            player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_WASHER, world, pos.getX(), pos.getY(), pos.getZ());
                         else
                             player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_WASHER, world, tile.getMasterX(), tile.getMasterY(), tile.getMasterZ());
                         return true;

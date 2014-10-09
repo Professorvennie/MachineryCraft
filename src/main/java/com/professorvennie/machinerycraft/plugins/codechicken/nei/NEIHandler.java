@@ -9,8 +9,6 @@
  * */
 package com.professorvennie.machinerycraft.plugins.codechicken.nei;
 
-import codechicken.nei.api.API;
-import codechicken.nei.recipe.DefaultOverlayHandler;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.machines.copper.furnace.GuiCopperFurnace;
 import net.minecraft.item.ItemStack;
@@ -21,7 +19,7 @@ import net.minecraft.item.ItemStack;
 public class NEIHandler {
 
     public static void loadConfig() {
-        API.registerGuiOverlay(GuiCopperFurnace.class, "smelting");
+        /*API.registerGuiOverlay(GuiCopperFurnace.class, "smelting");
         API.registerGuiOverlayHandler(GuiCopperFurnace.class, new DefaultOverlayHandler(), "smelting");
 
         API.registerRecipeHandler(new CopperGrinderHandler());
@@ -32,6 +30,6 @@ public class NEIHandler {
 
         API.hideItem(new ItemStack(ModBlocks.copperFurnaceActive));
         API.hideItem(new ItemStack(ModBlocks.copperGrinderActive));
-        API.hideItem(new ItemStack(ModBlocks.windmill));
+        API.hideItem(new ItemStack(ModBlocks.windmill));*/
     }
 }

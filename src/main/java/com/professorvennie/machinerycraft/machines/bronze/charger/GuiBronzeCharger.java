@@ -35,7 +35,7 @@ public class GuiBronzeCharger extends GuiBase {
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
 
-        drawTanks(tile.tank, 66, 11, 74, 16);
+        //drawTanks(tile.tank, 66, 11, 74, 16);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class GuiBronzeCharger extends GuiBase {
         super.drawGuiContainerForegroundLayer(p_146979_1_, p_146979_2_);
 
         List<String> text = new ArrayList<String>();
-        if (tile.tank.getFluidAmount() > 0 || (tile.tank.getFluid() != null && tile.tank.getFluid().getFluid() != null)) {
+        /*if (tile.tank.getFluidAmount() > 0 || (tile.tank.getFluid() != null && tile.tank.getFluid().getFluid() != null)) {
             text.clear();
             text.add(tile.tank.getFluid().getFluid().getLocalizedName(null));
             text.add(tile.tank.getFluidAmount() + "/" + tile.tank.getCapacity() + "mB");
@@ -52,6 +52,6 @@ public class GuiBronzeCharger extends GuiBase {
             text.clear();
             text.add("Empty");
             drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text, fontRendererObj);
-        }
+        }*/
     }
 }

@@ -1,12 +1,12 @@
 package com.professorvennie.machinerycraft.machines.basic.well;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by ProfessorVennie on 9/14/2014 at 6:50 PM.
@@ -34,32 +34,27 @@ public class ContainerWell extends Container {
         }
     }
 
-    public void addCraftingToCrafters(ICrafting icrafting) {
-        super.addCraftingToCrafters(icrafting);
-        icrafting.sendProgressBarUpdate(this, 0, lastTankAmount);
-    }
-
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
         for (int i = 0; i < this.crafters.size(); i++) {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
-            if (lastTankAmount != entity.tank.getFluidAmount()) {
+            /*if (lastTankAmount != entity.tank.getFluidAmount()) {
                 icrafting.sendProgressBarUpdate(this, 0, entity.tank.getFluidAmount());
-            }
+            }*/
         }
-        lastTankAmount = entity.tank.getFluidAmount();
+        //lastTankAmount = entity.tank.getFluidAmount();
     }
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
         super.updateProgressBar(slot, par2);
-        if (slot == 0) {
+        /*if (slot == 0) {
             if (entity.tank.getFluid() != null)
                 entity.tank.getFluid().amount = par2;
 
-        }
+        }*/
     }
 
     @Override

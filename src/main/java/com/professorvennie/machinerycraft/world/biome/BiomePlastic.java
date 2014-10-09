@@ -25,15 +25,15 @@ public class BiomePlastic extends BiomeGenBase {
         super(id);
         setDisableRain();
         for (int i = 0; i < Names.Blocks.BLOCK_PLASTIC_FLOWERS.length; i++) {
-            addFlower(ModBlocks.plasticFlower, i, 20);
+            //addFlower(ModBlocks.plasticFlower, i, 20);
         }
-        topBlock = ModBlocks.plasticGrass;
-        fillerBlock = ModBlocks.plasticDirt;
-        theBiomeDecorator.treesPerChunk = 3;
-        theBiomeDecorator.flowersPerChunk = 15;
+        //topBlock = ModBlocks.plasticGrass;
+        //fillerBlock = ModBlocks.plasticDirt;
+        //theBiomeDecorator.treesPerChunk = 3;
+        //theBiomeDecorator.flowersPerChunk = 15;
         theBiomeDecorator.generateLakes = false;
     }
-
+/*
     @Override
     public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_) {
         return 16777215;
@@ -60,5 +60,5 @@ public class BiomePlastic extends BiomeGenBase {
             worldGenFlowers.generate(world, random, x, y, z);
         }
 
-    }
+    }*/
 }

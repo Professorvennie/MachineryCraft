@@ -16,14 +16,13 @@ import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -33,7 +32,7 @@ public class BlockBrassGrinder extends BlockBasicMachine {
     public BlockBrassGrinder(boolean isActive) {
         super(Names.Blocks.BRASS_GRINDER, isActive);
         setHardness(4.5F);
-        setHarvestLevel("pickaxe", 2);
+        //setHarvestLevel("pickaxe", 2);
         setStepSound(Block.soundTypeMetal);
         guiId = LibGuiIds.BRASS_GRINDER;
     }
@@ -43,14 +42,8 @@ public class BlockBrassGrinder extends BlockBasicMachine {
         return new TileEntityBrassGrinder();
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void registerBlockIcons(IIconRegister iiconRegister) {
-        this.blockIcon = iiconRegister.registerIcon(Reference.MOD_ID + ":ores/" + "blockBrass");
-        this.iconFront = iiconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "brassGrinder_Active" : "brassGrinder_Idle"));
-    }
-
-    public Item getItemDropped(int par1, Random random, int par2) {
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(ModBlocks.brassGrinderIdle);
     }
 
@@ -64,7 +57,7 @@ public class BlockBrassGrinder extends BlockBasicMachine {
     }
 
     @Override
-    public void randomDisplayTick(World world, int x, int y, int z, Random random) {
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random random) {
 
     }
 }

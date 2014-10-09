@@ -10,17 +10,17 @@
 package com.professorvennie.machinerycraft.machines.bronze.furnace;
 
 import com.professorvennie.machinerycraft.items.ModItems;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by ProfessorVennie on 7/23/2014 at 11:38 AM.
@@ -36,7 +36,7 @@ public class ContainerBronzeFurnace extends Container {
         addSlotToContainer(new Slot(entity, 0, 33, 9));
         addSlotToContainer(new Slot(entity, 1, 33, 58));
         addSlotToContainer(new Slot(entity, 2, 60, 35));
-        addSlotToContainer(new SlotFurnace(inventory.player, entity, 3, 120, 35));
+        addSlotToContainer(new SlotFurnaceOutput(inventory.player, entity, 3, 120, 35));
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
@@ -49,12 +49,6 @@ public class ContainerBronzeFurnace extends Container {
         }
     }
 
-    public void addCraftingToCrafters(ICrafting icrafting) {
-        super.addCraftingToCrafters(icrafting);
-        icrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
-        icrafting.sendProgressBarUpdate(this, 1, lastTankAmount);
-    }
-
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
@@ -62,26 +56,20 @@ public class ContainerBronzeFurnace extends Container {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
             if (this.lastCookTime != this.entity.cookTime) {
-                icrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
+                icrafting.sendProgressBarUpdate(this, 1, this.entity.getField(1));
             }
 
-            if (lastTankAmount != entity.tank.getFluidAmount()) {
-                icrafting.sendProgressBarUpdate(this, 1, entity.tank.getFluidAmount());
-            }
+            /*if (lastTankAmount != entity.tank.getFluidAmount()) {
+                icrafting.sendProgressBarUpdate(this, 2, entity.getField(2));
+            }*/
         }
-        this.lastCookTime = this.entity.cookTime;
-        lastTankAmount = entity.tank.getFluidAmount();
+        this.lastCookTime = this.entity.getField(1);
+        //lastTankAmount = entity.tank.getFluidAmount();
     }
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
-        super.updateProgressBar(slot, par2);
-        if (slot == 0) this.entity.cookTime = par2;
-        if (slot == 1) {
-            if (entity.tank.getFluid() != null)
-                entity.tank.getFluid().amount = par2;
-
-        }
+        entity.setField(slot, par2);
     }
 
     @Override
@@ -102,7 +90,7 @@ public class ContainerBronzeFurnace extends Container {
                     return null;
                 }
             } else {
-                if (FurnaceRecipes.smelting().getSmeltingResult(itemStack1) != null) {
+                if (FurnaceRecipes.instance().getSmeltingResult(itemStack1) != null) {
                     if (!mergeItemStack(itemStack1, TileEntityBronzeFurnace.INPUTSLOT, TileEntityBronzeFurnace.INPUTSLOT + 1, false)) {
                         return null;
                     }

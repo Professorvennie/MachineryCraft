@@ -15,16 +15,18 @@ import com.professorvennie.machinerycraft.api.steam.ISteamTank;
 import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
@@ -37,28 +39,10 @@ public class BlockBasicSteamMachine extends BlockBasicMachine {
         super(name, isActive);
     }
 
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata) {
-        if (side == 1)
-            return iconTop;
-        else if (side == metadata)
-            return iconFront;
-        else if (metadata == 0 && side == 3)
-            return iconFront;
-        else
-            return blockIcon;
-    }
-
     @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":ores/" + "blockBronze");
-        iconTop = iconRegister.registerIcon(Reference.MOD_ID + ":" + "bronzeMachines_Top");
-    }
-
-    @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            TileEntity tileEntity = world.getTileEntity(x, y, z);
+            TileEntity tileEntity = world.getTileEntity(pos);
             if (tileEntity instanceof ISteamTank) {
                 if (tileEntity instanceof ISteamBoiler) {
                     if (player.getHeldItem() != null) {
@@ -74,9 +58,9 @@ public class BlockBasicSteamMachine extends BlockBasicMachine {
                             } else
                                 player.addChatComponentMessage(new ChatComponentText("Water tank is full."));
                         } else
-                            player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
+                            player.openGui(MachineryCraft.instance, guiId, world, pos.getX(), pos.getY(), pos.getZ());
                     } else
-                        player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
+                        player.openGui(MachineryCraft.instance, guiId, world, pos.getX(), pos.getY(), pos.getZ());
                 } else if (player.getHeldItem() != null) {
                     if (player.getHeldItem().getItem() == ModItems.steamBucket) {
                         if (((ISteamTank) tileEntity).getSteamAmount() < ((ISteamTank) tileEntity).getSteamCapacity()) {
@@ -103,9 +87,9 @@ public class BlockBasicSteamMachine extends BlockBasicMachine {
                         } else
                             player.addChatComponentMessage(new ChatComponentText("Not enough steam to drain."));
                     } else
-                        player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
+                        player.openGui(MachineryCraft.instance, guiId, world, pos.getX(), pos.getY(), pos.getZ());
                 } else
-                    player.openGui(MachineryCraft.instance, guiId, world, x, y, z);
+                    player.openGui(MachineryCraft.instance, guiId, world, pos.getX(), pos.getY(), pos.getZ());
             }
         }
         return true;
@@ -113,20 +97,20 @@ public class BlockBasicSteamMachine extends BlockBasicMachine {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(World world, int x, int y, int z, Random random) {
-        if (world.isAirBlock(x, y + 1, z)) {
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random random) {
+        if (world.isAirBlock(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()))) {
             if (isActive) {
-                float x1 = (float) x + 0.5f;
-                float y1 = (float) y + 1.0f;
-                float z1 = (float) z + 0.5f;
+                float x1 = (float) pos.getX() + 0.5f;
+                float y1 = (float) pos.getY() + 1.0f;
+                float z1 = (float) pos.getZ() + 0.5f;
                 float f1 = random.nextFloat() * 0.6F - 0.3F;
 
-                world.spawnParticle("smoke", (double) (x1 + f1), (double) y1, (double) (z1 + f1), 0.0D, 0.0D, 0.0D);
-                world.spawnParticle("smoke", (double) (x1 - f1), (double) y1, (double) (z1 + f1), 0.0D, 0.0D, 0.0D);
-                world.spawnParticle("smoke", (double) (x1 + f1), (double) y1, (double) (z1 - f1), 0.0D, 0.0D, 0.0D);
-                world.spawnParticle("smoke", (double) (x1 - f1), (double) y1, (double) (z1 - f1), 0.0D, 0.0D, 0.0D);
-                world.spawnParticle("smoke", (double) x1, (double) (y1 + f1), (double) z1, 0.0D, 0.0D, 0.0D);
-                world.spawnParticle("smoke", (double) (x1 + f1), (double) (y1 + f1), (double) z1, 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, (double) (x1 + f1), (double) y1, (double) (z1 + f1), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, (double) (x1 - f1), (double) y1, (double) (z1 + f1), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, (double) (x1 + f1), (double) y1, (double) (z1 - f1), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, (double) (x1 - f1), (double) y1, (double) (z1 - f1), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, (double) x1, (double) (y1 + f1), (double) z1, 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, (double) (x1 + f1), (double) (y1 + f1), (double) z1, 0.0D, 0.0D, 0.0D);
             }
         }
     }

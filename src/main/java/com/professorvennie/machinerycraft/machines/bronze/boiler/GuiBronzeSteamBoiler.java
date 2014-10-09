@@ -42,14 +42,14 @@ public class GuiBronzeSteamBoiler extends GuiBase {
             int k = this.entity.getBurnTimeReamingScaled(12);
             drawElement(81, 38 - k, 176, 12 - k, 14, k + 2);
         }
-        drawTanks(entity.tanks[0], 66, 11, 74, 16);
-        drawTanks(entity.tanks[1], 66, 149, 74, 16);
+        //drawTanks(entity.tanks[0], 66, 11, 74, 16);
+        //drawTanks(entity.tanks[1], 66, 149, 74, 16);
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
 
-        String name = StatCollector.translateToLocal(entity.getInventoryName());
+        String name = StatCollector.translateToLocal(entity.getName());
         int color = 0X00FF37;
         if (entity.temp < 200)
             color = 0X00FF37;
@@ -73,7 +73,7 @@ public class GuiBronzeSteamBoiler extends GuiBase {
         this.fontRendererObj.drawString("F", x2, ySize - 100, 4210752);
 
         List<String> text = new ArrayList<String>();
-        if (entity.tanks[0].getFluidAmount() > 0 || (entity.tanks[0].getFluid() != null)) {
+       /* if (entity.tanks[0].getFluidAmount() > 0 || (entity.tanks[0].getFluid() != null)) {
             text.clear();
             text.add(entity.tanks[0].getFluid().getFluid().getLocalizedName(null));
             text.add(entity.tanks[0].getFluidAmount() + "/" + entity.tanks[0].getCapacity() + "mB");
@@ -94,6 +94,6 @@ public class GuiBronzeSteamBoiler extends GuiBase {
             text2.clear();
             text2.add("Empty");
             drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text2, fontRendererObj);
-        }
+        }*/
     }
 }

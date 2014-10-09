@@ -11,13 +11,14 @@ package com.professorvennie.machinerycraft.world;
 
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.core.config.ConfigHandler;
-import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
 
@@ -26,7 +27,7 @@ public class OreGen implements IWorldGenerator {
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 
-        switch (world.provider.dimensionId) {
+        switch (world.provider.getDimensionId()) {
             case -1:
                 generateNether(world, random, chunkX * 16, chunkZ * 16);
             case 0:
@@ -43,16 +44,16 @@ public class OreGen implements IWorldGenerator {
     }
 
     private void generateSurface(World world, Random random, int x, int z) {
-        if (ConfigHandler.spawnCopper)
-            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 0).getItem()), 0, world, random, x, z, 16, 16, ConfigHandler.copperVienSize, ConfigHandler.copperRate, 15, 160);
-        if (ConfigHandler.spawnTin)
-            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 1).getItem()), 1, world, random, x, z, 16, 16, ConfigHandler.tinVienSize, ConfigHandler.tinRate, 15, 160);
-        if (ConfigHandler.spawnSilver)
-            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 2).getItem()), 2, world, random, x, z, 16, 16, ConfigHandler.silverVienSize, ConfigHandler.silverRate, 15, 160);
-        if (ConfigHandler.spawnLead)
-            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 3).getItem()), 3, world, random, x, z, 16, 16, ConfigHandler.leadVienSize, ConfigHandler.leadRate, 15, 160);
-        if (ConfigHandler.spawnZinc)
-            addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 4).getItem()), 4, world, random, x, z, 16, 16, ConfigHandler.zincVienSize, ConfigHandler.zincRate, 15, 160);
+       // if (ConfigHandler.spawnCopper)
+           // addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 0).getItem()), 0, world, random, x, z, 16, 16, ConfigHandler.copperVienSize, ConfigHandler.copperRate, 15, 160);
+        //if (ConfigHandler.spawnTin)
+            //addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 1).getItem()), 1, world, random, x, z, 16, 16, ConfigHandler.tinVienSize, ConfigHandler.tinRate, 15, 160);
+       // if (ConfigHandler.spawnSilver)
+           // addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 2).getItem()), 2, world, random, x, z, 16, 16, ConfigHandler.silverVienSize, ConfigHandler.silverRate, 15, 160);
+        //if (ConfigHandler.spawnLead)
+            //addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 3).getItem()), 3, world, random, x, z, 16, 16, ConfigHandler.leadVienSize, ConfigHandler.leadRate, 15, 160);
+       // if (ConfigHandler.spawnZinc)
+            //addOreSpawn(Block.getBlockFromItem(new ItemStack(ModBlocks.BlockOres, 1, 4).getItem()), 4, world, random, x, z, 16, 16, ConfigHandler.zincVienSize, ConfigHandler.zincRate, 15, 160);
     }
 
     private void generateNether(World world, Random random, int x, int z) {
@@ -88,7 +89,7 @@ public class OreGen implements IWorldGenerator {
             int posX = blockXPos + random.nextInt(maxX);
             int posY = minY + random.nextInt(diffBtwnMinMaxY);
             int posZ = blockZPos + random.nextInt(maxZ);
-            (new WorldGenMinable(block, meta, maxVeinSize, Blocks.stone)).generate(world, random, posX, posY, posZ);
+            (new WorldGenMinable(block.getDefaultState(), meta)).generate(world, random, new BlockPos(posX, posY, posZ));
         }
     }
 

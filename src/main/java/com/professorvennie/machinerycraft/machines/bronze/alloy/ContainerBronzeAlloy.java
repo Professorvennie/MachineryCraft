@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.SlotFurnaceOutput;
 
 /**
  * Created by ProfessorVennie on 10/6/2014 at 4:37 PM.
@@ -20,7 +20,7 @@ public class ContainerBronzeAlloy extends Container {
         addSlotToContainer(new Slot(tile, 1, 33, 58));
         addSlotToContainer(new Slot(tile, 2, 60, 35));
         addSlotToContainer(new Slot(tile, 3, 81, 35));
-        addSlotToContainer(new SlotFurnace(inventory.player, tile, 4, 137, 35));
+        addSlotToContainer(new SlotFurnaceOutput(inventory.player, tile, 4, 137, 35));
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {

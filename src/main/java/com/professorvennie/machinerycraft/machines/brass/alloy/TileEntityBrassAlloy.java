@@ -17,13 +17,14 @@ import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityBrassAlloy extends TileEntityBasicMachine {
 
     private static ItemStack saltIngot = new ItemStack(ModItems.Ingots, 1, 4);
     private static ItemStack ironOxideIngot = new ItemStack(ModItems.Ingots, 4, 6);
     public final int maxPower = 10000;
-    public int grindSpeed = 80, power, cookTime, currentItemBurnTime;
+    public int grindSpeed = 80, power, cookTime;
 
     public TileEntityBrassAlloy() {
         super(Names.Containers.CONTAINER_BRASS_ALLOY);
@@ -41,7 +42,6 @@ public class TileEntityBrassAlloy extends TileEntityBasicMachine {
 
         this.power = (int) nbt.getShort("burnTime");
         this.cookTime = (int) nbt.getShort("cookTime");
-        this.currentItemBurnTime = (int) nbt.getShort("currentItemBurnTime");
     }
 
     public void writeToNBT(NBTTagCompound nbt) {
@@ -49,7 +49,6 @@ public class TileEntityBrassAlloy extends TileEntityBasicMachine {
 
         nbt.setShort("burnTime", (short) this.power);
         nbt.setShort("cookTime", (short) this.cookTime);
-        nbt.setShort("currentItemBurnTime", (short) this.currentItemBurnTime);
     }
 
     public boolean hasPower() {
@@ -60,7 +59,8 @@ public class TileEntityBrassAlloy extends TileEntityBasicMachine {
         return this.cookTime > 0;
     }
 
-    public void updateEntity() {
+    public void update() {
+        super.update();
         boolean flag = this.cookTime > 0;
         boolean flag1 = false;
 
@@ -82,7 +82,7 @@ public class TileEntityBrassAlloy extends TileEntityBasicMachine {
                         this.inventory[1].stackSize--;
 
                         if (this.inventory[1].stackSize == 0) {
-                            this.inventory[1] = this.inventory[1].getItem().getContainerItem(inventory[1]);
+                            this.inventory[1] = new ItemStack(this.inventory[1].getItem().getContainerItem());
                         }
                     }
                 }
@@ -101,7 +101,7 @@ public class TileEntityBrassAlloy extends TileEntityBasicMachine {
 
             if (flag != this.hasPower()) {
                 flag1 = true;
-                BlockBrassAlloySmelter.updateBlockState(this.cookTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord, ModBlocks.brassAlloyActive, ModBlocks.brassAlloyIdle);
+                BlockBrassAlloySmelter.updateBlockState(this.cookTime > 0, this.worldObj, pos, ModBlocks.brassAlloyActive, ModBlocks.brassAlloyIdle);
             }
 
         }
@@ -175,10 +175,9 @@ public class TileEntityBrassAlloy extends TileEntityBasicMachine {
         return var1 == 2 ? false : (var1 == 1 ? PowerAmounts.isItemPower(var2) : true);
     }
 
-
     @Override
-    public boolean canExtractItem(int var1, ItemStack var2, int var3) {
-        return var3 != 0 || var1 != 1 || var2.getItem() == Items.bucket;
+    public boolean canExtractItem(int slotId, ItemStack stack, EnumFacing direction) {
+        return direction != EnumFacing.DOWN || slotId != 1 || stack.getItem() == Items.bucket;
     }
 
     public int getCookProgressScaled(int par1) {
@@ -195,5 +194,29 @@ public class TileEntityBrassAlloy extends TileEntityBasicMachine {
 
     public int getChargeCapacity() {
         return this.maxPower;
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 2;
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        if(id == 1)
+            return cookTime;
+        else if (id == 2)
+            return power;
+        return 0;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        if(id == 1)
+            cookTime = value;
+        else if (id == 2)
+            power = value;
     }
 }

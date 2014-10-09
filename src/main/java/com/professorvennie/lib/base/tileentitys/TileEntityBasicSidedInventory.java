@@ -6,6 +6,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
@@ -13,7 +14,7 @@ import net.minecraft.util.IChatComponent;
 /**
  * Created by ProfessorVennie on 9/5/2014 at 4:26 PM.
  */
-public class TileEntityBasicSidedInventory extends TileEntityMod implements ISidedInventory {
+public class TileEntityBasicSidedInventory extends TileEntityMod implements ISidedInventory, IUpdatePlayerListBox {
 
     public ItemStack[] inventory = new ItemStack[getSizeInventory()];
     public int[] slots_top;
@@ -179,5 +180,10 @@ public class TileEntityBasicSidedInventory extends TileEntityMod implements ISid
     public void clearInventory() {
         for(int i = 0; i < getSizeInventory(); i++)
             inventory[i] = null;
+    }
+
+    @Override
+    public void update() {
+
     }
 }

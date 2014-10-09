@@ -11,22 +11,23 @@ package com.professorvennie.machinerycraft.machines.brass.generators.solar;
 
 import com.professorvennie.machinerycraft.tileEntity.TileEntityMod;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
+import net.minecraft.util.BlockPos;
 
 import java.util.Random;
 
 /**
  * Created by ProfessorVennie on 9/3/2014 at 6:09 PM.
  */
-public class TileEntityBrassSolarGenerator extends TileEntityMod {
+public class TileEntityBrassSolarGenerator extends TileEntityMod implements IUpdatePlayerListBox{
 
     private int power, maxPower = 5000;
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
 
         if (!worldObj.isRemote) {
-            if (worldObj.canBlockSeeTheSky(xCoord, yCoord + 1, zCoord) && worldObj.isDaytime() && !worldObj.isRaining()) {
+            if (worldObj.canBlockSeeSky(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())) && worldObj.isDaytime() && !worldObj.isRaining()) {
                 int time = (int) worldObj.getWorldTime() % 15;
                 if (time == 0 && power + 1 < maxPower) {
                     Random random = new Random();

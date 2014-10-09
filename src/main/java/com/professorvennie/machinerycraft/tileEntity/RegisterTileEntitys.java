@@ -32,7 +32,7 @@ import com.professorvennie.machinerycraft.machines.copper.grinder.TileEntityCopp
 import com.professorvennie.machinerycraft.machines.washer.TileEntityWasher;
 import com.professorvennie.machinerycraft.machines.windmill.TileEntityWindmill;
 import com.professorvennie.machinerycraft.machines.windmill.TileEntitywindmillground;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RegisterTileEntitys {
 

@@ -2,6 +2,7 @@ package com.professorvennie.machinerycraft.machines.basic.well;
 
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -17,102 +18,104 @@ public class TileEntityRendererWoodenWellPipe extends TileEntitySpecialRenderer 
     private int textureHeight = 16;
 
     @Override
-    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f) {
+    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f, int i) {
         GL11.glPushMatrix();
         GL11.glDisable(GL11.GL_LIGHTING);
         GL11.glTranslatef((float) x, (float) y, (float) z);
-        Tessellator tessellator = Tessellator.instance;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldRenderer = tessellator.getWorldRenderer();
         this.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/model/woodenWellPipe.png"));
-        tessellator.startDrawingQuads();
+        worldRenderer.startDrawingQuads();
 
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
 
         //inside
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
 
         tessellator.draw();
         GL11.glPopMatrix();
     }
 
     public void renderInv() {
-        Tessellator tessellator = Tessellator.instance;
-        tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldRenderer = tessellator.getWorldRenderer();
+        worldRenderer.startDrawingQuads();
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
 
         //inside
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV((9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
 
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
-        tessellator.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, (9) / 2 * pixel, 12 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 0, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 15 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, 1 - (9) / 2 * pixel, 4 * (1F / textureWidth), 0 * (1F / textureHeight));
+        worldRenderer.addVertexWithUV(1 - (9) / 2 * pixel, 1, (9) / 2 * pixel, 12 * (1F / textureWidth), 0 * (1F / textureHeight));
         tessellator.draw();
     }
 }

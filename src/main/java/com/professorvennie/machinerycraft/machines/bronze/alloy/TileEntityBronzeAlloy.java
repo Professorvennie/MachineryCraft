@@ -21,8 +21,8 @@ public class TileEntityBronzeAlloy extends TileEntityBasicSteamMachine {
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         if (!worldObj.isRemote) {
 
         }

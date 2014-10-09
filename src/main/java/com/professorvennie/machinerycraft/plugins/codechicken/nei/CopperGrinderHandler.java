@@ -9,9 +9,6 @@
  * */
 package com.professorvennie.machinerycraft.plugins.codechicken.nei;
 
-import codechicken.nei.NEIServerUtils;
-import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.FurnaceRecipeHandler;
 import com.professorvennie.machinerycraft.api.recipes.GrinderRecipes;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.copper.grinder.GuiCopperGrinder;
@@ -25,9 +22,9 @@ import java.util.Map;
 /**
  * Created by ProfessorVennie on 8/28/2014 at 12:07 PM.
  */
-public class CopperGrinderHandler extends FurnaceRecipeHandler {
+public class CopperGrinderHandler/* extends FurnaceRecipeHandler */{
 
-    @Override
+    /*@Override
     public String getRecipeName() {
         return "Copper Grinder";
     }
@@ -105,5 +102,5 @@ public class CopperGrinderHandler extends FurnaceRecipeHandler {
         public PositionedStack getOtherStack() {
             return afuels.get((cycleticks / 48) % afuels.size()).stack;
         }
-    }
+    }*/
 }

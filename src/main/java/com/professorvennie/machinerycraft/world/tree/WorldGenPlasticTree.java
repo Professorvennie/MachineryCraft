@@ -13,7 +13,9 @@ import com.professorvennie.machinerycraft.block.BlockPlasticSapling;
 import com.professorvennie.machinerycraft.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.Direction;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -62,7 +64,10 @@ public class WorldGenPlasticTree extends WorldGenAbstractTree {
         this.vinesGrow = par5;
     }
 
-    public boolean generate(World world, Random random, int x, int y, int z) {
+    public boolean generate(World world, Random random, BlockPos pos) {
+        int x = pos.getX();
+        int y = pos.getY();
+        int z = pos.getZ();
         int l = 2 + random.nextInt(3) + this.minTreeHeight;
         boolean flag = true;
 
@@ -85,7 +90,7 @@ public class WorldGenPlasticTree extends WorldGenAbstractTree {
                 for (int j1 = x - b0; j1 <= x + b0 && flag; ++j1) {
                     for (k1 = z - b0; k1 <= z + b0 && flag; ++k1) {
                         if (i1 >= 0 && i1 < 256) {
-                            block = world.getBlock(j1, i1, k1);
+                            block = world.getBlockState(new BlockPos(j1, i1, k1));
 
                             if (!this.isReplaceable(world, j1, i1, k1)) {
                                 flag = false;
@@ -100,9 +105,9 @@ public class WorldGenPlasticTree extends WorldGenAbstractTree {
             if (!flag) {
                 return false;
             } else {
-                Block block2 = world.getBlock(x, y - 1, z);
+                Block block2 = world.getBlockState(new BlockPos(x, y - 1, z)).getBlock();
 
-                boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockPlasticSapling) ModBlocks.plasticSapling);
+                boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, EnumFacing.UP, (BlockPlasticSapling) ModBlocks.plasticSapling);
                 if (isSoil && y < 256 - l - 1) {
                     block2.onPlantGrow(world, x, y - 1, z, x, y, z);
                     b0 = 3;

@@ -11,13 +11,13 @@ package com.professorvennie.machinerycraft.machines.brass.generators.combustion;
 
 import com.professorvennie.lib.base.tileentitys.TileEntityBasicSidedInventory;
 import com.professorvennie.machinerycraft.lib.Names;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by ProfessorVennie on 9/3/2014 at 6:14 PM.
@@ -54,7 +54,7 @@ public class TileEntityBrassGenerator extends TileEntityBasicSidedInventory {
 
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
             if (item == Items.stick) return 100;
             if (item == Items.coal) return 1600;
             if (item == Items.lava_bucket) return 20000;
@@ -65,8 +65,8 @@ public class TileEntityBrassGenerator extends TileEntityBasicSidedInventory {
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
 
         if (burnTime > 0)
             burnTime--;

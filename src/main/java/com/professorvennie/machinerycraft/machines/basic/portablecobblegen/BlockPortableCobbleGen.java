@@ -5,7 +5,6 @@ import com.professorvennie.machinerycraft.lib.BookData;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -21,11 +20,6 @@ public class BlockPortableCobbleGen extends BlockBasicMachine {
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
         return new TileEntityPortableCobbleGen();
-    }
-
-    @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        //todo
     }
 
     @Override

@@ -1,14 +1,14 @@
 package com.professorvennie.machinerycraft.machines.basic.portablecobblegen;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerPortableCobbleGen extends Container {
 
@@ -20,7 +20,7 @@ public class ContainerPortableCobbleGen extends Container {
 
         addSlotToContainer(new Slot(entity, 0, 20, 35));
         addSlotToContainer(new Slot(entity, 1, 140, 35));
-        addSlotToContainer(new SlotFurnace(inventory.player, entity, 2, 80, 35));
+        addSlotToContainer(new SlotFurnaceOutput(inventory.player, entity, 2, 80, 35));
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
@@ -34,12 +34,6 @@ public class ContainerPortableCobbleGen extends Container {
     }
 
     @Override
-    public void addCraftingToCrafters(ICrafting iCrafting) {
-        super.addCraftingToCrafters(iCrafting);
-        iCrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
-    }
-
-    @Override
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
@@ -47,15 +41,15 @@ public class ContainerPortableCobbleGen extends Container {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
             if (this.lastCookTime != this.entity.cookTime) {
-                icrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
+                icrafting.sendProgressBarUpdate(this, 1, this.entity.getField(1));
             }
         }
-        this.lastCookTime = this.entity.cookTime;
+        this.lastCookTime = this.entity.getField(1);
     }
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
-        if (slot == 0) this.entity.cookTime = par2;
+        entity.setField(slot, par2);
     }
 
     @Override

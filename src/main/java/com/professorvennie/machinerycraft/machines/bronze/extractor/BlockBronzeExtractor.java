@@ -14,7 +14,6 @@ import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.bronze.BlockBasicSteamMachine;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -25,12 +24,6 @@ public class BlockBronzeExtractor extends BlockBasicSteamMachine {
     public BlockBronzeExtractor() {
         super(Names.Blocks.BRONZE_EXTRACTOR, false);
         guiId = LibGuiIds.BRONZE_EXTRACTOR;
-    }
-
-    @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        super.registerBlockIcons(iconRegister);
-        iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":" + "bronzeExtractor_Front_Idle");
     }
 
     @Override

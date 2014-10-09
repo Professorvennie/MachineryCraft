@@ -14,7 +14,7 @@ public class TileEntityRendererCampFire extends TileEntitySpecialRenderer {
     private ModelCampFire model = new ModelCampFire();
 
     @Override
-    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float tick) {
+    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float tick, int i) {
         if (tileEntity instanceof TileEntityCampFire) {
             TileEntityCampFire tile = (TileEntityCampFire) tileEntity;
 

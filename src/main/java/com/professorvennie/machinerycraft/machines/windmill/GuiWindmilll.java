@@ -31,7 +31,7 @@ public class GuiWindmilll extends GuiContainer {
     }
 
     public void drawGuiContainerForegroundLayer(int par1, int par2) {
-        String name = this.windmill.hasCustomInvName() ? this.windmill.getInventoryName() : I18n.format(this.windmill.getInventoryName(), MachineryCraft.instance);
+        String name = this.windmill.hasCustomInvName() ? this.windmill.getName() : I18n.format(this.windmill.getName(), MachineryCraft.instance);
 
         this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
         this.fontRendererObj.drawString(I18n.format(Names.Containers.CONTAINER_INVENTORY, MachineryCraft.instance), 8, this.ySize - 96 + 2, 4210752);

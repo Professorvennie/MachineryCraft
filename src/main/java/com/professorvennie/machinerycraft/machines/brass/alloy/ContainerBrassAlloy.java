@@ -10,20 +10,20 @@
 package com.professorvennie.machinerycraft.machines.brass.alloy;
 
 import com.professorvennie.machinerycraft.core.utils.PowerAmounts;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerBrassAlloy extends Container {
 
-    public int lastBurnTime, lastItemBurnTime, lastCookTime;
+    public int power, lastCookTime;
 
     public TileEntityBrassAlloy Alloy;
 
@@ -32,7 +32,7 @@ public class ContainerBrassAlloy extends Container {
 
         this.addSlotToContainer(new Slot(entity, 0, 56, 35));
         this.addSlotToContainer(new Slot(entity, 1, 11, 53));
-        this.addSlotToContainer(new SlotFurnace(inventory.player, entity, 2, 116, 35));
+        this.addSlotToContainer(new SlotFurnaceOutput(inventory.player, entity, 2, 116, 35));
         this.addSlotToContainer(new Slot(entity, 3, 34, 35));
 
         for (int i = 0; i < 3; i++) {
@@ -46,13 +46,6 @@ public class ContainerBrassAlloy extends Container {
         }
     }
 
-    public void addCraftingToCrafters(ICrafting icrafting) {
-        super.addCraftingToCrafters(icrafting);
-        icrafting.sendProgressBarUpdate(this, 0, this.Alloy.cookTime);
-        icrafting.sendProgressBarUpdate(this, 1, this.Alloy.power);
-        icrafting.sendProgressBarUpdate(this, 2, this.Alloy.currentItemBurnTime);
-    }
-
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
@@ -60,28 +53,21 @@ public class ContainerBrassAlloy extends Container {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
             if (this.lastCookTime != this.Alloy.cookTime) {
-                icrafting.sendProgressBarUpdate(this, 0, this.Alloy.cookTime);
+                icrafting.sendProgressBarUpdate(this, 1, this.Alloy.getField(1));
             }
 
-            if (this.lastBurnTime != this.Alloy.power) {
-                icrafting.sendProgressBarUpdate(this, 1, this.Alloy.power);
-            }
-
-            if (this.lastItemBurnTime != this.Alloy.currentItemBurnTime) {
-                icrafting.sendProgressBarUpdate(this, 2, this.Alloy.currentItemBurnTime);
+            if (this.power != this.Alloy.power) {
+                icrafting.sendProgressBarUpdate(this, 2, this.Alloy.getField(2));
             }
         }
-        this.lastCookTime = this.Alloy.cookTime;
-        this.lastBurnTime = this.Alloy.power;
-        this.lastItemBurnTime = this.Alloy.currentItemBurnTime;
+        this.lastCookTime = this.Alloy.getField(1);
+        this.power = this.Alloy.getField(2);
     }
 
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
-        if (slot == 0) this.Alloy.cookTime = par2;
-        if (slot == 1) this.Alloy.power = par2;
-        if (slot == 2) this.Alloy.currentItemBurnTime = par2;
+        Alloy.setField(slot, par2);
     }
 
     @Override
@@ -102,7 +88,7 @@ public class ContainerBrassAlloy extends Container {
                 }
                 slot.onSlotChange(itemstack1, itemstack);
             } else if (slot0 != 1 && slot0 != 0) {
-                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null) {
+                if (FurnaceRecipes.instance().getSmeltingResult(itemstack1) != null) {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
                         return null;
                     }

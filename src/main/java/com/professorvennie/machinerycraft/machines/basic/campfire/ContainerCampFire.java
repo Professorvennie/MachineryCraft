@@ -1,12 +1,10 @@
 package com.professorvennie.machinerycraft.machines.basic.campfire;
 
 import com.professorvennie.machinerycraft.common.containers.ContainerBase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ICrafting;
-import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.*;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by ProfessorVennie on 9/14/2014 at 6:52 PM.
@@ -21,16 +19,9 @@ public class ContainerCampFire extends ContainerBase {
         super(inventory, entity);
         this.entity = entity;
 
-        this.addSlotToContainer(new Slot(entity, 0, 56, 17));
+        this.addSlotToContainer(new SlotFurnaceFuel(entity, 0, 56, 17));
         this.addSlotToContainer(new Slot(entity, 1, 56, 53));
-        this.addSlotToContainer(new SlotFurnace(inventory.player, entity, 2, 116, 35));
-    }
-
-    public void addCraftingToCrafters(ICrafting icrafting) {
-        super.addCraftingToCrafters(icrafting);
-        icrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
-        icrafting.sendProgressBarUpdate(this, 1, this.entity.burnTime);
-        icrafting.sendProgressBarUpdate(this, 2, this.entity.currentItemBurnTime);
+        this.addSlotToContainer(new SlotFurnaceOutput(inventory.player, entity, 2, 116, 35));
     }
 
     public void detectAndSendChanges() {
@@ -40,26 +31,24 @@ public class ContainerCampFire extends ContainerBase {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
             if (this.lastCookTime != this.entity.cookTime) {
-                icrafting.sendProgressBarUpdate(this, 0, this.entity.cookTime);
+                icrafting.sendProgressBarUpdate(this, 1, this.entity.getField(1));
             }
 
             if (this.lastBurnTime != this.entity.burnTime) {
-                icrafting.sendProgressBarUpdate(this, 1, this.entity.burnTime);
+                icrafting.sendProgressBarUpdate(this, 2, this.entity.getField(2));
             }
 
             if (this.lastItemBurnTime != this.entity.currentItemBurnTime) {
-                icrafting.sendProgressBarUpdate(this, 2, this.entity.currentItemBurnTime);
+                icrafting.sendProgressBarUpdate(this, 3, this.entity.getField(3));
             }
         }
-        this.lastCookTime = this.entity.cookTime;
-        this.lastBurnTime = this.entity.burnTime;
-        this.lastItemBurnTime = this.entity.currentItemBurnTime;
+        this.lastCookTime = this.entity.getField(1);
+        this.lastBurnTime = this.entity.getField(2);
+        this.lastItemBurnTime = this.entity.getField(3);
     }
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
-        if (slot == 0) this.entity.cookTime = par2;
-        if (slot == 1) this.entity.burnTime = par2;
-        if (slot == 2) this.entity.currentItemBurnTime = par2;
+        entity.setField(slot, par2);
     }
 }

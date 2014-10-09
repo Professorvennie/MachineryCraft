@@ -19,7 +19,7 @@ public class BlockWoodenWellPipe extends BlockBase implements ITileEntityProvide
     }
 
     @Override
-    public boolean renderAsNormalBlock() {
+    public boolean isFullCube() {
         return false;
     }
 

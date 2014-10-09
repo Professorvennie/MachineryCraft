@@ -14,7 +14,6 @@ import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.bronze.BlockBasicSteamMachine;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -38,11 +37,5 @@ public class BlockBronzeCharger extends BlockBasicSteamMachine {
     @Override
     public BookEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack book) {
         return super.getEntry(world, x, y, z, player, book);
-    }
-
-    @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        super.registerBlockIcons(iconRegister);
-        iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":bronzeChargerFront");
     }
 }

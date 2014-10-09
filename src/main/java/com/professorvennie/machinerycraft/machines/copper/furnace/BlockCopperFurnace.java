@@ -16,14 +16,13 @@ import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -33,12 +32,13 @@ public class BlockCopperFurnace extends BlockBasicMachine {
     public BlockCopperFurnace(boolean isActive) {
         super(Names.Blocks.COPPER_FURNACE, isActive);
         setHardness(3.5F);
-        setHarvestLevel("pickAxe", 1);
+        //setHarvestLevel("pickAxe", 1);
         setStepSound(Block.soundTypeMetal);
         this.guiId = LibGuiIds.CCOPPER_FURNACE;
     }
 
-    public Item getItemDropped(int par1, Random random, int par2) {
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(ModBlocks.copperFurnaceIdle);
     }
 
@@ -46,20 +46,12 @@ public class BlockCopperFurnace extends BlockBasicMachine {
     public TileEntity createNewTileEntity(World world, int var2) {
         return new TileEntityCopperFurnace();
     }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void registerBlockIcons(IIconRegister iiconRegister) {
-        this.blockIcon = iiconRegister.registerIcon(Reference.MOD_ID + ":ores/" + "blockCopper");
-        this.iconFront = iiconRegister.registerIcon(Reference.MOD_ID + ":" + (this.isActive ? "copperFurnace_Front_Active" : "copperFurnace_Front_Idle"));
-    }
-
     public boolean hasComparatorInputOverride() {
         return true;
     }
 
     @Override
-    public Item getItem(World world, int x, int y, int z) {
+    public Item getItem(World worldIn, BlockPos pos) {
         return Item.getItemFromBlock(ModBlocks.copperFurnaceIdle);
     }
 

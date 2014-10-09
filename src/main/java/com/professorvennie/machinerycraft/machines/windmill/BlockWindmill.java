@@ -17,14 +17,15 @@ import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.lib.Reference;
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -35,8 +36,7 @@ public class BlockWindmill extends BlockModContainer implements IBookable {
     public BlockWindmill() {
         super(Material.rock, Names.Blocks.WINDMILL);
         this.setHardness(3.0f);
-        this.setHarvestLevel("Pickaxe", 2);
-        setBlockTextureName(Reference.MOD_ID + ":windmillground");
+        //this.setHarvestLevel("Pickaxe", 2);
         setStepSound(Block.soundTypeMetal);
     }
 
@@ -45,9 +45,10 @@ public class BlockWindmill extends BlockModContainer implements IBookable {
         return false;
     }
 
-    public void setBlockBoundsBasedOnState(IBlockAccess block, int x, int y, int z) {
+    @Override
+    public void setBlockBoundsBasedOnState(IBlockAccess block, BlockPos pos) {
         float pixel = 1F / 16F;
-        if (block.getBlockMetadata(x, y, z) < 7)
+        if (block.getBlockState(pos).getBlock().getMetaFromState(block.getBlockState(pos)) < 7)
             this.setBlockBounds(pixel * 4, 0, pixel * 4, 1 - pixel * 4, 1, 1 - pixel * 4);
         else this.setBlockBounds(0, 0, 0, 1, 1, 1);
     }
@@ -69,14 +70,15 @@ public class BlockWindmill extends BlockModContainer implements IBookable {
         return new TileEntityWindmill();
     }
 
-    public void breakBlock(World world, int x, int y, int z, Block block, int metadata) {
-        if (world.getBlock(x, y + 1, z).equals(ModBlocks.windmill)) world.setBlockToAir(x, y + 1, z);
-        if (world.getBlock(x, y - 1, z).equals(ModBlocks.windmill)) world.setBlockToAir(x, y - 1, z);
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        if (world.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())).equals(ModBlocks.windmill)) world.setBlockToAir(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()));
+        if (world.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())).equals(ModBlocks.windmill)) world.setBlockToAir(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()));
     }
 
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitx, float hity, float hitz) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitx, float hity, float hitz) {
         if (!world.isRemote) {
-            FMLNetworkHandler.openGui(player, MachineryCraft.instance, LibGuiIds.GUIID_WINDMILL, world, x, y, z);
+            player.openGui(MachineryCraft.instance, LibGuiIds.GUIID_WINDMILL, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
     }

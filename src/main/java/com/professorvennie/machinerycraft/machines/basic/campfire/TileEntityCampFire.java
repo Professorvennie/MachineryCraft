@@ -2,7 +2,6 @@ package com.professorvennie.machinerycraft.machines.basic.campfire;
 
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -10,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by ProfessorVennie on 9/14/2014 at 6:38 PM.
@@ -42,7 +42,7 @@ public class TileEntityCampFire extends TileEntityBasicMachine {
 
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
             if (item == Items.stick) return 100;
             if (item == Item.getItemFromBlock(Blocks.sapling)) return 100;
             return GameRegistry.getFuelValue(itemstack);
@@ -50,8 +50,8 @@ public class TileEntityCampFire extends TileEntityBasicMachine {
     }
 
     @Override
-    public void updateEntity() {
-        super.updateEntity();
+    public void update() {
+        super.update();
         if (burnTime > 0) burnTime--;
 
         if (!this.worldObj.isRemote) {
@@ -63,7 +63,7 @@ public class TileEntityCampFire extends TileEntityBasicMachine {
                         this.inventory[1].stackSize--;
 
                         if (this.inventory[1].stackSize == 0) {
-                            this.inventory[1] = this.inventory[1].getItem().getContainerItem(this.inventory[1]);
+                            this.inventory[1] = new ItemStack(this.inventory[1].getItem().getContainerItem());
                         }
                     }
                 }
@@ -84,7 +84,7 @@ public class TileEntityCampFire extends TileEntityBasicMachine {
         if (this.inventory[0] == null) {
             return false;
         } else {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.inventory[0]);
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.inventory[0]);
 
             if (itemstack == null) return false;
             if (this.inventory[2] == null) return true;
@@ -98,7 +98,7 @@ public class TileEntityCampFire extends TileEntityBasicMachine {
 
     public void smeltItem() {
         if (this.canSmelt()) {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.inventory[0]);
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.inventory[0]);
 
             if (this.inventory[2] == null)
                 this.inventory[2] = itemstack.copy();
@@ -158,5 +158,41 @@ public class TileEntityCampFire extends TileEntityBasicMachine {
         }
 
         return this.burnTime * i / this.currentItemBurnTime;
+    }
+
+    @Override
+    public int getField(int id) {
+        super.getField(id);
+        switch (id){
+            case 1:
+                return cookTime;
+            case 2:
+                return burnTime;
+            case 3:
+                return currentItemBurnTime;
+            default:
+                return 0;
+        }
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        switch (id){
+            case 1:
+                cookTime = value;
+                break;
+            case 2:
+                burnTime = value;
+                break;
+            case 3:
+                currentItemBurnTime = value;
+                break;
+        }
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 3;
     }
 }

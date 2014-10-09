@@ -39,7 +39,7 @@ public class GuiWasher extends GuiBase {
         this.fontRendererObj.drawString(I18n.format("Out", MachineryCraft.instance), 135, this.ySize - 99, 4210752);
 
         List<String> text = new ArrayList<String>();
-        if (Washer.tanks[0].getFluidAmount() > 0 || (Washer.tanks[0].getFluid() != null)) {
+       /* if (Washer.tanks[0].getFluidAmount() > 0 || (Washer.tanks[0].getFluid() != null)) {
             text.clear();
             text.add(Washer.tanks[0].getFluid().getFluid().getUnlocalizedName());
             text.add(Washer.tanks[0].getFluidAmount() + "/" + Washer.tanks[0].getCapacity() + "mB");
@@ -48,13 +48,13 @@ public class GuiWasher extends GuiBase {
             text.clear();
             text.add("Empty");
             drawToolTipOverArea(mouseX, mouseY, 80, 17, 95, 66, text, fontRendererObj);
-        }
+        }*/
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
         super.drawGuiContainerBackgroundLayer(var1, var2, var3);
 
-        this.drawTanks(Washer.tanks[0], 49, 80, 66, 16);
+        //this.drawTanks(Washer.tanks[0], 49, 80, 66, 16);
     }
 }

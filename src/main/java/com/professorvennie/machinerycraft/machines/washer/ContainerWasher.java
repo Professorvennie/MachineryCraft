@@ -10,16 +10,16 @@
 package com.professorvennie.machinerycraft.machines.washer;
 
 import com.professorvennie.machinerycraft.machines.copper.furnace.TileEntityCopperFurnace;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerWasher extends Container {
 
@@ -35,7 +35,7 @@ public class ContainerWasher extends Container {
         this.addSlotToContainer(new Slot(entity, 0, 47, 35));
         this.addSlotToContainer(new Slot(entity, 1, 152, 64));
         this.addSlotToContainer(new Slot(entity, 2, 152, 46));
-        this.addSlotToContainer(new SlotFurnace(inventory.player, entity, 3, 120, 35));
+        this.addSlotToContainer(new SlotFurnaceOutput(inventory.player, entity, 3, 120, 35));
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
@@ -46,12 +46,6 @@ public class ContainerWasher extends Container {
         for (int i = 0; i < 9; i++) {
             this.addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
         }
-    }
-
-    @Override
-    public void addCraftingToCrafters(ICrafting par1ICrafting) {
-        super.addCraftingToCrafters(par1ICrafting);
-        par1ICrafting.sendProgressBarUpdate(this, 2, lastTank1);
     }
 
     @Override
@@ -82,12 +76,6 @@ public class ContainerWasher extends Container {
     @Override
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int par1, int par2) {
-        super.updateProgressBar(par1, par2);
-
-        if (par1 == 2) {
-            if (washer.tanks[0].getFluid() != null)
-                washer.tanks[0].getFluid().amount = par2;
-        }
 
     }
 
@@ -104,7 +92,7 @@ public class ContainerWasher extends Container {
                 }
                 slot.onSlotChange(itemstack1, itemstack);
             } else if (slot0 != 1 && slot0 != 0) {
-                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null) {
+                if (FurnaceRecipes.instance().getSmeltingResult(itemstack1) != null) {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
                         return null;
                     }

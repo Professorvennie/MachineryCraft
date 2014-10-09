@@ -23,7 +23,7 @@ public class BlockCampFire extends BlockModContainer {
     }
 
     @Override
-    public boolean renderAsNormalBlock() {
+    public boolean isFullCube() {
         return false;
     }
 

@@ -16,9 +16,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
+import net.minecraft.util.IChatComponent;
 
 
-public class TileEntityPlasticChest extends TileEntityMod implements IInventory {
+public class TileEntityPlasticChest extends TileEntityMod implements IInventory, IUpdatePlayerListBox {
 
     /**
      * The current angle of the lid (between 0 and 1)
@@ -118,13 +120,18 @@ public class TileEntityPlasticChest extends TileEntityMod implements IInventory 
     }
 
     @Override
-    public String getInventoryName() {
+    public String getName() {
         return this.hasCustomInvName() ? this.getCustomName() : Names.Containers.CONTAINER_PLASTIC_CHEST;
     }
 
     @Override
-    public boolean hasCustomInventoryName() {
+    public boolean hasCustomName() {
         return hasCustomInvName();
+    }
+
+    @Override
+    public IChatComponent getDisplayName() {
+        return null;
     }
 
     @Override
@@ -138,15 +145,15 @@ public class TileEntityPlasticChest extends TileEntityMod implements IInventory 
     }
 
     @Override
-    public void openInventory() {
+    public void openInventory(EntityPlayer player) {
         this.numPlayersUsing++;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, ModBlocks.plasticChest, 1, this.numPlayersUsing);
+        this.worldObj.addBlockEvent(pos, ModBlocks.plasticChest, 1, this.numPlayersUsing);
     }
 
     @Override
-    public void closeInventory() {
+    public void closeInventory(EntityPlayer player) {
         this.numPlayersUsing--;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, ModBlocks.plasticChest, 1, this.numPlayersUsing);
+        this.worldObj.addBlockEvent(pos, ModBlocks.plasticChest, 1, this.numPlayersUsing);
     }
 
     @Override
@@ -154,11 +161,31 @@ public class TileEntityPlasticChest extends TileEntityMod implements IInventory 
         return true;
     }
 
-    public void updateEntity() {
-        super.updateEntity();
+    @Override
+    public int getField(int id) {
+        return 0;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+
+    }
+
+    @Override
+    public int getFieldCount() {
+        return 0;
+    }
+
+    @Override
+    public void clearInventory() {
+        for(int i = 0; i < slots.length; i++)
+            slots[i] = null;
+    }
+
+    public void update() {
 
         if (++ticksSinceSync % 20 * 4 == 0) {
-            worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.plasticChest, 1, numPlayersUsing);
+            worldObj.addBlockEvent(pos, ModBlocks.plasticChest, 1, numPlayersUsing);
         }
 
         prevLidAngle = lidAngle;
@@ -166,9 +193,9 @@ public class TileEntityPlasticChest extends TileEntityMod implements IInventory 
         double adjustedXCoord, adjustedZCoord;
 
         if (numPlayersUsing > 0 && lidAngle == 0.0F) {
-            adjustedXCoord = xCoord + 0.5D;
-            adjustedZCoord = zCoord + 0.5D;
-            worldObj.playSoundEffect(adjustedXCoord, yCoord + 0.5D, adjustedZCoord, "random.chestopen", 0.5F, worldObj.rand.nextFloat() * 0.1F + 0.9F);
+            adjustedXCoord = pos.getX() + 0.5D;
+            adjustedZCoord = pos.getZ() + 0.5D;
+            worldObj.playSoundEffect(adjustedXCoord, pos.getY() + 0.5D, adjustedZCoord, "random.chestopen", 0.5F, worldObj.rand.nextFloat() * 0.1F + 0.9F);
         }
 
         if (numPlayersUsing == 0 && lidAngle > 0.0F || numPlayersUsing > 0 && lidAngle < 1.0F) {
@@ -185,9 +212,9 @@ public class TileEntityPlasticChest extends TileEntityMod implements IInventory 
             }
 
             if (lidAngle < 0.5F && var8 >= 0.5F) {
-                adjustedXCoord = xCoord + 0.5D;
-                adjustedZCoord = zCoord + 0.5D;
-                worldObj.playSoundEffect(adjustedXCoord, yCoord + 0.5D, adjustedZCoord, "random.chestclosed", 0.5F, worldObj.rand.nextFloat() * 0.1F + 0.9F);
+                adjustedXCoord = pos.getX() + 0.5D;
+                adjustedZCoord = pos.getZ() + 0.5D;
+                worldObj.playSoundEffect(adjustedXCoord, pos.getY() + 0.5D, adjustedZCoord, "random.chestclosed", 0.5F, worldObj.rand.nextFloat() * 0.1F + 0.9F);
             }
 
             if (lidAngle < 0.0F) {

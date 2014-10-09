@@ -9,9 +9,7 @@
  * */
 package com.professorvennie.machinerycraft.plugins.codechicken.fmp;
 
-import codechicken.microblock.Saw;
 import com.professorvennie.lib.base.items.ItemBase;
-import cpw.mods.fml.common.Optional;
 import net.minecraft.item.ItemStack;
 
 import java.util.Random;
@@ -19,8 +17,8 @@ import java.util.Random;
 /**
  * Created by ProfessorVennie on 9/20/2014 at 2:52 PM.
  */
-@Optional.Interface(modid = "ForgeMultipart", iface = "codechicken.microblock.Saw")
-public class ItemSaw extends ItemBase implements Saw {
+//@Optional.Interface(modid = "ForgeMultipart", iface = "codechicken.microblock.Saw")
+public class ItemSaw extends ItemBase/* implements Saw*/ {
 
     private int sawLevel;
 
@@ -35,7 +33,7 @@ public class ItemSaw extends ItemBase implements Saw {
         return sawLevel;
     }
 
-    @Override
+  /*  @Override
     @Optional.Method(modid = "ForgeMultipart")
     public int getMaxCuttingStrength() {
         return sawLevel;
@@ -62,5 +60,5 @@ public class ItemSaw extends ItemBase implements Saw {
     @Override
     public boolean hasContainerItem(ItemStack stack) {
         return true;
-    }
+    }*/
 }
