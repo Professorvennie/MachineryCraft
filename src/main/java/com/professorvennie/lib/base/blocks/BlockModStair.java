@@ -40,7 +40,7 @@ public class BlockModStair extends BlockStairs {
 
     @Override
     public Block setUnlocalizedName(String name) {
-        GameRegistry.registerBlock(this, ItemBlockMod.class, name);
+        //GameRegistry.registerBlock(this, ItemBlockMod.class, name);
         return super.setUnlocalizedName(name);
     }
 }

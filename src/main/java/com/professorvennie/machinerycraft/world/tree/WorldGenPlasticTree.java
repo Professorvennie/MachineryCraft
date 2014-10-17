@@ -67,7 +67,7 @@ public class WorldGenPlasticTree extends WorldGenAbstractTree {
 
     public boolean generate(World worldIn, Random random, BlockPos pos)
     {
-        int i = random.nextInt(3) + this.minTreeHeight;
+        int i = random.nextInt(5) + this.minTreeHeight;
         boolean flag = true;
 
         if (pos.getY() >= 1 && pos.getY() + i + 1 <= 256)

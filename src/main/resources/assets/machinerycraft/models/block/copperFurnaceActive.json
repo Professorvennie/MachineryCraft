@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "machinerycraft:blocks/ores/blockCopper",
+        "front": "machinerycraft:blocks/copperFurnace_Front_Active",
+        "side": "machinerycraft:blocks/ores/blockCopper"
+    }
+}

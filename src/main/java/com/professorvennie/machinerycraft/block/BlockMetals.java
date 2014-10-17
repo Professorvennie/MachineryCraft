@@ -13,6 +13,7 @@ import com.professorvennie.lib.base.blocks.BlockBase;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockColored;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -33,7 +34,7 @@ import java.util.List;
 
 public class BlockMetals extends BlockBase {
 
-    public static final PropertyEnum METALS = PropertyEnum.create("metal", EnumMetals.class);
+    public static final PropertyEnum METALS = PropertyEnum.create("variant", EnumMetals.class);
 
     protected BlockMetals() {
         super(Material.iron, "metal");

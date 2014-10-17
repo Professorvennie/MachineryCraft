@@ -10,7 +10,7 @@ public class BlockBase extends Block {
     public BlockBase(Material mat, String name) {
         super(mat);
         setUnlocalizedName(name);
-        if (shouldRegisterInTab(0))
+            if (shouldRegisterInTab(0))
             setCreativeTab(MachineryCraft.tabMachineryCraft);
     }
 

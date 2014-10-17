@@ -1,0 +1,9 @@
+{
+"variants": {
+		"variant=copper": { "model": "machinerycraft:copper_ore" },
+		"variant=tin": { "model": "machinerycraft:tin_ore" },
+		"variant=silver": { "model": "machinerycraft:silver_ore" },
+		"variant=lead": { "model": "machinerycraft:lead_ore" },
+		"variant=zinc": { "model": "machinerycraft:zinc_ore" }
+	}
+}

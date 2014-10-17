@@ -21,7 +21,12 @@ import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ModItems {
+
+    public static List<Item> items = new ArrayList<Item>();
 
     public static Item speedupgrade;
     public static Item powerboost;
@@ -56,8 +61,10 @@ public class ModItems {
     public static Item emeraldboots;
 
     public static void mainRegistry() {
-        InitialiseItem();
-        ModTools.mainRegistry();
+        //InitialiseItem();
+        //ModTools.mainRegistry();
+        book = new ItemBook();
+        bags = new ItemBags();
     }
 
     public static void InitialiseItem() {

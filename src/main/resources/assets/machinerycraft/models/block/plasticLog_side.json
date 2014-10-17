@@ -1,0 +1,7 @@
+{
+    "parent": "block/column_side",
+    "textures": {
+        "end": "machinerycraft:blocks/Plastic_Log_Top",
+        "side": "machinerycraft:blocks/Plastic_Log_Side"
+    }
+}

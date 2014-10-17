@@ -131,7 +131,7 @@ public class PageRecipe extends BookPage {
 
     @SideOnly(Side.CLIENT)
     public void renderItem(IGuiBookEntry gui, int xPos, int yPos, ItemStack stack, boolean accountForContainer) {
-        RenderItem render = new RenderItem(Minecraft.getMinecraft().getTextureManager(), new ModelManager(Minecraft.getMinecraft().getTextureMapBlocks()));
+        RenderItem render = Minecraft.getMinecraft().getRenderItem();
         boolean mouseDown = Mouse.isButtonDown(0);
 
         GL11.glPushMatrix();

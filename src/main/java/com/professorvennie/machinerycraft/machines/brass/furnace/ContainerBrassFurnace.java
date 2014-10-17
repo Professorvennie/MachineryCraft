@@ -66,7 +66,6 @@ public class ContainerBrassFurnace extends Container {
         this.lastBurnTime = this.furnace.getField(2);
     }
 
-
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
         furnace.setField(slot, par2);

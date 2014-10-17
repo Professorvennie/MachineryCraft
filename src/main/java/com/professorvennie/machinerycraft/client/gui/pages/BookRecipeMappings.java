@@ -56,7 +56,5 @@ public class BookRecipeMappings {
             this.entry = entry;
             this.page = page;
         }
-
     }
-
 }

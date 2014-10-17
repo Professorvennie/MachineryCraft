@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":  { "model": "machinerycraft:plasticLog" },
+        "axis=z":   { "model": "machinerycraft:plasticLog_side" },
+        "axis=x":   { "model": "machinerycraft:plasticLog_side", "y": 90 },
+        "axis=none": { "model": "machinerycraft:plasticLog_bark" }
+    }
+}

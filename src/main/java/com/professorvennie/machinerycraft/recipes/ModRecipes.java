@@ -326,12 +326,12 @@ public class ModRecipes {
 
     private static void addOreDictRecipe(ItemStack output, Object... recipe) {
         //CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(output, recipe));
-        GameRegistry.addRecipe(output, recipe);
+        //GameRegistry.addRecipe(output, recipe);
     }
 
     private static void addShapelessOreDictRecipe(ItemStack output, Object... recipe) {
         //CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(output, recipe));
-        GameRegistry.addShapelessRecipe(output, recipe);
+        //GameRegistry.addShapelessRecipe(output, recipe);
     }
 
     public static void oreDict() {

@@ -23,10 +23,10 @@ public class VillageHandler {
     }
 
     public static void init() {
-        VillagerRegistry.instance().registerVillagerId(78906);
-        VillagerRegistry.instance().registerVillagerSkin(78906, new ResourceLocation(Reference.MOD_ID, "textures/entitys/machinerycraft_Villager.png"));
+        //VillagerRegistry.instance().registerVillagerId(78906);
+        //VillagerRegistry.instance().registerVillagerSkin(78906, new ResourceLocation(Reference.MOD_ID, "textures/entitys/machinerycraft_Villager.png"));
         //VillagerRegistry.instance().registerVillageTradeHandler(78906, new VillageTrades());
-        VillagerRegistry.instance().registerVillageCreationHandler(new VillageWorkShopHandler());
+        //VillagerRegistry.instance().registerVillageCreationHandler(new VillageWorkShopHandler());
         //MapGenStructureIO.(ComponentWorkShop.class, Reference.MOD_ID + ":WorkshopStructure");
     }
 }

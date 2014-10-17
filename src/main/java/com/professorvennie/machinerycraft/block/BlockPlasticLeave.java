@@ -31,11 +31,7 @@ import java.util.Random;
 
 public class BlockPlasticLeave extends BlockLeaves {
 
-    public static final String[] textureNames = new String[]{Reference.MOD_ID + ":PlasticLeaf", Reference.MOD_ID + ":PlasticLeaf_Opaque"};
-    public static final String[] trees = new String[]{"plastic"};
-
     public BlockPlasticLeave() {
-        super();
         this.setHardness(0.1F);
         this.setTickRandomly(true);
         this.setLightOpacity(1);

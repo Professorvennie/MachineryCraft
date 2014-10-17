@@ -9,6 +9,8 @@
  * */
 package com.professorvennie.lib.utils;
 
+import com.professorvennie.machinerycraft.block.ModBlocks;
+import com.professorvennie.machinerycraft.items.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -18,13 +20,17 @@ public class RegistryUtils {
 
     public static void registerBlock(Block block) {
         GameRegistry.registerBlock(block, block.getUnlocalizedName());
+        ModBlocks.blocks.add(block);
     }
 
     public static void registerItem(Item item) {
         GameRegistry.registerItem(item, item.getUnlocalizedName());
+        ModItems.items.add(item);
     }
 
     public static void registerBlock(Block block, Class<? extends ItemBlock> itemclass) {
         GameRegistry.registerBlock(block, itemclass, block.getUnlocalizedName());
+        ModBlocks.blocks.add(block);
+
     }
 }

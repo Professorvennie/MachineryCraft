@@ -20,6 +20,7 @@ import com.professorvennie.machinerycraft.core.handlers.FuelHandler;
 import com.professorvennie.machinerycraft.core.handlers.GuiHandler;
 import com.professorvennie.machinerycraft.core.handlers.HudHandler;
 import com.professorvennie.machinerycraft.core.network.PacketHandler;
+import com.professorvennie.machinerycraft.core.proxeys.ClientProxey;
 import com.professorvennie.machinerycraft.core.proxeys.CommonProxey;
 import com.professorvennie.machinerycraft.entitys.ModEntities;
 import com.professorvennie.machinerycraft.fuilds.ModFuilds;
@@ -73,6 +74,7 @@ public class MachineryCraft {
         VillageHandler.init();
 
         PacketHandler.init();
+        if(FMLCommonHandler.instance().getEffectiveSide().isClient()) ClientProxey.preInit();
 
         //FluidContainerRegistry.registerFluidContainer(ModFuilds.fluidSteam, new ItemStack(ModItems.steamBucket), new ItemStack(Items.bucket));
     }
@@ -90,6 +92,7 @@ public class MachineryCraft {
         ModBiomes.init();
         ModRecipes.addChestLoot();
         GameRegistry.registerFuelHandler(new FuelHandler());
+        if(FMLCommonHandler.instance().getEffectiveSide().isClient()) ClientProxey.init();
 
 //        DimensionManager.registerProviderType(12, WorldProviderMining.class, false);
 //        DimensionManager.registerDimension(12, 12);

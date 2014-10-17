@@ -1,0 +1,11 @@
+{
+"variants": {
+		"variant=copper": { "model": "machinerycraft:copper_block" },
+		"variant=tin": { "model": "machinerycraft:tin_block" },
+		"variant=silver": { "model": "machinerycraft:silver_block" },
+		"variant=lead": { "model": "machinerycraft:lead_block" },
+		"variant=zinc": { "model": "machinerycraft:zinc_block" },
+		"variant=brass": { "model": "machinerycraft:brass_block" },
+		"variant=bronze": { "model": "machinerycraft:bronze_block" }
+	}
+}

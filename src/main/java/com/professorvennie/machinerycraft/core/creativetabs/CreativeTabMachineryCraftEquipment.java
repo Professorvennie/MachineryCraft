@@ -11,6 +11,7 @@ package com.professorvennie.machinerycraft.core.creativetabs;
 
 import com.professorvennie.machinerycraft.items.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
 public class CreativeTabMachineryCraftEquipment extends CreativeTabs {
@@ -21,7 +22,7 @@ public class CreativeTabMachineryCraftEquipment extends CreativeTabs {
 
     @Override
     public Item getTabIconItem() {
-        return ModItems.emeraldchest;
+        return Items.diamond;
+        //return ModItems.emeraldchest;
     }
-
 }

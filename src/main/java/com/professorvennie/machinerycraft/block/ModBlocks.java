@@ -40,9 +40,15 @@ import com.professorvennie.machinerycraft.machines.washer.BlockWasher;
 import com.professorvennie.machinerycraft.machines.windmill.BlockWindmill;
 import com.professorvennie.machinerycraft.machines.windmill.BlockWindmillGround;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModBlocks {
+
+    public static List<Block> blocks = new ArrayList<Block>();
 
     public static Block BlockOres;
     public static Block BlockMetals;
@@ -202,7 +208,7 @@ public class ModBlocks {
         brassSlabHalf = new BlockBrassSlab(Names.Blocks.BRASS_SLAB, false);
         brassSlabDouble = new BlockBrassSlab(Names.Blocks.BRASS_SLAB, true);
 
-        metalWalls = new BlockMetalWalls();
+        //metalWalls = new BlockMetalWalls();
 
         mineingPortal = new BlockMiningPortal();
         well = new BlockWell();
@@ -217,24 +223,24 @@ public class ModBlocks {
         RegistryUtils.registerBlock(copperFurnaceActive);
         RegistryUtils.registerBlock(copperGrinderIdle);
         RegistryUtils.registerBlock(copperGrinderActive);
-        RegistryUtils.registerBlock(windmill);
-        RegistryUtils.registerBlock(windmillground);
+        /*RegistryUtils.registerBlock(windmill);
+        RegistryUtils.registerBlock(windmillground);*/
         RegistryUtils.registerBlock(brassGrinderIdle);
         RegistryUtils.registerBlock(brassGrinderActive);
         RegistryUtils.registerBlock(brassFurnaceIdle);
         RegistryUtils.registerBlock(brassFurnaceActive);
         RegistryUtils.registerBlock(brassAlloyIdle);
         RegistryUtils.registerBlock(brassAlloyActive);
-        RegistryUtils.registerBlock(cable);
-        RegistryUtils.registerBlock(washer, ItemBlockWasher.class);
+        /*RegistryUtils.registerBlock(cable);
+        RegistryUtils.registerBlock(washer, ItemBlockWasher.class);*/
         RegistryUtils.registerBlock(plasticLog);
         RegistryUtils.registerBlock(plasticLeaf);
         RegistryUtils.registerBlock(plasticSapling);
         RegistryUtils.registerBlock(plasticFlower, BlockPlasticFlower.ItemBlockFlowers.class);
-        RegistryUtils.registerBlock(plasticGrass);
-        RegistryUtils.registerBlock(plasticDirt);
+        /*RegistryUtils.registerBlock(plasticGrass);
+        RegistryUtils.registerBlock(plasticDirt);*/
         RegistryUtils.registerBlock(plasticPlanks);
-        RegistryUtils.registerBlock(plasticChest);
+        /*RegistryUtils.registerBlock(plasticChest);
         RegistryUtils.registerBlock(portableCobbleGen);
         RegistryUtils.registerBlock(bronzeExtractor);
         RegistryUtils.registerBlock(bronzeFurnace);
@@ -242,7 +248,7 @@ public class ModBlocks {
         RegistryUtils.registerBlock(bronzeSteamBoiler);
         RegistryUtils.registerBlock(plasticFence);
         RegistryUtils.registerBlock(plasticFenceGate);
-        RegistryUtils.registerBlock(metalWalls, ItemBlockWalls.class);
+        //RegistryUtils.registerBlock(metalWalls, ItemBlockWalls.class);
         RegistryUtils.registerBlock(mineingPortal);
         RegistryUtils.registerBlock(brassSolarGenerator);
         RegistryUtils.registerBlock(brassLavaGenerator);
@@ -253,9 +259,9 @@ public class ModBlocks {
         RegistryUtils.registerBlock(brassCharger);
         RegistryUtils.registerBlock(brassBattery);
         RegistryUtils.registerBlock(bronzeCharger);
-        RegistryUtils.registerBlock(bronzeAlloy);
+        RegistryUtils.registerBlock(bronzeAlloy);*/
 
-        ((BlockModSlab) copperSlabHalf).register();
+        /*((BlockModSlab) copperSlabHalf).register();
         ((BlockModSlab) copperSlabDouble).register();
         ((BlockModSlab) bronzeSlabHalf).register();
         ((BlockModSlab) bronzeSlabDouble).register();
@@ -270,7 +276,6 @@ public class ModBlocks {
         ((BlockModSlab) brassSlabHalf).register();
         ((BlockModSlab) brassSlabDouble).register();
         ((BlockModSlab) plasticSlabHalf).register();
-        ((BlockModSlab) plasticSlabDouble).register();
-
+        ((BlockModSlab) plasticSlabDouble).register();*/
     }
 }

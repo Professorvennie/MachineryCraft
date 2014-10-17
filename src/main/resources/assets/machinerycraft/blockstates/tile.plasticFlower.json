@@ -1,0 +1,12 @@
+{
+"variants": {
+		"variant=rose": { "model": "machinerycraft:plastic_rose" },
+		"variant=dandelion": { "model": "machinerycraft:plastic_dandelion" },
+		"variant=redTulip": { "model": "machinerycraft:plastic_redTulip" },
+		"variant=orangeTulip": { "model": "machinerycraft:plastic_orangeTulip" },
+		"variant=whiteTulip": { "model": "machinerycraft:plastic_whiteTulip" },
+		"variant=blueOrchid": { "model": "machinerycraft:plastic_blueOrchid" },
+		"variant=allium": { "model": "machinerycraft:plastic_allium" },
+		"variant=daisy": { "model": "machinerycraft:plastic_daisy" }
+	}
+}

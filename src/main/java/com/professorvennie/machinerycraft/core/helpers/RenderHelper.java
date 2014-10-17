@@ -11,6 +11,7 @@ package com.professorvennie.machinerycraft.core.helpers;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import org.lwjgl.opengl.GL11;
@@ -68,7 +69,7 @@ public class RenderHelper {
             GL11.glDisable(GL11.GL_DEPTH_TEST);
             for (int var13 = 0; var13 < tooltipData.size(); ++var13) {
                 String var14 = tooltipData.get(var13);
-                fontRenderer.drawString(var14, var6, var7, -1);
+                fontRenderer.func_175063_a(var14, var6, var7, -1);
                 if (var13 == 0)
                     var7 += 2;
                 var7 += 10;
@@ -94,13 +95,14 @@ public class RenderHelper {
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glShadeModel(GL11.GL_SMOOTH);
+
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldRenderer = tessellator.getWorldRenderer();
         worldRenderer.startDrawingQuads();
-        //worldRenderer.setColorRGBA_F(var8, var9, var10, var7);
+        GlStateManager.color(var8, var9, var10, var7);
         worldRenderer.addVertex(par3, par2, z);
         worldRenderer.addVertex(par1, par2, z);
-        //worldRenderer.setColorRGBA_F(var12, var13, var14, var11);
+        GlStateManager.color(var12, var13, var14, var11);
         worldRenderer.addVertex(par1, par4, z);
         worldRenderer.addVertex(par3, par4, z);
         tessellator.draw();
@@ -109,5 +111,4 @@ public class RenderHelper {
         GL11.glEnable(GL11.GL_ALPHA_TEST);
         GL11.glEnable(GL11.GL_TEXTURE_2D);
     }
-
 }

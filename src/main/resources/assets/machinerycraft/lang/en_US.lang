@@ -109,9 +109,6 @@ item.brassSaw.name=Brass Saw
 container.copperFurnace=Copper Furnace
 container.inventory=Inventory
 container.copperGrinder=Copper Grinder
-container.ironoxideGrinder=Ironoxide Grinder
-container.goldoxideFurnace=Goldoxide Furnace
-container.goldoxideGrinder=Goldoxide Grinder
 container.goldoxideAlloy=Goldoxide Alloy Smelter
 container.windmill=Windmill
 container.plasticChest=Plastic Chest
@@ -125,7 +122,7 @@ container.bronzeCharger=Bronze Charger
 container.bronzeAlloy=Bronze Alloy
 
 container.brassGrinder=Brass Grinder
-container.brassFurnace=Brass Grinder
+container.brassFurnace=Brass Furnace
 container.brassAlloy=Brass Alloy Smelter
 
 #-Creative Tab Localization

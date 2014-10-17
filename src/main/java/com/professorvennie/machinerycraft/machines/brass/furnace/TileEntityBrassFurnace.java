@@ -21,13 +21,14 @@ import net.minecraft.nbt.NBTTagCompound;
 public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IMachine {
 
     public final int maxPower = 10000;
-    public int furnaceSpeed = 70, power, cookTime;
+    public int power, cookTime;
 
     public TileEntityBrassFurnace() {
         super(Names.Containers.CONTAINER_BRASS_FURNACE);
         slots_top = new int[]{0};
         slots_bottom = new int[]{2, 1};
         slots_sides = new int[]{1};
+        setMachineSpeed(70);
     }
 
     @Override
@@ -38,14 +39,14 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
 
-        this.power = (int) nbt.getShort("burnTime");
+        this.power = (int) nbt.getShort("power");
         this.cookTime = (int) nbt.getShort("cookTime");
     }
 
     public void writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
 
-        nbt.setShort("burnTime", (short) this.power);
+        nbt.setShort("power", (short) this.power);
         nbt.setShort("cookTime", (short) this.cookTime);
     }
 
@@ -85,7 +86,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
             if (this.hasPower() && this.canSmelt() && canWork) {
                 this.cookTime++;
 
-                if (this.cookTime == this.furnaceSpeed) {
+                if (this.cookTime == this.getMachineSpeed()) {
                     this.smeltItem();
                     this.cookTime = 0;
                     flag1 = true;
@@ -141,7 +142,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
     }
 
     public int getCookProgressScaled(int par1) {
-        return this.cookTime * par1 / this.furnaceSpeed;
+        return this.cookTime * par1 / this.getMachineSpeed();
     }
 
     public int getPowerRemainingScaled(int par1) {

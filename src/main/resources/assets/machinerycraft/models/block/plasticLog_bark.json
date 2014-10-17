@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "machinerycraft:blocks/Plastic_Log_Side"
+    }
+}

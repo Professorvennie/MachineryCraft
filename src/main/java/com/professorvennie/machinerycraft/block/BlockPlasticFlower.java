@@ -12,7 +12,8 @@ package com.professorvennie.machinerycraft.block;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.lib.Names;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlower;
+import net.minecraft.block.BlockBush;
+
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -28,16 +29,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class BlockPlasticFlower extends BlockFlower {
+public class BlockPlasticFlower extends BlockBush {
 
-    public static final PropertyEnum FLOWERS = PropertyEnum.create("metal", EnumFlowers.class);
+    public static final PropertyEnum FLOWERS = PropertyEnum.create("variant", EnumFlowers.class);
 
     public BlockPlasticFlower() {
-        super();
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FLOWERS, EnumFlowers.ROSE));
         setUnlocalizedName("plasticFlower");
-        setCreativeTab(MachineryCraft.tabMachineryCraft);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FLOWERS, EnumFlowers.ROSE));
         setStepSound(Block.soundTypeGrass);
+        setCreativeTab(MachineryCraft.tabMachineryCraft);
     }
 
     @SideOnly(Side.CLIENT)
@@ -69,13 +69,8 @@ public class BlockPlasticFlower extends BlockFlower {
     }
 
     @Override
-    public EnumFlowerColor func_176495_j() {
-        return null;
-    }
-
-    @Override
     protected boolean canPlaceBlockOn(Block block) {
-        return block == ModBlocks.plasticDirt || block == ModBlocks.plasticGrass || block == Blocks.dirt || block == Blocks.glass;
+        return block == ModBlocks.plasticDirt || block == ModBlocks.plasticGrass || block == Blocks.dirt || block == Blocks.grass;
     }
 
     public static class ItemBlockFlowers extends ItemBlock {
@@ -91,7 +86,6 @@ public class BlockPlasticFlower extends BlockFlower {
             return par1;
         }
 
-        @SuppressWarnings({"unchecked", "rawtypes"})
         @Override
         @SideOnly(Side.CLIENT)
         public void getSubItems(Item item, CreativeTabs tab, List list) {

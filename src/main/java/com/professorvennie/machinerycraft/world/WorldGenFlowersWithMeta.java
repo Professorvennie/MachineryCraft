@@ -28,7 +28,7 @@ public class WorldGenFlowersWithMeta extends WorldGenerator {
 
     public WorldGenFlowersWithMeta(BlockPlasticFlower block, BlockPlasticFlower.EnumFlowers flowers) {
         this.block = block;
-        this.state = block.getDefaultState().withProperty(block.func_176494_l(), flowers);
+        this.state = block.getDefaultState();
     }
 
     @Override

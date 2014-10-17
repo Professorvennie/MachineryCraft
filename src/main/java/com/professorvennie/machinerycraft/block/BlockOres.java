@@ -34,7 +34,7 @@ import java.util.List;
 
 public class BlockOres extends BlockBase implements IBookable {
 
-    public static final PropertyEnum ORES = PropertyEnum.create("ore", EnumOres.class);
+    public static final PropertyEnum ORES = PropertyEnum.create("variant", EnumOres.class);
 
     protected BlockOres() {
         super(Material.rock, "ore");
@@ -90,8 +90,6 @@ public class BlockOres extends BlockBase implements IBookable {
             return par1;
         }
 
-
-        @SuppressWarnings({"unchecked", "rawtypes"})
         @Override
         @SideOnly(Side.CLIENT)
         public void getSubItems(Item item, CreativeTabs tab, List list) {
