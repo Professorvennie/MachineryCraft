@@ -14,13 +14,14 @@ import com.professorvennie.machinerycraft.block.ModBlocks;
 import com.professorvennie.machinerycraft.lib.BookData;
 import com.professorvennie.machinerycraft.lib.LibGuiIds;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.lib.Reference;
 import com.professorvennie.machinerycraft.machines.BlockBasicMachine;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -40,11 +41,13 @@ public class BlockBrassAlloySmelter extends BlockBasicMachine {
         return new TileEntityBrassAlloy();
     }
 
-    public Item getItemDropped(int par1, Random random, int par2) {
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(ModBlocks.brassAlloyIdle);
     }
 
-    public Item getItem(World world, int x, int y, int z) {
+    @Override
+    public Item getItem(World worldIn, BlockPos pos) {
         return Item.getItemFromBlock(ModBlocks.brassAlloyIdle);
     }
 

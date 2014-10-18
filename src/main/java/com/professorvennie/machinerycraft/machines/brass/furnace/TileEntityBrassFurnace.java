@@ -58,7 +58,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
         return this.cookTime > 0;
     }
 
-    public void updateEntity() {
+    public void update() {
         super.update();
         boolean flag = this.cookTime > 0;
         boolean flag1 = false;
@@ -165,7 +165,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
     @Override
     public int getField(int id) {
         super.getField(id);
-        if(id == 1)
+        if (id == 1)
             return cookTime;
         else if (id == 2)
             return power;
@@ -175,7 +175,7 @@ public class TileEntityBrassFurnace extends TileEntityBasicMachine implements IM
     @Override
     public void setField(int id, int value) {
         super.setField(id, value);
-        if(id == 1)
+        if (id == 1)
             cookTime = value;
         else if (id == 2)
             power = value;

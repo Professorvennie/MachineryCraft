@@ -9,12 +9,9 @@
  * */
 package com.professorvennie.machinerycraft.block;
 
-import com.professorvennie.lib.base.blocks.BlockModSlab;
 import com.professorvennie.lib.utils.RegistryUtils;
 import com.professorvennie.machinerycraft.block.slabs.*;
 import com.professorvennie.machinerycraft.block.stairs.*;
-import com.professorvennie.machinerycraft.items.itemblock.ItemBlockWalls;
-import com.professorvennie.machinerycraft.items.itemblock.ItemBlockWasher;
 import com.professorvennie.machinerycraft.lib.Names;
 import com.professorvennie.machinerycraft.machines.basic.campfire.BlockCampFire;
 import com.professorvennie.machinerycraft.machines.basic.portablecobblegen.BlockPortableCobbleGen;
@@ -40,8 +37,6 @@ import com.professorvennie.machinerycraft.machines.washer.BlockWasher;
 import com.professorvennie.machinerycraft.machines.windmill.BlockWindmill;
 import com.professorvennie.machinerycraft.machines.windmill.BlockWindmillGround;
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -234,17 +229,17 @@ public class ModBlocks {
         /*RegistryUtils.registerBlock(cable);
         RegistryUtils.registerBlock(washer, ItemBlockWasher.class);*/
         RegistryUtils.registerBlock(plasticLog);
-        RegistryUtils.registerBlock(plasticLeaf);
+//        RegistryUtils.registerBlock(plasticLeaf);
         RegistryUtils.registerBlock(plasticSapling);
         RegistryUtils.registerBlock(plasticFlower, BlockPlasticFlower.ItemBlockFlowers.class);
-        /*RegistryUtils.registerBlock(plasticGrass);
-        RegistryUtils.registerBlock(plasticDirt);*/
-        RegistryUtils.registerBlock(plasticPlanks);
-        /*RegistryUtils.registerBlock(plasticChest);
+        RegistryUtils.registerBlock(plasticGrass);
+       /* RegistryUtils.registerBlock(plasticDirt);
+        RegistryUtils.registerBlock(plasticPlanks);*/
+        RegistryUtils.registerBlock(plasticChest);
         RegistryUtils.registerBlock(portableCobbleGen);
-        RegistryUtils.registerBlock(bronzeExtractor);
+        // RegistryUtils.registerBlock(bronzeExtractor);
         RegistryUtils.registerBlock(bronzeFurnace);
-        RegistryUtils.registerBlock(bronzeGrinderIdle);
+        /*RegistryUtils.registerBlock(bronzeGrinderIdle);
         RegistryUtils.registerBlock(bronzeSteamBoiler);
         RegistryUtils.registerBlock(plasticFence);
         RegistryUtils.registerBlock(plasticFenceGate);

@@ -12,37 +12,23 @@ package com.professorvennie.machinerycraft.block;
 import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.lib.Reference;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
 import java.util.Random;
 
 public class BlockPlasticLeave extends BlockLeaves {
 
     public BlockPlasticLeave() {
-        this.setHardness(0.1F);
-        this.setTickRandomly(true);
-        this.setLightOpacity(1);
-        this.setStepSound(Block.soundTypeGrass);
         this.setCreativeTab(MachineryCraft.tabMachineryCraft);
         this.setUnlocalizedName(Names.Blocks.BLOCK_LEAVES);
-    }
-
-    @Override
-    public boolean isOpaqueCube() {
-        return false;
     }
 
     @Override
@@ -50,8 +36,19 @@ public class BlockPlasticLeave extends BlockLeaves {
         return null;
     }
 
-    public int quantityDropped(Random parRandom1) {
-        return parRandom1.nextInt(40) == 0 ? 1 : 0;
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return super.getMetaFromState(state);
+    }
+
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        return super.getStateFromMeta(meta);
+    }
+
+    @Override
+    protected BlockState createBlockState() {
+        return new BlockState(this, new IProperty[]{field_176236_b, field_176237_a});
     }
 
     @Override
@@ -59,13 +56,7 @@ public class BlockPlasticLeave extends BlockLeaves {
         return Item.getItemFromBlock(ModBlocks.plasticSapling);
     }
 
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item item, CreativeTabs tab, List listLeaves) {
-        listLeaves.add(new ItemStack(item, 1, 0));
-    }
-
-    @Override
-    protected void func_176234_a(World worldIn, BlockPos pos, IBlockState state, int p_17i6234_4_) {
-        spawnAsEntity(worldIn, pos, new ItemStack(ModItems.itemPlasticApple, 1, 0));
+    protected void func_176234_a(World worldIn, BlockPos p_176234_2_, IBlockState p_176234_3_, int p_176234_4_) {
+        spawnAsEntity(worldIn, p_176234_2_, new ItemStack(ModItems.itemPlasticApple, 1, 0));
     }
 }

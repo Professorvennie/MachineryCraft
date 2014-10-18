@@ -11,6 +11,7 @@ package com.professorvennie.machinerycraft.tileEntity;
 
 import com.professorvennie.machinerycraft.api.blocks.IMachine;
 import com.professorvennie.machinerycraft.machines.windmill.TileEntityWindmill;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 
 public class TileEntityCable extends TileEntityMod {
@@ -26,21 +27,21 @@ public class TileEntityCable extends TileEntityMod {
     }
 
     public void updateConnections() {
-        if (isCable(pos.getX(), pos.getY() + 1, pos.getZ()) || isMachine(pos.getX(),  pos.getY() + 1, pos.getZ()))
+        if (isCable(pos.getX(), pos.getY() + 1, pos.getZ()) || isMachine(pos.getX(), pos.getY() + 1, pos.getZ()))
             connections[0] = EnumFacing.UP;
         else connections[0] = null;
-        if (isCable(pos.getX(),  pos.getY() - 1, pos.getZ())) connections[1] = EnumFacing.DOWN;
+        if (isCable(pos.getX(), pos.getY() - 1, pos.getZ())) connections[1] = EnumFacing.DOWN;
         else connections[1] = null;
-        if (isCable(pos.getX(),  pos.getY(), pos.getZ() - 1) || isWindmill(pos.getX(),  pos.getY(), pos.getZ() - 1) || isMachine(pos.getX(),  pos.getY(), pos.getZ() - 1))
+        if (isCable(pos.getX(), pos.getY(), pos.getZ() - 1) || isWindmill(pos.getX(), pos.getY(), pos.getZ() - 1) || isMachine(pos.getX(), pos.getY(), pos.getZ() - 1))
             connections[2] = EnumFacing.NORTH;
         else connections[2] = null;
-        if (isCable(pos.getX() + 1,  pos.getY(), pos.getZ()) || isWindmill(pos.getX() + 1,  pos.getY(), pos.getZ()) || isMachine(pos.getX() + 1,  pos.getY(), pos.getZ()))
+        if (isCable(pos.getX() + 1, pos.getY(), pos.getZ()) || isWindmill(pos.getX() + 1, pos.getY(), pos.getZ()) || isMachine(pos.getX() + 1, pos.getY(), pos.getZ()))
             connections[3] = EnumFacing.EAST;
         else connections[3] = null;
-        if (isCable(pos.getX(),  pos.getY(), pos.getZ() + 1) || isWindmill(pos.getX(),  pos.getY(), pos.getZ() + 1) || isMachine(pos.getX(),  pos.getY(), pos.getZ() + 1))
+        if (isCable(pos.getX(), pos.getY(), pos.getZ() + 1) || isWindmill(pos.getX(), pos.getY(), pos.getZ() + 1) || isMachine(pos.getX(), pos.getY(), pos.getZ() + 1))
             connections[4] = EnumFacing.SOUTH;
         else connections[4] = null;
-        if (isCable(pos.getX() - 1,  pos.getY(), pos.getZ()) || isWindmill(pos.getX() - 1,  pos.getY(), pos.getZ()) || isMachine(pos.getX() - 1,  pos.getY(), pos.getZ()))
+        if (isCable(pos.getX() - 1, pos.getY(), pos.getZ()) || isWindmill(pos.getX() - 1, pos.getY(), pos.getZ()) || isMachine(pos.getX() - 1, pos.getY(), pos.getZ()))
             connections[5] = EnumFacing.WEST;
         else connections[5] = null;
     }
@@ -50,7 +51,7 @@ public class TileEntityCable extends TileEntityMod {
     }
 
     public boolean isMachine(int x, int y, int z) {
-        return this.worldObj.getTileEntity(pos) instanceof IMachine;
+        return this.worldObj.getTileEntity(new BlockPos(x, y, z)) instanceof IMachine;
     }
 
     public boolean isWindmill(int x, int y, int z) {                            //todo when windmill has blockstates

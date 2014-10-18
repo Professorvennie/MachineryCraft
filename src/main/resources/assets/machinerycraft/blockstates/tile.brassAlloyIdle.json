@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "machinerycraft:brassAlloyIdle" },
+        "facing=south": { "model": "machinerycraft:brassAlloyIdle", "y": 180 },
+        "facing=west":  { "model": "machinerycraft:brassAlloyIdle", "y": 270 },
+        "facing=east":  { "model": "machinerycraft:brassAlloyIdle", "y": 90 }
+    }
+}
