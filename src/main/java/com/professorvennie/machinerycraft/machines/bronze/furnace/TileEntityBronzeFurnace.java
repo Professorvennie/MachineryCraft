@@ -34,8 +34,8 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
 
         //attempt to fix wried crash
         BlockBronzeFurnace block = null;
-        if (worldObj.getBlockState(pos) instanceof BlockBronzeFurnace) {
-            block = (BlockBronzeFurnace) worldObj.getBlockState(pos);
+        if (worldObj.getBlockState(pos).getBlock() instanceof BlockBronzeFurnace) {
+            block = (BlockBronzeFurnace) worldObj.getBlockState(pos).getBlock();
         }
         if (cookTime > 0) {
             if (block != null)
@@ -65,6 +65,19 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
                 } else
                     cookTime = 0;
             }*/
+
+            if (steamAmount >= fuelEfficiency && canSmelt() && canWork) {
+                cookTime++;
+                if (cookTime > 0)
+                    steamAmount -= fuelEfficiency;
+
+                if (cookTime == getMachineSpeed()) {
+                    cookTime = 0;
+                    smeltItem();
+                    flag1 = true;
+                }
+            } else
+                cookTime = 0;
         }
         if (flag1) this.markDirty();
     }
@@ -89,9 +102,9 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
     @Override
     public int getField(int id) {
         super.getField(id);
-        if(id == 1)
+        if (id == 1)
             return cookTime;
-        return 0;
+        return super.getField(id);
     }
 
     @Override
@@ -102,7 +115,7 @@ public class TileEntityBronzeFurnace extends TileEntityBasicSteamMachine {
     @Override
     public void setField(int id, int value) {
         super.setField(id, value);
-        if(id == 1)
+        if (id == 1)
             cookTime = value;
     }
 }

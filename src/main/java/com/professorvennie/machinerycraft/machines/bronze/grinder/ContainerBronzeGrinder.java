@@ -11,28 +11,28 @@ package com.professorvennie.machinerycraft.machines.bronze.grinder;
 
 import com.professorvennie.machinerycraft.api.recipes.GrinderRecipes;
 import com.professorvennie.machinerycraft.items.ModItems;
+import com.professorvennie.machinerycraft.machines.bronze.ContainerBasicSteamMachine;
 import com.professorvennie.machinerycraft.machines.bronze.extractor.TileEntityBronzeExtractor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by ProfessorVennie on 8/9/2014 at 3:29 PM.
  */
-public class ContainerBronzeGrinder extends Container {
+public class ContainerBronzeGrinder extends ContainerBasicSteamMachine {
 
     private TileEntityBronzeGrinder entity;
     private int lastCookTime, lastTankAmount;
 
     public ContainerBronzeGrinder(InventoryPlayer inventory, TileEntityBronzeGrinder entity) {
+        super(inventory, entity);
         this.entity = entity;
 
         addSlotToContainer(new Slot(entity, 0, 33, 9));

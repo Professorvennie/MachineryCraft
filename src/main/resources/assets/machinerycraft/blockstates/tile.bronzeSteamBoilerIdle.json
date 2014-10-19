@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "machinerycraft:bronzeSteamBoilerIdle" },
+        "facing=south": { "model": "machinerycraft:bronzeSteamBoilerIdle", "y": 180 },
+        "facing=west":  { "model": "machinerycraft:bronzeSteamBoilerIdle", "y": 270 },
+        "facing=east":  { "model": "machinerycraft:bronzeSteamBoilerIdle", "y": 90 }
+    }
+}

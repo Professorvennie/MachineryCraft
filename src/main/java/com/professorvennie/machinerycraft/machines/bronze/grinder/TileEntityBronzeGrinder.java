@@ -50,6 +50,20 @@ public class TileEntityBronzeGrinder extends TileEntityBasicSteamMachine {
                 } else
                     cookTime = 0;
             }*/
+
+            if (getSteamAmount() >= 1 && canGrind() && canWork) {
+                cookTime++;
+                if (cookTime > 0) {
+                    if (canGrind())
+                        steamAmount--;
+                }
+                if (cookTime == getMachineSpeed()) {
+                    cookTime = 0;
+                    grindItem();
+                    flag1 = true;
+                }
+            } else
+                cookTime = 0;
         }
         BlockBronzeGrinder block = null;
         if (worldObj.getBlockState(pos) instanceof BlockBronzeGrinder) {
@@ -92,10 +106,9 @@ public class TileEntityBronzeGrinder extends TileEntityBasicSteamMachine {
 
     @Override
     public int getField(int id) {
-        super.getField(id);
-        if(id == 1)
+        if (id == 1)
             return cookTime;
-        return 0;
+        return super.getField(id);
     }
 
     @Override
@@ -106,7 +119,7 @@ public class TileEntityBronzeGrinder extends TileEntityBasicSteamMachine {
     @Override
     public void setField(int id, int value) {
         super.setField(id, value);
-        if(id == 1)
+        if (id == 1)
             cookTime = value;
     }
 }

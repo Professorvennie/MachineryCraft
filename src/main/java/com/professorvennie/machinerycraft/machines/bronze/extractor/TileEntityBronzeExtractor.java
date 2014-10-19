@@ -31,7 +31,7 @@ public class TileEntityBronzeExtractor extends TileEntityBasicSteamMachine {
     public void update() {
         super.update();
 
-        BlockBronzeExtractor block = (BlockBronzeExtractor) worldObj.getBlockState(pos);
+        BlockBronzeExtractor block = (BlockBronzeExtractor) worldObj.getBlockState(pos).getBlock();
         if (cookTime > 0)
             block.isActive = true;
         else
@@ -57,6 +57,19 @@ public class TileEntityBronzeExtractor extends TileEntityBasicSteamMachine {
                 } else
                     cookTime = 0;
             }*/
+
+            if (steamAmount >= fuelEfficiency && canSmelt() && canWork) {
+                cookTime++;
+                if (cookTime > 0)
+                    steamAmount -= fuelEfficiency;
+
+                if (cookTime == getMachineSpeed()) {
+                    cookTime = 0;
+                    smeltItem();
+                    flag1 = true;
+                }
+            } else
+                cookTime = 0;
         }
         if (flag1) this.markDirty();
     }
@@ -87,7 +100,7 @@ public class TileEntityBronzeExtractor extends TileEntityBasicSteamMachine {
     @Override
     public int getField(int id) {
         super.getField(id);
-        if(id == 1)
+        if (id == 1)
             return cookTime;
         return 0;
     }
@@ -100,7 +113,7 @@ public class TileEntityBronzeExtractor extends TileEntityBasicSteamMachine {
     @Override
     public void setField(int id, int value) {
         super.setField(id, value);
-        if(id == 1)
+        if (id == 1)
             cookTime = value;
     }
 }

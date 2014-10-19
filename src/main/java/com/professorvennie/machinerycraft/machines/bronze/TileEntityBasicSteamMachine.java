@@ -13,12 +13,12 @@ import com.professorvennie.machinerycraft.api.recipes.ExtractorRecipes;
 import com.professorvennie.machinerycraft.api.recipes.GrinderRecipes;
 import com.professorvennie.machinerycraft.api.steam.ISteamBoiler;
 import com.professorvennie.machinerycraft.api.steam.ISteamTank;
-import com.professorvennie.machinerycraft.fuilds.ModFuilds;
 import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.machines.TileEntityBasicMachine;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -28,7 +28,9 @@ import net.minecraft.util.EnumFacing;
  */
 public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implements ISteamTank/*, IFluidHandler*/ {
 
+    public final int steamCapacity = 10000;
     //public FluidTank tank;
+    public int steamAmount;
 
     public TileEntityBasicSteamMachine(String name) {
         super(name);
@@ -136,6 +138,64 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implemen
                 }
             }
         }*/
+
+        if (!worldObj.isRemote) {
+            if (steamAmount > steamCapacity)
+                steamAmount = steamCapacity;
+
+            if (inventory[0] != null) {
+                if (inventory[0].getItem() == ModItems.steamBucket) {
+                    int temp = steamCapacity - steamAmount;
+                    if (inventory[1] == null) {
+                        if (steamAmount < steamCapacity) {
+                            if (temp >= 1000)
+                                setInventorySlotContents(1, new ItemStack(Items.bucket));
+                        }
+                        if (steamAmount < steamCapacity) {
+                            if (steamAmount < steamCapacity) {
+                                if (inventory[1].stackSize < 16) {
+                                    if (temp >= 1000)
+                                        steamAmount += 1000;
+                                }
+                            }
+                        }
+
+                        if (steamAmount < steamCapacity) {
+                            if (temp >= 1000) {
+                                if (inventory[1].stackSize < 16) {
+                                    decrStackSize(0, 1);
+                                }
+                            }
+                        }
+
+                    } else if (inventory[1].getItem() == Items.bucket) {
+                        if (steamAmount < steamCapacity) {
+                            if (temp >= 1000) {
+                                if (inventory[1].stackSize < 16) {
+                                    decrStackSize(0, 1);
+                                    inventory[1].stackSize++;
+                                }
+                            }
+                        }
+                        if (steamAmount < steamCapacity) {
+                            if (inventory[1].stackSize < 16) {
+                                if (temp >= 1000)
+                                    steamAmount += 1000;
+                            }
+                        }
+                    }
+
+                } else if (inventory[0].getItem() == Items.bucket) {
+                    if (inventory[1] == null) {
+                        if (steamAmount >= 1000) {
+                            steamAmount -= 1000;
+                            decrStackSize(0, 1);
+                            setInventorySlotContents(1, new ItemStack(ModItems.steamBucket));
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -183,20 +243,36 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implemen
     }*/
 
     @Override
+    public void readFromNBT(NBTTagCompound nbtTagCompound) {
+        super.readFromNBT(nbtTagCompound);
+
+        steamAmount = nbtTagCompound.getInteger("Steam");
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound nbtTagCompound) {
+        super.writeToNBT(nbtTagCompound);
+
+        nbtTagCompound.setInteger("Steam", steamAmount);
+    }
+
+    @Override
     public int getSteamAmount() {
         //return tank.getFluidAmount();
-        return 0;
+        return steamAmount;
     }
 
     @Override
     public int getSteamCapacity() {
         //return tank.getCapacity();
-        return 0;
+        return steamCapacity;
     }
 
     @Override
     public void addSteamAmount(int amount) {
         //tank.getFluid().amount += amount;
+        if (steamAmount + amount < steamCapacity)
+            steamAmount += amount;
     }
 
     protected boolean canGrind() {
@@ -302,5 +378,24 @@ public class TileEntityBasicSteamMachine extends TileEntityBasicMachine implemen
                 this.inventory[2] = null;
             }
         }
+    }
+
+    @Override
+    public void setField(int id, int value) {
+        super.setField(id, value);
+        if (id == 2)
+            steamAmount = value;
+    }
+
+    @Override
+    public int getFieldCount() {
+        return super.getFieldCount() + 1;
+    }
+
+    @Override
+    public int getField(int id) {
+        if (id == 2)
+            return steamAmount;
+        return super.getField(id);
     }
 }

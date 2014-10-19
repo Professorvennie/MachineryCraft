@@ -237,11 +237,11 @@ public class ModBlocks {
         RegistryUtils.registerBlock(plasticPlanks);*/
         RegistryUtils.registerBlock(plasticChest);
         RegistryUtils.registerBlock(portableCobbleGen);
-        // RegistryUtils.registerBlock(bronzeExtractor);
+        RegistryUtils.registerBlock(bronzeExtractor);
         RegistryUtils.registerBlock(bronzeFurnace);
-        /*RegistryUtils.registerBlock(bronzeGrinderIdle);
+        RegistryUtils.registerBlock(bronzeGrinderIdle);
         RegistryUtils.registerBlock(bronzeSteamBoiler);
-        RegistryUtils.registerBlock(plasticFence);
+        /*RegistryUtils.registerBlock(plasticFence);
         RegistryUtils.registerBlock(plasticFenceGate);
         //RegistryUtils.registerBlock(metalWalls, ItemBlockWalls.class);
         RegistryUtils.registerBlock(mineingPortal);

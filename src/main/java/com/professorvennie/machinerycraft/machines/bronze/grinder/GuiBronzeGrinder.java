@@ -48,6 +48,11 @@ public class GuiBronzeGrinder extends GuiBase {
             text.add("Empty");
             drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text, fontRendererObj);
         }*/
+
+        text.clear();
+        text.add("Steam");
+        text.add(entity.steamAmount + "/" + entity.steamCapacity + "mB");
+        drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text, fontRendererObj);
     }
 
     @Override

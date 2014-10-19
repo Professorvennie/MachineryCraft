@@ -15,9 +15,7 @@ import com.professorvennie.machinerycraft.MachineryCraft;
 import com.professorvennie.machinerycraft.items.armor.ItemBrassArmor;
 import com.professorvennie.machinerycraft.items.armor.ItemEmeraldArmor;
 import com.professorvennie.machinerycraft.items.armor.ItemZincArmor;
-import com.professorvennie.machinerycraft.items.tools.ModTools;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 
@@ -61,10 +59,8 @@ public class ModItems {
     public static Item emeraldboots;
 
     public static void mainRegistry() {
-        //InitialiseItem();
+        InitialiseItem();
         //ModTools.mainRegistry();
-        book = new ItemBook();
-        bags = new ItemBags();
     }
 
     public static void InitialiseItem() {

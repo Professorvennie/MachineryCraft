@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class ContainerBronzeSteamBoiler extends Container {
 
-    public int lastBurnTime, lastItemBurnTime, lastTemp, lastTank1, lastTank2;
+    public int lastBurnTime, lastItemBurnTime, lastTemp, lastTank1, lastTank2, lastSteamAmount, lastWaterAmount;
 
     private TileEntityBronzeSteamBoiler entity;
 
@@ -69,6 +69,14 @@ public class ContainerBronzeSteamBoiler extends Container {
                 icrafting.sendProgressBarUpdate(this, 3, entity.getField(3));
             }
 
+            if (lastSteamAmount != entity.getField(4)) {
+                icrafting.sendProgressBarUpdate(this, 4, entity.getField(4));
+            }
+
+            if (lastWaterAmount != entity.getField(5)) {
+                icrafting.sendProgressBarUpdate(this, 5, entity.getField(5));
+            }
+
             /*if (lastTank1 != entity.tanks[0].getFluidAmount()) {
                 icrafting.sendProgressBarUpdate(this, 3, entity.tanks[0].getFluidAmount());
             }
@@ -80,6 +88,8 @@ public class ContainerBronzeSteamBoiler extends Container {
         this.lastBurnTime = this.entity.getField(1);
         this.lastItemBurnTime = this.entity.getField(2);
         this.lastTemp = this.entity.getField(3);
+        this.lastSteamAmount = entity.getField(4);
+        this.lastWaterAmount = entity.getField(5);
         /*this.lastTank1 = this.entity.tanks[0].getFluidAmount();
         this.lastTank2 = this.entity.tanks[1].getFluidAmount();*/
     }
@@ -87,16 +97,6 @@ public class ContainerBronzeSteamBoiler extends Container {
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
         entity.setField(slot, par2);
-        /*if (slot == 3) {
-            if (entity.tanks[0].getFluid() != null)
-                entity.tanks[0].getFluid().amount = par2;
-
-        }
-        if (slot == 4) {
-            if (entity.tanks[1].getFluid() != null)
-                entity.tanks[1].getFluid().amount = par2;
-
-        }*/
     }
 
     @Override

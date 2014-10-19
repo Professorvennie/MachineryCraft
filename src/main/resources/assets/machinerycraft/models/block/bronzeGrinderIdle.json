@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "machinerycraft:blocks/bronzeMachines_Top",
+        "front": "machinerycraft:blocks/bronzeGrinder_Front_Idle",
+        "side": "machinerycraft:blocks/ores/blockBronze"
+    }
+}

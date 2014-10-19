@@ -47,7 +47,7 @@ public class TileEntityCable extends TileEntityMod {
     }
 
     public boolean isCable(int x, int y, int z) {
-        return this.worldObj.getTileEntity(pos) instanceof TileEntityCable;
+        return this.worldObj.getTileEntity(new BlockPos(x, y, z)) instanceof TileEntityCable;
     }
 
     public boolean isMachine(int x, int y, int z) {

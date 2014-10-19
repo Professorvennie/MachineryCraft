@@ -10,10 +10,10 @@
 package com.professorvennie.machinerycraft.machines.bronze.furnace;
 
 import com.professorvennie.machinerycraft.items.ModItems;
+import com.professorvennie.machinerycraft.machines.bronze.ContainerBasicSteamMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceOutput;
@@ -25,12 +25,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by ProfessorVennie on 7/23/2014 at 11:38 AM.
  */
-public class ContainerBronzeFurnace extends Container {
+public class ContainerBronzeFurnace extends ContainerBasicSteamMachine {
 
     public int lastCookTime, lastTankAmount;
     private TileEntityBronzeFurnace entity;
 
     public ContainerBronzeFurnace(InventoryPlayer inventory, TileEntityBronzeFurnace tileEntityBronzeFurnace) {
+        super(inventory, tileEntityBronzeFurnace);
         entity = tileEntityBronzeFurnace;
 
         addSlotToContainer(new Slot(entity, 0, 33, 9));
@@ -69,6 +70,7 @@ public class ContainerBronzeFurnace extends Container {
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int slot, int par2) {
+        super.updateProgressBar(slot, par2);
         entity.setField(slot, par2);
     }
 

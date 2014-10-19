@@ -44,6 +44,9 @@ public class GuiBronzeSteamBoiler extends GuiBase {
         }
         //drawTanks(entity.tanks[0], 66, 11, 74, 16);
         //drawTanks(entity.tanks[1], 66, 149, 74, 16);
+
+        int j = getValueScaled(entity.waterAmount, entity.waterCapacity, 66);
+        drawElement(guiLeft + 11, guiTop + 74 - j, 176, 79 - j, 16, j);
     }
 
     @Override
@@ -95,5 +98,16 @@ public class GuiBronzeSteamBoiler extends GuiBase {
             text2.add("Empty");
             drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text2, fontRendererObj);
         }*/
+
+        text.clear();
+        text.add("Water");
+        text.add(entity.waterAmount + "/" + entity.waterCapacity + "mB");
+        drawToolTipOverArea(mouseX, mouseY, 11, 8, 26, 73, text, fontRendererObj);
+
+        List<String> text2 = new ArrayList<String>();
+        text2.clear();
+        text2.add("Steam");
+        text2.add(entity.steamAmount + "/" + entity.steamCapacity + "mB");
+        drawToolTipOverArea(mouseX, mouseY, 149, 8, 164, 73, text2, fontRendererObj);
     }
 }
