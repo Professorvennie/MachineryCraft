@@ -11,7 +11,6 @@ package com.professorvennie.machinerycraft.items;
 
 import com.professorvennie.lib.base.items.ItemBase;
 import com.professorvennie.machinerycraft.lib.Names;
-import com.professorvennie.machinerycraft.lib.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,14 +21,13 @@ import java.util.List;
 
 public class ItemDusts extends ItemBase {
 
-
     public ItemDusts() {
         super("dust");
         setHasSubtypes(true);
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
+    @SideOnly(Side.CLIENT)
     public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List list) {
         for (int i = 0; i < Names.Items.DUSTS.length; i++) {
             list.add(new ItemStack(this, 1, i));

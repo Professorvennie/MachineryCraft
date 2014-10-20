@@ -46,7 +46,7 @@ public class GuiBronzeSteamBoiler extends GuiBase {
         //drawTanks(entity.tanks[1], 66, 149, 74, 16);
 
         int j = getValueScaled(entity.waterAmount, entity.waterCapacity, 66);
-        drawElement(guiLeft + 11, guiTop + 74 - j, 176, 79 - j, 16, j);
+        drawElement(11, 74 - j, 176, 80 - j, 16, j);
     }
 
     @Override

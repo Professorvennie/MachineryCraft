@@ -18,7 +18,6 @@ import com.professorvennie.machinerycraft.core.creativetabs.CreativeTabMachinery
 import com.professorvennie.machinerycraft.core.creativetabs.CreativeTabMachineryCraftItems;
 import com.professorvennie.machinerycraft.core.handlers.FuelHandler;
 import com.professorvennie.machinerycraft.core.handlers.GuiHandler;
-import com.professorvennie.machinerycraft.core.handlers.HudHandler;
 import com.professorvennie.machinerycraft.core.network.PacketHandler;
 import com.professorvennie.machinerycraft.core.proxeys.ClientProxey;
 import com.professorvennie.machinerycraft.core.proxeys.CommonProxey;
@@ -27,16 +26,14 @@ import com.professorvennie.machinerycraft.fuilds.ModFuilds;
 import com.professorvennie.machinerycraft.items.ModItems;
 import com.professorvennie.machinerycraft.lib.BookData;
 import com.professorvennie.machinerycraft.lib.Reference;
+import com.professorvennie.machinerycraft.machines.bronze.alloy.MetalRegistry;
 import com.professorvennie.machinerycraft.plugins.PluginHandler;
 import com.professorvennie.machinerycraft.recipes.ModRecipes;
 import com.professorvennie.machinerycraft.tileEntity.RegisterTileEntitys;
 import com.professorvennie.machinerycraft.world.OreGen;
 import com.professorvennie.machinerycraft.world.biome.ModBiomes;
 import com.professorvennie.machinerycraft.world.village.VillageHandler;
-
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -70,11 +67,12 @@ public class MachineryCraft {
 
         ModRecipes.init();
         BookData.init();
+        MetalRegistry.init();
         PluginHandler.preInit();
         VillageHandler.init();
 
         PacketHandler.init();
-        if(FMLCommonHandler.instance().getEffectiveSide().isClient()) ClientProxey.preInit();
+        if (FMLCommonHandler.instance().getEffectiveSide().isClient()) ClientProxey.preInit();
 
         //FluidContainerRegistry.registerFluidContainer(ModFuilds.fluidSteam, new ItemStack(ModItems.steamBucket), new ItemStack(Items.bucket));
     }
@@ -92,7 +90,7 @@ public class MachineryCraft {
         ModBiomes.init();
         ModRecipes.addChestLoot();
         GameRegistry.registerFuelHandler(new FuelHandler());
-        if(FMLCommonHandler.instance().getEffectiveSide().isClient()) ClientProxey.init();
+        if (FMLCommonHandler.instance().getEffectiveSide().isClient()) ClientProxey.init();
 
 //        DimensionManager.registerProviderType(12, WorldProviderMining.class, false);
 //        DimensionManager.registerDimension(12, 12);
